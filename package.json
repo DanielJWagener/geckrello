@@ -3,6 +3,13 @@
   "version": "1.0.0",
   "main": "index.js",
   "repository": "https://github.com/DanielJWagener/geckrello",
+  "engines": {
+    "node": "12.10.0",
+    "yarn": "1.21.1"
+  },
+  "scripts": {
+    "start": "node index.js"
+  },
   "author": "Daniel Wagener",
   "license": "MIT",
   "dependencies": {
