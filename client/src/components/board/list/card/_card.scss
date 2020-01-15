@@ -1,0 +1,23 @@
+.card {
+  &:not(:last-child) {
+    margin-bottom: 1rem;
+  }
+
+  &:first-child {
+    margin-top: 0.5rem;
+  }
+
+  z-index: 10;
+
+  &__preview {
+    display: block;
+    background-color: #fff;
+    border-radius: 0.5rem;
+    font-size: 2rem;
+    padding: 0 1rem;
+    line-height: 3.5rem;
+    color: $default-font-color;
+    text-decoration: none;
+    border-bottom: 1px solid $default-font-color;
+  }
+}

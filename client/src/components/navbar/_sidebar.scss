@@ -1,0 +1,187 @@
+#sidebar-root {
+  position: fixed;
+  top: 9rem;
+  right: calc(-1 * #{$sidebar-width});
+  height: calc(var(--vh, 1vh) * 100 - 9rem);
+  width: $sidebar-width;
+  z-index: 2;
+
+  @media only screen and (max-width: 400px) {
+    width: 100vw;
+  }
+}
+
+.portal-inner {
+  height: 100%;
+}
+
+.sidebar {
+  position: absolute;
+
+  &--hidden {
+    left: 0rem;
+  }
+
+  &--shown {
+    left: calc(-1 * #{$sidebar-width});
+  }
+
+  height: calc(var(--vh, 1vh) * 100 - 9rem);
+  background-color: $component-background;
+  border-left: 2px solid white;
+  border-radius: 8px 0 0 8px;
+  width: $sidebar-width;
+  padding: 1.5rem;
+  transition: left 0.3s;
+
+  @media only screen and (max-width: 400px) {
+    width: 100vw;
+  }
+
+  &__wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: $sidebar-width;
+  }
+
+  .sidebar-menu {
+    &__heading {
+      font-size: 2rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    &__item {
+      font-size: 2rem;
+      padding: 2rem 1rem 2rem 1rem;
+      width: 100%;
+      text-align: left;
+      border: none;
+      border-radius: 3px;
+      background-color: $component-background;
+      cursor: pointer;
+      &:hover {
+        background-color: $component-background-dark;
+      }
+    }
+
+    &__close {
+      position: absolute;
+      top: 3px;
+      right: 1rem;
+      cursor: pointer;
+      font-size: 3rem;
+
+      &:hover {
+        color: red;
+      }
+    }
+
+    &__interface {
+      position: absolute;
+      top: 0;
+      width: $sidebar-width;
+
+      height: calc(var(--vh, 1vh) * 100 - 9rem);
+      overflow-y: auto;
+      background-color: white;
+      border-left: 2px solid $component-background;
+      border-radius: 8px 0 0 8px;
+      padding: 1.5rem;
+      transition: all 0.3s;
+
+      @media only screen and (max-width: 400px) {
+        width: 100vw;
+      }
+
+      &--hidden {
+        right: calc(-1 * #{$sidebar-width});
+      }
+
+      &--visible {
+        right: 0;
+      }
+
+      &--close {
+        position: absolute;
+        top: 3px;
+        right: 1rem;
+        cursor: pointer;
+        font-size: 3rem;
+
+        &:hover {
+          color: red;
+        }
+      }
+
+      .archive {
+        &-toggle {
+          display: flex;
+          justify-content: center;
+
+          &__button {
+            width: 25%;
+            font-size: 2rem;
+            color: white;
+            padding: 0.5rem 1rem 0.5rem 1rem;
+            border-radius: 5px;
+            border: none;
+            margin: 0.5rem;
+
+            &:focus {
+              outline: none;
+            }
+
+            &--inactive {
+              background-color: #444;
+              cursor: pointer;
+            }
+
+            &--active {
+              background-color: blue;
+            }
+          }
+        }
+
+        &__list {
+          margin-top: 2rem;
+        }
+
+        &__item {
+          display: flex;
+          justify-content: space-around;
+          align-items: flex-center;
+          margin-bottom: 2rem;
+
+          &--title {
+            font-size: 2rem;
+            padding: 1em 4rem 1rem 4rem;
+            text-align: center;
+            background-color: #ddd;
+            border-radius: 5px;
+            width: 50%;
+          }
+
+          &--restore {
+            font-size: 2rem;
+            padding: 0.5rem 1rem 0.5rem 1rem;
+            text-align: center;
+            background-color: blue;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 25%;
+          }
+        }
+      }
+
+      .colors {
+        display: flex;
+        flex-wrap: wrap;
+      }
+    }
+  }
+}

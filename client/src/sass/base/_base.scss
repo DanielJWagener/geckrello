@@ -1,0 +1,23 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+:root {
+  --body-background: blue;
+  --body-background-light: #00a2ff;
+}
+
+html {
+  // defines 1rem
+  font-size: 62.5%;
+}
+
+body {
+  box-sizing: border-box;
+  height: 100vh;
+  background-color: var(--body-background);
+}

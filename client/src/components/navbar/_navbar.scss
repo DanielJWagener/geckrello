@@ -1,0 +1,61 @@
+.navbar {
+  display: grid;
+  grid-template-areas:
+    "header header header"
+    "title . menu";
+  position: relative;
+
+  &__logo {
+    width: 100vw;
+    padding: 5px 0;
+    grid-area: header;
+    font-weight: bold;
+    font-size: 1.5em;
+    color: white;
+    text-align: center;
+  }
+
+  &__input {
+    margin-left: 10px;
+    padding: 5px 0;
+    grid-area: title;
+    background-color: var(--body-background);
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 2em;
+    font-weight: 700;
+    color: white;
+    text-align: center;
+  }
+
+  &__input--infocus {
+    background-color: white;
+    color: $default-font-color;
+  }
+
+  &__input--hover {
+    background-color: var(--body-background-light);
+  }
+
+  &__menu-wrapper {
+    grid-area: menu;
+    margin-right: 3rem;
+  }
+
+  &__menu {
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+
+    padding: 5px;
+    border: 2px solid var(--body-background-light);
+
+    &--hover {
+      background-color: var(--body-background-light);
+    }
+  }
+
+  &__menu h1 {
+    font-weight: 100;
+  }
+}

@@ -1,0 +1,41 @@
+.board {
+  padding: 1rem;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax($list-width, 1fr));
+  grid-gap: 0 1rem;
+  grid-auto-rows: 1rem;
+}
+
+.addList {
+  border-radius: 0.5rem;
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.3);
+  height: 100px;
+  z-index: 1;
+
+  &__prompt {
+    background-color: rgba(0, 0, 0, 0.6);
+
+    &-button {
+      height: 100%;
+      width: 100%;
+      color: white;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      font-size: 2rem;
+
+      &:hover {
+        color: #bbb;
+      }
+    }
+  }
+
+  &__input {
+    background-color: $component-background;
+  }
+
+  &__form {
+    width: 100%;
+  }
+}
