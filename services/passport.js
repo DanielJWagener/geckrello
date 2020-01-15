@@ -13,12 +13,12 @@ passport.use(
       clientSecret: keys.googleClientSecret,
       callbackURL: "/auth/google/callback"
     },
-    (accessToken, refreshToken, profile, done) => {
-      // console.log("access token: ", accessToken);
-      // console.log("refresh token: ", refreshToken);
-      // console.log("profile: ", profile);
+    async (accessToken, refreshToken, profile, done) => {
+      const user = await User.findOne({ googleId: profile.id });
 
-      new User({ googleId: profile.id }).save();
+      if (!user) {
+        new User({ googleId: profile.id }).save();
+      }
     }
   )
 );
