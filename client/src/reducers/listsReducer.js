@@ -1,7 +1,9 @@
+import { ADD_LIST, ARCHIVE_LIST, RESTORE_LIST } from "../actions/types";
+
 export default (state = [], action) => {
   let currentLists = [...state];
   switch (action.type) {
-    case "ADD_LIST":
+    case ADD_LIST:
       return [
         ...state,
         {
@@ -10,14 +12,14 @@ export default (state = [], action) => {
           archived: false
         }
       ];
-    case "ARCHIVE_LIST":
+    case ARCHIVE_LIST:
       currentLists.forEach(list => {
         if (list.listId === action.payload) {
           list.archived = true;
         }
       });
       return currentLists;
-    case "RESTORE_LIST":
+    case RESTORE_LIST:
       currentLists.forEach(list => {
         if (list.listId === action.payload) {
           list.archived = false;

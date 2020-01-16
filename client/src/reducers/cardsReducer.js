@@ -1,7 +1,19 @@
+import {
+  ADD_CARD,
+  MOVE_CARD,
+  COPY_CARD,
+  ARCHIVE_CARD,
+  RESTORE_CARD,
+  UPDATE_CARD_DESCRIPTION,
+  ADD_CHECKLIST_ITEM,
+  CHECK_CHECKLIST_ITEM,
+  DELETE_CHECKLIST_ITEM
+} from "../actions/types";
+
 export default (state = [], action) => {
   let currentCards = [...state];
   switch (action.type) {
-    case "ADD_CARD":
+    case ADD_CARD:
       // Return current state with new card appendded
       return [
         ...state,
@@ -14,7 +26,7 @@ export default (state = [], action) => {
           description: ""
         }
       ];
-    case "MOVE_CARD":
+    case MOVE_CARD:
       // Locate coresponding card in store
       currentCards.forEach(card => {
         if (card.cardId === action.payload.cardId) {
@@ -23,7 +35,7 @@ export default (state = [], action) => {
         }
       });
       return currentCards;
-    case "COPY_CARD":
+    case COPY_CARD:
       const source = currentCards.find(
         card => (card.cardId = action.payload.sourceCardId)
       );
@@ -32,21 +44,21 @@ export default (state = [], action) => {
       newCard.listHome = action.payload.newListHome;
       newCard.cardId = action.payload.newCardId;
       return [...currentCards, newCard];
-    case "ARCHIVE_CARD":
+    case ARCHIVE_CARD:
       currentCards.forEach(card => {
         if (card.cardId === action.payload) {
           card.archived = true;
         }
       });
       return currentCards;
-    case "RESTORE_CARD":
+    case RESTORE_CARD:
       currentCards.forEach(card => {
         if (card.cardId === action.payload) {
           card.archived = false;
         }
       });
       return currentCards;
-    case "UPDATE_CARD_DESCRIPTION":
+    case UPDATE_CARD_DESCRIPTION:
       // Locate coresponding card in store
       currentCards.forEach(card => {
         if (card.cardId === action.payload.cardId) {
@@ -55,7 +67,7 @@ export default (state = [], action) => {
         }
       });
       return currentCards;
-    case "ADD_CHECKLIST_ITEM":
+    case ADD_CHECKLIST_ITEM:
       const { checklistItemTitle, checklistItemId, checked } = action.payload;
       const newItem = { checklistItemTitle, checklistItemId, checked };
       // Locate corresponding card in store
@@ -66,7 +78,7 @@ export default (state = [], action) => {
         }
       });
       return currentCards;
-    case "CHECKLIST_CHECK":
+    case CHECK_CHECKLIST_ITEM:
       // Locate corresponding card in store
       currentCards.forEach(card => {
         if (card.cardId === action.payload.cardId) {
@@ -80,7 +92,7 @@ export default (state = [], action) => {
         }
       });
       return currentCards;
-    case "CHECKLIST_DELETE":
+    case DELETE_CHECKLIST_ITEM:
       // Locate corresponding card in store
       currentCards.forEach(card => {
         if (card.cardId === action.payload.cardId) {
