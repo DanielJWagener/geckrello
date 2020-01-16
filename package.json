@@ -9,11 +9,14 @@
   },
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon index.js"
+    "server": "nodemon index.js",
+    "client": "yarn --cwd client start",
+    "dev": "concurrently \"yarn run server\" \"yarn run client\""
   },
   "author": "Daniel Wagener",
   "license": "MIT",
   "dependencies": {
+    "concurrently": "^5.0.2",
     "cookie-session": "^1.4.0",
     "express": "^4.17.1",
     "mongoose": "^5.8.7",
