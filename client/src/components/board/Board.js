@@ -1,9 +1,11 @@
-import AddList from "./AddList";
-import List from "./list/List";
 import React from "react";
 import { DndProvider } from "react-dnd";
 import HTML5Backend from "react-dnd-html5-backend";
 import { connect } from "react-redux";
+
+import AddList from "./AddList";
+import List from "./list/List";
+import MenuBar from "./menu-bar/MenuBar";
 
 class Board extends React.Component {
   // Iterate over every list in state, return the non-archived ones, and make and array of List components out of them
@@ -21,12 +23,15 @@ class Board extends React.Component {
 
   render() {
     return (
-      <DndProvider backend={HTML5Backend}>
-        <div className="board" id="board">
-          {this.listsArray()}
-          <AddList />
-        </div>
-      </DndProvider>
+      <div>
+        <MenuBar />
+        <DndProvider backend={HTML5Backend}>
+          <div className="board" id="board">
+            {this.listsArray()}
+            <AddList />
+          </div>
+        </DndProvider>
+      </div>
     );
   }
 }

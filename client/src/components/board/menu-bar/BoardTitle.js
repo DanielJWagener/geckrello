@@ -40,14 +40,14 @@ class BoardTitle extends Component {
   onBlurHandler = event => {
     const newTitle = event.target.value;
 
-    event.target.className = "navbar__input";
+    event.target.className = "menu-bar__input";
 
     this.checkEmptyInput(newTitle);
   };
 
   // Changes input styling on focus, and selects all input text
   onFocusHandler = event => {
-    event.target.className = "navbar__input navbar__input--infocus";
+    event.target.className = "menu-bar__input menu-bar__input--infocus";
 
     event.target.select();
   };
@@ -55,15 +55,15 @@ class BoardTitle extends Component {
   // Changes input styling on mouse over
   onMouseOverHandler = event => {
     document.activeElement === event.target
-      ? (event.target.className = "navbar__input navbar__input--infocus")
-      : (event.target.className = "navbar__input navbar__input--hover");
+      ? (event.target.className = "menu-bar__input menu-bar__input--infocus")
+      : (event.target.className = "menu-bar__input menu-bar__input--hover");
   };
 
   // Changes input styling on mouse out
   onMouseOutHandler = event => {
     document.activeElement === event.target
-      ? (event.target.className = "navbar__input navbar__input--infocus")
-      : (event.target.className = "navbar__input");
+      ? (event.target.className = "menu-bar__input menu-bar__input--infocus")
+      : (event.target.className = "menu-bar__input");
   };
 
   // If user input is empty, resets value to most recently saved value of titleText
@@ -96,7 +96,7 @@ class BoardTitle extends Component {
     return (
       <div>
         <input
-          className="navbar__input"
+          className="menu-bar__input"
           value={this.state.inputText}
           onChange={this.inputHandler}
           onKeyDown={this.keyDownHandler}

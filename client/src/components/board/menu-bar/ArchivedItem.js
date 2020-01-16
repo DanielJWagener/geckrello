@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { restoreList, restoreCard } from "../../actions";
+import { restoreList, restoreCard } from "../../../actions";
 
 const ArchivedItem = props => {
   const restore = () => {
@@ -25,7 +25,6 @@ const mapStateToProps = state => {
   return { lists: state.lists, cards: state.cards };
 };
 
-export default connect(
-  mapStateToProps,
-  { restoreList, restoreCard }
-)(ArchivedItem);
+export default connect(mapStateToProps, { restoreList, restoreCard })(
+  ArchivedItem
+);

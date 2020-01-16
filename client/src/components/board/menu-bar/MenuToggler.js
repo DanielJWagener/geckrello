@@ -1,23 +1,23 @@
 import React from "react";
 
-const MenuButton = props => {
+const MenuToggler = props => {
   // Changes input styling on mouse over
   const onMouseOverHandler = event => {
-    event.target.className = "navbar__menu navbar__menu--hover";
+    event.target.className = "menu-bar__toggler menu-bar__toggler--hover";
   };
 
   // Changes input styling on mouse out
   const onMouseOutHandler = event => {
-    event.target.className = "navbar__menu";
+    event.target.className = "menu-bar__toggler";
   };
 
   return (
-    <div className="navbar__menu-wrapper">
+    <div>
       <h1
         onClick={props.toggleSidebar}
         onMouseOver={onMouseOverHandler}
         onMouseOut={onMouseOutHandler}
-        className="navbar__menu"
+        className="menu-bar__toggler"
       >
         {props.sidebarHidden ? "Show Menu" : "Hide Menu"}
       </h1>
@@ -26,13 +26,13 @@ const MenuButton = props => {
   /*
   if (props.sidebarHidden) {
     return (
-      <div className="menu navbar__menu">
+      <div className="menu menu-bar__toggler">
         <h1 onClick={props.toggleSidebar} onMouseOver={onMouseOverHandler} onMouseOut={onMouseOutHandler}>{props.sidebarHidden ? "Show Menu" : "Hide Menu"}</h1>
       </div>
     );
   } else {
     return (
-      <div className="menu navbar__menu">
+      <div className="menu menu-bar__toggler">
         <h1 onClick={props.toggleSidebar}>Hide Menu</h1>
       </div>
     );
@@ -40,4 +40,4 @@ const MenuButton = props => {
   */
 };
 
-export default MenuButton;
+export default MenuToggler;

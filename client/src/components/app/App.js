@@ -1,6 +1,6 @@
 import React from "react";
 import Board from "../board/Board";
-import NavBar from "../navbar/NavBar";
+import Navbar from "../navbar/NavBar";
 
 class App extends React.Component {
   constructor(props) {
@@ -8,11 +8,10 @@ class App extends React.Component {
     this.state = {};
   }
 
-  // Render two elements: a navbar and a board
   render() {
     return (
       <div className="App">
-        <NavBar />
+        <Navbar />
         <Board />
       </div>
     );

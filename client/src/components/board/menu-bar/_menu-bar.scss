@@ -1,0 +1,45 @@
+.menu-bar {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+
+  &__input {
+    margin-left: 10px;
+    padding: 5px 0;
+    grid-area: title;
+    background-color: var(--body-background);
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 2em;
+    font-weight: 700;
+    color: white;
+    text-align: center;
+
+    &--infocus {
+      background-color: white;
+      color: $default-font-color;
+    }
+
+    &--hover {
+      background-color: var(--body-background-light);
+    }
+  }
+
+  &__toggler {
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+
+    padding: 5px;
+    margin-right: 3rem;
+    border: 2px solid var(--body-background-light);
+
+    &--hover {
+      background-color: var(--body-background-light);
+    }
+  }
+
+  &__toggler h1 {
+    font-weight: 100;
+  }
+}
