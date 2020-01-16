@@ -1,4 +1,7 @@
+import axios from "axios";
+
 import {
+  FETCH_USER,
   ADD_LIST,
   ARCHIVE_LIST,
   RESTORE_LIST,
@@ -12,6 +15,15 @@ import {
   CHECK_CHECKLIST_ITEM,
   DELETE_CHECKLIST_ITEM
 } from "./types";
+
+// AUTH
+export const fetchUser = () => async dispatch => {
+  const res = await axios.get("/api/current_user");
+
+  dispatch({ type: FETCH_USER, payload: res.data });
+};
+
+// LISTS
 
 export const addList = (title, listId) => {
   return {
@@ -36,6 +48,8 @@ export const restoreList = listId => {
     payload: listId
   };
 };
+
+// CARDS
 
 export const addCard = (title, cardId, listHome) => {
   return {

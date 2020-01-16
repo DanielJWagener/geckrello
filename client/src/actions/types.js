@@ -1,3 +1,5 @@
+export const FETCH_USER = "FETCH_USER";
+
 export const ADD_LIST = "ADD_LIST";
 export const ARCHIVE_LIST = "ARCHIVE_LIST";
 export const RESTORE_LIST = "RESTORE_LIST";

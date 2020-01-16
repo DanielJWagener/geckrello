@@ -1,6 +1,8 @@
 import React from "react";
 import { BrowserRouter, Route } from "react-router-dom";
+import { connect } from "react-redux";
 
+import { fetchUser } from "../../actions";
 import Board from "../board/Board";
 import Navbar from "../navbar/NavBar";
 const Dashboard = () => <h2>Dashboard</h2>;
@@ -10,6 +12,10 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
+  }
+
+  componentDidMount() {
+    this.props.fetchUser();
   }
 
   render() {
@@ -28,4 +34,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default connect(null, { fetchUser })(App);
