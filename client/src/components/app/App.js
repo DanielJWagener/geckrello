@@ -1,6 +1,6 @@
 import React from "react";
 import Board from "../board/Board";
-import Nav from "../navbar/NavBar";
+import NavBar from "../navbar/NavBar";
 
 class App extends React.Component {
   constructor(props) {
@@ -12,7 +12,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <Nav />
+        <NavBar />
         <Board />
       </div>
     );
