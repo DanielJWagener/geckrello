@@ -382,8 +382,9 @@ body {
 /* line 1, src/components/navbar/_navbar.scss */
 .navbar {
   display: flex;
-  justify-content: space-between; }
-  /* line 5, src/components/navbar/_navbar.scss */
+  justify-content: space-between;
+  align-items: center; }
+  /* line 6, src/components/navbar/_navbar.scss */
   .navbar__logo {
     padding: 6px 0;
     grid-area: header;
@@ -391,6 +392,15 @@ body {
     font-size: 1.5em;
     color: white;
     text-align: center; }
+  /* line 16, src/components/navbar/_navbar.scss */
+  .navbar .auth-link {
+    margin: 0 1rem;
+    padding: 1rem 2rem;
+    color: #fff;
+    background-color: red;
+    border-radius: 0.5rem;
+    font-size: 2rem;
+    text-decoration: none; }
 
 /* line 1, src/components/board/list/_list.scss */
 .list {

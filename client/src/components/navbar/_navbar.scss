@@ -1,6 +1,7 @@
 .navbar {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 
   &__logo {
     //width: 100vw;
@@ -10,5 +11,15 @@
     font-size: 1.5em;
     color: white;
     text-align: center;
+  }
+
+  .auth-link {
+    margin: 0 1rem;
+    padding: 1rem 2rem;
+    color: #fff;
+    background-color: red;
+    border-radius: 0.5rem;
+    font-size: 2rem;
+    text-decoration: none;
   }
 }

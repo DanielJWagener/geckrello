@@ -3,7 +3,9 @@ import React from "react";
 const Home = () => {
   return (
     <div>
-      <a href="/">Link to Homepage</a>
+      <a href="/" className="auth-link">
+        Home
+      </a>
     </div>
   );
 };
