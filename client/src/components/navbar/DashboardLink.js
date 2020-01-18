@@ -1,14 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Home = () => {
+const DashboardLink = () => {
   return (
     <div>
       <Link to="/dashboard" className="auth-link">
-        Home
+        Dashboard
       </Link>
     </div>
   );
 };
 
-export default Home;
+export default DashboardLink;
