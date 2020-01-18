@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import Logo from "./Logo";
-import Home from "./Home";
+import DashboardLink from "./DashboardLink";
 import SignIn from "./SignIn";
 import Logout from "./Logout";
 
@@ -20,18 +20,18 @@ class NavBar extends Component {
     }
   }
 
-  renderHome() {
+  renderDashLink() {
     if (!this.props.auth) {
       return <div> </div>;
     }
-    return <Home />;
+    return <DashboardLink />;
   }
 
   render() {
     console.log(this.props);
     return (
       <div className="navbar">
-        {this.renderHome()}
+        {this.renderDashLink()}
         <Logo />
         {this.renderAuth()}
       </div>

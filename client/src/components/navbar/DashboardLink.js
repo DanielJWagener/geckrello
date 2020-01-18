@@ -1,11 +1,12 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
     <div>
-      <a href="/" className="auth-link">
+      <Link to="/dashboard" className="auth-link">
         Home
-      </a>
+      </Link>
     </div>
   );
 };

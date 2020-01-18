@@ -383,16 +383,26 @@ body {
 .navbar {
   display: flex;
   justify-content: space-between;
-  align-items: center; }
-  /* line 6, src/components/navbar/_navbar.scss */
+  align-items: center;
+  height: 5rem;
+  width: 100%;
+  position: relative; }
+  /* line 9, src/components/navbar/_navbar.scss */
+  .navbar__link {
+    text-decoration: none; }
+  /* line 13, src/components/navbar/_navbar.scss */
   .navbar__logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     padding: 6px 0;
     grid-area: header;
     font-weight: bold;
-    font-size: 1.5em;
+    font-size: 4rem;
     color: white;
     text-align: center; }
-  /* line 16, src/components/navbar/_navbar.scss */
+  /* line 26, src/components/navbar/_navbar.scss */
   .navbar .auth-link {
     margin: 0 1rem;
     padding: 1rem 2rem;

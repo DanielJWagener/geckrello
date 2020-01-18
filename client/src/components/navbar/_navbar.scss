@@ -2,13 +2,23 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: 5rem;
+  width: 100%;
+  position: relative;
+
+  &__link {
+    text-decoration: none;
+  }
 
   &__logo {
-    //width: 100vw;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     padding: 6px 0;
     grid-area: header;
     font-weight: bold;
-    font-size: 1.5em;
+    font-size: 4rem;
     color: white;
     text-align: center;
   }
