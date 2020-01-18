@@ -26,10 +26,17 @@ passport.use(
       proxy: true // prevents Google from reverting to HTTP when going through Heroku proxy
     },
     async (accessToken, refreshToken, profile, done) => {
+      console.log(profile);
       const existingUser = await User.findOne({ googleId: profile.id });
 
       if (!existingUser) {
-        const newUser = await new User({ googleId: profile.id }).save();
+        const newUser = await new User({
+          googleId: profile.id,
+          email: profile._json.email,
+          fullName: profile._json.name,
+          givenName: profile._json.given_name,
+          familyName: profile._json.family_name
+        }).save();
         return done(null, newUser);
       }
 
