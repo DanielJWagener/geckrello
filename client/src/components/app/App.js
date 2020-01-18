@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { fetchUser } from "../../actions";
 import Board from "../board/Board";
 import Navbar from "../navbar/NavBar";
-const Dashboard = () => <h2>Dashboard</h2>;
+import Dashboard from "../Dashboard";
 const Landing = () => <h2>Landing</h2>;
 
 class App extends React.Component {
