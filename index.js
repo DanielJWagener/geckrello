@@ -6,6 +6,7 @@ const passport = require("passport");
 require("./models/User");
 require("./services/passport");
 const keys = require("./config/keys");
+const boardRouter = require("./routes/boardRoutes");
 
 mongoose.connect(keys.mongoURI, {
   useUnifiedTopology: true,
@@ -23,7 +24,14 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
+// Body parser, reading data from body into req.body
+app.use(express.json({ limit: "10kb" }));
+app.use(express.urlencoded({ extended: true, limit: "10kb" }));
+//app.use(cookieParser());
+
 require("./routes/authRoutes")(app);
+
+app.use("/api/v1/boards", boardRouter);
 
 if (process.env.NODE_ENV === "production") {
   // Express will serve up production assets

@@ -12,4 +12,6 @@ boardSchema.virtual("users", {
   localField: "_id"
 });
 
-mongoose.model("boards", boardSchema);
+const Board = mongoose.model("boards", boardSchema);
+
+module.exports = Board;
