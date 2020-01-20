@@ -3,8 +3,8 @@ const Board = require("../models/Board");
 const catchAsync = require("../utilities/catchAsync");
 
 exports.createBoard = catchAsync(async (req, res, next) => {
-  console.log(req.body);
-  const newBoard = await Board.create(req.body);
+  const { title, background } = req.body;
+  const newBoard = await Board.create({ title, background, user: req.user.id });
 
   res.status(201).json({
     status: "success",
