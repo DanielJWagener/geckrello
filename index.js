@@ -7,6 +7,8 @@ require("./models/User");
 require("./services/passport");
 const keys = require("./config/keys");
 const boardRouter = require("./routes/boardRoutes");
+const authRouter = require("./routes/authRoutes");
+const userRouter = require("./routes/userRoutes");
 
 mongoose.connect(keys.mongoURI, {
   useUnifiedTopology: true,
@@ -31,7 +33,9 @@ app.use(express.urlencoded({ extended: true, limit: "10kb" }));
 
 require("./routes/authRoutes")(app);
 
+// app.use("/auth", authRouter);
 app.use("/api/v1/boards", boardRouter);
+app.use("/api/v1/users", userRouter);
 
 if (process.env.NODE_ENV === "production") {
   // Express will serve up production assets

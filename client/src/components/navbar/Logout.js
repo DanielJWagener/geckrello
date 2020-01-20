@@ -3,7 +3,7 @@ import React from "react";
 const Logout = () => {
   return (
     <div>
-      <a href="/api/logout" className="auth-link">
+      <a href="/api/v1/users/logout" className="auth-link">
         Log Out
       </a>
     </div>
