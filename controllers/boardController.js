@@ -5,6 +5,21 @@ const catchAsync = require("../utilities/catchAsync");
 
 const User = mongoose.model("users");
 
+exports.getAllBoards = catchAsync(async (req, res, next) => {});
+
+exports.getBoard = catchAsync(async (req, res, next) => {
+  let query = Board.findById(req.params.id);
+
+  const board = await query;
+
+  res.status(200).json({
+    status: "success",
+    data: {
+      data: board
+    }
+  });
+});
+
 exports.createBoard = catchAsync(async (req, res, next) => {
   const { title, background } = req.body;
   const newBoard = await Board.create({
@@ -22,3 +37,7 @@ exports.createBoard = catchAsync(async (req, res, next) => {
     data: { data: newBoard }
   });
 });
+
+exports.updateBoard = catchAsync(async (req, res, next) => {});
+
+exports.deleteBoard = catchAsync(async (req, res, next) => {});
