@@ -10,7 +10,13 @@ const boardSchema = new Schema({
     type: String,
     default: "#66A3FF"
   },
-  user: String
+  users: [
+    {
+      type: mongoose.Schema.ObjectId,
+      ref: "users",
+      required: [true, "A board must associated with a user"]
+    }
+  ]
 });
 
 // boardSchema.virtual("users", {
