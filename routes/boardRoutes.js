@@ -12,7 +12,7 @@ router
 router
   .route("/:id")
   .get(boardController.getBoard)
-  .patch(boardController.updateBoard)
+  .patch(requireLogin, boardController.updateBoard)
   .delete(requireLogin, boardController.deleteBoard);
 
 module.exports = router;
