@@ -13,7 +13,8 @@ import {
   UPDATE_CARD_DESCRIPTION,
   ADD_CHECKLIST_ITEM,
   CHECK_CHECKLIST_ITEM,
-  DELETE_CHECKLIST_ITEM
+  DELETE_CHECKLIST_ITEM,
+  ADD_BOARD
 } from "./types";
 
 // AUTH
@@ -21,6 +22,15 @@ export const fetchUser = () => async dispatch => {
   const res = await axios.get("/api/v1/users/current_user");
 
   dispatch({ type: FETCH_USER, payload: res.data });
+};
+
+// BOARDS
+export const addBoard = title => async dispatch => {
+  await axios.post("/api/v1/boards", { title });
+
+  const user = await axios.get("/api/v1/users/current_user");
+
+  dispatch({ type: ADD_BOARD, payload: user.data });
 };
 
 // LISTS
