@@ -11,7 +11,7 @@
     "start": "node index.js",
     "server": "nodemon index.js",
     "client": "yarn --cwd client start",
-    "dev": "concurrently \"yarn run server\" \"yarn run client\"",
+    "dev": "NODE_ENV=development concurrently \"yarn run server\" \"yarn run client\"",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false yarn --cwd client install && yarn --cwd client run build"
   },
   "author": "Daniel Wagener",

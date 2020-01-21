@@ -12,7 +12,11 @@ const userSchema = new Schema({
       type: mongoose.Schema.ObjectId,
       ref: "boards"
     }
-  ]
+  ],
+  role: {
+    type: String,
+    default: "user"
+  }
 });
 
 mongoose.model("users", userSchema);
