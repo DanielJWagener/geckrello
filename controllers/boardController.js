@@ -48,7 +48,6 @@ exports.createBoard = catchAsync(async (req, res, next) => {
 });
 
 exports.updateBoard = catchAsync(async (req, res, next) => {
-  console.log(req.body);
   const board = await Board.findByIdAndUpdate(req.params.id, req.body, {
     new: true
   });
@@ -61,4 +60,29 @@ exports.updateBoard = catchAsync(async (req, res, next) => {
   });
 });
 
-exports.deleteBoard = catchAsync(async (req, res, next) => {});
+exports.deleteBoard = catchAsync(async (req, res, next) => {
+  // Delete board
+  const deletedBoard = await Board.findByIdAndDelete(req.params.id);
+
+  // Find users who belonged to that board
+  const usersPromises = deletedBoard.users.map(
+    async userId => await User.findById(userId)
+  );
+  const users = await Promise.all(usersPromises);
+
+  // Remove this board from each user
+  users.forEach(user => {
+    user.boards = user.boards.filter(boardId => boardId != deletedBoard.id);
+  });
+
+  // Update new user data into database
+  const usersUpdatePromises = users.map(
+    async ({ id, boards }) => await User.findByIdAndUpdate(id, { boards })
+  );
+  await Promise.all(usersUpdatePromises);
+
+  res.status(204).json({
+    status: "success",
+    data: null
+  });
+});
