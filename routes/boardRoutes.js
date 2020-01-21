@@ -1,11 +1,18 @@
 const express = require("express");
 const boardController = require("../controllers/boardController");
-const userController = require("../controllers/userController");
+const { requireLogin } = require("../controllers/userController");
 
 const router = express.Router();
 
 router
   .route("/")
-  .post(userController.requireLogin, boardController.createBoard);
+  .get(boardController.getAllBoards)
+  .post(requireLogin, boardController.createBoard);
+
+router
+  .route("/:id")
+  .get(boardController.getBoard)
+  .patch(boardController.updateBoard)
+  .delete(requireLogin, boardController.deleteBoard);
 
 module.exports = router;
