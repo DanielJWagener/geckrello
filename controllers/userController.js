@@ -14,17 +14,85 @@ exports.getCurrentUser = (req, res) => {
   res.send(req.user);
 };
 
-exports.deleteCurrentUser = (req, res) => {};
+exports.deleteCurrentUser = catchAsync(async (req, res) => {
+  console.log(req.user);
+  await User.findByIdAndDelete(req.user._id);
 
-exports.updateCurrentUser = (req, res) => {};
+  req.method = "GET";
+
+  res.status(204).json({
+    status: "success",
+    data: null
+  });
+
+  // todo: redirect user after deletion
+});
+
+exports.updateCurrentUser = catchAsync(async (req, res) => {
+  const updatedUser = await User.findByIdAndUpdate(req.user.id, req.body, {
+    new: true
+  });
+
+  res.status(200).json({
+    status: "success",
+    data: {
+      user: updatedUser
+    }
+  });
+});
 
 // ADMIN ONLY
-exports.getAllUsers = (req, res) => {};
+exports.getAllUsers = catchAsync(async (req, res) => {
+  const users = await User.find();
 
-exports.getUser = (req, res) => {};
+  res.status(200).json({
+    status: "success",
+    data: {
+      data: users
+    }
+  });
+});
 
-exports.createUser = (req, res) => {};
+exports.getUser = catchAsync(async (req, res) => {
+  const user = await User.findById(req.params.id);
 
-exports.updateUser = (req, res) => {};
+  res.status(200).json({
+    status: "success",
+    data: {
+      data: user
+    }
+  });
+});
 
-exports.deleteUser = (req, res) => {};
+exports.createUser = catchAsync(async (req, res) => {
+  const user = await User.create(req.body);
+
+  res.status(201).json({
+    status: "success",
+    data: {
+      data: user
+    }
+  });
+});
+
+exports.updateUser = catchAsync(async (req, res) => {
+  const user = await User.findByIdAndUpdate(req.params.id, req.body, {
+    new: true
+  });
+
+  res.status(200).json({
+    status: "success",
+    data: {
+      data: user
+    }
+  });
+});
+
+exports.deleteUser = catchAsync(async (req, res) => {
+  await User.findByIdAndDelete(req.params.id);
+
+  res.status(204).json({
+    status: "success",
+    data: null
+  });
+});

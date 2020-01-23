@@ -13,12 +13,13 @@ router
   .delete(requireLogin, userController.deleteCurrentUser);
 
 router
-  .route(":id")
+  .route("/:id")
   .get(userController.getUser)
   .patch(userController.updateUser)
   .delete(userController.deleteUser);
 
 router.get("/logout", userController.logout);
 router.get("/current_user", userController.getCurrentUser);
+router.delete("/delete_user", userController.deleteCurrentUser);
 
 module.exports = router;
