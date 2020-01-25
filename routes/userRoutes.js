@@ -5,6 +5,10 @@ const { requireLogin } = require("../controllers/authController");
 
 const router = express.Router();
 
+router.get("/logout", userController.logout);
+router.get("/current_user", userController.getCurrentUser);
+router.delete("/delete_user", userController.deleteCurrentUser);
+
 router
   .route("/")
   .get(userController.getAllUsers)
@@ -17,9 +21,5 @@ router
   .get(userController.getUser)
   .patch(userController.updateUser)
   .delete(userController.deleteUser);
-
-router.get("/logout", userController.logout);
-router.get("/current_user", userController.getCurrentUser);
-router.delete("/delete_user", userController.deleteCurrentUser);
 
 module.exports = router;
