@@ -19,4 +19,12 @@ const userSchema = new Schema({
   }
 });
 
+userSchema.pre(/^find/, function(next) {
+  this.populate({
+    path: "boards"
+    // select: 'name photo'
+  });
+  next();
+});
+
 mongoose.model("users", userSchema);
