@@ -11,7 +11,9 @@ const Dashboard = props => {
 
   const renderBoards = () => {
     return props.boards.map(board => {
-      return <BoardLink key={board.id} title={board.title} />;
+      return (
+        <BoardLink key={board._id} title={board.title} boardId={board._id} />
+      );
     });
   };
 
