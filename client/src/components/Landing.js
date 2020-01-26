@@ -11,3 +11,5 @@ class Landing extends React.Component {
     return <h1>Landing</h1>;
   }
 }
+
+export default Landing;
