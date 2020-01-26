@@ -17,7 +17,7 @@ class App extends React.Component {
 
   componentDidMount() {
     this.props.fetchUser();
-    setDefaultColors();
+    //setDefaultColors();
   }
 
   render() {

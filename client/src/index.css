@@ -392,7 +392,7 @@ body {
   height: 5rem;
   width: 100%;
   position: relative;
-  background-color: blue; }
+  background-color: var(--color-primary-darker); }
   /* line 10, src/components/navbar/_navbar.scss */
   .navbar__link {
     text-decoration: none; }

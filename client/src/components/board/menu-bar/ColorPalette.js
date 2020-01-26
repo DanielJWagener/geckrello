@@ -11,7 +11,12 @@ const ColorPalette = props => {
     const theme = colorThemes[props.color];
 
     root.style.setProperty("--color-primary", theme.base);
-    root.style.setProperty("--color-secondary", theme.lighter);
+    root.style.setProperty("--color-primary-lightest", theme.lightest);
+    root.style.setProperty("--color-primary-lighter", theme.lighter);
+    root.style.setProperty("--color-primary-light", theme.light);
+    root.style.setProperty("--color-primary-dark", theme.dark);
+    root.style.setProperty("--color-primary-darker", theme.darker);
+    root.style.setProperty("--color-primary-darkest", theme.darkest);
     props.updateBoard(props.board._id, { background: props.color });
   };
   return (
