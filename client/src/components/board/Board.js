@@ -6,11 +6,15 @@ import { connect } from "react-redux";
 import AddList from "./AddList";
 import List from "./list/List";
 import MenuBar from "./menu-bar/MenuBar";
-import { fetchBoard } from "../../actions";
+import { fetchBoard, unloadBoard } from "../../actions";
 
 class Board extends React.Component {
   componentDidMount() {
     this.props.fetchBoard(this.props.match.params.id);
+  }
+
+  componentWillUnmount() {
+    this.props.unloadBoard();
   }
 
   // Iterate over every list in state, return the non-archived ones, and make and array of List components out of them
@@ -49,4 +53,4 @@ const mapStateToProps = ({ board, lists, cards }) => {
   return { board, lists, cards };
 };
 
-export default connect(mapStateToProps, { fetchBoard })(Board);
+export default connect(mapStateToProps, { fetchBoard, unloadBoard })(Board);

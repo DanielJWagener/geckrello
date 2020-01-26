@@ -15,7 +15,8 @@ import {
   CHECK_CHECKLIST_ITEM,
   DELETE_CHECKLIST_ITEM,
   ADD_BOARD,
-  FETCH_BOARD
+  FETCH_BOARD,
+  UNLOAD_BOARD
 } from "./types";
 
 // AUTH
@@ -38,6 +39,10 @@ export const fetchBoard = id => async dispatch => {
   const board = await axios.get(`/api/v1/boards/${id}`);
 
   dispatch({ type: FETCH_BOARD, payload: board.data.data });
+};
+
+export const unloadBoard = () => {
+  return { type: UNLOAD_BOARD, payload: null };
 };
 
 // LISTS
