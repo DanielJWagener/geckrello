@@ -1,15 +1,20 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 
 class BoardTitle extends Component {
   state = {
-    inputText: "Board Title",
-    titleText: "Board Title"
+    inputText: "",
+    titleText: ""
   };
 
   // Initially sets size of input and page title
   componentDidMount() {
     this.setInputSize(this.state.titleText.length);
     this.setPageTitle();
+    this.setState({
+      inputText: this.props.board.title || "",
+      titleText: this.props.board.title || ""
+    });
   }
 
   // Sets page title and input size every time state is updated
@@ -109,5 +114,11 @@ class BoardTitle extends Component {
     );
   }
 }
+
+// const mapStateToProps = ({ board }) => {
+//   return board;
+// };
+
+// export default connect(mapStateToProps)(BoardTitle);
 
 export default BoardTitle;

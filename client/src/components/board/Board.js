@@ -27,17 +27,21 @@ class Board extends React.Component {
       ));
 
   render() {
-    return (
-      <div>
-        <MenuBar />
-        <DndProvider backend={HTML5Backend}>
-          <div className="board" id="board">
-            {this.listsArray()}
-            <AddList />
-          </div>
-        </DndProvider>
-      </div>
-    );
+    if (this.props.board) {
+      return (
+        <div>
+          <MenuBar board={this.props.board} />
+          <DndProvider backend={HTML5Backend}>
+            <div className="board" id="board">
+              {this.listsArray()}
+              <AddList />
+            </div>
+          </DndProvider>
+        </div>
+      );
+    } else {
+      return <h1>Loading...</h1>;
+    }
   }
 }
 

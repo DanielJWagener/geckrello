@@ -23,7 +23,7 @@ class MenuBar extends Component {
   render() {
     return (
       <div className="menu-bar">
-        <BoardTitle />
+        <BoardTitle board={this.props.board} />
         <MenuToggler
           toggleSidebar={this.toggleSidebar}
           sidebarHidden={this.state.sidebarHidden}
