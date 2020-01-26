@@ -97,7 +97,7 @@ class BoardTitle extends Component {
 
   // Changes page title dynamically
   setPageTitle = () => {
-    document.title = `${this.state.inputText} - Geckrello, a Trello Front-End Clone`;
+    document.title = `${this.state.inputText} - Geckrello, a Trello Clone`;
   };
 
   render() {
