@@ -5,10 +5,10 @@ import { updateBoard } from "../../../actions";
 import colorThemes from "../../../utilities/colorThemes";
 
 const ColorPalette = props => {
+  const theme = colorThemes[props.color];
+
   const updateBackgroundColor = () => {
     let root = document.documentElement;
-
-    const theme = colorThemes[props.color];
 
     root.style.setProperty("--color-primary", theme.base);
     root.style.setProperty("--color-primary-lightest", theme.lightest);
@@ -26,7 +26,7 @@ const ColorPalette = props => {
         borderRadius: "10px",
         height: "7.5rem",
         width: "14rem",
-        backgroundColor: props.color,
+        backgroundColor: theme.base,
         margin: "1.5rem",
         cursor: "pointer"
       }}
