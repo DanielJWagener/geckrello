@@ -26,7 +26,7 @@ class App extends React.Component {
             <Navbar />
             <Route exact path="/" component={Landing} />
             <Route path="/dashboard" component={Dashboard} />
-            <Route path="/board" component={Board} />
+            <Route path="/board/:id" component={Board} />
           </div>
         </BrowserRouter>
       </div>

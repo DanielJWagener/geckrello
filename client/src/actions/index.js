@@ -14,7 +14,8 @@ import {
   ADD_CHECKLIST_ITEM,
   CHECK_CHECKLIST_ITEM,
   DELETE_CHECKLIST_ITEM,
-  ADD_BOARD
+  ADD_BOARD,
+  FETCH_BOARD
 } from "./types";
 
 // AUTH
@@ -30,7 +31,13 @@ export const addBoard = title => async dispatch => {
 
   const user = await axios.get("/api/v1/users/current_user");
 
-  dispatch({ type: ADD_BOARD, payload: user.data });
+  dispatch({ type: FETCH_USER, payload: user.data });
+};
+
+export const fetchBoard = id => async dispatch => {
+  const board = await axios.get(`/api/v1/boards/${id}`);
+
+  dispatch({ type: FETCH_BOARD, payload: board.data.data });
 };
 
 // LISTS

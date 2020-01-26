@@ -10,9 +10,7 @@ exports.getAllBoards = catchAsync(async (req, res, next) => {
 
   res.status(200).json({
     status: "success",
-    data: {
-      data: boards
-    }
+    data: boards
   });
 });
 
@@ -23,9 +21,7 @@ exports.getBoard = catchAsync(async (req, res, next) => {
 
   res.status(200).json({
     status: "success",
-    data: {
-      data: board
-    }
+    data: board
   });
 });
 
@@ -45,7 +41,7 @@ exports.createBoard = catchAsync(async (req, res, next) => {
   // Send success response
   res.status(201).json({
     status: "success",
-    data: { data: newBoard }
+    data: newBoard
   });
 });
 
@@ -56,9 +52,7 @@ exports.updateBoard = catchAsync(async (req, res, next) => {
 
   res.status(200).json({
     status: "success",
-    data: {
-      data: board
-    }
+    data: board
   });
 });
 

@@ -2,10 +2,10 @@ import { combineReducers } from "redux";
 import listsReducer from "./listsReducer";
 import cardsReducer from "./cardsReducer";
 import authReducer from "./authReducer";
-import boardsreducer from "./boardsreducer";
+import boardreducer from "./boardreducer";
 
 export default combineReducers({
-  boards: boardsreducer,
+  board: boardreducer,
   lists: listsReducer,
   cards: cardsReducer,
   auth: authReducer
