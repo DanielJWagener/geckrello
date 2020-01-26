@@ -1,4 +1,7 @@
 import React from "react";
+import { connect } from "react-redux";
+
+import { updateBoard } from "../../../actions";
 
 const ColorPalette = props => {
   const updateBackgroundColor = () => {
@@ -6,6 +9,7 @@ const ColorPalette = props => {
 
     root.style.setProperty("--body-background", props.color);
     root.style.setProperty("--body-background-light", props.colorLight);
+    props.updateBoard(props.board._id, { background: props.color });
   };
   return (
     <div
@@ -23,4 +27,8 @@ const ColorPalette = props => {
   );
 };
 
-export default ColorPalette;
+const mapStateToProps = ({ board }) => {
+  return { board };
+};
+
+export default connect(mapStateToProps, { updateBoard })(ColorPalette);
