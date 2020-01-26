@@ -21,7 +21,7 @@
     }
 
     &--hover {
-      background-color: var(--color-secondary);
+      background-color: var(--color-primary-lighter);
     }
   }
 
@@ -32,10 +32,10 @@
 
     padding: 5px;
     margin-right: 3rem;
-    border: 2px solid var(--color-secondary);
+    border: 2px solid var(--color-primary-lighter);
 
     &--hover {
-      background-color: var(--color-secondary);
+      background-color: var(--color-primary-lighter);
     }
   }
 
