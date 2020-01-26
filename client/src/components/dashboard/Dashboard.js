@@ -4,10 +4,37 @@ import { connect } from "react-redux";
 import AddBoard from "./AddBoard";
 import BoardLink from "./BoardLink";
 import { fetchUser } from "../../actions";
+import "./dashboard.scss";
 
 class Dashboard extends React.Component {
   componentDidMount() {
     this.props.fetchUser();
+
+    let root = document.documentElement;
+
+    root.style.setProperty("--body-background", "#eeeeee");
+    //root.style.setProperty("--body-background-light", props.colorLight);
+  }
+
+  renderContent(auth) {
+    switch (auth) {
+      case null:
+        return <h1>Loading...</h1>;
+      case false:
+        return <h1>You are not logged in!</h1>;
+      default:
+        if (this.props.auth.givenName) {
+          return (
+            <>
+              <h1>{`Welcome, ${this.props.auth.givenName}!`}</h1>
+              {this.renderBoards()}
+              <AddBoard />
+            </>
+          );
+        } else {
+          return <h1>Welcome!</h1>;
+        }
+    }
   }
 
   renderBoards = () => {
@@ -19,23 +46,9 @@ class Dashboard extends React.Component {
   };
 
   render() {
-    if (this.props.auth) {
-      if (this.props.auth.givenName) {
-        return (
-          <>
-            <h1>{`Welcome, ${this.props.auth.givenName}!`}</h1>
-            {this.renderBoards()}
-            <AddBoard />
-          </>
-        );
-      } else {
-        return <h1>Welcome!</h1>;
-      }
-    }
-
-    if (!this.props.auth) {
-      return <h1>You are not logged in!</h1>;
-    }
+    return (
+      <div className="dashboard">{this.renderContent(this.props.auth)}</div>
+    );
   }
 }
 

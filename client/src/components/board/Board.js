@@ -13,6 +13,12 @@ class Board extends React.Component {
     this.props.fetchBoard(this.props.match.params.id);
   }
 
+  componentDidUpdate() {
+    let root = document.documentElement;
+
+    root.style.setProperty("--body-background", this.props.board.background);
+  }
+
   componentWillUnmount() {
     this.props.unloadBoard();
   }

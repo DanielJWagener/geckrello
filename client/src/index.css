@@ -386,11 +386,12 @@ body {
   align-items: center;
   height: 5rem;
   width: 100%;
-  position: relative; }
-  /* line 9, src/components/navbar/_navbar.scss */
+  position: relative;
+  background-color: blue; }
+  /* line 10, src/components/navbar/_navbar.scss */
   .navbar__link {
     text-decoration: none; }
-  /* line 13, src/components/navbar/_navbar.scss */
+  /* line 14, src/components/navbar/_navbar.scss */
   .navbar__logo {
     position: absolute;
     top: 50%;
@@ -402,7 +403,7 @@ body {
     font-size: 4rem;
     color: white;
     text-align: center; }
-  /* line 26, src/components/navbar/_navbar.scss */
+  /* line 27, src/components/navbar/_navbar.scss */
   .navbar .auth-link {
     margin: 0 1rem;
     padding: 1rem 2rem;
