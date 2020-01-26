@@ -16,7 +16,8 @@ import {
   DELETE_CHECKLIST_ITEM,
   ADD_BOARD,
   FETCH_BOARD,
-  UNLOAD_BOARD
+  UNLOAD_BOARD,
+  UPDATE_BOARD
 } from "./types";
 
 // AUTH
@@ -43,6 +44,12 @@ export const fetchBoard = id => async dispatch => {
 
 export const unloadBoard = () => {
   return { type: UNLOAD_BOARD, payload: null };
+};
+
+export const updateBoard = (id, data) => async dispatch => {
+  const board = await axios.patch(`/api/v1/boards/${id}`, data);
+
+  dispatch({ type: UPDATE_BOARD, payload: board.data.data });
 };
 
 // LISTS

@@ -3,6 +3,7 @@ export const FETCH_USER = "FETCH_USER";
 export const ADD_BOARD = "ADD_BOARD";
 export const FETCH_BOARD = "FETCH_BOARD";
 export const UNLOAD_BOARD = "UNLOAD_BOARD";
+export const UPDATE_BOARD = "UPDATE_BOARD";
 
 export const ADD_LIST = "ADD_LIST";
 export const ARCHIVE_LIST = "ARCHIVE_LIST";

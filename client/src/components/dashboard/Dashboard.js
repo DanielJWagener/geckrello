@@ -3,35 +3,44 @@ import { connect } from "react-redux";
 
 import AddBoard from "./AddBoard";
 import BoardLink from "./BoardLink";
+import { fetchUser } from "../../actions";
 
-const Dashboard = props => {
-  if (!props.auth) {
-    return <h1>You are not logged in!</h1>;
+class Dashboard extends React.Component {
+  componentDidMount() {
+    this.props.fetchUser();
   }
 
-  const renderBoards = () => {
-    return props.auth.boards.map(board => {
+  renderBoards = () => {
+    return this.props.auth.boards.map(board => {
       return (
         <BoardLink key={board._id} title={board.title} boardId={board._id} />
       );
     });
   };
 
-  if (props.auth.givenName) {
-    return (
-      <>
-        <h1>{`Welcome, ${props.auth.givenName}!`}</h1>
-        {renderBoards()}
-        <AddBoard />
-      </>
-    );
-  } else {
-    return <h1>Welcome!</h1>;
+  render() {
+    if (this.props.auth) {
+      if (this.props.auth.givenName) {
+        return (
+          <>
+            <h1>{`Welcome, ${this.props.auth.givenName}!`}</h1>
+            {this.renderBoards()}
+            <AddBoard />
+          </>
+        );
+      } else {
+        return <h1>Welcome!</h1>;
+      }
+    }
+
+    if (!this.props.auth) {
+      return <h1>You are not logged in!</h1>;
+    }
   }
-};
+}
 
 function mapStateToProps({ auth, boards }) {
   return { auth, boards };
 }
 
-export default connect(mapStateToProps)(Dashboard);
+export default connect(mapStateToProps, { fetchUser })(Dashboard);

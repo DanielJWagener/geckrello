@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
+import { updateBoard } from "../../../actions";
+
 class BoardTitle extends Component {
   state = {
     inputText: "",
@@ -82,6 +84,7 @@ class BoardTitle extends Component {
       this.setState({
         titleText: newTitle
       });
+      this.props.updateBoard(this.props.board._id, { title: newTitle });
     }
   };
 
@@ -94,7 +97,7 @@ class BoardTitle extends Component {
 
   // Changes page title dynamically
   setPageTitle = () => {
-    document.title = `${this.state.inputText} - Geckorello, a Trello Front-End Clone`;
+    document.title = `${this.state.inputText} - Geckrello, a Trello Front-End Clone`;
   };
 
   render() {
@@ -115,10 +118,8 @@ class BoardTitle extends Component {
   }
 }
 
-// const mapStateToProps = ({ board }) => {
-//   return board;
-// };
+const mapStateToProps = ({ board }) => {
+  return board;
+};
 
-// export default connect(mapStateToProps)(BoardTitle);
-
-export default BoardTitle;
+export default connect(mapStateToProps, { updateBoard })(BoardTitle);
