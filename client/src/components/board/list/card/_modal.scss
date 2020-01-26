@@ -266,12 +266,12 @@
           padding: 0.5rem 1rem 0.5rem 1rem;
           cursor: pointer;
           color: white;
-          background-color: $color-primary;
+          background-color: $color-secondary;
           border-radius: 5px;
           border: none;
 
           &:hover {
-            background-color: $color-primary-dark;
+            background-color: $color-secondary-dark;
           }
 
           &:active,

@@ -5,15 +5,16 @@ import AddBoard from "./AddBoard";
 import BoardLink from "./BoardLink";
 import { fetchUser } from "../../actions";
 import "./dashboard.scss";
+import setDefaultColors from "../../utilities/setDefaultColors";
 
 class Dashboard extends React.Component {
   componentDidMount() {
     this.props.fetchUser();
 
+    setDefaultColors();
     let root = document.documentElement;
 
-    root.style.setProperty("--body-background", "#eeeeee");
-    //root.style.setProperty("--body-background-light", props.colorLight);
+    root.style.setProperty("--color-primary", "#eeeeee");
   }
 
   renderContent(auth) {

@@ -7,7 +7,7 @@
     margin-left: 10px;
     padding: 5px 0;
     grid-area: title;
-    background-color: var(--body-background);
+    background-color: var(--color-primary);
     border: none;
     border-radius: 0.5rem;
     font-size: 2em;
@@ -21,7 +21,7 @@
     }
 
     &--hover {
-      background-color: var(--body-background-light);
+      background-color: var(--color-secondary);
     }
   }
 
@@ -32,10 +32,10 @@
 
     padding: 5px;
     margin-right: 3rem;
-    border: 2px solid var(--body-background-light);
+    border: 2px solid var(--color-secondary);
 
     &--hover {
-      background-color: var(--body-background-light);
+      background-color: var(--color-secondary);
     }
   }
 

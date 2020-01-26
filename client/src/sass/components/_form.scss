@@ -29,7 +29,7 @@
     border-radius: 0.5rem;
     border: none;
     font-size: 2rem;
-    background-color: $color-primary;
+    background-color: $color-secondary;
     color: white;
     cursor: pointer;
     transition: all 0.2s;
@@ -41,7 +41,7 @@
     }
 
     &:hover {
-      background-color: $color-primary-dark;
+      background-color: $color-secondary-dark;
     }
   }
 

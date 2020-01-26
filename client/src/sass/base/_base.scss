@@ -7,8 +7,13 @@
 }
 
 :root {
-  --body-background: blue;
-  --body-background-light: #00a2ff;
+  --color-primary: blue;
+  --color-primary-lightest: #59c2ff;
+  --color-primary-lighter: #59c2ff;
+  --color-primary-light: #00a2ff;
+  --color-primary-dark: #000077;
+  --color-primary-darker: #000047;
+  --color-primary-darkest: #00002c;
 }
 
 html {
@@ -19,5 +24,5 @@ html {
 body {
   box-sizing: border-box;
   height: 100vh;
-  background-color: var(--body-background);
+  background-color: var(--color-primary);
 }

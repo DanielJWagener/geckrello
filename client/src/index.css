@@ -8,18 +8,23 @@
 
 /* line 9, src/sass/base/_base.scss */
 :root {
-  --body-background: blue;
-  --body-background-light: #00a2ff; }
+  --color-primary: blue;
+  --color-primary-lightest: #59c2ff;
+  --color-primary-lighter: #59c2ff;
+  --color-primary-light: #00a2ff;
+  --color-primary-dark: #000077;
+  --color-primary-darker: #000047;
+  --color-primary-darkest: #00002c; }
 
-/* line 14, src/sass/base/_base.scss */
+/* line 19, src/sass/base/_base.scss */
 html {
   font-size: 62.5%; }
 
-/* line 19, src/sass/base/_base.scss */
+/* line 24, src/sass/base/_base.scss */
 body {
   box-sizing: border-box;
   height: 100vh;
-  background-color: var(--body-background); }
+  background-color: var(--color-primary); }
 
 /* line 1, src/sass/base/_typography.scss */
 body {
@@ -491,7 +496,7 @@ body {
     margin-left: 10px;
     padding: 5px 0;
     grid-area: title;
-    background-color: var(--body-background);
+    background-color: var(--color-primary);
     border: none;
     border-radius: 0.5rem;
     font-size: 2em;
@@ -504,7 +509,7 @@ body {
       color: #333; }
     /* line 23, src/components/board/menu-bar/_menu-bar.scss */
     .menu-bar__input--hover {
-      background-color: var(--body-background-light); }
+      background-color: var(--color-secondary); }
   /* line 28, src/components/board/menu-bar/_menu-bar.scss */
   .menu-bar__toggler {
     color: white;
@@ -512,10 +517,10 @@ body {
     border-radius: 5px;
     padding: 5px;
     margin-right: 3rem;
-    border: 2px solid var(--body-background-light); }
+    border: 2px solid var(--color-secondary); }
     /* line 37, src/components/board/menu-bar/_menu-bar.scss */
     .menu-bar__toggler--hover {
-      background-color: var(--body-background-light); }
+      background-color: var(--color-secondary); }
   /* line 42, src/components/board/menu-bar/_menu-bar.scss */
   .menu-bar__toggler h1 {
     font-weight: 100; }

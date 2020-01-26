@@ -2,13 +2,16 @@ import React from "react";
 import { connect } from "react-redux";
 
 import { updateBoard } from "../../../actions";
+import colorThemes from "../../../utilities/colorThemes";
 
 const ColorPalette = props => {
   const updateBackgroundColor = () => {
     let root = document.documentElement;
 
-    root.style.setProperty("--body-background", props.color);
-    root.style.setProperty("--body-background-light", props.colorLight);
+    const theme = colorThemes[props.color];
+
+    root.style.setProperty("--color-primary", theme.base);
+    root.style.setProperty("--color-secondary", theme.lighter);
     props.updateBoard(props.board._id, { background: props.color });
   };
   return (

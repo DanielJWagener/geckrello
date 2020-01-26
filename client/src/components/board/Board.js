@@ -7,6 +7,7 @@ import AddList from "./AddList";
 import List from "./list/List";
 import MenuBar from "./menu-bar/MenuBar";
 import { fetchBoard, unloadBoard } from "../../actions";
+import colorThemes from "../../utilities/colorThemes";
 
 class Board extends React.Component {
   componentDidMount() {
@@ -16,7 +17,12 @@ class Board extends React.Component {
   componentDidUpdate() {
     let root = document.documentElement;
 
-    root.style.setProperty("--body-background", this.props.board.background);
+    if (this.props.board) {
+      root.style.setProperty(
+        "--color-primary",
+        colorThemes[this.props.board.background].base
+      );
+    }
   }
 
   componentWillUnmount() {
