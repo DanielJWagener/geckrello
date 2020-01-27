@@ -4,6 +4,7 @@ import setDefaultColors from "../utilities/setDefaultColors";
 
 class Landing extends React.Component {
   componentDidMount() {
+    document.title = `Geckrello, a Trello Clone`;
     setDefaultColors();
   }
 

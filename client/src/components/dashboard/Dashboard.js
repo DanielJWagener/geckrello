@@ -11,6 +11,7 @@ class Dashboard extends React.Component {
   componentDidMount() {
     this.props.fetchUser();
 
+    document.title = `Dashboard - Geckrello, a Trello Clone`;
     setDefaultColors();
     let root = document.documentElement;
 
