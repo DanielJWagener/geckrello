@@ -8,7 +8,7 @@ const boardSchema = new Schema({
   },
   background: {
     type: String,
-    default: "#66A3FF"
+    default: "blue"
   },
   users: [
     {
