@@ -11,6 +11,7 @@ exports.logout = (req, res) => {
 };
 
 exports.getCurrentUser = (req, res) => {
+  console.log("hit endpoint");
   res.send(req.user);
 };
 
