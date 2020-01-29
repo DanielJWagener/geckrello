@@ -6,4 +6,6 @@ const listSchema = new Schema({
   boardHome: { type: mongoose.Schema.ObjectId, ref: "boards" }
 });
 
-mongoose.model("lists", listSchema);
+const List = mongoose.model("lists", listSchema);
+
+module.exports = List;

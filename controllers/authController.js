@@ -1,4 +1,7 @@
+const mongoose = require("mongoose");
+
 const catchAsync = require("../utilities/catchAsync");
+const User = mongoose.model("users");
 
 exports.requireLogin = catchAsync(async (req, res, next) => {
   // If we already have a user on the request, great!
