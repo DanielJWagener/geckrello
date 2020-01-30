@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 
 const catchAsync = require("../utilities/catchAsync");
+const factory = require("./handlerFactory");
 
 const User = mongoose.model("users");
 
@@ -53,16 +54,7 @@ exports.getAllUsers = catchAsync(async (req, res) => {
   });
 });
 
-exports.getUser = catchAsync(async (req, res) => {
-  const user = await User.findById(req.params.id);
-
-  res.status(200).json({
-    status: "success",
-    data: {
-      data: user
-    }
-  });
-});
+exports.getUser = factory.getOne(User);
 
 exports.createUser = catchAsync(async (req, res) => {
   const user = await User.create(req.body);

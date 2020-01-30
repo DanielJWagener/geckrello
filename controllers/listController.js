@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const List = require("../models/List");
 
 const catchAsync = require("../utilities/catchAsync");
+const factory = require("./handlerFactory");
 
 exports.getAllLists = catchAsync(async (req, res, next) => {
   const lists = await List.find();
@@ -12,8 +13,7 @@ exports.getAllLists = catchAsync(async (req, res, next) => {
   });
 });
 
-exports.getList = catchAsync(async (req, res, next) => {});
-
+exports.getList = factory.getOne(List);
 exports.createList = catchAsync(async (req, res, next) => {
   const { boardHome, title } = req.body;
 

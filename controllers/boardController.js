@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const Board = require("../models/Board");
 
 const catchAsync = require("../utilities/catchAsync");
+const factory = require("./handlerFactory");
 
 const User = mongoose.model("users");
 
@@ -14,16 +15,7 @@ exports.getAllBoards = catchAsync(async (req, res, next) => {
   });
 });
 
-exports.getBoard = catchAsync(async (req, res, next) => {
-  let query = Board.findById(req.params.id);
-
-  const board = await query;
-
-  res.status(200).json({
-    status: "success",
-    data: board
-  });
-});
+exports.getBoard = factory.getOne(Board);
 
 exports.createBoard = catchAsync(async (req, res, next) => {
   // Create new board and add current user to it
