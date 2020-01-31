@@ -13,7 +13,11 @@ const cardSchema = new Schema({
       itemTitle: String
     }
   ],
-  listHome: { type: mongoose.Schema.ObjectId, ref: "lists" }
+  listHome: { type: mongoose.Schema.ObjectId, ref: "lists" },
+  archived: {
+    type: Boolean,
+    default: false
+  }
 });
 
 const Card = mongoose.model("cards", cardSchema);
