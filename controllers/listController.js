@@ -4,15 +4,7 @@ const List = require("../models/List");
 const catchAsync = require("../utilities/catchAsync");
 const factory = require("./handlerFactory");
 
-exports.getAllLists = catchAsync(async (req, res, next) => {
-  const lists = await List.find();
-
-  res.status(200).json({
-    status: "success",
-    data: lists
-  });
-});
-
+exports.getAllLists = factory.getAll(List);
 exports.getList = factory.getOne(List);
 exports.createList = factory.createOne(List);
 

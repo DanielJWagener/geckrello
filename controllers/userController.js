@@ -43,29 +43,9 @@ exports.updateCurrentUser = catchAsync(async (req, res) => {
 });
 
 // ADMIN ONLY
-exports.getAllUsers = catchAsync(async (req, res) => {
-  const users = await User.find();
-
-  res.status(200).json({
-    status: "success",
-    data: {
-      data: users
-    }
-  });
-});
-
+exports.getAllUsers = factory.getAll(User);
 exports.getUser = factory.getOne(User);
-
-exports.createUser = catchAsync(async (req, res) => {
-  const user = await User.create(req.body);
-
-  res.status(201).json({
-    status: "success",
-    data: {
-      data: user
-    }
-  });
-});
+exports.createUser = factory.createOne(User);
 
 exports.updateUser = catchAsync(async (req, res) => {
   const user = await User.findByIdAndUpdate(req.params.id, req.body, {

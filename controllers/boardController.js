@@ -6,17 +6,10 @@ const factory = require("./handlerFactory");
 
 const User = mongoose.model("users");
 
-exports.getAllBoards = catchAsync(async (req, res, next) => {
-  const boards = await Board.find();
-
-  res.status(200).json({
-    status: "success",
-    data: boards
-  });
-});
-
+exports.getAllBoards = factory.getAll(Board);
 exports.getBoard = factory.getOne(Board);
 
+// Two-way referencing: do not use factory function
 exports.createBoard = catchAsync(async (req, res, next) => {
   // Create new board and add current user to it
   const { title, background } = req.body;
