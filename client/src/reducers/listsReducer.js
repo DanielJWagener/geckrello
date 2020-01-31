@@ -11,14 +11,7 @@ export default (state = [], action) => {
     case FETCH_LISTS:
       return action.payload;
     case ADD_LIST:
-      return [
-        ...state,
-        {
-          title: action.payload.title,
-          listId: action.payload.listId,
-          archived: false
-        }
-      ];
+      return [...state, action.payload];
     case ARCHIVE_LIST:
       currentLists.forEach(list => {
         if (list.listId === action.payload) {
