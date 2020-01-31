@@ -4,11 +4,11 @@ const APIFeatures = require("./../utilities/apiFeatures");
 exports.getAll = Model =>
   catchAsync(async (req, res, next) => {
     // Allow for nest GET reviews on tour (hack)
-    let filter = {};
-    if (req.params.tourId) filter = { tour: req.params.tourId };
+    // let filter = {};
+    // if (req.params.tourId) filter = { tour: req.params.tourId };
 
     // EXECUTE QUERY
-    const features = new APIFeatures(Model.find(filter), req.query)
+    const features = new APIFeatures(Model.find(), req.query)
       .filter()
       .sort()
       .limitFields()
