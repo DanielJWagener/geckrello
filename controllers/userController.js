@@ -47,12 +47,4 @@ exports.getAllUsers = factory.getAll(User);
 exports.getUser = factory.getOne(User);
 exports.createUser = factory.createOne(User);
 exports.updateUser = factory.updateOne(User);
-
-exports.deleteUser = catchAsync(async (req, res) => {
-  await User.findByIdAndDelete(req.params.id);
-
-  res.status(204).json({
-    status: "success",
-    data: null
-  });
-});
+exports.deleteUser = factory.deleteOne(User);

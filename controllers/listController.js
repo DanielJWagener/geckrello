@@ -8,5 +8,4 @@ exports.getAllLists = factory.getAll(List);
 exports.getList = factory.getOne(List);
 exports.createList = factory.createOne(List);
 exports.updateList = factory.updateOne(List);
-
-exports.deleteList = catchAsync(async (req, res, next) => {});
+exports.deleteList = factory.deleteOne(List);

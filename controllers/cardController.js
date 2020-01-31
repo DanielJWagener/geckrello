@@ -8,5 +8,4 @@ exports.getAllCards = factory.getAll(Card);
 exports.getCard = factory.getOne(Card);
 exports.createCard = factory.createOne(Card);
 exports.updateCard = factory.updateOne(Card);
-
-exports.deleteCard = catchAsync(async (req, res, next) => {});
+exports.deleteCard = factory.deleteOne(Card);
