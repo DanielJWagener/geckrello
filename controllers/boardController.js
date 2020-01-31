@@ -8,8 +8,10 @@ const User = mongoose.model("users");
 
 exports.getAllBoards = factory.getAll(Board);
 exports.getBoard = factory.getOne(Board);
+exports.updateBoard = factory.updateOne(Board);
 
-// Two-way referencing: do not use factory function
+// Two-way referencing: do not use factory functions below this point
+
 exports.createBoard = catchAsync(async (req, res, next) => {
   // Create new board and add current user to it
   const { title, background } = req.body;
@@ -27,17 +29,6 @@ exports.createBoard = catchAsync(async (req, res, next) => {
   res.status(201).json({
     status: "success",
     data: newBoard
-  });
-});
-
-exports.updateBoard = catchAsync(async (req, res, next) => {
-  const board = await Board.findByIdAndUpdate(req.params.id, req.body, {
-    new: true
-  });
-
-  res.status(200).json({
-    status: "success",
-    data: board
   });
 });
 
