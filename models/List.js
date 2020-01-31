@@ -3,7 +3,7 @@ const { Schema } = mongoose;
 
 const listSchema = new Schema({
   title: String,
-  boardHome: { type: mongoose.Schema.ObjectId, ref: "boards" },
+  boardHome: String,
   archived: {
     type: Boolean,
     default: false

@@ -1,8 +1,15 @@
-import { ADD_LIST, ARCHIVE_LIST, RESTORE_LIST } from "../actions/types";
+import {
+  ADD_LIST,
+  ARCHIVE_LIST,
+  RESTORE_LIST,
+  FETCH_LISTS
+} from "../actions/types";
 
 export default (state = [], action) => {
   let currentLists = [...state];
   switch (action.type) {
+    case FETCH_LISTS:
+      return action.payload;
     case ADD_LIST:
       return [
         ...state,
