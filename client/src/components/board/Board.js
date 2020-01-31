@@ -6,12 +6,13 @@ import { connect } from "react-redux";
 import AddList from "./AddList";
 import List from "./list/List";
 import MenuBar from "./menu-bar/MenuBar";
-import { fetchBoard, unloadBoard } from "../../actions";
+import { fetchBoard, unloadBoard, fetchLists } from "../../actions";
 import colorThemes from "../../utilities/colorThemes";
 
 class Board extends React.Component {
   componentDidMount() {
     this.props.fetchBoard(this.props.match.params.id);
+    this.props.fetchLists(this.props.match.params.id);
   }
 
   componentDidUpdate() {
@@ -19,7 +20,7 @@ class Board extends React.Component {
 
     if (this.props.board) {
       const theme = colorThemes[this.props.board.background];
-      root.style.setProperty("--color-primary", theme.base);
+
       root.style.setProperty("--color-primary", theme.base);
       root.style.setProperty("--color-primary-lightest", theme.lightest);
       root.style.setProperty("--color-primary-lighter", theme.lighter);
@@ -55,7 +56,7 @@ class Board extends React.Component {
           <DndProvider backend={HTML5Backend}>
             <div className="board" id="board">
               {this.listsArray()}
-              <AddList />
+              <AddList boardId={this.props.match.params.id} />
             </div>
           </DndProvider>
         </div>
@@ -70,4 +71,8 @@ const mapStateToProps = ({ board, lists, cards }) => {
   return { board, lists, cards };
 };
 
-export default connect(mapStateToProps, { fetchBoard, unloadBoard })(Board);
+export default connect(mapStateToProps, {
+  fetchBoard,
+  unloadBoard,
+  fetchLists
+})(Board);

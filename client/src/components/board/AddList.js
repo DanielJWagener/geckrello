@@ -44,19 +44,8 @@ class AddList extends React.Component {
       return false;
     }
 
-    // Generate a unique key and listId in the event of duplicate list titles
-    const generateListId = inputId => {
-      if (!this.props.lists.find(list => list.listId === inputId)) {
-        return inputId;
-      } else {
-        inputId = `${inputId}-duplicate`;
-        return generateListId(inputId);
-      }
-    };
-    let listId = generateListId(this.state.listTitle);
-
     // Submit input
-    this.props.addList(this.state.listTitle, listId);
+    this.props.addList(this.state.listTitle, this.props.boardId);
 
     // Clear input
     this.setState({ listTitle: "", inputValid: false, borderColor: "#555" });
@@ -125,7 +114,4 @@ const mapStateToProps = state => {
   return { lists: state.lists };
 };
 
-export default connect(
-  mapStateToProps,
-  { addList }
-)(AddList);
+export default connect(mapStateToProps, { addList })(AddList);

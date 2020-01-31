@@ -69,7 +69,7 @@ export const addList = (title, listId) => async dispatch => {
 
   dispatch({
     type: ADD_LIST,
-    payload: newList
+    payload: newList.data.data
   });
 };
 
