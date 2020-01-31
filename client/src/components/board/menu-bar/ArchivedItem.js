@@ -21,10 +21,8 @@ const ArchivedItem = props => {
   );
 };
 
-const mapStateToProps = state => {
-  return { lists: state.lists, cards: state.cards };
-};
+// const mapStateToProps = state => {
+//   return { lists: state.lists, cards: state.cards };
+// };
 
-export default connect(mapStateToProps, { restoreList, restoreCard })(
-  ArchivedItem
-);
+export default connect(null, { restoreList, restoreCard })(ArchivedItem);

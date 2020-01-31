@@ -82,11 +82,14 @@ export const archiveList = listId => async dispatch => {
   });
 };
 
-export const restoreList = listId => {
-  return {
+export const restoreList = listId => async dispatch => {
+  const list = await axios.patch(`/api/v1/lists/${listId}`, {
+    archived: false
+  });
+  dispatch({
     type: RESTORE_LIST,
-    payload: listId
-  };
+    payload: list._id
+  });
 };
 
 // CARDS

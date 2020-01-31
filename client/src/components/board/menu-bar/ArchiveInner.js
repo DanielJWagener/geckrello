@@ -30,8 +30,8 @@ class ArchiveInner extends React.Component {
       .filter(list => list.archived)
       .map(list => (
         <ArchivedItem
-          key={list.listId}
-          itemId={list.listId}
+          key={list._id}
+          itemId={list._id}
           itemTitle={list.title}
           itemType="list"
         />
