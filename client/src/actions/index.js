@@ -2,6 +2,7 @@ import axios from "axios";
 
 import {
   FETCH_USER,
+  FETCH_LISTS,
   ADD_LIST,
   ARCHIVE_LIST,
   RESTORE_LIST,
@@ -53,6 +54,12 @@ export const updateBoard = (id, data) => async dispatch => {
 };
 
 // LISTS
+
+export const fetchLists = boardId => async dispatch => {
+  const lists = await axios.get(`/api/v1/lists?boardHome=${boardId}`);
+
+  dispatch({ type: FETCH_LISTS, payload: lists.data.data });
+};
 
 export const addList = (title, listId) => {
   return {
