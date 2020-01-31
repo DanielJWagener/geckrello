@@ -6,19 +6,11 @@ import { connect } from "react-redux";
 import AddList from "./AddList";
 import List from "./list/List";
 import MenuBar from "./menu-bar/MenuBar";
-import {
-  fetchBoard,
-  unloadBoard,
-  fetchLists,
-  fetchBoardData
-} from "../../actions";
+import { unloadBoard, fetchBoardData } from "../../actions";
 import colorThemes from "../../utilities/colorThemes";
 
 class Board extends React.Component {
   componentDidMount() {
-    // this.props.fetchBoard(this.props.match.params.id);
-    // this.props.fetchLists(this.props.match.params.id);
-
     this.props.fetchBoardData(this.props.match.params.id);
   }
 
@@ -80,8 +72,6 @@ const mapStateToProps = ({ board, lists, cards }) => {
 };
 
 export default connect(mapStateToProps, {
-  fetchBoard,
   unloadBoard,
-  fetchLists,
   fetchBoardData
 })(Board);

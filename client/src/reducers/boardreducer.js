@@ -1,11 +1,4 @@
-import {
-  ADD_BOARD,
-  FETCH_USER,
-  FETCH_BOARD,
-  UNLOAD_BOARD,
-  UPDATE_BOARD,
-  FETCH_BOARD_DATA
-} from "../actions/types";
+import { UNLOAD_BOARD, UPDATE_BOARD, FETCH_BOARD_DATA } from "../actions/types";
 
 export default (state = null, action) => {
   switch (action.type) {

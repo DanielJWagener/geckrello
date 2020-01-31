@@ -2,7 +2,6 @@ import {
   ADD_LIST,
   ARCHIVE_LIST,
   RESTORE_LIST,
-  FETCH_LISTS,
   FETCH_BOARD_DATA
 } from "../actions/types";
 

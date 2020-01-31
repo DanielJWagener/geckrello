@@ -3,7 +3,6 @@ import axios from "axios";
 import {
   FETCH_BOARD_DATA,
   FETCH_USER,
-  FETCH_LISTS,
   ADD_LIST,
   ARCHIVE_LIST,
   RESTORE_LIST,
@@ -16,8 +15,6 @@ import {
   ADD_CHECKLIST_ITEM,
   CHECK_CHECKLIST_ITEM,
   DELETE_CHECKLIST_ITEM,
-  ADD_BOARD,
-  FETCH_BOARD,
   UNLOAD_BOARD,
   UPDATE_BOARD
 } from "./types";
@@ -30,20 +27,6 @@ export const fetchUser = () => async dispatch => {
 };
 
 // BOARDS
-export const addBoard = title => async dispatch => {
-  await axios.post("/api/v1/boards", { title });
-
-  const user = await axios.get("/api/v1/users/current_user");
-
-  dispatch({ type: FETCH_USER, payload: user.data });
-};
-
-export const fetchBoard = id => async dispatch => {
-  const board = await axios.get(`/api/v1/boards/${id}`);
-
-  dispatch({ type: FETCH_BOARD, payload: board.data.data });
-};
-
 export const fetchBoardData = boardId => async dispatch => {
   const boardEndpoint = `/api/v1/boards/${boardId}`;
   const listsEndpoint = `/api/v1/lists?boardHome=${boardId}`;
@@ -66,6 +49,14 @@ export const fetchBoardData = boardId => async dispatch => {
   dispatch({ type: FETCH_BOARD_DATA, payload });
 };
 
+export const addBoard = title => async dispatch => {
+  await axios.post("/api/v1/boards", { title });
+
+  const user = await axios.get("/api/v1/users/current_user");
+
+  dispatch({ type: FETCH_USER, payload: user.data });
+};
+
 export const unloadBoard = () => {
   return { type: UNLOAD_BOARD, payload: null };
 };
@@ -77,13 +68,6 @@ export const updateBoard = (id, data) => async dispatch => {
 };
 
 // LISTS
-
-export const fetchLists = boardId => async dispatch => {
-  const lists = await axios.get(`/api/v1/lists?boardHome=${boardId}`);
-
-  dispatch({ type: FETCH_LISTS, payload: lists.data.data });
-};
-
 export const addList = (title, boardId) => async dispatch => {
   const newList = await axios.post("/api/v1/lists", {
     title,
