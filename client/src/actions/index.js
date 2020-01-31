@@ -1,6 +1,7 @@
 import axios from "axios";
 
 import {
+  FETCH_BOARD_DATA,
   FETCH_USER,
   FETCH_LISTS,
   ADD_LIST,
@@ -41,6 +42,28 @@ export const fetchBoard = id => async dispatch => {
   const board = await axios.get(`/api/v1/boards/${id}`);
 
   dispatch({ type: FETCH_BOARD, payload: board.data.data });
+};
+
+export const fetchBoardData = boardId => async dispatch => {
+  const boardEndpoint = `/api/v1/boards/${boardId}`;
+  const listsEndpoint = `/api/v1/lists?boardHome=${boardId}`;
+  const cardsEndpoint = `/api/v1/cards?boardHome=${boardId}`;
+
+  const endpoints = [boardEndpoint, listsEndpoint, cardsEndpoint];
+
+  const boardDataPromises = endpoints.map(
+    async endpoint => await axios.get(endpoint)
+  );
+
+  const [board, lists, cards] = await Promise.all(boardDataPromises);
+
+  const payload = {
+    board: board.data.data,
+    lists: lists.data.data,
+    cards: cards.data.data
+  };
+
+  dispatch({ type: FETCH_BOARD_DATA, payload });
 };
 
 export const unloadBoard = () => {

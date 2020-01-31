@@ -13,7 +13,8 @@ const cardSchema = new Schema({
       itemTitle: String
     }
   ],
-  listHome: { type: mongoose.Schema.ObjectId, ref: "lists" },
+  listHome: String,
+  boardHome: String,
   archived: {
     type: Boolean,
     default: false

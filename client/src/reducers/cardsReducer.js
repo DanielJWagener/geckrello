@@ -1,4 +1,5 @@
 import {
+  FETCH_BOARD_DATA,
   ADD_CARD,
   MOVE_CARD,
   COPY_CARD,
@@ -13,6 +14,8 @@ import {
 export default (state = [], action) => {
   let currentCards = [...state];
   switch (action.type) {
+    case FETCH_BOARD_DATA:
+      return action.payload.cards;
     case ADD_CARD:
       // Return current state with new card appendded
       return [
