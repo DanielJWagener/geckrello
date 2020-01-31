@@ -140,9 +140,6 @@ const mapStateToProps = (state, ownProps) => {
     card => card.listHome === listId && !card.archived
   );
 
-  return { lists: state.lists, cards: cards };
+  return { cards };
 };
-export default connect(
-  mapStateToProps,
-  { archiveList }
-)(List);
+export default connect(mapStateToProps, { archiveList })(List);

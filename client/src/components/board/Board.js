@@ -41,10 +41,11 @@ class Board extends React.Component {
       .filter(list => !list.archived)
       .map(list => (
         <List
-          key={list.listId}
+          key={list._id}
           listTitle={list.title}
-          listId={list.listId}
+          listId={list._id}
           cards={[]}
+          archived={list.archived}
         />
       ));
 

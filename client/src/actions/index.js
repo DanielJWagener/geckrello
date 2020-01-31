@@ -61,10 +61,10 @@ export const fetchLists = boardId => async dispatch => {
   dispatch({ type: FETCH_LISTS, payload: lists.data.data });
 };
 
-export const addList = (title, listId) => async dispatch => {
+export const addList = (title, boardId) => async dispatch => {
   const newList = await axios.post("/api/v1/lists", {
     title,
-    boardHome: listId
+    boardHome: boardId
   });
 
   dispatch({
@@ -73,11 +73,13 @@ export const addList = (title, listId) => async dispatch => {
   });
 };
 
-export const archiveList = listId => {
-  return {
+export const archiveList = listId => async dispatch => {
+  const list = await axios.patch(`/api/v1/lists/${listId}`, { archived: true });
+
+  dispatch({
     type: ARCHIVE_LIST,
-    payload: listId
-  };
+    payload: list._id
+  });
 };
 
 export const restoreList = listId => {
