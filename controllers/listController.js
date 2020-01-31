@@ -14,16 +14,7 @@ exports.getAllLists = catchAsync(async (req, res, next) => {
 });
 
 exports.getList = factory.getOne(List);
-exports.createList = catchAsync(async (req, res, next) => {
-  const { boardHome, title } = req.body;
-
-  const newList = await List.create({ boardHome, title });
-
-  res.status(200).json({
-    status: "success",
-    data: newList
-  });
-});
+exports.createList = factory.createOne(List);
 
 exports.updateList = catchAsync(async (req, res, next) => {});
 

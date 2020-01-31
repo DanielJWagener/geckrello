@@ -16,4 +16,6 @@ const cardSchema = new Schema({
   listHome: { type: mongoose.Schema.ObjectId, ref: "lists" }
 });
 
-mongoose.model("cards", cardSchema);
+const Card = mongoose.model("cards", cardSchema);
+
+module.exports = Card;
