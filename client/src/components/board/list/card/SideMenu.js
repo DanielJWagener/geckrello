@@ -55,7 +55,7 @@ class SideMenu extends React.Component {
     this.props.lists
       .filter(list => !list.archived)
       .map(list => (
-        <option key={list.listId} value={list.listId}>
+        <option key={list._id} value={list._id}>
           {list.title}
         </option>
       ));
