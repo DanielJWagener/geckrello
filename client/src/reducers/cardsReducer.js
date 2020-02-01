@@ -65,9 +65,15 @@ export default (state = [], action) => {
     case UPDATE_CARD_DESCRIPTION:
       // Locate coresponding card in store
       currentCards.forEach(card => {
-        if (card.cardId === action.payload.cardId) {
+        console.log(
+          `card._id is ${card._id} and payload is ${action.payload.cardId}`
+        );
+        if (card._id === action.payload.cardId) {
           // Update description
+          console.log("yeah boy we in");
+          console.log("put dis in: ", action.payload.descriptionInput);
           card.description = action.payload.descriptionInput;
+          console.log("now we have ", card.description);
         }
       });
       return currentCards;

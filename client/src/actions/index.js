@@ -157,33 +157,40 @@ export const copyCard = (sourceCardId, newListHome) => async dispatch => {
 };
 
 export const archiveCard = cardId => async dispatch => {
-  const card = await axios.patch(`/api/v1/cards/${cardId}`, { archived: true });
+  await axios.patch(`/api/v1/cards/${cardId}`, { archived: true });
 
   dispatch({
     type: ARCHIVE_CARD,
-    payload: card.data.data._id
+    payload: cardId
   });
 };
 
 export const restoreCard = cardId => async dispatch => {
-  const card = await axios.patch(`/api/v1/cards/${cardId}`, {
+  await axios.patch(`/api/v1/cards/${cardId}`, {
     archived: false
   });
 
   dispatch({
     type: RESTORE_CARD,
-    payload: card.data.data._id
+    payload: cardId
   });
 };
 
-export const updateCardDescription = (cardId, descriptionInput) => {
-  return {
+export const updateCardDescription = (
+  cardId,
+  descriptionInput
+) => async dispatch => {
+  await axios.patch(`/api/v1/cards/${cardId}`, {
+    description: descriptionInput
+  });
+
+  dispatch({
     type: UPDATE_CARD_DESCRIPTION,
     payload: {
       cardId,
       descriptionInput
     }
-  };
+  });
 };
 
 export const addChecklistItem = (
