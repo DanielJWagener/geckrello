@@ -115,7 +115,6 @@ export const addCard = (title, listHome, boardHome) => async dispatch => {
 };
 
 export const moveCard = (cardId, newListHome) => async dispatch => {
-  console.log("move card triggered");
   await axios.patch(`/api/v1/cards/${cardId}`, { listHome: newListHome });
   dispatch({
     type: MOVE_CARD,
@@ -126,15 +125,29 @@ export const moveCard = (cardId, newListHome) => async dispatch => {
   });
 };
 
-export const copyCard = (sourceCardId, newCardId, newListHome) => {
-  return {
+export const copyCard = (sourceCardId, newListHome) => async dispatch => {
+  let card = (await axios.get(`/api/v1/cards/${sourceCardId}`)).data.data;
+  card.listHome = newListHome;
+  const { description, archived, title, boardHome, listHome, checklist } = card;
+  console.log("title is ", title);
+  let newCard = await axios.post(`/api/v1/cards`, {
+    description,
+    archived,
+    title,
+    boardHome,
+    listHome,
+    checklist
+  });
+  console.log(newCard.data.data);
+
+  dispatch({
     type: COPY_CARD,
     payload: {
       sourceCardId,
-      newCardId,
+      newCardId: newCard.data.data._id,
       newListHome
     }
-  };
+  });
 };
 
 export const archiveCard = cardId => {

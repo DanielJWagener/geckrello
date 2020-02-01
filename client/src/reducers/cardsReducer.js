@@ -40,8 +40,10 @@ export default (state = [], action) => {
       });
       return currentCards;
     case COPY_CARD:
+      // TODO: display right card
+      console.log("source card id is ", action.payload.sourceCardId);
       const source = currentCards.find(
-        card => (card.cardId = action.payload.sourceCardId)
+        card => card._id === action.payload.sourceCardId
       );
       const newCard = {};
       Object.assign(newCard, source);

@@ -35,18 +35,9 @@ class SideMenu extends React.Component {
   onCopySubmit = e => {
     e.preventDefault();
 
-    // Generate a unique key and cardId in the event of duplicate card titles
-    const generateCardId = inputId => {
-      if (!this.props.cards.find(card => card.cardId === inputId)) {
-        return inputId;
-      } else {
-        inputId = `${inputId}-duplicate`;
-        return generateCardId(inputId);
-      }
-    };
-    let cardId = generateCardId(this.props.cardId);
+    console.log(this.props.cardId);
 
-    this.props.copyCard(this.props.cardId, cardId, this.state.value);
+    this.props.copyCard(this.props.cardId, this.state.value);
 
     this.setState({ panel: "", value: this.props.listHome });
   };
