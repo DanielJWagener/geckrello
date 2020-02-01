@@ -19,8 +19,8 @@ class ArchiveInner extends React.Component {
       .filter(card => card.archived)
       .map(card => (
         <ArchivedItem
-          key={card.cardId}
-          itemId={card.cardId}
+          key={card._id}
+          itemId={card._id}
           itemTitle={card.title}
           itemType="card"
         />

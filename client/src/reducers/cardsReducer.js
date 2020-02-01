@@ -50,14 +50,14 @@ export default (state = [], action) => {
       return [...currentCards, newCard];
     case ARCHIVE_CARD:
       currentCards.forEach(card => {
-        if (card.cardId === action.payload) {
+        if (card._id === action.payload) {
           card.archived = true;
         }
       });
       return currentCards;
     case RESTORE_CARD:
       currentCards.forEach(card => {
-        if (card.cardId === action.payload) {
+        if (card._id === action.payload) {
           card.archived = false;
         }
       });

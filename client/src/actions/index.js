@@ -126,10 +126,16 @@ export const moveCard = (cardId, newListHome) => async dispatch => {
 };
 
 export const copyCard = (sourceCardId, newListHome) => async dispatch => {
+  // Find card to be copied (source card) in database
   let card = (await axios.get(`/api/v1/cards/${sourceCardId}`)).data.data;
+
+  // Change the list home of that card
   card.listHome = newListHome;
+
+  // Destructure fields for POST request (all but original document ID)
   const { description, archived, title, boardHome, listHome, checklist } = card;
-  console.log("title is ", title);
+
+  // Create card in database
   let newCard = await axios.post(`/api/v1/cards`, {
     description,
     archived,
@@ -138,8 +144,8 @@ export const copyCard = (sourceCardId, newListHome) => async dispatch => {
     listHome,
     checklist
   });
-  console.log(newCard.data.data);
 
+  // Send to re
   dispatch({
     type: COPY_CARD,
     payload: {
@@ -150,18 +156,24 @@ export const copyCard = (sourceCardId, newListHome) => async dispatch => {
   });
 };
 
-export const archiveCard = cardId => {
-  return {
+export const archiveCard = cardId => async dispatch => {
+  const card = await axios.patch(`/api/v1/cards/${cardId}`, { archived: true });
+
+  dispatch({
     type: ARCHIVE_CARD,
-    payload: cardId
-  };
+    payload: card.data.data._id
+  });
 };
 
-export const restoreCard = cardId => {
-  return {
+export const restoreCard = cardId => async dispatch => {
+  const card = await axios.patch(`/api/v1/cards/${cardId}`, {
+    archived: false
+  });
+
+  dispatch({
     type: RESTORE_CARD,
-    payload: cardId
-  };
+    payload: card.data.data._id
+  });
 };
 
 export const updateCardDescription = (cardId, descriptionInput) => {
