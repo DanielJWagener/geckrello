@@ -75,14 +75,15 @@ class List extends React.Component {
   cardsArray = () =>
     this.props.cards.map(card => (
       <Card
-        key={card.cardId}
-        cardId={card.cardId}
+        key={card._id}
+        cardId={card._id}
         cardTitle={card.title}
         inList={this.props.listTitle}
+        description={card.description}
       />
     ));
 
-  // Make array of CardPopup components from props
+  //Make array of CardPopup components from props
   cardModalsArray = () =>
     this.props.cards.map(card => (
       <CardModal

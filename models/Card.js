@@ -3,7 +3,10 @@ const { Schema } = mongoose;
 
 const cardSchema = new Schema({
   title: String,
-  description: String,
+  description: {
+    type: String,
+    default: ""
+  },
   checklist: [
     {
       checked: {
