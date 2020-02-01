@@ -45,7 +45,7 @@ function ChecklistItem(props) {
 
 const mapStateToProps = (state, ownProps) => {
   const { checklistItemId, cardId } = ownProps;
-  let card = state.cards.filter(card => card.cardId === cardId)[0];
+  let card = state.cards.filter(card => card._id === cardId)[0];
   if (card.checklist.length > 0) {
     let checked = card.checklist.filter(
       item => item.checklistItemId === checklistItemId
@@ -55,7 +55,6 @@ const mapStateToProps = (state, ownProps) => {
   }
 };
 
-export default connect(
-  mapStateToProps,
-  { checklistCheck, checklistDelete }
-)(ChecklistItem);
+export default connect(mapStateToProps, { checklistCheck, checklistDelete })(
+  ChecklistItem
+);

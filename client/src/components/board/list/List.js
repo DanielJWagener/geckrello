@@ -87,8 +87,8 @@ class List extends React.Component {
   cardModalsArray = () =>
     this.props.cards.map(card => (
       <CardModal
-        key={card.cardId}
-        cardId={card.cardId}
+        key={card._id}
+        cardId={card._id}
         cardTitle={card.title}
         inList={this.props.listTitle}
       />

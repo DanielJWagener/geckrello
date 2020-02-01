@@ -179,12 +179,11 @@ class SideMenu extends React.Component {
 
 const mapStateToProps = (state, ownProps) => {
   const { lists, cards } = state;
-  const listHome = cards.filter(card => card.cardId === ownProps.cardId)[0]
+  const listHome = cards.filter(card => card._id === ownProps.cardId)[0]
     .listHome;
   return { lists, cards, listHome };
 };
 
-export default connect(
-  mapStateToProps,
-  { archiveCard, moveCard, copyCard }
-)(SideMenu);
+export default connect(mapStateToProps, { archiveCard, moveCard, copyCard })(
+  SideMenu
+);

@@ -94,11 +94,8 @@ class Description extends React.Component {
 
 const mapStateToProps = (state, ownProps) => {
   const { cardId } = ownProps;
-  const card = state.cards.filter(card => card.cardId === cardId)[0];
+  const card = state.cards.filter(card => card._id === cardId)[0];
   return { card };
 };
 
-export default connect(
-  mapStateToProps,
-  { updateCardDescription }
-)(Description);
+export default connect(mapStateToProps, { updateCardDescription })(Description);
