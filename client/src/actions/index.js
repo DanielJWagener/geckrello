@@ -101,15 +101,17 @@ export const restoreList = listId => async dispatch => {
 
 // CARDS
 
-export const addCard = (title, cardId, listHome) => {
-  return {
+export const addCard = (title, listHome, boardHome) => async dispatch => {
+  const newCard = await axios.post(`/api/v1/cards`, {
+    title,
+    listHome,
+    boardHome
+  });
+
+  dispatch({
     type: ADD_CARD,
-    payload: {
-      title,
-      cardId,
-      listHome
-    }
-  };
+    payload: newCard.data.data
+  });
 };
 
 export const moveCard = (cardId, newListHome) => {

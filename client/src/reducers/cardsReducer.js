@@ -22,8 +22,9 @@ export default (state = [], action) => {
         ...state,
         {
           title: action.payload.title,
-          cardId: action.payload.cardId,
+          cardId: action.payload._id,
           listHome: action.payload.listHome,
+          boardHome: action.payload.boardHome,
           archived: false,
           checklist: [],
           description: ""

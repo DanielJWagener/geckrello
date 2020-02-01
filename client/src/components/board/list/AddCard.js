@@ -63,20 +63,13 @@ class AddCard extends React.Component {
       return false;
     }
 
-    // Generate a unique key and cardId in the event of duplicate card titles
-    const generateCardId = inputId => {
-      if (!this.props.cards.find(card => card.cardId === inputId)) {
-        return inputId;
-      } else {
-        inputId = `${inputId}-duplicate`;
-        return generateCardId(inputId);
-      }
-    };
-    let cardId = generateCardId(this.state.cardTitle);
-
     // Call addCard redux action if user has entered a card title
     if (this.state.cardTitle) {
-      this.props.addCard(this.state.cardTitle, cardId, this.props.listHome);
+      this.props.addCard(
+        this.state.cardTitle,
+        this.props.listHome,
+        this.props.boardHome
+      );
 
       // Clear input, change mode
       this.setState({ cardTitle: "", mode: "prompt", borderColor: "#555" });
@@ -142,11 +135,8 @@ class AddCard extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
-  return { cards: state.cards };
+const mapStateToProps = ({ cards, board }) => {
+  return { boardHome: board._id, cards };
 };
 
-export default connect(
-  mapStateToProps,
-  { addCard }
-)(AddCard);
+export default connect(mapStateToProps, { addCard })(AddCard);
