@@ -14,14 +14,14 @@ export default (state = [], action) => {
       return [...state, action.payload];
     case ARCHIVE_LIST:
       currentLists.forEach(list => {
-        if (list.listId === action.payload) {
+        if (list._id == action.payload) {
           list.archived = true;
         }
       });
       return currentLists;
     case RESTORE_LIST:
       currentLists.forEach(list => {
-        if (list.listId === action.payload) {
+        if (list._id == action.payload) {
           list.archived = false;
         }
       });
