@@ -114,14 +114,16 @@ export const addCard = (title, listHome, boardHome) => async dispatch => {
   });
 };
 
-export const moveCard = (cardId, newListHome) => {
-  return {
+export const moveCard = (cardId, newListHome) => async dispatch => {
+  console.log("move card triggered");
+  await axios.patch(`/api/v1/cards/${cardId}`, { listHome: newListHome });
+  dispatch({
     type: MOVE_CARD,
     payload: {
       cardId,
       newListHome
     }
-  };
+  });
 };
 
 export const copyCard = (sourceCardId, newCardId, newListHome) => {

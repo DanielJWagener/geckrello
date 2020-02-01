@@ -33,7 +33,7 @@ export default (state = [], action) => {
     case MOVE_CARD:
       // Locate coresponding card in store
       currentCards.forEach(card => {
-        if (card.cardId === action.payload.cardId) {
+        if (card._id === action.payload.cardId) {
           // Update listHome
           card.listHome = action.payload.newListHome;
         }

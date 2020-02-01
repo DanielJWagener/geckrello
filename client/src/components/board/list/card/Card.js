@@ -43,7 +43,4 @@ const mapStateToProps = state => {
   return { cards: state.cards };
 };
 
-export default connect(
-  mapStateToProps,
-  { moveCard }
-)(Card);
+export default connect(mapStateToProps, { moveCard })(Card);
