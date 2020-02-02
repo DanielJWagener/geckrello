@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
+const ChecklistItemSchema = require("./ChecklistItem");
 
 const cardSchema = new Schema({
   title: String,
@@ -7,15 +8,7 @@ const cardSchema = new Schema({
     type: String,
     default: ""
   },
-  checklist: [
-    {
-      checked: {
-        type: Boolean,
-        default: false
-      },
-      itemTitle: String
-    }
-  ],
+  checklist: [ChecklistItemSchema],
   listHome: String,
   boardHome: String,
   archived: {
