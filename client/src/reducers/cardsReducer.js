@@ -65,26 +65,21 @@ export default (state = [], action) => {
     case UPDATE_CARD_DESCRIPTION:
       // Locate coresponding card in store
       currentCards.forEach(card => {
-        console.log(
-          `card._id is ${card._id} and payload is ${action.payload.cardId}`
-        );
         if (card._id === action.payload.cardId) {
           // Update description
-          console.log("yeah boy we in");
-          console.log("put dis in: ", action.payload.descriptionInput);
           card.description = action.payload.descriptionInput;
-          console.log("now we have ", card.description);
         }
       });
       return currentCards;
     case ADD_CHECKLIST_ITEM:
-      const { checklistItemTitle, checklistItemId, checked } = action.payload;
-      const newItem = { checklistItemTitle, checklistItemId, checked };
+      // const { checklistItemTitle, checklistItemId, checked } = action.payload;
+      // const newItem = { checklistItemTitle, checklistItemId, checked };
+      console.log("action.payload.checklist is ", action.payload.checklist);
       // Locate corresponding card in store
       currentCards.forEach(card => {
-        if (card.cardId === action.payload.cardId) {
-          // Add newItem to that card's checklist
-          card.checklist.push(newItem);
+        if (card._id === action.payload.cardId) {
+          // Set checklist in state to checklist retrieved from dabase after update
+          card.checklist = action.payload.checklist;
         }
       });
       return currentCards;

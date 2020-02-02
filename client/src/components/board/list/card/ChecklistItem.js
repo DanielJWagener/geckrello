@@ -9,7 +9,7 @@ function ChecklistItem(props) {
 
   function deleteItem() {
     props.checklistDelete(props.cardId, props.checklistItemId);
-    props.signalDelete();
+    //props.signalDelete();
   }
 
   if (!props.checked) {
@@ -19,7 +19,7 @@ function ChecklistItem(props) {
           className="item__checkbox item__checkbox--unchecked"
           onClick={checkItem}
         ></div>
-        <div className="item__title">{props.checklistItemTitle}</div>
+        <div className="item__title">{props.itemLabel}</div>
         <div className="item__delete" onClick={deleteItem}>
           &times;
         </div>
@@ -34,7 +34,7 @@ function ChecklistItem(props) {
         >
           <div className="checkmark">&#10004;</div>
         </div>
-        <div className="item__title">{props.checklistItemTitle}</div>
+        <div className="item__title">{props.itemLabel}</div>
         <div className="item__delete" onClick={deleteItem}>
           &times;
         </div>
@@ -47,9 +47,8 @@ const mapStateToProps = (state, ownProps) => {
   const { checklistItemId, cardId } = ownProps;
   let card = state.cards.filter(card => card._id === cardId)[0];
   if (card.checklist.length > 0) {
-    let checked = card.checklist.filter(
-      item => item.checklistItemId === checklistItemId
-    )[0].checked;
+    let checked = card.checklist.filter(item => item._id === checklistItemId)[0]
+      .checked;
 
     return { checked };
   }

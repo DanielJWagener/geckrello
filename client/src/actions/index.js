@@ -193,21 +193,21 @@ export const updateCardDescription = (
   });
 };
 
-export const addChecklistItem = (
-  cardId,
-  checklistItemTitle,
-  checklistItemId,
-  checked
-) => {
-  return {
+export const addChecklistItem = (cardId, label) => async dispatch => {
+  // Push new checklist item to card
+  const updatedCard = await axios.patch(`/api/v1/cards/${cardId}`, {
+    $push: { checklist: { label } }
+  });
+
+  const { checklist } = updatedCard.data.data;
+
+  dispatch({
     type: ADD_CHECKLIST_ITEM,
     payload: {
       cardId,
-      checklistItemTitle,
-      checklistItemId,
-      checked
+      checklist
     }
-  };
+  });
 };
 
 export const checklistCheck = (cardId, checklistItemId) => {

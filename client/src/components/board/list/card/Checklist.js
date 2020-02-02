@@ -27,25 +27,24 @@ class Checklist extends React.Component {
     }
 
     // Generate a unique key and listItemId in the event of duplicate list item titles
-    const generateChecklistItemId = inputId => {
-      if (
-        !this.props.card.checklist.find(
-          listItem => listItem.checklistItemId === inputId
-        )
-      ) {
-        return inputId;
-      } else {
-        inputId = `${inputId}-duplicate`;
-        return generateChecklistItemId(inputId);
-      }
-    };
-    let checklistItemId = generateChecklistItemId(this.state.newItemInput);
+    // const generateChecklistItemId = inputId => {
+    //   if (
+    //     !this.props.card.checklist.find(
+    //       listItem => listItem.checklistItemId === inputId
+    //     )
+    //   ) {
+    //     return inputId;
+    //   } else {
+    //     inputId = `${inputId}-duplicate`;
+    //     return generateChecklistItemId(inputId);
+    //   }
+    // };
+    // let checklistItemId = generateChecklistItemId(this.state.newItemInput);
 
     //Redux call to add new item to checklist array of card (unchecked by default)
     this.props.addChecklistItem(
       this.props.cardId,
       this.state.newItemInput,
-      checklistItemId,
       false
     );
 
@@ -57,19 +56,19 @@ class Checklist extends React.Component {
     this.setState({ newItemInput: e.target.value });
   };
 
-  signalDelete = () => {
-    let newDeleteCount = this.state.deleteCount + 1;
-    this.setState({ deleteCount: newDeleteCount });
-  };
+  // signalDelete = () => {
+  //   let newDeleteCount = this.state.deleteCount + 1;
+  //   this.setState({ deleteCount: newDeleteCount });
+  // };
 
   checklistItemsArray = () =>
     this.props.card.checklist.map(item => (
       <ChecklistItem
-        key={item.checklistItemId}
-        checklistItemTitle={item.checklistItemTitle}
-        checklistItemId={item.checklistItemId}
+        key={item._id}
+        itemLabel={item.label}
+        checklistItemId={item._id}
         cardId={this.props.cardId}
-        signalDelete={this.signalDelete}
+        //signalDelete={this.signalDelete}
       />
     ));
 
@@ -117,7 +116,7 @@ class Checklist extends React.Component {
 const mapStateToProps = (state, ownProps) => {
   const { cardId } = ownProps;
   const card = state.cards.filter(card => card._id === cardId)[0];
-  return { card };
+  return { card, cards: state.cards };
 };
 
 export default connect(mapStateToProps, { addChecklistItem })(Checklist);
