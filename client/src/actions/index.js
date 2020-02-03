@@ -234,12 +234,18 @@ export const checklistCheck = (
   });
 };
 
-export const checklistDelete = (cardId, checklistItemId) => {
-  return {
-    type: DELETE_CHECKLIST_ITEM,
+export const checklistDelete = (cardId, checklistItemId) => async dispatch => {
+  const updatedCard = await axios.delete(
+    `/api/v1/cards/${cardId}/checklist/${checklistItemId}`
+  );
+
+  const { checklist } = updatedCard.data.data;
+
+  dispatch({
+    type: UPDATE_CHECKLIST,
     payload: {
       cardId,
-      checklistItemId
+      checklist
     }
-  };
+  });
 };

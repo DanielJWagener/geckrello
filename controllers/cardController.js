@@ -25,3 +25,17 @@ exports.updateChecklistItem = catchAsync(async (req, res, next) => {
     data: updatedCard
   });
 });
+
+// Sneaky update function, just takes advantage of the DELETE method to delineate itself from the updateChecklistItem handler
+exports.deleteChecklistItem = catchAsync(async (req, res, next) => {
+  const updatedCard = await Card.findByIdAndUpdate(
+    req.params.cardId,
+    { $pull: { checklist: { _id: req.params.itemId } } },
+    { new: true }
+  );
+
+  res.status(200).json({
+    status: "success",
+    data: updatedCard
+  });
+});

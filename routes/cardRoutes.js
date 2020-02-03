@@ -19,6 +19,7 @@ router
 
 router
   .route("/:cardId/checklist/:itemId")
-  .patch(cardController.updateChecklistItem);
+  .patch(cardController.updateChecklistItem)
+  .delete(cardController.deleteChecklistItem);
 
 module.exports = router;
