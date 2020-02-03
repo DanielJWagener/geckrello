@@ -12,7 +12,6 @@ import {
   ARCHIVE_CARD,
   RESTORE_CARD,
   UPDATE_CARD_DESCRIPTION,
-  DELETE_CHECKLIST_ITEM,
   UNLOAD_BOARD,
   UPDATE_BOARD,
   UPDATE_CHECKLIST
@@ -132,7 +131,12 @@ export const copyCard = (sourceCardId, newListHome) => async dispatch => {
   card.listHome = newListHome;
 
   // Destructure fields for POST request (all but original document ID)
-  const { description, archived, title, boardHome, listHome, checklist } = card;
+  let { description, archived, title, boardHome, listHome, checklist } = card;
+
+  // If the source card has a checklist, copy all values into new array so Mongo can create new IDs
+  if (checklist) {
+    checklist = checklist.map(({ checked, label }) => ({ checked, label }));
+  }
 
   // Create card in database
   let newCard = await axios.post(`/api/v1/cards`, {

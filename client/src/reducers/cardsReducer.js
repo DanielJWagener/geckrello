@@ -6,9 +6,6 @@ import {
   ARCHIVE_CARD,
   RESTORE_CARD,
   UPDATE_CARD_DESCRIPTION,
-  ADD_CHECKLIST_ITEM,
-  CHECK_CHECKLIST_ITEM,
-  DELETE_CHECKLIST_ITEM,
   UPDATE_CHECKLIST
 } from "../actions/types";
 
@@ -78,17 +75,6 @@ export default (state = [], action) => {
         if (card._id === action.payload.cardId) {
           // Set checklist in state equal to checklist retrieved from database after update
           card.checklist = action.payload.checklist;
-        }
-      });
-      return currentCards;
-    case DELETE_CHECKLIST_ITEM:
-      // Locate corresponding card in store
-      currentCards.forEach(card => {
-        if (card.cardId === action.payload.cardId) {
-          // Locate corresponding checklist item inside, filter out item with payload's id
-          card.checklist = card.checklist.filter(
-            item => item.checklistItemId !== action.payload.checklistItemId
-          );
         }
       });
       return currentCards;
