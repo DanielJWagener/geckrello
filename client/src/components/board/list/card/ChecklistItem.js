@@ -18,35 +18,24 @@ function ChecklistItem(props) {
     props.deleteChecklistItem(props.cardId, props.checklistItemId);
   }
 
-  if (!props.checked) {
-    return (
-      <div className="item">
-        <div
-          className="item__checkbox item__checkbox--unchecked"
-          onClick={checkOrUncheck}
-        ></div>
-        <div className="item__title">{props.itemLabel}</div>
-        <div className="item__delete" onClick={deleteItem}>
-          &times;
-        </div>
+  return (
+    <div className="item">
+      <div
+        className={`item__checkbox ${
+          props.checked
+            ? "item__checkbox--checked"
+            : "item__checkbox--unchecked"
+        }`}
+        onClick={checkOrUncheck}
+      >
+        {props.checked ? <div className="checkmark">&#10004;</div> : <></>}
       </div>
-    );
-  } else {
-    return (
-      <div className="item">
-        <div
-          className="item__checkbox item__checkbox--checked"
-          onClick={checkOrUncheck}
-        >
-          <div className="checkmark">&#10004;</div>
-        </div>
-        <div className="item__title">{props.itemLabel}</div>
-        <div className="item__delete" onClick={deleteItem}>
-          &times;
-        </div>
+      <div className="item__title">{props.itemLabel}</div>
+      <div className="item__delete" onClick={deleteItem}>
+        &times;
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 const mapStateToProps = (state, ownProps) => {
