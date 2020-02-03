@@ -8,7 +8,8 @@ import {
   UPDATE_CARD_DESCRIPTION,
   ADD_CHECKLIST_ITEM,
   CHECK_CHECKLIST_ITEM,
-  DELETE_CHECKLIST_ITEM
+  DELETE_CHECKLIST_ITEM,
+  UPDATE_CHECKLIST
 } from "../actions/types";
 
 export default (state = [], action) => {
@@ -71,29 +72,12 @@ export default (state = [], action) => {
         }
       });
       return currentCards;
-    case ADD_CHECKLIST_ITEM:
-      // const { checklistItemTitle, checklistItemId, checked } = action.payload;
-      // const newItem = { checklistItemTitle, checklistItemId, checked };
-      console.log("action.payload.checklist is ", action.payload.checklist);
+    case UPDATE_CHECKLIST:
       // Locate corresponding card in store
       currentCards.forEach(card => {
         if (card._id === action.payload.cardId) {
-          // Set checklist in state to checklist retrieved from dabase after update
+          // Set checklist in state equal to checklist retrieved from database after update
           card.checklist = action.payload.checklist;
-        }
-      });
-      return currentCards;
-    case CHECK_CHECKLIST_ITEM:
-      // Locate corresponding card in store
-      currentCards.forEach(card => {
-        if (card.cardId === action.payload.cardId) {
-          // Locate corresponding checklist item inside that card's checklist
-          card.checklist.forEach(item => {
-            if (item.checklistItemId === action.payload.checklistItemId) {
-              // Check or uncheck
-              item.checked = !item.checked;
-            }
-          });
         }
       });
       return currentCards;

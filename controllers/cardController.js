@@ -16,7 +16,7 @@ exports.updateChecklistItem = catchAsync(async (req, res, next) => {
       _id: req.params.cardId,
       checklist: { $elemMatch: { _id: req.params.itemId } }
     },
-    { $set: { "checklist.$.checked": true } },
+    req.body,
     { new: true }
   );
 

@@ -4,7 +4,7 @@ import { checklistCheck, checklistDelete } from "../../../../actions";
 
 function ChecklistItem(props) {
   function checkItem() {
-    props.checklistCheck(props.cardId, props.checklistItemId);
+    props.checklistCheck(props.cardId, props.checklistItemId, props.checked);
   }
 
   function deleteItem() {

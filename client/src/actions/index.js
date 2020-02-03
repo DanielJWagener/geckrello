@@ -12,11 +12,10 @@ import {
   ARCHIVE_CARD,
   RESTORE_CARD,
   UPDATE_CARD_DESCRIPTION,
-  ADD_CHECKLIST_ITEM,
-  CHECK_CHECKLIST_ITEM,
   DELETE_CHECKLIST_ITEM,
   UNLOAD_BOARD,
-  UPDATE_BOARD
+  UPDATE_BOARD,
+  UPDATE_CHECKLIST
 } from "./types";
 
 // AUTH
@@ -202,7 +201,7 @@ export const addChecklistItem = (cardId, label) => async dispatch => {
   const { checklist } = updatedCard.data.data;
 
   dispatch({
-    type: ADD_CHECKLIST_ITEM,
+    type: UPDATE_CHECKLIST,
     payload: {
       cardId,
       checklist
@@ -210,14 +209,29 @@ export const addChecklistItem = (cardId, label) => async dispatch => {
   });
 };
 
-export const checklistCheck = (cardId, checklistItemId) => {
-  return {
-    type: CHECK_CHECKLIST_ITEM,
+export const checklistCheck = (
+  cardId,
+  checklistItemId,
+  checked
+) => async dispatch => {
+  // Set checked field to false if currently true, and vice-versa
+  const updateBody = { $set: { "checklist.$.checked": !checked } };
+
+  // Update card and get updated checklist from it
+  const updatedCard = await axios.patch(
+    `/api/v1/cards/${cardId}/checklist/${checklistItemId}`,
+    updateBody
+  );
+  const { checklist } = updatedCard.data.data;
+
+  // Send updated checklist to reducer
+  dispatch({
+    type: UPDATE_CHECKLIST,
     payload: {
       cardId,
-      checklistItemId
+      checklist
     }
-  };
+  });
 };
 
 export const checklistDelete = (cardId, checklistItemId) => {
