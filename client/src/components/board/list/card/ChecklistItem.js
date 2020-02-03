@@ -1,15 +1,21 @@
 import React from "react";
 import { connect } from "react-redux";
-import { checklistCheck, checklistDelete } from "../../../../actions";
+import {
+  checkOrUncheckChecklistItem,
+  deleteChecklistItem
+} from "../../../../actions";
 
 function ChecklistItem(props) {
-  function checkItem() {
-    props.checklistCheck(props.cardId, props.checklistItemId, props.checked);
+  function checkOrUncheck() {
+    props.checkOrUncheckChecklistItem(
+      props.cardId,
+      props.checklistItemId,
+      props.checked
+    );
   }
 
   function deleteItem() {
-    props.checklistDelete(props.cardId, props.checklistItemId);
-    //props.signalDelete();
+    props.deleteChecklistItem(props.cardId, props.checklistItemId);
   }
 
   if (!props.checked) {
@@ -17,7 +23,7 @@ function ChecklistItem(props) {
       <div className="item">
         <div
           className="item__checkbox item__checkbox--unchecked"
-          onClick={checkItem}
+          onClick={checkOrUncheck}
         ></div>
         <div className="item__title">{props.itemLabel}</div>
         <div className="item__delete" onClick={deleteItem}>
@@ -30,7 +36,7 @@ function ChecklistItem(props) {
       <div className="item">
         <div
           className="item__checkbox item__checkbox--checked"
-          onClick={checkItem}
+          onClick={checkOrUncheck}
         >
           <div className="checkmark">&#10004;</div>
         </div>
@@ -54,6 +60,7 @@ const mapStateToProps = (state, ownProps) => {
   }
 };
 
-export default connect(mapStateToProps, { checklistCheck, checklistDelete })(
-  ChecklistItem
-);
+export default connect(mapStateToProps, {
+  checkOrUncheckChecklistItem,
+  deleteChecklistItem
+})(ChecklistItem);
