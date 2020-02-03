@@ -11,7 +11,6 @@ export const RESTORE_LIST = "RESTORE_LIST";
 
 export const ADD_CARD = "ADD_CARD";
 export const MOVE_CARD = "MOVE_CARD";
-export const COPY_CARD = "COPY_CARD";
 export const ARCHIVE_CARD = "ARCHIVE_CARD";
 export const RESTORE_CARD = "RESTORE_CARD";
 export const UPDATE_CARD_DESCRIPTION = "UPDATE_CARD_DESCRIPTION";

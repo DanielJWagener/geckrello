@@ -2,7 +2,6 @@ import axios from "axios";
 import {
   ADD_CARD,
   MOVE_CARD,
-  COPY_CARD,
   ARCHIVE_CARD,
   RESTORE_CARD,
   UPDATE_CARD_DESCRIPTION,
@@ -63,14 +62,10 @@ export const copyCard = (sourceCardId, newListHome) => async dispatch => {
     checklist
   });
 
-  // Send data to reducers
+  // Send new card to reducers
   dispatch({
-    type: COPY_CARD,
-    payload: {
-      sourceCardId,
-      newCardId: newCard.data.data._id,
-      newListHome
-    }
+    type: ADD_CARD,
+    payload: newCard.data.data
   });
 };
 

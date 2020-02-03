@@ -2,7 +2,6 @@ import {
   FETCH_BOARD_DATA,
   ADD_CARD,
   MOVE_CARD,
-  COPY_CARD,
   ARCHIVE_CARD,
   RESTORE_CARD,
   UPDATE_CARD_DESCRIPTION,
@@ -15,19 +14,8 @@ export default (state = [], action) => {
     case FETCH_BOARD_DATA:
       return action.payload.cards;
     case ADD_CARD:
-      // Return current state with new card appendded
-      return [
-        ...state,
-        {
-          title: action.payload.title,
-          _id: action.payload._id,
-          listHome: action.payload.listHome,
-          boardHome: action.payload.boardHome,
-          archived: false,
-          checklist: [],
-          description: ""
-        }
-      ];
+      // Return current state with new card appended
+      return [...state, action.payload];
     case MOVE_CARD:
       // Locate coresponding card in store
       currentCards.forEach(card => {
@@ -37,16 +25,8 @@ export default (state = [], action) => {
         }
       });
       return currentCards;
-    case COPY_CARD:
-      const source = currentCards.find(
-        card => card._id === action.payload.sourceCardId
-      );
-      const newCard = {};
-      Object.assign(newCard, source);
-      newCard.listHome = action.payload.newListHome;
-      newCard.cardId = action.payload.newCardId;
-      return [...currentCards, newCard];
     case ARCHIVE_CARD:
+      // Find card in store, update archived property
       currentCards.forEach(card => {
         if (card._id === action.payload) {
           card.archived = true;
@@ -54,6 +34,7 @@ export default (state = [], action) => {
       });
       return currentCards;
     case RESTORE_CARD:
+      // Find card in store, update archived property
       currentCards.forEach(card => {
         if (card._id === action.payload) {
           card.archived = false;
