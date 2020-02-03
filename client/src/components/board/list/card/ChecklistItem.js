@@ -18,6 +18,7 @@ function ChecklistItem(props) {
     props.deleteChecklistItem(props.cardId, props.checklistItemId);
   }
 
+  // Conditionally render a checked or unchecked checklist item
   return (
     <div className="item">
       <div
