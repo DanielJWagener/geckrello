@@ -41,7 +41,11 @@ function ChecklistItem(props) {
 
 const mapStateToProps = (state, ownProps) => {
   const { checklistItemId, cardId } = ownProps;
+
+  // Fetch current card from the Redux store
   let card = state.cards.filter(card => card._id === cardId)[0];
+
+  // Fetch this checklist item from that card, return its checked property (a boolean)
   if (card.checklist.length > 0) {
     let checked = card.checklist.filter(item => item._id === checklistItemId)[0]
       .checked;
