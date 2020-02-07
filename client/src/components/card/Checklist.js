@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { addChecklistItem } from "../../../../actions";
+import { addChecklistItem } from "../../actions";
 
 import ChecklistItem from "./ChecklistItem";
 
@@ -26,21 +26,6 @@ class Checklist extends React.Component {
       return false;
     }
 
-    // Generate a unique key and listItemId in the event of duplicate list item titles
-    // const generateChecklistItemId = inputId => {
-    //   if (
-    //     !this.props.card.checklist.find(
-    //       listItem => listItem.checklistItemId === inputId
-    //     )
-    //   ) {
-    //     return inputId;
-    //   } else {
-    //     inputId = `${inputId}-duplicate`;
-    //     return generateChecklistItemId(inputId);
-    //   }
-    // };
-    // let checklistItemId = generateChecklistItemId(this.state.newItemInput);
-
     //Redux call to add new item to checklist array of card (unchecked by default)
     this.props.addChecklistItem(
       this.props.cardId,
@@ -56,11 +41,6 @@ class Checklist extends React.Component {
     this.setState({ newItemInput: e.target.value });
   };
 
-  // signalDelete = () => {
-  //   let newDeleteCount = this.state.deleteCount + 1;
-  //   this.setState({ deleteCount: newDeleteCount });
-  // };
-
   checklistItemsArray = () =>
     this.props.card.checklist.map(item => (
       <ChecklistItem
@@ -68,7 +48,6 @@ class Checklist extends React.Component {
         itemLabel={item.label}
         checklistItemId={item._id}
         cardId={this.props.cardId}
-        //signalDelete={this.signalDelete}
       />
     ));
 

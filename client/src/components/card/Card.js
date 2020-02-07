@@ -1,8 +1,8 @@
 import React from "react";
-import { ItemTypes } from "../../Constants";
+import { ItemTypes } from "../Constants";
 import { useDrag } from "react-dnd";
 import { connect } from "react-redux";
-import { moveCard } from "../../../../actions";
+import { moveCard } from "../../actions";
 
 function Card(props) {
   // Drag source hook

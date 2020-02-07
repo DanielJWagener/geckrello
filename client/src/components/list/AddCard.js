@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { addCard } from "../../../actions";
+import { addCard } from "../../actions";
 
 class AddCard extends React.Component {
   // This component has two modes: "prompt" and "input." The "prompt" mode is the initial mode, basically a button with a label like "add new card." When the user clicks that button, the mode changes to "input," and the user can input and submit a new card and title.

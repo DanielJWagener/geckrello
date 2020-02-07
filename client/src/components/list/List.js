@@ -1,9 +1,9 @@
 import AddCard from "./AddCard";
-import Card from "./card/Card";
-import CardModal from "./card/CardModal";
+import Card from "../card/Card";
+import CardModal from "../card/CardModal";
 import React from "react";
 import { connect } from "react-redux";
-import { archiveList } from "../../../actions";
+import { archiveList } from "../../actions";
 import ListDropTarget from "./ListDropTarget";
 import memoize from "memoize-one";
 

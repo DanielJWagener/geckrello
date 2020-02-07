@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { archiveCard, moveCard, copyCard } from "../../../../actions";
+import { archiveCard, moveCard, copyCard } from "../../actions";
 
 class SideMenu extends React.Component {
   state = { panel: "", value: this.props.listHome };

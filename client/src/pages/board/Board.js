@@ -3,8 +3,8 @@ import { DndProvider } from "react-dnd";
 import HTML5Backend from "react-dnd-html5-backend";
 import { connect } from "react-redux";
 
-import AddList from "../../components/board/AddList";
-import List from "../../components/board/list/List";
+import AddList from "../../components/AddList";
+import List from "../../components/list/List";
 import MenuBar from "../../components/board/menu-bar/MenuBar";
 import { unloadBoard, fetchBoardData } from "../../actions";
 import colorThemes from "../../utilities/colorThemes";

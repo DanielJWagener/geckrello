@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { updateCardDescription } from "../../../../actions";
+import { updateCardDescription } from "../../actions";
 
 class Description extends React.Component {
   state = {
