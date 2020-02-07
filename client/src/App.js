@@ -2,12 +2,12 @@ import React from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import { connect } from "react-redux";
 
-import { fetchUser } from "../../actions";
-import Board from "../board/Board";
-import Navbar from "../navbar/NavBar";
-import Dashboard from "../dashboard/Dashboard";
-import Landing from "../Landing";
-import setDefaultColors from "../../utilities/setDefaultColors";
+import { fetchUser } from "./actions";
+import Board from "./pages/board/Board";
+import Navbar from "./components/navbar/NavBar";
+import Dashboard from "./pages/dashboard/Dashboard";
+import Landing from "./pages/landing/Landing";
+import setDefaultColors from "./utilities/setDefaultColors";
 
 class App extends React.Component {
   constructor(props) {

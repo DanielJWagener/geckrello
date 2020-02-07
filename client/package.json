@@ -22,7 +22,7 @@
     "watch:sass": "node-sass src/sass/index.scss src/index.css -watch",
     "compile:sass": "node-sass src/sass/index.scss src/index.css",
     "prefix:css": "postcss --use autoprefixer -b 'last 10 versions' src/index.css -o src/index.css",
-    "start:react": "react-scripts start",
+    "start:react": "react-scripts start --browser=firefox",
     "start": "npm-run-all --parallel start:react watch:sass",
     "build": "react-scripts build",
     "test": "react-scripts test",

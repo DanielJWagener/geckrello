@@ -7,7 +7,7 @@ import * as serviceWorker from "./serviceWorker";
 import axios from "axios";
 
 import "./index.css";
-import App from "./components/app/App";
+import App from "./App";
 import reducers from "./reducers";
 
 // temporary test code

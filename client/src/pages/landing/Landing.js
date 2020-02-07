@@ -1,6 +1,6 @@
 import React from "react";
 
-import setDefaultColors from "../utilities/setDefaultColors";
+import setDefaultColors from "../../utilities/setDefaultColors";
 
 class Landing extends React.Component {
   componentDidMount() {
