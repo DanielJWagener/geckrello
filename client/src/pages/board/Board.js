@@ -9,6 +9,8 @@ import BoardHeader from "../../components/BoardHeader/board-header.component";
 import { unloadBoard, fetchBoardData } from "../../actions";
 import colorThemes from "../../utilities/colorThemes";
 
+import "./board.styles.scss";
+
 class Board extends React.Component {
   componentDidMount() {
     this.props.fetchBoardData(this.props.match.params.id);
