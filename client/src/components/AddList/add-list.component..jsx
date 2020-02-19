@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { addList } from "../actions";
+import { addList } from "../../actions";
 
 class AddList extends React.Component {
   state = {
