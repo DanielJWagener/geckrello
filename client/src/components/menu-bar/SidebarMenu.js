@@ -2,9 +2,15 @@ import React from "react";
 
 import Archive from "./Archive";
 import ChangeBackground from "./ChangeBackground";
+import SidebarPanel from "./SidebarPanel";
 
 class SidebarMenu extends React.Component {
-  state = { archiveHidden: true, changeBackgroundHidden: true };
+  // state = { archiveHidden: true, changeBackgroundHidden: true };
+  state = { panel: "none" };
+
+  togglePanel = panel => {
+    this.setState({ panel });
+  };
 
   toggleArchive = () => {
     this.setState({ archiveHidden: !this.state.archiveHidden });
@@ -24,12 +30,15 @@ class SidebarMenu extends React.Component {
           &times;
         </div>
         <hr />
-        <button className="sidebar-menu__item" onClick={this.toggleArchive}>
+        <button
+          className="sidebar-menu__item"
+          onClick={() => this.togglePanel("Archive")}
+        >
           Show Archive
         </button>
         <button
           className="sidebar-menu__item"
-          onClick={this.toggleChangeBackground}
+          onClick={() => this.togglePanel("ChangeBackground")}
         >
           Change Background
         </button>
@@ -40,14 +49,20 @@ class SidebarMenu extends React.Component {
         >
           <button className="sidebar-menu__item">View Repo</button>
         </a>
-        <Archive
-          hidden={this.state.archiveHidden}
-          toggleArchive={this.toggleArchive}
-        />
-        <ChangeBackground
-          hidden={this.state.changeBackgroundHidden}
-          toggleChangeBackground={this.toggleChangeBackground}
-        />
+        <SidebarPanel
+          visible={this.state.panel === "Archive"}
+          togglePanel={this.togglePanel}
+          heading="Archive"
+        >
+          <Archive />
+        </SidebarPanel>
+        <SidebarPanel
+          visible={this.state.panel === "ChangeBackground"}
+          togglePanel={this.togglePanel}
+          heading="Change Background"
+        >
+          <ChangeBackground />
+        </SidebarPanel>
       </div>
     );
   }

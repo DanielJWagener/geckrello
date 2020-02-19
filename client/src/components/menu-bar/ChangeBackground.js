@@ -1,14 +1,13 @@
 import React from "react";
-import ChangeBackgroundInner from "./ChangeBackgroundInner.js";
+import ColorPalette from "./ColorPalette";
 
-const ChangeBackground = ({ hidden, toggleChangeBackground }) => (
-  <div
-    className={`sidebar-menu__interface sidebar-menu__interface--${
-      hidden ? "hidden" : "visible"
-    }`}
-  >
-    <ChangeBackgroundInner toggleChangeBackground={toggleChangeBackground} />
-  </div>
-);
+const colors = ["red", "orange", "green", "blue", "purple"];
+
+const colorPalettes = () =>
+  colors.map(color => <ColorPalette key={color} color={color} />);
+
+const ChangeBackground = () => {
+  return <div className="colors">{colorPalettes()}</div>;
+};
 
 export default ChangeBackground;
