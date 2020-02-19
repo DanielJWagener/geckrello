@@ -1,9 +1,9 @@
 import React from "react";
 
-import Archive from "./Archive";
-import ChangeBackground from "./ChangeBackground";
-import SidebarPanel from "./SidebarPanel";
-import SidebarItem from "./SidebarItem";
+import Archive from "../Archive/archive.component";
+import ChangeBackground from "../ChangeBackground/change-background.component";
+import SidebarPanel from "../BoardMenuPanel/board-menu-panel.component";
+import SidebarItem from "../BoardMenuItem/board-menu-item";
 
 class SidebarMenu extends React.Component {
   state = { panel: "none" };

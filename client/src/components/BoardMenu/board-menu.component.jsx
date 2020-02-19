@@ -1,5 +1,5 @@
 import React from "react";
-import SidebarMenu from "./SidebarMenu";
+import SidebarMenu from "../BoardMenuContent/board-menu-content";
 
 const sidebarRoot = document.getElementById("sidebar-root");
 

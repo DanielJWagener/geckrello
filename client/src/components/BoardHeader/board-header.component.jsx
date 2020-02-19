@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 
-import BoardTitle from "./BoardTitle";
-import MenuToggler from "./MenuToggler";
-import Sidebar from "./Sidebar";
-import SidebarPortal from "./SidebarPortal";
+import BoardTitle from "../BoardTitle/board-title.component";
+import MenuToggler from "../MenuToggler/menu-toggler.component";
+import Sidebar from "../BoardMenu/board-menu.component";
+import BoardMenuPortal from "../BoardMenuPortal/board-menu-portal.component";
 
 import "../../index.css";
 
-class MenuBar extends Component {
+class BoardHeader extends Component {
   state = {
     sidebarHidden: true
   };
@@ -28,15 +28,15 @@ class MenuBar extends Component {
           toggleSidebar={this.toggleSidebar}
           sidebarHidden={this.state.sidebarHidden}
         />
-        <SidebarPortal>
+        <BoardMenuPortal>
           <Sidebar
             hidden={this.state.sidebarHidden}
             toggleSidebar={this.toggleSidebar}
           />
-        </SidebarPortal>
+        </BoardMenuPortal>
       </div>
     );
   }
 }
 
-export default MenuBar;
+export default BoardHeader;

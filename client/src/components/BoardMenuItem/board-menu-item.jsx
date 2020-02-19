@@ -1,6 +1,6 @@
 import React from "react";
 
-const SidebarItem = ({ togglePanel, toggleTarget, children }) => (
+const BoardMenuItem = ({ togglePanel, toggleTarget, children }) => (
   <button
     className="sidebar-menu__item"
     onClick={() => togglePanel(toggleTarget)}
@@ -9,4 +9,4 @@ const SidebarItem = ({ togglePanel, toggleTarget, children }) => (
   </button>
 );
 
-export default SidebarItem;
+export default BoardMenuItem;

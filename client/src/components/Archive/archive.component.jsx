@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import ArchivedItem from "./ArchivedItem";
+import ArchiveItem from "../ArchiveItem/archive-item.component";
 
 class Archive extends React.Component {
   state = { mode: "lists" };
@@ -18,7 +18,7 @@ class Archive extends React.Component {
     this.props.cards
       .filter(card => card.archived)
       .map(card => (
-        <ArchivedItem
+        <ArchiveItem
           key={card._id}
           itemId={card._id}
           itemTitle={card.title}
@@ -30,7 +30,7 @@ class Archive extends React.Component {
     this.props.lists
       .filter(list => list.archived)
       .map(list => (
-        <ArchivedItem
+        <ArchiveItem
           key={list._id}
           itemId={list._id}
           itemTitle={list.title}

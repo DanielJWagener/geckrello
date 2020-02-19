@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { restoreList, restoreCard } from "../../actions";
 
-const ArchivedItem = props => {
+const ArchiveItem = props => {
   const restore = () => {
     if (props.itemType === "list") {
       props.restoreList(props.itemId);
@@ -21,4 +21,4 @@ const ArchivedItem = props => {
   );
 };
 
-export default connect(null, { restoreList, restoreCard })(ArchivedItem);
+export default connect(null, { restoreList, restoreCard })(ArchiveItem);

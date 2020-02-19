@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 
 import AddList from "../../components/AddList";
 import List from "../../components/List/list.component";
-import MenuBar from "../../components/menu-bar/MenuBar";
+import BoardHeader from "../../components/BoardHeader/board-header.component";
 import { unloadBoard, fetchBoardData } from "../../actions";
 import colorThemes from "../../utilities/colorThemes";
 
@@ -52,7 +52,7 @@ class Board extends React.Component {
     if (this.props.board) {
       return (
         <div>
-          <MenuBar board={this.props.board} />
+          <BoardHeader board={this.props.board} />
           <DndProvider backend={HTML5Backend}>
             <div className="board" id="board">
               {this.listsArray()}
