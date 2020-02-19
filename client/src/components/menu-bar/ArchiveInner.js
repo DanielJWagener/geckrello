@@ -25,6 +25,7 @@ class ArchiveInner extends React.Component {
           itemType="card"
         />
       ));
+
   archivedListsArray = () =>
     this.props.lists
       .filter(list => list.archived)
@@ -38,55 +39,40 @@ class ArchiveInner extends React.Component {
       ));
 
   render() {
-    if (this.state.mode === "lists") {
-      return (
-        <div>
-          <h2 className="sidebar-menu__heading">Archive</h2>
-          <div
-            className="sidebar-menu__interface--close"
-            onClick={this.props.toggleArchive}
-          >
-            &times;
-          </div>
-          <div className="archive-toggle">
-            <button className="archive-toggle__button archive-toggle__button--active">
-              Lists
-            </button>
-            <button
-              className="archive-toggle__button archive-toggle__button--inactive"
-              onClick={this.toggleMode}
-            >
-              Cards
-            </button>
-          </div>
-          <div className="archive__list">{this.archivedListsArray()}</div>
+    return (
+      <div>
+        <h2 className="sidebar-menu__heading">Archive</h2>
+        <div
+          className="sidebar-menu__interface--close"
+          onClick={this.props.toggleArchive}
+        >
+          &times;
         </div>
-      );
-    } else if (this.state.mode === "cards") {
-      return (
-        <div>
-          <h2 className="sidebar-menu__heading">Archive</h2>
-          <div
-            className="sidebar-menu__interface--close"
-            onClick={this.props.toggleArchive}
+        <div className="archive-toggle">
+          <button
+            className={`archive-toggle__button archive-toggle__button${
+              this.state.mode === "lists" ? "--active" : "--inactive"
+            }`}
+            onClick={this.toggleMode}
           >
-            &times;
-          </div>
-          <div className="archive-toggle">
-            <button
-              className="archive-toggle__button archive-toggle__button--inactive"
-              onClick={this.toggleMode}
-            >
-              Lists
-            </button>
-            <button className="archive-toggle__button archive-toggle__button--active">
-              Cards
-            </button>
-          </div>
-          <div className="archive__list">{this.archivedCardsArray()}</div>
+            Lists
+          </button>
+          <button
+            className={`archive-toggle__button archive-toggle__button${
+              this.state.mode === "cards" ? "--active" : "--inactive"
+            }`}
+            onClick={this.toggleMode}
+          >
+            Cards
+          </button>
         </div>
-      );
-    }
+        <div className="archive__list">
+          {this.state.mode === "lists"
+            ? this.archivedListsArray()
+            : this.archivedCardsArray()}
+        </div>
+      </div>
+    );
   }
 }
 
