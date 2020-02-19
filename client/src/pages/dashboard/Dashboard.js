@@ -1,8 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import AddBoard from "../../components/dashboard/AddBoard";
-import BoardLink from "../../components/dashboard/BoardLink";
+import AddBoard from "../../components/AddBoard/add-board.component";
+import BoardLink from "../../components/BoardLink/board-link.component";
 import { fetchUser } from "../../actions";
 import "./dashboard.scss";
 import setDefaultColors from "../../utilities/setDefaultColors";
