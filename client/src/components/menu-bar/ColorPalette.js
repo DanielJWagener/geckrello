@@ -1,8 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { updateBoard } from "../../../actions";
-import colorThemes from "../../../utilities/colorThemes";
+import { updateBoard } from "../../actions";
+import colorThemes from "../../utilities/colorThemes";
 
 const ColorPalette = props => {
   const theme = colorThemes[props.color];

@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 
 import AddList from "../../components/AddList";
 import List from "../../components/list/List";
-import MenuBar from "../../components/board/menu-bar/MenuBar";
+import MenuBar from "../../components/menu-bar/MenuBar";
 import { unloadBoard, fetchBoardData } from "../../actions";
 import colorThemes from "../../utilities/colorThemes";
 

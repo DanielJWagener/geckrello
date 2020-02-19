@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 
 import { fetchUser } from "./actions";
 import Board from "./pages/board/Board";
-import Navbar from "./components/navbar/NavBar";
+import Navbar from "./components/navbar/navbar.component";
 import Dashboard from "./pages/dashboard/Dashboard";
 import Landing from "./pages/landing/Landing";
 import setDefaultColors from "./utilities/setDefaultColors";

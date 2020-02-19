@@ -1,10 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-
-import Logo from "./Logo";
-import DashboardLink from "./DashboardLink";
-import SignIn from "./SignIn";
-import Logout from "./Logout";
+import { Link } from "react-router-dom";
 
 import "../../index.css";
 
@@ -12,19 +8,31 @@ class NavBar extends Component {
   renderAuth() {
     switch (this.props.auth) {
       case null:
-        return <div> </div>;
+        return <> </>;
       case false:
-        return <SignIn />;
+        return (
+          <a href="/auth/google" class="auth-link">
+            Sign In With Google
+          </a>
+        );
       default:
-        return <Logout />;
+        return (
+          <a href="/api/v1/users/logout" className="auth-link">
+            Log Out
+          </a>
+        );
     }
   }
 
   renderDashLink() {
     if (!this.props.auth) {
-      return <div> </div>;
+      return <> </>;
     }
-    return <DashboardLink />;
+    return (
+      <Link to="/dashboard" className="auth-link">
+        Dashboard
+      </Link>
+    );
   }
 
   render() {
@@ -32,7 +40,9 @@ class NavBar extends Component {
     return (
       <div className="navbar">
         {this.renderDashLink()}
-        <Logo />
+        <Link to="/" className="navbar__link">
+          <h1 className="navbar__logo">Geckrello</h1>
+        </Link>
         {this.renderAuth()}
       </div>
     );

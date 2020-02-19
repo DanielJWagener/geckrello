@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import { updateBoard } from "../../../actions";
+import { updateBoard } from "../../actions";
 
 class BoardTitle extends Component {
   state = {

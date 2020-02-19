@@ -4,7 +4,7 @@
   "main": "index.js",
   "repository": "https://github.com/DanielJWagener/geckrello",
   "engines": {
-    "node": "12.10.0",
+    "node": "^13.8.0",
     "yarn": "1.21.1"
   },
   "scripts": {

@@ -5,7 +5,7 @@ import MenuToggler from "./MenuToggler";
 import Sidebar from "./Sidebar";
 import SidebarPortal from "./SidebarPortal";
 
-import "../../../index.css";
+import "../../index.css";
 
 class MenuBar extends Component {
   state = {

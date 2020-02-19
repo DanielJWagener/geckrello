@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { restoreList, restoreCard } from "../../../actions";
+import { restoreList, restoreCard } from "../../actions";
 
 const ArchivedItem = props => {
   const restore = () => {

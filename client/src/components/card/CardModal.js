@@ -3,6 +3,8 @@ import Description from "./Description";
 import Checklist from "./Checklist";
 import SideMenu from "./SideMenu";
 
+import "./modal.scss";
+
 function CardModal(props) {
   return (
     <div className="modal__overlay" id={props.cardId}>
