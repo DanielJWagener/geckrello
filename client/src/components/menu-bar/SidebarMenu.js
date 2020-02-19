@@ -29,16 +29,16 @@ class SidebarMenu extends React.Component {
         >
           Change Background
         </SidebarItem>
-
-        <a
-          href="https://github.com/chingu-voyages/v11-geckos-team-03"
-          target="_blank"
-          rel="noopener noreferrer"
+        <SidebarItem
+          toggleTarget="BoardDescription"
+          togglePanel={this.togglePanel}
         >
-          <SidebarItem toggleTarget="none" togglePanel={this.togglePanel}>
-            View Repo
-          </SidebarItem>
-        </a>
+          Edit Board Description
+        </SidebarItem>
+        <SidebarItem toggleTarget="Friends" togglePanel={this.togglePanel}>
+          Manage Friends
+        </SidebarItem>
+
         <SidebarPanel
           visible={this.state.panel === "Archive"}
           togglePanel={this.togglePanel}
@@ -53,6 +53,16 @@ class SidebarMenu extends React.Component {
         >
           <ChangeBackground />
         </SidebarPanel>
+        <SidebarPanel
+          visible={this.state.panel === "BoardDescription"}
+          togglePanel={this.togglePanel}
+          heading="Board Description"
+        ></SidebarPanel>
+        <SidebarPanel
+          visible={this.state.panel === "Friends"}
+          togglePanel={this.togglePanel}
+          heading="Friends"
+        ></SidebarPanel>
       </div>
     );
   }
