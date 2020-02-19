@@ -1,9 +1,9 @@
 import React from "react";
-import Description from "./Description";
-import Checklist from "./Checklist";
-import SideMenu from "./SideMenu";
+import CardDescription from "../CardDescription/card-description.component";
+import Checklist from "../Checklist/checklist.component";
+import SideMenu from "../CardUtilities/card-utilities.component";
 
-import "./modal.scss";
+import "./card-modal.styles.scss";
 
 function CardModal(props) {
   return (
@@ -21,7 +21,7 @@ function CardModal(props) {
         </a>
         <div className="modal__main">
           <div className="modal__main--left">
-            <Description cardId={props.cardId}></Description>
+            <CardDescription cardId={props.cardId}></CardDescription>
 
             <Checklist cardId={props.cardId}></Checklist>
           </div>

@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { addChecklistItem } from "../../actions";
 
-import ChecklistItem from "./ChecklistItem";
+import ChecklistItem from "../ChecklistItem/checklist-item.component";
 
 class Checklist extends React.Component {
   state = {

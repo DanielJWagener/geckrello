@@ -4,7 +4,7 @@ import { useDrag } from "react-dnd";
 import { connect } from "react-redux";
 import { moveCard } from "../../actions";
 
-import "./card.scss";
+import "./card.styles.scss";
 
 function Card(props) {
   // Drag source hook

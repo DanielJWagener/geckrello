@@ -1,6 +1,6 @@
 import AddCard from "./AddCard";
-import Card from "../card/Card";
-import CardModal from "../card/CardModal";
+import Card from "../Card/card.component";
+import CardModal from "../CardModal/card-modal.component";
 import React from "react";
 import { connect } from "react-redux";
 import { archiveList } from "../../actions";

@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { updateCardDescription } from "../../actions";
 
-class Description extends React.Component {
+class CardDescription extends React.Component {
   state = {
     descriptionInput: "",
     mode: "prompt"
@@ -99,4 +99,6 @@ const mapStateToProps = (state, ownProps) => {
   return { card, allCards };
 };
 
-export default connect(mapStateToProps, { updateCardDescription })(Description);
+export default connect(mapStateToProps, { updateCardDescription })(
+  CardDescription
+);
