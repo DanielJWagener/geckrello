@@ -3,23 +3,13 @@ import React from "react";
 import Archive from "./Archive";
 import ChangeBackground from "./ChangeBackground";
 import SidebarPanel from "./SidebarPanel";
+import SidebarItem from "./SidebarItem";
 
 class SidebarMenu extends React.Component {
-  // state = { archiveHidden: true, changeBackgroundHidden: true };
   state = { panel: "none" };
 
   togglePanel = panel => {
     this.setState({ panel });
-  };
-
-  toggleArchive = () => {
-    this.setState({ archiveHidden: !this.state.archiveHidden });
-  };
-
-  toggleChangeBackground = () => {
-    this.setState({
-      changeBackgroundHidden: !this.state.changeBackgroundHidden
-    });
   };
 
   render() {
@@ -30,24 +20,24 @@ class SidebarMenu extends React.Component {
           &times;
         </div>
         <hr />
-        <button
-          className="sidebar-menu__item"
-          onClick={() => this.togglePanel("Archive")}
-        >
+        <SidebarItem toggleTarget="Archive" togglePanel={this.togglePanel}>
           Show Archive
-        </button>
-        <button
-          className="sidebar-menu__item"
-          onClick={() => this.togglePanel("ChangeBackground")}
+        </SidebarItem>
+        <SidebarItem
+          toggleTarget="ChangeBackground"
+          togglePanel={this.togglePanel}
         >
           Change Background
-        </button>
+        </SidebarItem>
+
         <a
           href="https://github.com/chingu-voyages/v11-geckos-team-03"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <button className="sidebar-menu__item">View Repo</button>
+          <SidebarItem toggleTarget="none" togglePanel={this.togglePanel}>
+            View Repo
+          </SidebarItem>
         </a>
         <SidebarPanel
           visible={this.state.panel === "Archive"}
