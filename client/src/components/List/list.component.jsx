@@ -1,10 +1,10 @@
-import AddCard from "./AddCard";
+import AddCard from "../AddCard/add-card.component";
 import Card from "../Card/card.component";
 import CardModal from "../CardModal/card-modal.component";
 import React from "react";
 import { connect } from "react-redux";
 import { archiveList } from "../../actions";
-import ListDropTarget from "./ListDropTarget";
+import ListDropTarget from "./list-drop-target";
 import memoize from "memoize-one";
 
 class List extends React.Component {

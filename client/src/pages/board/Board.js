@@ -4,7 +4,7 @@ import HTML5Backend from "react-dnd-html5-backend";
 import { connect } from "react-redux";
 
 import AddList from "../../components/AddList";
-import List from "../../components/list/List";
+import List from "../../components/List/list.component";
 import MenuBar from "../../components/menu-bar/MenuBar";
 import { unloadBoard, fetchBoardData } from "../../actions";
 import colorThemes from "../../utilities/colorThemes";
