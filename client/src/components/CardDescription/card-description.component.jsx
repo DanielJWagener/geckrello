@@ -2,6 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 import { updateCardDescription } from "../../actions";
 
+import "./card-description.styles.scss";
+
 class CardDescription extends React.Component {
   state = {
     descriptionInput: "",

@@ -5,7 +5,7 @@ import MenuToggler from "../MenuToggler/menu-toggler.component";
 import Sidebar from "../BoardMenu/board-menu.component";
 import BoardMenuPortal from "../BoardMenuPortal/board-menu-portal.component";
 
-import "../../index.css";
+import "./board-header.styles.scss";
 
 class BoardHeader extends Component {
   state = {

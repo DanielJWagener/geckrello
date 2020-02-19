@@ -4,6 +4,8 @@ import { addChecklistItem } from "../../actions";
 
 import ChecklistItem from "../ChecklistItem/checklist-item.component";
 
+import "./checklist.styles.scss";
+
 class Checklist extends React.Component {
   state = {
     mode: "prompt",

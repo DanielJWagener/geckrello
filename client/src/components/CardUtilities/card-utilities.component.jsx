@@ -2,7 +2,9 @@ import React from "react";
 import { connect } from "react-redux";
 import { archiveCard, moveCard, copyCard } from "../../actions";
 
-class SideMenu extends React.Component {
+import "./card-utilities.styles.scss";
+
+class CardUtilities extends React.Component {
   state = { panel: "", value: this.props.listHome };
 
   openMoveCardPanel = () => {
@@ -54,18 +56,24 @@ class SideMenu extends React.Component {
   render() {
     if (!this.state.panel) {
       return (
-        <div className="sidemenu">
-          <button className="sidemenu__button" onClick={this.openMoveCardPanel}>
+        <div className="card-utilities">
+          <button
+            className="card-utilities__button"
+            onClick={this.openMoveCardPanel}
+          >
             Move
             <br />
             Card
           </button>
-          <button className="sidemenu__button" onClick={this.openCopyCardPanel}>
+          <button
+            className="card-utilities__button"
+            onClick={this.openCopyCardPanel}
+          >
             Copy
             <br />
             Card
           </button>
-          <button className="sidemenu__button" onClick={this.archiveCard}>
+          <button className="card-utilities__button" onClick={this.archiveCard}>
             Archive
             <br />
             Card
@@ -74,36 +82,48 @@ class SideMenu extends React.Component {
       );
     } else if (this.state.panel === "move") {
       return (
-        <div className="sidemenu">
-          <button className="sidemenu__button" onClick={this.openMoveCardPanel}>
+        <div className="card-utilities">
+          <button
+            className="card-utilities__button"
+            onClick={this.openMoveCardPanel}
+          >
             Move
             <br />
             Card
           </button>
-          <button className="sidemenu__button" onClick={this.openCopyCardPanel}>
+          <button
+            className="card-utilities__button"
+            onClick={this.openCopyCardPanel}
+          >
             Copy
             <br />
             Card
           </button>
-          <button className="sidemenu__button" onClick={this.archiveCard}>
+          <button className="card-utilities__button" onClick={this.archiveCard}>
             Archive
             <br />
             Card
           </button>
 
-          <div className="sidemenu__panel">
-            <h4 className="sidemenu__panel--heading">Move Card</h4>
-            <div className="sidemenu__panel--close" onClick={this.closePanel}>
+          <div className="card-utilities__panel">
+            <h4 className="card-utilities__panel--heading">Move Card</h4>
+            <div
+              className="card-utilities__panel--close"
+              onClick={this.closePanel}
+            >
               &times;
             </div>
             <form onSubmit={this.onMoveSubmit}>
-              <label className="sidemenu__panel--label" htmlFor="moveSelect">
+              <label
+                className="card-utilities__panel--label"
+                htmlFor="moveSelect"
+              >
                 Choose destination list:{" "}
               </label>
               <select
                 value={this.state.value}
                 onChange={this.handleChange}
-                className="sidemenu__panel--select"
+                className="card-utilities__panel--select"
                 id="moveSelect"
               >
                 {this.listOptionsArray()}
@@ -112,7 +132,7 @@ class SideMenu extends React.Component {
               <input
                 type="submit"
                 value="Move"
-                className="sidemenu__panel--submit"
+                className="card-utilities__panel--submit"
               />
             </form>
           </div>
@@ -120,36 +140,48 @@ class SideMenu extends React.Component {
       );
     } else if (this.state.panel === "copy") {
       return (
-        <div className="sidemenu">
-          <button className="sidemenu__button" onClick={this.openMoveCardPanel}>
+        <div className="card-utilities">
+          <button
+            className="card-utilities__button"
+            onClick={this.openMoveCardPanel}
+          >
             Move
             <br />
             Card
           </button>
-          <button className="sidemenu__button" onClick={this.openCopyCardPanel}>
+          <button
+            className="card-utilities__button"
+            onClick={this.openCopyCardPanel}
+          >
             Copy
             <br />
             Card
           </button>
-          <button className="sidemenu__button" onClick={this.archiveCard}>
+          <button className="card-utilities__button" onClick={this.archiveCard}>
             Archive
             <br />
             Card
           </button>
 
-          <div className="sidemenu__panel">
-            <h4 className="sidemenu__panel--heading">Copy Card</h4>
-            <div className="sidemenu__panel--close" onClick={this.closePanel}>
+          <div className="card-utilities__panel">
+            <h4 className="card-utilities__panel--heading">Copy Card</h4>
+            <div
+              className="card-utilities__panel--close"
+              onClick={this.closePanel}
+            >
               &times;
             </div>
             <form onSubmit={this.onCopySubmit}>
-              <label className="sidemenu__panel--label" htmlFor="copySelect">
+              <label
+                className="card-utilities__panel--label"
+                htmlFor="copySelect"
+              >
                 Choose destination list:{" "}
               </label>
               <select
                 value={this.state.value}
                 onChange={this.handleChange}
-                className="sidemenu__panel--select"
+                className="card-utilities__panel--select"
                 id="copySelect"
               >
                 {this.listOptionsArray()}
@@ -158,7 +190,7 @@ class SideMenu extends React.Component {
               <input
                 type="submit"
                 value="Copy"
-                className="sidemenu__panel--submit"
+                className="card-utilities__panel--submit"
               />
             </form>
           </div>
@@ -176,5 +208,5 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 export default connect(mapStateToProps, { archiveCard, moveCard, copyCard })(
-  SideMenu
+  CardUtilities
 );

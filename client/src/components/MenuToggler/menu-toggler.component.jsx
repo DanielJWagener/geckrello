@@ -1,14 +1,16 @@
 import React from "react";
 
+import "./menu-toggler.styles.scss";
+
 const MenuToggler = props => {
   // Changes input styling on mouse over
   const onMouseOverHandler = event => {
-    event.target.className = "menu-bar__toggler menu-bar__toggler--hover";
+    event.target.className = "toggler toggler--hover";
   };
 
   // Changes input styling on mouse out
   const onMouseOutHandler = event => {
-    event.target.className = "menu-bar__toggler";
+    event.target.className = "toggler";
   };
 
   return (
@@ -17,7 +19,7 @@ const MenuToggler = props => {
         onClick={props.toggleSidebar}
         onMouseOver={onMouseOverHandler}
         onMouseOut={onMouseOutHandler}
-        className="menu-bar__toggler"
+        className="toggler"
       >
         {props.sidebarHidden ? "Show Menu" : "Hide Menu"}
       </h1>

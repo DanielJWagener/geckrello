@@ -1,0 +1,35 @@
+@import "../../sass/abstracts/_variables.scss";
+
+.archive {
+  &-toggle {
+    display: flex;
+    justify-content: center;
+
+    &__button {
+      width: 25%;
+      font-size: 2rem;
+      color: white;
+      padding: 0.5rem 1rem 0.5rem 1rem;
+      border-radius: 5px;
+      border: none;
+      margin: 0.5rem;
+
+      &:focus {
+        outline: none;
+      }
+
+      &--inactive {
+        background-color: #444;
+        cursor: pointer;
+      }
+
+      &--active {
+        background-color: blue;
+      }
+    }
+  }
+
+  &__list {
+    margin-top: 2rem;
+  }
+}

@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 
 import { updateBoard } from "../../actions";
 
+import "./board-title.styles.scss";
+
 class BoardTitle extends Component {
   state = {
     inputText: "",
@@ -47,14 +49,14 @@ class BoardTitle extends Component {
   onBlurHandler = event => {
     const newTitle = event.target.value;
 
-    event.target.className = "menu-bar__input";
+    event.target.className = "board-title__input";
 
     this.checkEmptyInput(newTitle);
   };
 
   // Changes input styling on focus, and selects all input text
   onFocusHandler = event => {
-    event.target.className = "menu-bar__input menu-bar__input--infocus";
+    event.target.className = "board-title__input board-title__input--infocus";
 
     event.target.select();
   };
@@ -62,15 +64,18 @@ class BoardTitle extends Component {
   // Changes input styling on mouse over
   onMouseOverHandler = event => {
     document.activeElement === event.target
-      ? (event.target.className = "menu-bar__input menu-bar__input--infocus")
-      : (event.target.className = "menu-bar__input menu-bar__input--hover");
+      ? (event.target.className =
+          "board-title__input board-title__input--infocus")
+      : (event.target.className =
+          "board-title__input board-title__input--hover");
   };
 
   // Changes input styling on mouse out
   onMouseOutHandler = event => {
     document.activeElement === event.target
-      ? (event.target.className = "menu-bar__input menu-bar__input--infocus")
-      : (event.target.className = "menu-bar__input");
+      ? (event.target.className =
+          "board-title__input board-title__input--infocus")
+      : (event.target.className = "board-title__input");
   };
 
   // If user input is empty, resets value to most recently saved value of titleText
@@ -104,7 +109,7 @@ class BoardTitle extends Component {
     return (
       <div>
         <input
-          className="menu-bar__input"
+          className="board-title__input"
           value={this.state.inputText}
           onChange={this.inputHandler}
           onKeyDown={this.keyDownHandler}

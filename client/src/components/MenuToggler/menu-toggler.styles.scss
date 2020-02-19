@@ -1,0 +1,19 @@
+@import "../../sass/abstracts/_variables.scss";
+
+.toggler {
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+
+  padding: 5px;
+  margin-right: 3rem;
+  border: 2px solid var(--color-primary-lighter);
+
+  h1 {
+    font-weight: 100;
+  }
+
+  &--hover {
+    background-color: var(--color-primary-lighter);
+  }
+}

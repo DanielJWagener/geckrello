@@ -1,0 +1,52 @@
+.checklist {
+  width: 100%;
+  margin-bottom: 4rem;
+
+  &__items {
+    .item {
+      display: flex;
+      &__checkbox {
+        //display: inline-block;
+        height: 1.8rem;
+        width: 1.8rem;
+        border-radius: 2px;
+        border: 2px solid #888;
+        margin-right: 2rem;
+        cursor: pointer;
+
+        &--unchecked {
+          background-color: white;
+        }
+
+        &--checked {
+          position: relative;
+          background-color: blue;
+          color: white;
+          font-size: 1.5rem;
+
+          .checkmark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+          }
+        }
+      }
+
+      &__title {
+        //display: inline-block;
+        font-size: 1.8rem;
+      }
+
+      &__delete {
+        margin-left: 2rem;
+        font-size: 1.5rem;
+        cursor: pointer;
+
+        &:hover {
+          color: red;
+        }
+      }
+    }
+  }
+}

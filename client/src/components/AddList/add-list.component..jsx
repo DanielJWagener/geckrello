@@ -2,6 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 import { addList } from "../../actions";
 
+import "./add-list.styles.scss";
+
 class AddList extends React.Component {
   state = {
     mode: "prompt",

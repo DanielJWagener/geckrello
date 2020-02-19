@@ -1,0 +1,25 @@
+@import "../../sass/abstracts/_variables.scss";
+
+.board-title {
+  &__input {
+    margin-left: 10px;
+    padding: 5px 0;
+    grid-area: title;
+    background-color: var(--color-primary);
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 2em;
+    font-weight: 700;
+    color: white;
+    text-align: center;
+
+    &--infocus {
+      background-color: white;
+      color: $default-font-color;
+    }
+
+    &--hover {
+      background-color: var(--color-primary-lighter);
+    }
+  }
+}

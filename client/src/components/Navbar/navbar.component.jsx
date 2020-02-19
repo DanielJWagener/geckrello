@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
-import "../../index.css";
+import "./navbar.styles.scss";
 
 class NavBar extends Component {
   renderAuth() {

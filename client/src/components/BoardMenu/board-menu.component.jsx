@@ -1,6 +1,8 @@
 import React from "react";
 import SidebarMenu from "../BoardMenuContent/board-menu-content";
 
+import "./board-menu.styles.scss";
+
 const sidebarRoot = document.getElementById("sidebar-root");
 
 class Sidebar extends React.Component {

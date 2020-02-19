@@ -5,6 +5,8 @@ import ChangeBackground from "../ChangeBackground/change-background.component";
 import SidebarPanel from "../BoardMenuPanel/board-menu-panel.component";
 import SidebarItem from "../BoardMenuItem/board-menu-item";
 
+import "./board-menu-content.styles.scss";
+
 class SidebarMenu extends React.Component {
   state = { panel: "none" };
 

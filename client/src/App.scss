@@ -1,3 +1,49 @@
+@import "./sass/abstracts/_variables.scss";
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+:root {
+  --color-primary: #3399ff;
+  --color-primary-lightest: #80bfff;
+  --color-primary-lighter: #66b3ff;
+  --color-primary-light: #4da6ff;
+  --color-primary-dark: #1a8cff;
+  --color-primary-darker: #0080ff;
+  --color-primary-darkest: #0073e6;
+}
+
+html {
+  // defines 1rem
+  font-size: 62.5%;
+}
+
+body {
+  box-sizing: border-box;
+  height: 100vh;
+  background-color: var(--color-primary);
+  color: $default-font-color;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+#sidebar-root {
+  position: fixed;
+  top: 9rem;
+  right: calc(-1 * #{$sidebar-width});
+  height: calc(var(--vh, 1vh) * 100 - 9rem);
+  width: $sidebar-width;
+  z-index: 2;
+
+  @media only screen and (max-width: 400px) {
+    width: 100vw;
+  }
+}
+
 #sidebar-root {
   position: relative;
   z-index: 2000;

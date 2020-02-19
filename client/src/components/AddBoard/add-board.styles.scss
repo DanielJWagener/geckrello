@@ -1,0 +1,97 @@
+@import "../../sass/abstracts/_variables.scss";
+
+.addList {
+  border-radius: 0.5rem;
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.3);
+  height: 100px;
+  z-index: 1;
+
+  &__prompt {
+    background-color: rgba(0, 0, 0, 0.6);
+
+    &-button {
+      height: 100%;
+      width: 100%;
+      color: white;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      font-size: 2rem;
+
+      &:hover {
+        color: #bbb;
+      }
+    }
+  }
+
+  &__input {
+    background-color: $component-background;
+  }
+
+  &__form {
+    width: 100%;
+  }
+}
+
+.form {
+  padding: 0.5rem;
+
+  &__group:not(:last-child) {
+    margin-bottom: 0.5rem;
+  }
+
+  &__input {
+    display: block;
+    width: 100%;
+    font-size: 2rem;
+    line-height: 3.5rem;
+    padding: 0 1rem;
+    border-radius: 0.5rem;
+    border: none;
+    color: #333;
+
+    &--validation {
+      border-bottom-style: solid;
+      border-bottom-width: 3px;
+      border-bottom-color: #555;
+    }
+  }
+
+  &__submit,
+  &__edit {
+    display: inline-block;
+    padding: 1rem 1.5rem;
+    border-radius: 0.5rem;
+    border: none;
+    font-size: 2rem;
+    background-color: $color-secondary;
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s;
+
+    &:focus,
+    &:active {
+      outline: none;
+      transform: translateY(2px);
+    }
+
+    &:hover {
+      background-color: $color-secondary-dark;
+    }
+  }
+
+  &__cancel {
+    display: inline-block;
+    margin-left: 1rem;
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: #333;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+
+    &:hover {
+      color: red;
+    }
+  }
+}

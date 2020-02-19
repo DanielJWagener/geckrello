@@ -1,0 +1,39 @@
+@import "../../sass/abstracts/_variables.scss";
+
+.boardmenu__panel {
+  position: absolute;
+  top: 0;
+  width: $sidebar-width;
+
+  height: calc(var(--vh, 1vh) * 100 - 9rem);
+  overflow-y: auto;
+  background-color: white;
+  border-left: 2px solid $component-background;
+  border-radius: 8px 0 0 8px;
+  padding: 1.5rem;
+  transition: all 0.3s;
+
+  @media only screen and (max-width: 400px) {
+    width: 100vw;
+  }
+
+  &--hidden {
+    right: calc(-1 * #{$sidebar-width});
+  }
+
+  &--visible {
+    right: 0;
+  }
+
+  &--close {
+    position: absolute;
+    top: 3px;
+    right: 1rem;
+    cursor: pointer;
+    font-size: 3rem;
+
+    &:hover {
+      color: red;
+    }
+  }
+}

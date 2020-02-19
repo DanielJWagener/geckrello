@@ -2,13 +2,13 @@ import React from "react";
 
 const SidebarPanel = ({ visible, togglePanel, children, heading }) => (
   <div
-    className={`sidebar-menu__interface sidebar-menu__interface--${
+    className={`boardmenu__panel boardmenu__panel--${
       visible ? "visible" : "hidden"
     }`}
   >
-    <h2 className="sidebar-menu__heading">{heading}</h2>
+    <h2 className="boardmenu__heading">{heading}</h2>
     <div
-      className="sidebar-menu__interface--close"
+      className="boardmenu__panel--close"
       onClick={() => togglePanel("none")}
     >
       &times;

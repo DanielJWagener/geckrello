@@ -4,10 +4,12 @@ import { connect } from "react-redux";
 
 import { fetchUser } from "./actions";
 import Board from "./pages/board/Board";
-import Navbar from "./components/navbar/navbar.component";
+import Navbar from "./components/Navbar/navbar.component";
 import Dashboard from "./pages/dashboard/Dashboard";
 import Landing from "./pages/landing/Landing";
 import setDefaultColors from "./utilities/setDefaultColors";
+
+import "./App.scss";
 
 class App extends React.Component {
   constructor(props) {

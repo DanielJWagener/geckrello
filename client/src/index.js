@@ -6,7 +6,7 @@ import reduxThunk from "redux-thunk";
 import * as serviceWorker from "./serviceWorker";
 import axios from "axios";
 
-import "./index.css";
+// import "./index.css";
 import App from "./App";
 import reducers from "./reducers";
 

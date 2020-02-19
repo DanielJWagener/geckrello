@@ -2,6 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 import { addBoard } from "../../actions";
 
+import "./add-board.styles.scss";
+
 class AddBoard extends React.Component {
   state = {
     mode: "prompt",
@@ -13,19 +15,6 @@ class AddBoard extends React.Component {
   // Inialize element height on grid. Its grid height is based on CSS grid spans, so we fetch that value from the DOM and set the number of spans accordingly
   addListRef = React.createRef();
 
-  // setSpans = () => {
-  //   const height = this.addListRef.current.clientHeight;
-
-  //   const spans = Math.floor(height / 10);
-
-  //   this.setState({ spans: spans });
-  // };
-
-  // componentDidMount() {
-  //   this.setSpans();
-  // }
-
-  // Mode toggle. This component has two modes: "prompt" and "input." The "prompt" mode is the initial mode, basically a button with a label like "add new list." When the user clicks that button, the mode changes to "input," and the user can input and submit a new list and title.
   toggleMode = () => {
     if (this.state.mode === "prompt") {
       this.setState({ mode: "input" });
@@ -43,17 +32,6 @@ class AddBoard extends React.Component {
       alert("Please enter a title.");
       return false;
     }
-
-    // Generate a unique key and listId in the event of duplicate list titles
-    // const generateListId = inputId => {
-    //   if (!this.props.lists.find(list => list.listId === inputId)) {
-    //     return inputId;
-    //   } else {
-    //     inputId = `${inputId}-duplicate`;
-    //     return generateListId(inputId);
-    //   }
-    // };
-    // let listId = generateListId(this.state.listTitle);
 
     // Submit input
     this.props.addBoard(this.state.boardTitle);
