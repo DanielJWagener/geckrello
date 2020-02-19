@@ -23,21 +23,6 @@ const MenuToggler = props => {
       </h1>
     </div>
   );
-  /*
-  if (props.sidebarHidden) {
-    return (
-      <div className="menu menu-bar__toggler">
-        <h1 onClick={props.toggleSidebar} onMouseOver={onMouseOverHandler} onMouseOut={onMouseOutHandler}>{props.sidebarHidden ? "Show Menu" : "Hide Menu"}</h1>
-      </div>
-    );
-  } else {
-    return (
-      <div className="menu menu-bar__toggler">
-        <h1 onClick={props.toggleSidebar}>Hide Menu</h1>
-      </div>
-    );
-  }
-  */
 };
 
 export default MenuToggler;
