@@ -16,6 +16,25 @@
   --color-primary-dark: #1a8cff;
   --color-primary-darker: #0080ff;
   --color-primary-darkest: #0073e6;
+
+  --body-background: blue;
+  --body-background-light: rgb(0, 162, 255);
+
+  //--component-background: #c5c9eb;
+  --component-background: #e0e4ff;
+  --component-background-dark: #9093ad;
+
+  // Secondar colors, mainly for form buttons
+  --color-secondary: #4fa644;
+  --color-secondary-light: #64d355;
+  --color-secondary-dark: #387430;
+
+  --default-font-color: #333;
+
+  // LAYOUT
+  --list-width: 30rem;
+  --sidebar-width: 40rem;
+  --popup-panel-width: 20rem;
 }
 
 html {
