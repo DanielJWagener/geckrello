@@ -3,7 +3,7 @@ import { DndProvider } from "react-dnd";
 import HTML5Backend from "react-dnd-html5-backend";
 import { connect } from "react-redux";
 
-import AddList from "../../components/AddList/add-list.component.";
+import AddList from "../../components/AddList/add-list.component";
 import List from "../../components/List/list.component";
 import BoardHeader from "../../components/BoardHeader/board-header.component";
 import { unloadBoard, fetchBoardData } from "../../actions";

@@ -13,7 +13,7 @@ class AddBoard extends React.Component {
   };
 
   // Inialize element height on grid. Its grid height is based on CSS grid spans, so we fetch that value from the DOM and set the number of spans accordingly
-  addListRef = React.createRef();
+  addBoardRef = React.createRef();
 
   toggleMode = () => {
     if (this.state.mode === "prompt") {
@@ -57,21 +57,21 @@ class AddBoard extends React.Component {
   render() {
     if (this.state.mode === "prompt") {
       return (
-        <div ref={this.addListRef} className="addList addList__prompt">
-          <button onClick={this.toggleMode} className="addList__prompt-button">
-            <span className="addList__prompt-plus">+</span>
-            <span className="addList__prompt-label"> Add new board</span>
+        <div ref={this.addBoardRef} className="addBoard addBoard__prompt">
+          <button onClick={this.toggleMode} className="addBoard__prompt-button">
+            <span className="addBoard__prompt-plus">+</span>
+            <span className="addBoard__prompt-label"> Add new board</span>
           </button>
         </div>
       );
     } else {
       return (
         <div
-          className="addList addList__input"
-          ref={this.addListRef}
+          className="addBoard addBoard__input"
+          ref={this.addBoardRef}
           style={{ gridRowEnd: `span ${this.state.spans}` }}
         >
-          <div className="addList__form">
+          <div className="addBoard__form">
             <form onSubmit={this.onFormSubmit} className="form">
               <div className="form__group">
                 <input
