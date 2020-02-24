@@ -8,6 +8,7 @@ import List from "../../components/List/list.component";
 import BoardHeader from "../../components/BoardHeader/board-header.component";
 import { unloadBoard, fetchBoardData } from "../../actions";
 import colorThemes from "../../utilities/colorThemes";
+import updateBackgroundColor from "../../utilities/updateBackgroundColor";
 
 import "./board.styles.scss";
 
@@ -22,13 +23,7 @@ class Board extends React.Component {
     if (this.props.board) {
       const theme = colorThemes[this.props.board.background];
 
-      root.style.setProperty("--color-primary", theme.base);
-      root.style.setProperty("--color-primary-lightest", theme.lightest);
-      root.style.setProperty("--color-primary-lighter", theme.lighter);
-      root.style.setProperty("--color-primary-light", theme.light);
-      root.style.setProperty("--color-primary-dark", theme.dark);
-      root.style.setProperty("--color-primary-darker", theme.darker);
-      root.style.setProperty("--color-primary-darkest", theme.darkest);
+      updateBackgroundColor(theme);
     }
   }
 

@@ -3,22 +3,17 @@ import { connect } from "react-redux";
 
 import { updateBoard } from "../../actions";
 import colorThemes from "../../utilities/colorThemes";
+import updateBackgroundColor from "../../utilities/updateBackgroundColor";
 
 const ColorPalette = props => {
   const theme = colorThemes[props.color];
 
-  const updateBackgroundColor = () => {
-    let root = document.documentElement;
+  const updateBoardBackgroundColor = () => {
+    updateBackgroundColor(theme);
 
-    root.style.setProperty("--color-primary", theme.base);
-    root.style.setProperty("--color-primary-lightest", theme.lightest);
-    root.style.setProperty("--color-primary-lighter", theme.lighter);
-    root.style.setProperty("--color-primary-light", theme.light);
-    root.style.setProperty("--color-primary-dark", theme.dark);
-    root.style.setProperty("--color-primary-darker", theme.darker);
-    root.style.setProperty("--color-primary-darkest", theme.darkest);
     props.updateBoard(props.board._id, { background: props.color });
   };
+
   return (
     <div
       className="color-palette"
@@ -30,7 +25,7 @@ const ColorPalette = props => {
         margin: "1.5rem",
         cursor: "pointer"
       }}
-      onClick={updateBackgroundColor}
+      onClick={updateBoardBackgroundColor}
     ></div>
   );
 };

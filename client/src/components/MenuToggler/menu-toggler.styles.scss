@@ -7,13 +7,14 @@
 
   padding: 5px;
   margin-right: 3rem;
-  border: 2px solid var(--color-primary-lighter);
+  border: 2px solid var(--color-primary-light);
 
   h1 {
     font-weight: 100;
   }
 
   &--hover {
-    background-color: var(--color-primary-lighter);
+    background-color: var(--color-primary-hoverLight);
+    border: 2px solid var(--color-primary-hoverLight);
   }
 }
