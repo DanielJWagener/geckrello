@@ -38,59 +38,51 @@ class CardDescription extends React.Component {
   };
 
   render() {
-    if (this.state.mode === "prompt") {
-      if (
-        !this.props.card.description ||
-        this.props.card.description === "\n"
-      ) {
-        return (
-          <div className="description">
-            <h3 className="modal__widget-heading">Description</h3>
-            <button className="description__prompt" onClick={this.toggleMode}>
-              Add a description...
-            </button>
+    const descriptionPrompt =
+      !this.props.card.description || this.props.card.description === "\n" ? (
+        <button className="description__prompt" onClick={this.toggleMode}>
+          Add a description...
+        </button>
+      ) : (
+        <>
+          <button className="modal__button--inline" onClick={this.toggleMode}>
+            Edit
+          </button>
+          <div className="description__display">
+            {this.props.card.description}
           </div>
-        );
-      } else {
-        return (
-          <div className="description">
-            <h3 className="modal__widget-heading">Description</h3>
-            <button className="modal__button--inline" onClick={this.toggleMode}>
-              Edit
-            </button>
-            <div className="description__display">
-              {this.props.card.description}
-            </div>
-          </div>
-        );
-      }
-    } else if (this.state.mode === "input") {
-      return (
-        <div className="description description__input">
-          <h3 className="modal__widget-heading">Description</h3>
-          <form onSubmit={this.onFormSubmit} className="form">
-            <div className="form__group">
-              <textarea
-                name=""
-                id=""
-                cols="30"
-                rows="5"
-                className="description__textarea"
-                placeholder="Add a description..."
-                onChange={this.handleChange}
-                value={this.state.descriptionInput}
-              ></textarea>
-            </div>
-            <div className="form__group">
-              <input type="submit" className="form__submit" value="Save" />
-              <button className="form__cancel" onClick={this.toggleMode}>
-                Cancel
-              </button>
-            </div>
-          </form>
-        </div>
+        </>
       );
-    }
+
+    const descriptionInput = (
+      <form onSubmit={this.onFormSubmit} className="form">
+        <div className="form__group">
+          <textarea
+            name=""
+            id=""
+            cols="30"
+            rows="5"
+            className="description__textarea"
+            placeholder="Add a description..."
+            onChange={this.handleChange}
+            value={this.state.descriptionInput}
+          ></textarea>
+        </div>
+        <div className="form__group">
+          <input type="submit" className="form__submit" value="Save" />
+          <button className="form__cancel" onClick={this.toggleMode}>
+            Cancel
+          </button>
+        </div>
+      </form>
+    );
+
+    return (
+      <div className="description">
+        <h3 className="modal__widget-heading">Description</h3>
+        {this.state.mode === "prompt" ? descriptionPrompt : descriptionInput}
+      </div>
+    );
   }
 }
 
