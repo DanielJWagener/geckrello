@@ -15,7 +15,7 @@ class Landing extends React.Component {
   renderCTA() {
     switch (this.props.auth) {
       case null:
-        return <> </>;
+        return <div className="hero__cta-invisible">placeholder</div>;
       case false:
         return (
           <a href="/auth/google" className="hero__cta">
@@ -35,7 +35,10 @@ class Landing extends React.Component {
     return (
       <div className="landing">
         <div className="hero">
-          <h1 className="hero__text">Your Life. Organized.</h1>
+          <h1 className="hero__text">
+            <span className="hero__text--first">Your Life.</span>{" "}
+            <span className="hero__text--second">Organized.</span>
+          </h1>
           {this.renderCTA()}
         </div>
       </div>

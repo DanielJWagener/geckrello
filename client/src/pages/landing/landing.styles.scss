@@ -9,6 +9,22 @@ $color-primary-dark: hsl(209, 100%, 35%);
   }
 }
 
+@keyframes moveIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-30rem);
+  }
+
+  80% {
+    transform: translateY(-1rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .landing {
   background-image: linear-gradient(
       to bottom,
@@ -34,6 +50,20 @@ $color-primary-dark: hsl(209, 100%, 35%);
       font-family: inherit;
       font-weight: 200;
       margin-bottom: 4rem;
+
+      &--first {
+        animation-name: moveIn;
+        animation-duration: 1.5s;
+        animation-timing-function: ease-out;
+      }
+
+      &--second {
+        animation-name: moveIn;
+        animation-duration: 1.5s;
+        animation-delay: 1s;
+        animation-timing-function: ease-out;
+        animation-fill-mode: backwards;
+      }
     }
 
     &__cta {
@@ -48,6 +78,10 @@ $color-primary-dark: hsl(209, 100%, 35%);
       font-size: 3rem;
       font-weight: 400;
       cursor: pointer;
+
+      &--inivisible {
+        opacity: 1;
+      }
 
       &:hover {
         color: #e78632;
