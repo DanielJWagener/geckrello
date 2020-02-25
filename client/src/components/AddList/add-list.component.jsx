@@ -103,6 +103,9 @@ class AddList extends React.Component {
                   className="form__submit"
                   value="Add List"
                 />
+                <button className="form__cancel" onClick={this.toggleMode}>
+                  Cancel
+                </button>
               </div>
             </form>
           </div>

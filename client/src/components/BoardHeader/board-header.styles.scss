@@ -4,22 +4,5 @@
   display: flex;
   justify-content: space-between;
   position: relative;
-
-  &__toggler {
-    color: white;
-    cursor: pointer;
-    border-radius: 5px;
-
-    padding: 5px;
-    margin-right: 3rem;
-    border: 2px solid var(--color-primary-light);
-
-    &--hover {
-      background-color: var(--color-primary-light);
-    }
-  }
-
-  &__toggler h1 {
-    font-weight: 100;
-  }
+  padding: 0.5rem 0;
 }
