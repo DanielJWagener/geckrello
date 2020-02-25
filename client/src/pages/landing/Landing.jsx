@@ -19,7 +19,7 @@ class Landing extends React.Component {
       case false:
         return (
           <a href="/auth/google" className="hero__cta">
-            Sign In
+            Sign In with Google
           </a>
         );
       default:

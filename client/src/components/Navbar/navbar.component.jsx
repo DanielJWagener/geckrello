@@ -11,13 +11,13 @@ class NavBar extends Component {
         return <> </>;
       case false:
         return (
-          <a href="/auth/google" class="auth-link">
-            Sign In With Google
+          <a href="/auth/google" class="navbar__cta">
+            Sign In
           </a>
         );
       default:
         return (
-          <a href="/api/v1/users/logout" className="auth-link">
+          <a href="/api/v1/users/logout" className="navbar__button">
             Log Out
           </a>
         );
@@ -29,7 +29,7 @@ class NavBar extends Component {
       return <> </>;
     }
     return (
-      <Link to="/dashboard" className="auth-link">
+      <Link to="/dashboard" className="navbar__button">
         Dashboard
       </Link>
     );
