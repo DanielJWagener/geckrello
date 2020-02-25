@@ -1,12 +1,13 @@
 import React from "react";
+import ReactDOM from "react-dom";
 import CardDescription from "../CardDescription/card-description.component";
 import Checklist from "../Checklist/checklist.component";
-import SideMenu from "../CardUtilities/card-utilities.component";
+import CardUtilities from "../CardUtilities/card-utilities.component";
 
 import "./card-modal.styles.scss";
 
 function CardModal(props) {
-  return (
+  return ReactDOM.createPortal(
     <div className="modal__overlay" id={props.cardId}>
       <div className="modal">
         <div className="modal__heading">
@@ -21,16 +22,16 @@ function CardModal(props) {
         </a>
         <div className="modal__main">
           <div className="modal__main--left">
-            <CardDescription cardId={props.cardId}></CardDescription>
-
-            <Checklist cardId={props.cardId}></Checklist>
+            <CardDescription cardId={props.cardId} />
+            <Checklist cardId={props.cardId} />
           </div>
           <div className="modal__main--right">
-            <SideMenu cardId={props.cardId}></SideMenu>
+            <CardUtilities cardId={props.cardId} />
           </div>
         </div>
       </div>
-    </div>
+    </div>,
+    document.querySelector("#modal")
   );
 }
 
