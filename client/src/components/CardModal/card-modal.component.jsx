@@ -3,13 +3,18 @@ import ReactDOM from "react-dom";
 import CardDescription from "../CardDescription/card-description.component";
 import Checklist from "../Checklist/checklist.component";
 import CardUtilities from "../CardUtilities/card-utilities.component";
+import history from "../../utilities/history";
 
 import "./card-modal.styles.scss";
 
 function CardModal(props) {
   return ReactDOM.createPortal(
-    <div className="modal__overlay" id={props.cardId}>
-      <div className="modal">
+    <div
+      onClick={() => history.goBack()}
+      className="modal__overlay"
+      id={props.cardId}
+    >
+      <div onClick={e => e.stopPropagation()} className="modal">
         <div className="modal__heading">
           <h2 className="modal__heading--main">{props.cardTitle}</h2>
           <h4 className="modal__heading--sub">
