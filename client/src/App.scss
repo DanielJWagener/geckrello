@@ -9,16 +9,12 @@
 }
 
 :root {
-  --color-primary: #3399ff;
-  --color-primary-hoverLighter: #80bfff;
-  --color-primary-hoverLight: #66b3ff;
-  --color-primary-light: #4da6ff;
-  --color-primary-dark: #1a8cff;
-  --color-primary-hoverDark: #0080ff;
-  --color-primary-darkest: #0073e6;
-
-  --body-background: blue;
-  --body-background-light: rgb(0, 162, 255);
+  --color-primary: hsl(208, 79%, 51%);
+  --color-primary-hoverLighter: hsl(209, 100%, 91%);
+  --color-primary-hoverLight: hsl(209, 100%, 81%);
+  --color-primary-light: hsl(209, 100%, 71%);
+  --color-primary-dark: hsl(209, 100%, 35%);
+  --color-primary-hoverDark: hsl(209, 100%, 40%);
 
   //--component-background: #c5c9eb;
   --component-background: #e0e4ff;
@@ -35,6 +31,7 @@
   --list-width: 30rem;
   --sidebar-width: 40rem;
   --popup-panel-width: 20rem;
+  --navbar-height: 5rem;
 }
 
 html {
@@ -47,7 +44,7 @@ body {
   height: 100vh;
   background-color: var(--color-primary);
   color: $default-font-color;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 #sidebar-root {

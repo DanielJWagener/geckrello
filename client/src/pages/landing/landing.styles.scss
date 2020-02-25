@@ -1,0 +1,56 @@
+$color-primary: hsl(208, 79%, 51%);
+$color-primary-dark: hsl(209, 100%, 35%);
+
+@function hslac($color, $alpha) {
+  @if (type-of($color) == "color") {
+    @return hsla(hue($color), saturation($color), lightness($color), $alpha);
+  } @else {
+    @error "You didn't pass a color object";
+  }
+}
+
+.landing {
+  background-image: linear-gradient(
+      to bottom,
+      hslac($color-primary-dark, 1),
+      hslac($color-primary, 0.6)
+    ),
+    url(/img/landing-hero-large.jpg);
+  height: calc(var(--vh, 1vh) * 100 - var(--navbar-height));
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+
+  .hero {
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__text {
+      color: white;
+      font-size: 7rem;
+      font-family: inherit;
+      font-weight: 200;
+      margin-bottom: 4rem;
+    }
+
+    &__cta {
+      color: #e78632;
+      border: 2px solid #e78632;
+      border-radius: 0.5rem;
+      background-color: #fff;
+      width: 30%;
+      padding: 1.5rem 2rem 1.5rem 2rem;
+      font-size: 3rem;
+      font-weight: 400;
+      cursor: pointer;
+
+      &:hover {
+        color: #e78632;
+        border-color: #e78632;
+        background-color: rgba(255, 255, 255, 0.8);
+      }
+    }
+  }
+}

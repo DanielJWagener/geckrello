@@ -6,10 +6,13 @@ import { fetchUser } from "./actions";
 import Board from "./pages/board/Board";
 import Navbar from "./components/Navbar/navbar.component";
 import Dashboard from "./pages/dashboard/Dashboard";
-import Landing from "./pages/landing/Landing";
+import Landing from "./pages/landing/Landing.jsx";
 import setDefaultColors from "./utilities/setDefaultColors";
+import colors from "./utilities/colorThemes";
 
 import "./App.scss";
+
+window.colors = colors;
 
 class App extends React.Component {
   constructor(props) {

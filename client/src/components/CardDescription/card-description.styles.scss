@@ -13,17 +13,10 @@
     padding: 0.5rem;
     border-radius: 5px;
     height: 3rem;
+    margin-left: 7%;
     &:hover {
       background-color: $component-background-dark;
     }
-  }
-  &__textarea {
-    display: block;
-    background-color: white;
-    width: 100%;
-    height: 4rem;
-    padding: 0.5rem;
-    border-radius: 5px;
   }
 
   &__display {
