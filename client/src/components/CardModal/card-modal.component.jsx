@@ -22,9 +22,14 @@ function CardModal(props) {
           </h4>
         </div>
 
-        <a href="#board" className="modal__close" draggable="false">
+        <div
+          onClick={() => history.goBack()}
+          href="#board"
+          className="modal__close"
+          draggable="false"
+        >
           &times;
-        </a>
+        </div>
         <div className="modal__main">
           <div className="modal__main--left">
             <CardDescription cardId={props.cardId} />
