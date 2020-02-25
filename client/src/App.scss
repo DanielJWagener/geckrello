@@ -55,7 +55,7 @@ body {
   width: $sidebar-width;
   z-index: 2;
 
-  @media only screen and (max-width: 400px) {
+  @media only screen and (max-width: 25em) {
     width: 100vw;
   }
 }

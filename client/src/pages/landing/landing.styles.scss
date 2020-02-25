@@ -37,6 +37,24 @@ $color-primary-dark: hsl(209, 100%, 35%);
   display: flex;
   justify-content: center;
 
+  @media only screen and (max-width: 37.5em) {
+    background-image: linear-gradient(
+        to bottom,
+        hslac($color-primary-dark, 1),
+        hslac($color-primary, 0.6)
+      ),
+      url(/img/landing-hero-small.jpg);
+  }
+
+  @media only screen and (min-width: 110em) {
+    background-image: linear-gradient(
+        to bottom,
+        hslac($color-primary-dark, 1),
+        hslac($color-primary, 0.6)
+      ),
+      url(/img/landing-hero-huge.jpg);
+  }
+
   .hero {
     align-self: center;
     display: flex;
