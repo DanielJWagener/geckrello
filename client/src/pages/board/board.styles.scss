@@ -5,11 +5,39 @@
 
   &__lists-container {
     height: calc(
-      var(--vh, 1vh) * 100 - var(--navbar-height) - #{$board-header-height}
+      var(--vh, 1vh) * 100 - var(--navbar-height) - #{$board-header-height} - 1rem
     );
-    padding: 1rem;
+    padding: 1rem 0;
+    margin: 0 0.5rem;
 
     display: flex;
     overflow-x: auto;
+
+    &::-webkit-scrollbar {
+      width: 20px;
+      margin: 0 1rem 3rem 1rem;
+      padding: 0 1rem;
+    }
+
+    &::-webkit-scrollbar-track {
+      -webkit-border-radius: 5px;
+      border-radius: 5px;
+      background: #aaa;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      -webkit-border-radius: 5px;
+      border-radius: 5px;
+      background: #fff;
+      margin: 0 1rem;
+
+      &:hover {
+        cursor: pointer;
+      }
+
+      &:active {
+        background: #eee;
+      }
+    }
   }
 }
