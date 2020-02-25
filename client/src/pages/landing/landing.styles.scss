@@ -26,6 +26,7 @@ $color-primary-dark: hsl(209, 100%, 35%);
 }
 
 .landing {
+  // Image source: David Scharzenberg from Pixabay https://pixabay.com/photos/business-computer-mobile-smartphone-2846221/
   background-image: linear-gradient(
       to bottom,
       hslac($color-primary-dark, 1),
@@ -60,6 +61,7 @@ $color-primary-dark: hsl(209, 100%, 35%);
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: calc(-1 * var(--navbar-height));
 
     &__text {
       color: white;
@@ -104,7 +106,7 @@ $color-primary-dark: hsl(209, 100%, 35%);
       &:hover {
         color: #e78632;
         border-color: #e78632;
-        background-color: rgba(255, 255, 255, 0.8);
+        background-color: rgba(255, 255, 255, 0.85);
       }
     }
   }
