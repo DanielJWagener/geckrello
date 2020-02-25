@@ -1,4 +1,6 @@
 import React from "react";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 import setDefaultColors from "../../utilities/setDefaultColors";
 
@@ -10,16 +12,37 @@ class Landing extends React.Component {
     setDefaultColors();
   }
 
+  renderCTA() {
+    switch (this.props.auth) {
+      case null:
+        return <> </>;
+      case false:
+        return (
+          <a href="/auth/google" className="hero__cta">
+            Sign In
+          </a>
+        );
+      default:
+        return (
+          <Link to="/dashboard" className="hero__cta">
+            Go to Dashboard
+          </Link>
+        );
+    }
+  }
+
   render() {
     return (
       <div className="landing">
         <div className="hero">
           <h1 className="hero__text">Your Life. Organized.</h1>
-          <button className="hero__cta">Sign In</button>
+          {this.renderCTA()}
         </div>
       </div>
     );
   }
 }
 
-export default Landing;
+const mapStateToProps = ({ auth }) => ({ auth });
+
+export default connect(mapStateToProps)(Landing);

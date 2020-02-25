@@ -37,10 +37,12 @@ $color-primary-dark: hsl(209, 100%, 35%);
 
     &__cta {
       color: #e78632;
+      text-align: center;
+      text-decoration: none;
       border: 2px solid #e78632;
       border-radius: 0.5rem;
       background-color: #fff;
-      width: 30%;
+      width: max-content;
       padding: 1.5rem 2rem 1.5rem 2rem;
       font-size: 3rem;
       font-weight: 400;
