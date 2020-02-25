@@ -7,6 +7,7 @@ import CardUtilities from "../CardUtilities/card-utilities.component";
 import history from "../../utilities/history";
 
 import "./card-modal.styles.scss";
+import "./modal-form.styles.scss";
 
 function CardModal(props) {
   return ReactDOM.createPortal(

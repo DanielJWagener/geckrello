@@ -58,11 +58,11 @@ class Checklist extends React.Component {
 
   render() {
     const addChecklistItemForm = (
-      <form onSubmit={this.onFormSubmit} className="form">
-        <div className="form__group">
+      <form onSubmit={this.onFormSubmit} className="modal-form">
+        <div className="modal-form__group">
           <input
             type="text"
-            className="form form__input form__input--validation"
+            className="modal-form modal-form__input modal-form__input--validation"
             value={this.state.newItemInput}
             onChange={this.handleChange}
             style={{ borderBottomColor: this.state.borderColor }}
@@ -70,9 +70,13 @@ class Checklist extends React.Component {
             autoFocus
           />
         </div>
-        <div className="form__group">
-          <input type="submit" className="form__submit" value="Add Item" />
-          <button className="form__cancel" onClick={this.toggleMode}>
+        <div className="modal-form__group">
+          <input
+            type="submit"
+            className="modal-form__submit"
+            value="Add Item"
+          />
+          <button className="modal-form__cancel" onClick={this.toggleMode}>
             Cancel
           </button>
         </div>

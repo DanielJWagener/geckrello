@@ -88,22 +88,22 @@ class CardDescription extends React.Component {
           />
           <h3 className="widget-heading__text">Description</h3>
         </div>
-        <form onSubmit={this.onFormSubmit} className="form">
-          <div className="form__group">
+        <form onSubmit={this.onFormSubmit} className="modal-form">
+          <div className="modal-form__group">
             <textarea
               name=""
               id=""
               cols="30"
               rows="5"
-              className="description__textarea"
+              className="modal-form__textarea"
               placeholder="Add a description..."
               onChange={this.handleChange}
               value={this.state.descriptionInput}
             ></textarea>
           </div>
-          <div className="form__group">
-            <input type="submit" className="form__submit" value="Save" />
-            <button className="form__cancel" onClick={this.toggleMode}>
+          <div className="modal-form__group">
+            <input type="submit" className="modal-form__submit" value="Save" />
+            <button className="modal-form__cancel" onClick={this.toggleMode}>
               Cancel
             </button>
           </div>
