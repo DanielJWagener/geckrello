@@ -9,7 +9,6 @@
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  display: grid;
   background-color: $component-background;
   border-radius: 0.5rem;
   padding: 1rem;
@@ -42,7 +41,7 @@
 
   &__heading {
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
 
     &--main {
       font-size: 3rem;
@@ -94,22 +93,20 @@
     }
   }
 
-  &__main {
+  &__body {
     width: 100%;
+    display: grid;
+    grid-template-columns: [modal-body-start main-start] 75% [main-end utilities-start] 25% [utilities-end modal-body-end];
 
-    &--left {
-      float: left;
-      width: 75%;
-
+    &--main {
+      grid-column: modal-body-start / main-end;
       @media only screen and (max-width: 37.5em) {
         width: 100%;
       }
     }
 
-    &--right {
-      float: right;
-      width: 25%;
-
+    &--utilities {
+      grid-column: utilities-start / modal-body-end;
       @media only screen and (max-width: 37.5em) {
         width: 100%;
       }

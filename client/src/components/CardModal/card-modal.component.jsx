@@ -30,12 +30,12 @@ function CardModal(props) {
         >
           &times;
         </div>
-        <div className="modal__main">
-          <div className="modal__main--left">
+        <div className="modal__body">
+          <div className="modal__body--main">
             <CardDescription cardId={props.cardId} />
             <Checklist cardId={props.cardId} />
           </div>
-          <div className="modal__main--right">
+          <div className="modal__body--utilities">
             <CardUtilities cardId={props.cardId} />
           </div>
         </div>
