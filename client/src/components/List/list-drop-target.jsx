@@ -15,7 +15,7 @@ function ListDropTarget({ style, listId, children }) {
   });
 
   return (
-    <div ref={drop} className="drop-target" style={{ ...style }}>
+    <div ref={drop} className="list-wrapper" style={{ ...style }}>
       {children}
     </div>
   );

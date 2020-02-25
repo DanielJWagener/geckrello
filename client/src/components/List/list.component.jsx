@@ -105,7 +105,6 @@ class List extends React.Component {
         // Style ensures drop target is the same size as the list
         style={{
           height: `${this.state.height}px`,
-          width: "100%",
           gridRowEnd: `span ${this.state.spans}`
         }}
         listId={this.props.listId}

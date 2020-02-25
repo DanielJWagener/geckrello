@@ -51,7 +51,7 @@ body {
   position: fixed;
   top: 9rem;
   right: calc(-1 * #{$sidebar-width});
-  height: calc(var(--vh, 1vh) * 100 - 9rem);
+  height: calc(var(--vh, 1vh) * 100 - 8rem);
   width: $sidebar-width;
   z-index: 2;
 
@@ -59,10 +59,3 @@ body {
     width: 100vw;
   }
 }
-
-// #sidebar-root {
-//   position: relative;
-//   z-index: 2000;
-//   height: 100vh;
-//   background-color: rgba(0, 0, 0, 0.4);
-// }

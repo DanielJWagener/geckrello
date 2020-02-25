@@ -48,15 +48,17 @@ class Board extends React.Component {
   render() {
     if (this.props.board) {
       return (
-        <div>
-          <BoardHeader board={this.props.board} />
+        <>
           <DndProvider backend={HTML5Backend}>
             <div className="board" id="board">
-              {this.listsArray()}
-              <AddList boardId={this.props.match.params.id} />
+              <BoardHeader board={this.props.board} />
+              <div className="board__lists-container">
+                {this.listsArray()}
+                <AddList boardId={this.props.match.params.id} />
+              </div>
             </div>
           </DndProvider>
-        </div>
+        </>
       );
     } else {
       return <h1>Loading...</h1>;

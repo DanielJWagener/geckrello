@@ -1,8 +1,10 @@
 @import "../../sass/abstracts/_variables.scss";
 
-.menu-bar {
+.board-header {
   display: flex;
   justify-content: space-between;
   position: relative;
   padding: 0.5rem 0;
+  background-color: var(--color-primary);
+  height: $board-header-height;
 }

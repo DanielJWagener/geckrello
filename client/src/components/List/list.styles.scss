@@ -1,7 +1,12 @@
 @import "../../sass/abstracts/_variables.scss";
 
+.list-wrapper {
+  max-width: $list-width;
+  margin: 0 0.5rem;
+}
+
 .list {
-  width: 100%;
+  width: $list-width;
   background-color: $component-background;
   border-radius: 0.5rem;
   min-height: 120px;

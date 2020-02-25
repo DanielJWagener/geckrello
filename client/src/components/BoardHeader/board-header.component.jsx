@@ -22,7 +22,7 @@ class BoardHeader extends Component {
 
   render() {
     return (
-      <div className="menu-bar">
+      <div className="board-header">
         <BoardTitle board={this.props.board} />
         <MenuToggler
           toggleSidebar={this.toggleSidebar}
