@@ -32,6 +32,11 @@
     border-radius: 5px;
     padding: 1rem;
 
+    @media only screen and (max-width: 37.5em) {
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
     &--heading {
       text-align: center;
       font-size: 2rem;
