@@ -1,3 +1,5 @@
+@import "../../sass/abstracts/_variables.scss";
+
 .list {
   width: 100%;
   background-color: $component-background;
@@ -29,43 +31,6 @@
 
   &__cards {
     padding: 0.5rem 0.5rem 0.5rem 0.5rem;
-  }
-
-  &__addCard {
-    border-radius: 0 0 0.5rem 0.5rem;
-    font-family: sans-serif;
-
-    &-prompt {
-      padding: 1rem 1rem 1.2rem 1rem;
-
-      overflow: hidden;
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-
-      -webkit-user-select: none;
-      user-select: none;
-      cursor: pointer;
-
-      &:link,
-      &:visited {
-        color: inherit;
-        text-decoration: none;
-      }
-
-      &--plus {
-        font-size: 4rem;
-        margin-right: 1rem;
-      }
-
-      &--label {
-        font-size: 2rem;
-      }
-    }
-
-    &-form {
-      width: 100%;
-    }
   }
 
   &:after {

@@ -7,6 +7,8 @@ import { archiveList } from "../../actions";
 import ListDropTarget from "./list-drop-target";
 import memoize from "memoize-one";
 
+import "./list.styles.scss";
+
 class List extends React.Component {
   state = {
     spans: 13,

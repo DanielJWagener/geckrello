@@ -94,21 +94,21 @@ class AddCard extends React.Component {
     if (this.state.mode === "prompt") {
       return (
         <div
-          className="list__addCard list__addCard-prompt"
+          className="add-card add-card__prompt"
           style={{ backgroundColor: this.state.backgroundColor }}
           onMouseOver={this.hoverBackground}
           onMouseLeave={this.resetBackground}
           onClick={this.toggleMode}
           ref={this.addCardPromptRef}
         >
-          <span className="list__addCard-prompt--plus">+</span>
-          <span className="list__addCard-prompt--label">Add new card</span>
+          <span className="add-card__prompt--plus">+</span>
+          <span className="add-card__prompt--label">Add new card</span>
         </div>
       );
     } else {
       return (
         <div
-          className="list__addCard list__addCard-form"
+          className="add-card add-card__form"
           style={{ backgroundColor: this.backgroundColor.default }}
           ref={this.addCardInputRef}
         >
