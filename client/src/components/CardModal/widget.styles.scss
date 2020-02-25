@@ -1,0 +1,38 @@
+.widget-heading {
+  margin-bottom: 0.5rem;
+  display: grid;
+  grid-template-columns:
+    [heading-start icon-start] 7% [icon-end text-start] min-content
+    [text-end button-start] minmax(min-content, auto) [button-end heading-end];
+
+  &__icon {
+    justify-self: start;
+    align-self: center;
+    font-size: 1.7rem;
+    grid-column: heading-start / icon-end;
+  }
+
+  &__text {
+    font-size: 2rem;
+    margin-right: 1rem;
+    grid-column: text-start / text-end;
+  }
+
+  &__button {
+    grid-column: button-start / heading-end;
+    justify-self: start;
+    align-self: center;
+    background-color: #888;
+    color: white;
+    font-size: 1.2rem;
+    padding: 3px 1rem 3px 1rem;
+
+    border-radius: 0.5rem;
+    border: #888;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #444;
+    }
+  }
+}

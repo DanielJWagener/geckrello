@@ -1,10 +1,13 @@
 import React from "react";
 import { connect } from "react-redux";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { addChecklistItem } from "../../actions";
 
 import ChecklistItem from "../ChecklistItem/checklist-item.component";
 
 import "./checklist.styles.scss";
+import "../CardModal/widget.styles.scss";
 
 class Checklist extends React.Component {
   state = {
@@ -54,43 +57,42 @@ class Checklist extends React.Component {
     ));
 
   render() {
-    if (this.state.mode === "prompt") {
-      return (
-        <div className="checklist">
-          <h3 className="modal__widget-heading">Checklist</h3>
-          <button onClick={this.toggleMode} className="modal__button--inline">
+    const addChecklistItemForm = (
+      <form onSubmit={this.onFormSubmit} className="form">
+        <div className="form__group">
+          <input
+            type="text"
+            className="form form__input form__input--validation"
+            value={this.state.newItemInput}
+            onChange={this.handleChange}
+            style={{ borderBottomColor: this.state.borderColor }}
+            placeholder="Add checklist item"
+            autoFocus
+          />
+        </div>
+        <div className="form__group">
+          <input type="submit" className="form__submit" value="Add Item" />
+          <button className="form__cancel" onClick={this.toggleMode}>
+            Cancel
+          </button>
+        </div>
+      </form>
+    );
+
+    return (
+      <div className="checklist">
+        <div className="widget-heading">
+          <FontAwesomeIcon className="widget-heading__icon" icon={faCheck} />
+          <h3 className="widget-heading__text">Checklist</h3>
+          <button onClick={this.toggleMode} className="widget-heading__button">
             Add Item
           </button>
-          <div className="checklist__items">{this.checklistItemsArray()}</div>
         </div>
-      );
-    } else {
-      return (
-        <div className="checklist">
-          <h3 className="modal__widget-heading">Checklist</h3>
-          <div className="checklist__items">{this.checklistItemsArray()}</div>
-          <form onSubmit={this.onFormSubmit} className="form">
-            <div className="form__group">
-              <input
-                type="text"
-                className="form form__input form__input--validation"
-                value={this.state.newItemInput}
-                onChange={this.handleChange}
-                style={{ borderBottomColor: this.state.borderColor }}
-                placeholder="Add checklist item"
-                autoFocus
-              />
-            </div>
-            <div className="form__group">
-              <input type="submit" className="form__submit" value="Add Item" />
-              <button className="form__cancel" onClick={this.toggleMode}>
-                Cancel
-              </button>
-            </div>
-          </form>
-        </div>
-      );
-    }
+
+        <div className="checklist__items">{this.checklistItemsArray()}</div>
+        {this.state.mode === "input" ? addChecklistItemForm : <></>}
+      </div>
+    );
   }
 }
 

@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import CardDescription from "../CardDescription/card-description.component";
 import Checklist from "../Checklist/checklist.component";
 import CardUtilities from "../CardUtilities/card-utilities.component";
-import CardWidget from "../CardWidget/card-widget.component.jsx";
+
 import history from "../../utilities/history";
 
 import "./card-modal.styles.scss";
@@ -33,12 +33,9 @@ function CardModal(props) {
         </div>
         <div className="modal__body">
           <div className="modal__body--main">
-            <CardWidget>
-              <CardDescription cardId={props.cardId} />
-            </CardWidget>
-            <CardWidget>
-              <Checklist cardId={props.cardId} />
-            </CardWidget>
+            <CardDescription cardId={props.cardId} />
+
+            <Checklist cardId={props.cardId} />
           </div>
           <div className="modal__body--utilities">
             <CardUtilities cardId={props.cardId} />
