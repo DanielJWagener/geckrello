@@ -38,8 +38,6 @@ class AddCard extends React.Component {
     this.setState({
       backgroundColor: this.backgroundColor.default
     });
-
-    this.promptHeight = this.addCardPromptRef.current.clientHeight;
   }
 
   // Mode and height toggle
@@ -49,10 +47,6 @@ class AddCard extends React.Component {
     } else {
       this.setState({ mode: "prompt" });
     }
-
-    let currentHeight =
-      this.state.mode === "input" ? this.promptHeight : this.inputHeight;
-    this.props.setSpansUpdate(currentHeight);
   };
 
   // Card sumbit handler
@@ -75,7 +69,6 @@ class AddCard extends React.Component {
 
       // Clear input, change mode
       this.setState({ cardTitle: "", mode: "prompt", borderColor: "#555" });
-      this.props.setSpansUpdateForCard(this.promptHeight);
     } else {
       return false;
     }
