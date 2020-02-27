@@ -29,6 +29,10 @@
     &:hover {
       color: var(--color-primary-hoverLighter);
     }
+
+    @media only screen and (max-width: 31.25em) {
+      font-size: 2.5rem;
+    }
   }
 
   &__cta {
@@ -49,6 +53,11 @@
       border-color: #e78632;
       background-color: rgba(255, 255, 255, 0.8);
     }
+
+    @media only screen and (max-width: 31.25em) {
+      font-size: 1.5rem;
+      padding: 0.3rem 0.5rem;
+    }
   }
 
   &__button {
@@ -62,6 +71,11 @@
 
     &:hover {
       background-color: var(--color-primary-hoverDark);
+    }
+
+    @media only screen and (max-width: 31.25em) {
+      font-size: 1.5rem;
+      padding: 0.3rem 0.5rem;
     }
   }
 }
