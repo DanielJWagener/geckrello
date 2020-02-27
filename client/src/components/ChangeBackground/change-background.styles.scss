@@ -1,4 +1,9 @@
 .colors {
   display: flex;
   flex-wrap: wrap;
+
+  @media only screen and (max-width: 31.25em) {
+    flex-direction: column;
+    align-items: center;
+  }
 }

@@ -31,15 +31,15 @@ class SidebarMenu extends React.Component {
         >
           Change Background
         </SidebarItem>
-        <SidebarItem
+        {/* <SidebarItem
           toggleTarget="BoardDescription"
           togglePanel={this.togglePanel}
         >
-          Edit Board Description
+          Board Description
         </SidebarItem>
         <SidebarItem toggleTarget="Friends" togglePanel={this.togglePanel}>
           Manage Friends
-        </SidebarItem>
+        </SidebarItem> */}
 
         <SidebarPanel
           visible={this.state.panel === "Archive"}
