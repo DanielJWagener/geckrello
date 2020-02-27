@@ -17,12 +17,20 @@
       width: 20px;
       margin: 0 1rem 3rem 1rem;
       padding: 0 1rem;
+
+      &:vertical {
+        display: none;
+      }
     }
 
     &::-webkit-scrollbar-track {
       -webkit-border-radius: 5px;
       border-radius: 5px;
       background: #aaa;
+
+      &:vertical {
+        display: none;
+      }
     }
 
     &::-webkit-scrollbar-thumb {
@@ -30,13 +38,14 @@
       border-radius: 5px;
       background: #fff;
       margin: 0 1rem;
-
-      &:hover {
-        cursor: pointer;
-      }
+      cursor: pointer;
 
       &:active {
         background: #eee;
+      }
+
+      &:vertical {
+        display: none;
       }
     }
   }
