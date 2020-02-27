@@ -44,6 +44,7 @@ class AddCard extends React.Component {
   toggleMode = () => {
     if (this.state.mode === "prompt") {
       this.setState({ mode: "input" });
+      this.resetBackground();
     } else {
       this.setState({ mode: "prompt" });
     }
