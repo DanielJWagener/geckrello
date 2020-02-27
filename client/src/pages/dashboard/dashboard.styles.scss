@@ -1,0 +1,12 @@
+.dashboard {
+  background-color: #eeeeee;
+  height: calc(var(--vh, 1vh) * 100 - var(--navbar-height));
+  padding: 1rem;
+
+  &__boards-container {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin: 2rem 0;
+  }
+}

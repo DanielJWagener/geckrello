@@ -5,8 +5,8 @@ import { connect } from "react-redux";
 import { fetchUser } from "./actions";
 import Board from "./pages/board/board.component";
 import Navbar from "./components/Navbar/navbar.component";
-import Dashboard from "./pages/dashboard/Dashboard";
-import Landing from "./pages/landing/Landing.jsx";
+import Dashboard from "./pages/dashboard/dashboard.component";
+import Landing from "./pages/landing/landing.component";
 import setDefaultColors from "./utilities/setDefaultColors";
 
 import "./App.scss";

@@ -4,8 +4,9 @@ import { connect } from "react-redux";
 import AddBoard from "../../components/AddBoard/add-board.component";
 import BoardLink from "../../components/BoardLink/board-link.component";
 import { fetchUser } from "../../actions";
-import "./dashboard.scss";
 import setDefaultColors from "../../utilities/setDefaultColors";
+
+import "./dashboard.styles.scss";
 
 class Dashboard extends React.Component {
   componentDidMount() {
@@ -13,9 +14,6 @@ class Dashboard extends React.Component {
 
     document.title = `Dashboard - Geckrello, a Trello Clone`;
     setDefaultColors();
-    let root = document.documentElement;
-
-    root.style.setProperty("--color-primary", "#eeeeee");
   }
 
   renderContent(auth) {
@@ -25,29 +23,30 @@ class Dashboard extends React.Component {
       case false:
         return <h1>You are not logged in!</h1>;
       default:
-        if (this.props.auth.givenName) {
-          return (
-            <>
-              <h1>{`Welcome, ${this.props.auth.givenName}!`}</h1>
+        const welcomeMessage = this.props.auth.givenName
+          ? `Welcome, ${this.props.auth.givenName}!`
+          : "Welcome!";
+
+        return (
+          <>
+            <h1>{welcomeMessage}</h1>
+            <div className="dashboard__boards-container">
               {this.renderBoards()}
-              <AddBoard />
-            </>
-          );
-        } else {
-          return <h1>Welcome!</h1>;
-        }
+            </div>
+            <AddBoard />
+          </>
+        );
     }
   }
 
   renderBoards = () => {
-    return this.props.auth.boards.map(board => {
-      return (
-        <BoardLink key={board._id} title={board.title} boardId={board._id} />
-      );
-    });
+    return this.props.auth.boards.map(({ _id, ...otherProps }) => (
+      <BoardLink key={_id} boardId={_id} {...otherProps} />
+    ));
   };
 
   render() {
+    console.log();
     return (
       <div className="dashboard">{this.renderContent(this.props.auth)}</div>
     );

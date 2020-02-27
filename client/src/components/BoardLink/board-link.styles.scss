@@ -1,0 +1,22 @@
+.board-link {
+  background-color: #444;
+  padding: 1rem 2rem;
+  border-radius: 1rem;
+  text-align: center;
+  margin-bottom: 1rem;
+  cursor: pointer;
+
+  &__link {
+    color: white;
+    text-decoration: none;
+
+    &:visited {
+      color: white;
+      text-decoration: none;
+    }
+  }
+
+  &:hover > .board-link__link {
+    color: #ddd;
+  }
+}
