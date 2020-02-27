@@ -90,7 +90,9 @@ class AddCard extends React.Component {
           className="add-card add-card__prompt"
           style={{ backgroundColor: this.state.backgroundColor }}
           onMouseOver={this.hoverBackground}
+          onTouchStart={this.hoverBackground}
           onMouseLeave={this.resetBackground}
+          onTouchMove={this.resetBackground}
           onClick={this.toggleMode}
           ref={this.addCardPromptRef}
         >
