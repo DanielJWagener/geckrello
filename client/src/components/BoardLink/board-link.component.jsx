@@ -10,11 +10,13 @@ const BoardLink = props => {
   console.log(backgroundColor);
 
   return (
-    <div className="board-link" style={{ backgroundColor }}>
-      <Link className="board-link__link" to={`/board/${props.boardId}`}>
-        {props.title}
-      </Link>
-    </div>
+    <Link
+      className="board-link"
+      to={`/board/${props.boardId}`}
+      style={{ backgroundColor }}
+    >
+      <div className="board-link__link">{props.title}</div>
+    </Link>
   );
 };
 
