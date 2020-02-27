@@ -31,9 +31,9 @@ class Dashboard extends React.Component {
           <>
             <h1>{welcomeMessage}</h1>
             <div className="dashboard__boards-container">
+              <AddBoard />
               {this.renderBoards()}
             </div>
-            <AddBoard />
           </>
         );
     }

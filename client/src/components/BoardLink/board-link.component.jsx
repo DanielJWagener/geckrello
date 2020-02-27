@@ -12,7 +12,7 @@ const BoardLink = props => {
   return (
     <div className="board-link" style={{ backgroundColor }}>
       <Link className="board-link__link" to={`/board/${props.boardId}`}>
-        <h1>{props.title}</h1>
+        {props.title}
       </Link>
     </div>
   );

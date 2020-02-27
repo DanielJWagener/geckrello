@@ -7,6 +7,11 @@
     display: flex;
     flex-direction: column;
     width: 50%;
+    max-width: 40rem;
     margin: 2rem 0;
+
+    @media only screen and (max-width: 30.3125em) {
+      width: 100%;
+    }
   }
 }

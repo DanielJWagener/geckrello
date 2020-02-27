@@ -90,6 +90,9 @@ class AddBoard extends React.Component {
                   className="form__submit"
                   value="Add Board"
                 />
+                <button className="form__cancel" onClick={this.toggleMode}>
+                  Cancel
+                </button>
               </div>
             </form>
           </div>
