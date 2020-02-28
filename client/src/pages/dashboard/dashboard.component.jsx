@@ -46,7 +46,6 @@ class Dashboard extends React.Component {
   };
 
   render() {
-    console.log();
     return (
       <div className="dashboard">{this.renderContent(this.props.auth)}</div>
     );

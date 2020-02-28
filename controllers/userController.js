@@ -16,7 +16,6 @@ exports.getCurrentUser = (req, res) => {
 };
 
 exports.deleteCurrentUser = catchAsync(async (req, res) => {
-  console.log(req.user);
   await User.findByIdAndDelete(req.user._id);
 
   req.method = "GET";

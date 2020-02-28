@@ -7,7 +7,6 @@ import "./board-link.styles.scss";
 
 const BoardLink = props => {
   const backgroundColor = colorThemes[props.background].dark;
-  console.log(backgroundColor);
 
   return (
     <Link

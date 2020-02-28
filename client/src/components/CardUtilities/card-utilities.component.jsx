@@ -40,8 +40,6 @@ class CardUtilities extends React.Component {
   onCopySubmit = e => {
     e.preventDefault();
 
-    console.log(this.props.cardId);
-
     this.props.copyCard(this.props.cardId, this.state.value);
 
     this.setState({ panel: "", value: this.props.listHome });
