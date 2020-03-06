@@ -1,0 +1,5 @@
+export default {
+  ADD_LIST: "ADD_LIST",
+  ARCHIVE_LIST: "ARCHIVE_LIST",
+  RESTORE_LIST: "RESTORE_LIST"
+};
