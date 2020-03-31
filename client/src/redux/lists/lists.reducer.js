@@ -1,21 +1,20 @@
-import listsActionTypes from "./list.types";
-import boardsActionTypes from "../boards/boards.types";
+import actionTypes from "../types";
 
 export default (state = [], action) => {
   let currentLists = [...state];
   switch (action.type) {
-    case boardsActionTypes.FETCH_BOARD_DATA:
+    case actionTypes.FETCH_BOARD_DATA:
       return action.payload.lists;
-    case listsActionTypes.ADD_LIST:
+    case actionTypes.ADD_LIST:
       return [...state, action.payload];
-    case listsActionTypes.ARCHIVE_LIST:
+    case actionTypes.ARCHIVE_LIST:
       currentLists.forEach(list => {
         if (list._id === action.payload) {
           list.archived = true;
         }
       });
       return currentLists;
-    case listsActionTypes.RESTORE_LIST:
+    case actionTypes.RESTORE_LIST:
       currentLists.forEach(list => {
         if (list._id === action.payload) {
           list.archived = false;

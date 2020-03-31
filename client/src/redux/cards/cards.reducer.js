@@ -1,15 +1,14 @@
-import cardsActionTypes from "./cards.types";
-import boardsActionTypes from "../boards/boards.types";
+import actionTypes from "../types";
 
 export default (state = [], action) => {
   let currentCards = [...state];
   switch (action.type) {
-    case boardsActionTypes.FETCH_BOARD_DATA:
+    case actionTypes.FETCH_BOARD_DATA:
       return action.payload.cards;
-    case cardsActionTypes.ADD_CARD:
+    case actionTypes.ADD_CARD:
       // Return current state with new card appended
       return [...state, action.payload];
-    case cardsActionTypes.MOVE_CARD:
+    case actionTypes.MOVE_CARD:
       // Locate coresponding card in store
       currentCards.forEach(card => {
         if (card._id === action.payload.cardId) {
@@ -18,7 +17,7 @@ export default (state = [], action) => {
         }
       });
       return currentCards;
-    case cardsActionTypes.ARCHIVE_CARD:
+    case actionTypes.ARCHIVE_CARD:
       // Find card in store, update archived property
       currentCards.forEach(card => {
         if (card._id === action.payload) {
@@ -26,7 +25,7 @@ export default (state = [], action) => {
         }
       });
       return currentCards;
-    case cardsActionTypes.RESTORE_CARD:
+    case actionTypes.RESTORE_CARD:
       // Find card in store, update archived property
       currentCards.forEach(card => {
         if (card._id === action.payload) {
@@ -34,7 +33,7 @@ export default (state = [], action) => {
         }
       });
       return currentCards;
-    case cardsActionTypes.UPDATE_CARD_DESCRIPTION:
+    case actionTypes.UPDATE_CARD_DESCRIPTION:
       // Locate coresponding card in store
       currentCards.forEach(card => {
         if (card._id === action.payload.cardId) {
@@ -43,7 +42,7 @@ export default (state = [], action) => {
         }
       });
       return currentCards;
-    case cardsActionTypes.UPDATE_CHECKLIST:
+    case actionTypes.UPDATE_CHECKLIST:
       // Locate corresponding card in store
       currentCards.forEach(card => {
         if (card._id === action.payload.cardId) {

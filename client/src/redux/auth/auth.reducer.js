@@ -1,8 +1,8 @@
-import authActionTypes from "./auth.types";
+import actionTypes from "../types";
 
 export default (state = null, action) => {
   switch (action.type) {
-    case authActionTypes.FETCH_USER:
+    case actionTypes.FETCH_USER:
       return action.payload || false;
     default:
       return state;
