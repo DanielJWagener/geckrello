@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { archiveCard, moveCard, copyCard } from "../../actions";
-import history from "../../utilities/history";
+import { withRouter } from "react-router-dom";
 
 import "./card-utilities.styles.scss";
 
@@ -23,7 +23,7 @@ class CardUtilities extends React.Component {
   archiveCard = () => {
     this.props.archiveCard(this.props.cardId);
     this.setState({ panel: "" });
-    history.goBack();
+    this.props.history.goBack();
   };
 
   handleChange = e => {
@@ -34,7 +34,7 @@ class CardUtilities extends React.Component {
     e.preventDefault();
     this.props.moveCard(this.props.cardId, this.state.value);
     this.setState({ panel: "", value: this.props.listHome });
-    history.goBack();
+    this.props.history.goBack();
   };
 
   onCopySubmit = e => {
@@ -43,7 +43,7 @@ class CardUtilities extends React.Component {
     this.props.copyCard(this.props.cardId, this.state.value);
 
     this.setState({ panel: "", value: this.props.listHome });
-    history.goBack();
+    this.props.history.goBack();
   };
 
   listOptionsArray = () =>
@@ -209,6 +209,6 @@ const mapStateToProps = (state, ownProps) => {
   return { lists, cards, listHome };
 };
 
-export default connect(mapStateToProps, { archiveCard, moveCard, copyCard })(
-  CardUtilities
+export default withRouter(
+  connect(mapStateToProps, { archiveCard, moveCard, copyCard })(CardUtilities)
 );

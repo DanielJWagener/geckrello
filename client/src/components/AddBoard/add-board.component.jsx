@@ -91,7 +91,7 @@ class AddBoard extends React.Component {
                   value="Add Board"
                 />
                 <button className="form__cancel" onClick={this.toggleMode}>
-                  Cancel
+                  Cancell
                 </button>
               </div>
             </form>

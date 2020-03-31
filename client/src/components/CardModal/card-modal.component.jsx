@@ -3,8 +3,7 @@ import ReactDOM from "react-dom";
 import CardDescription from "../CardDescription/card-description.component";
 import Checklist from "../Checklist/checklist.component";
 import CardUtilities from "../CardUtilities/card-utilities.component";
-
-import history from "../../utilities/history";
+import { withRouter } from "react-router-dom";
 
 import "./card-modal.styles.scss";
 import "./modal-form.styles.scss";
@@ -12,7 +11,7 @@ import "./modal-form.styles.scss";
 function CardModal(props) {
   return ReactDOM.createPortal(
     <div
-      onClick={() => history.goBack()}
+      onClick={() => props.history.goBack()}
       className="modal__overlay"
       id={props.cardId}
     >
@@ -25,7 +24,7 @@ function CardModal(props) {
         </div>
 
         <div
-          onClick={() => history.goBack()}
+          onClick={() => props.history.goBack()}
           href="#board"
           className="modal__close"
           draggable="false"
@@ -48,4 +47,4 @@ function CardModal(props) {
   );
 }
 
-export default CardModal;
+export default withRouter(CardModal);
