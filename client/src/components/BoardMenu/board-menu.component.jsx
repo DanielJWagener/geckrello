@@ -1,11 +1,11 @@
 import React from "react";
-import SidebarMenu from "../BoardMenuContent/board-menu-content";
+import BoardMenuContent from "../BoardMenuContent/board-menu-content.component";
 
 import "./board-menu.styles.scss";
 
 const sidebarRoot = document.getElementById("sidebar-root");
 
-class Sidebar extends React.Component {
+class BoardMenu extends React.Component {
   constructor(props) {
     super(props);
     this.el = document.createElement("div");
@@ -34,11 +34,11 @@ class Sidebar extends React.Component {
             this.props.hidden ? "hidden" : "shown"
           }`}
         >
-          <SidebarMenu toggleSidebar={this.props.toggleSidebar} />
+          <BoardMenuContent toggleSidebar={this.props.toggleSidebar} />
         </div>
       </div>
     );
   }
 }
 
-export default Sidebar;
+export default BoardMenu;

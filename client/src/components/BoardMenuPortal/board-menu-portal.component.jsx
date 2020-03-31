@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 
 const sidebarRoot = document.getElementById("sidebar-root");
 
-class SidebarPortal extends React.Component {
+class BoardMenuPortal extends React.Component {
   constructor(props) {
     super(props);
     this.el = document.createElement("div");
@@ -29,4 +29,4 @@ class SidebarPortal extends React.Component {
   }
 }
 
-export default SidebarPortal;
+export default BoardMenuPortal;

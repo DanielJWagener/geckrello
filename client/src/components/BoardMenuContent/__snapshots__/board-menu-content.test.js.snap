@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders BoardMenuContent component 1`] = `ShallowWrapper {}`;

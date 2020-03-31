@@ -2,7 +2,7 @@ import React from "react";
 
 import "./board-menu-panel.styles.scss";
 
-const SidebarPanel = ({ visible, togglePanel, children, heading }) => (
+const BoardMenuPanel = ({ visible, togglePanel, children, heading }) => (
   <div
     className={`boardmenu__panel boardmenu__panel--${
       visible ? "visible" : "hidden"
@@ -19,4 +19,4 @@ const SidebarPanel = ({ visible, togglePanel, children, heading }) => (
   </div>
 );
 
-export default SidebarPanel;
+export default BoardMenuPanel;

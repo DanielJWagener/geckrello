@@ -2,12 +2,12 @@ import React from "react";
 
 import Archive from "../Archive/archive.component";
 import ChangeBackground from "../ChangeBackground/change-background.component";
-import SidebarPanel from "../BoardMenuPanel/board-menu-panel.component";
-import SidebarItem from "../BoardMenuItem/board-menu-item";
+import BoardMenuPanel from "../BoardMenuPanel/board-menu-panel.component";
+import BoardMenuItem from "../BoardMenuItem/board-menu-item.component";
 
 import "./board-menu-content.styles.scss";
 
-class SidebarMenu extends React.Component {
+class BoardMenu extends React.Component {
   state = { panel: "none" };
 
   togglePanel = panel => {
@@ -22,52 +22,52 @@ class SidebarMenu extends React.Component {
           &times;
         </div>
         <hr />
-        <SidebarItem toggleTarget="Archive" togglePanel={this.togglePanel}>
+        <BoardMenuItem toggleTarget="Archive" togglePanel={this.togglePanel}>
           Show Archive
-        </SidebarItem>
-        <SidebarItem
+        </BoardMenuItem>
+        <BoardMenuItem
           toggleTarget="ChangeBackground"
           togglePanel={this.togglePanel}
         >
           Change Background
-        </SidebarItem>
-        {/* <SidebarItem
+        </BoardMenuItem>
+        {/* <BoardMenuItem
           toggleTarget="BoardDescription"
           togglePanel={this.togglePanel}
         >
           Board Description
-        </SidebarItem>
-        <SidebarItem toggleTarget="Friends" togglePanel={this.togglePanel}>
+        </BoardMenuItem>
+        <BoardMenuItem toggleTarget="Friends" togglePanel={this.togglePanel}>
           Manage Friends
-        </SidebarItem> */}
+        </BoardMenuItem> */}
 
-        <SidebarPanel
+        <BoardMenuPanel
           visible={this.state.panel === "Archive"}
           togglePanel={this.togglePanel}
           heading="Archive"
         >
           <Archive />
-        </SidebarPanel>
-        <SidebarPanel
+        </BoardMenuPanel>
+        <BoardMenuPanel
           visible={this.state.panel === "ChangeBackground"}
           togglePanel={this.togglePanel}
           heading="Change Background"
         >
           <ChangeBackground />
-        </SidebarPanel>
-        <SidebarPanel
+        </BoardMenuPanel>
+        <BoardMenuPanel
           visible={this.state.panel === "BoardDescription"}
           togglePanel={this.togglePanel}
           heading="Board Description"
-        ></SidebarPanel>
-        <SidebarPanel
+        ></BoardMenuPanel>
+        <BoardMenuPanel
           visible={this.state.panel === "Friends"}
           togglePanel={this.togglePanel}
           heading="Friends"
-        ></SidebarPanel>
+        ></BoardMenuPanel>
       </div>
     );
   }
 }
 
-export default SidebarMenu;
+export default BoardMenu;
