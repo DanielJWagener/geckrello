@@ -14,6 +14,7 @@ This a MERN stack application that aims to clone Trello, a to-do list applicatio
 - Sass / CSS
 - Javascript
 - Google OAuth
+- Jest / Enzyme
 - Landing page image credit: David Scharzenberg @ [Pixabay](https://pixabay.com/photos/business-computer-mobile-smartphone-2846221/)
 
 ## LICENSE
