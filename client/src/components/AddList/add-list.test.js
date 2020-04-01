@@ -92,7 +92,7 @@ describe("AddList input mode functionality", () => {
         <AddList />
       </Root>
     );
-    inputText = "New Board";
+    inputText = "New List";
 
     wrapped.find("button").simulate("click");
     wrapped.find("input[type='text']").simulate("change", {

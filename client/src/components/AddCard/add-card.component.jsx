@@ -134,7 +134,8 @@ class AddCard extends React.Component {
 }
 
 const mapStateToProps = ({ cards, board }) => {
-  return { boardHome: board._id, cards };
+  const boardHome = board ? board._id : "";
+  return { boardHome, cards };
 };
 
 export default connect(mapStateToProps, { addCard })(AddCard);
