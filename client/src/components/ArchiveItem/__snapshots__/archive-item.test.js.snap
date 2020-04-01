@@ -1,3 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders ArchiveItem component 1`] = `ShallowWrapper {}`;
+exports[`renders ArchiveItem component 1`] = `
+"<div className=\\"archive__item\\">
+  <div className=\\"archive__item--title\\" />
+  <button className=\\"archive__item--restore\\" onClick={[Function: restore]}>
+    Restore
+  </button>
+</div>"
+`;

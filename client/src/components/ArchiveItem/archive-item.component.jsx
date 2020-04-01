@@ -4,7 +4,7 @@ import { restoreList, restoreCard } from "../../actions";
 
 import "./archive-item.styles.scss";
 
-const ArchiveItem = props => {
+export const ArchiveItem = props => {
   const restore = () => {
     if (props.itemType === "list") {
       props.restoreList(props.itemId);

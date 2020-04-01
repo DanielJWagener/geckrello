@@ -4,13 +4,20 @@ import Archive from "./archive.component";
 import { Archive as UnconnectedArchive } from "./archive.component";
 import Root from "../../Root";
 
+const mockProps = {
+  cards: [
+    { _id: "1", title: "Card 1", archived: true },
+    { _id: "2", title: "Card 2", archived: false }
+  ],
+  lists: [
+    { _id: "1", title: "List 1", archived: true },
+    { _id: "2", title: "List 2", archived: false }
+  ]
+};
+
 it("renders Archive component", () => {
   expect(
-    shallow(
-      <Root>
-        <Archive />
-      </Root>
-    )
+    shallow(<UnconnectedArchive {...mockProps} />).debug()
   ).toMatchSnapshot();
 });
 
@@ -49,21 +56,9 @@ describe("Archive functionality", () => {
   });
 
   it("displays only archived cards and lists", () => {
-    // Each array: one archived, one not. Component should only display the archived ones.
-    const cards = [
-      { _id: "1", title: "Card 1", archived: true },
-      { _id: "2", title: "Card 2", archived: false }
-    ];
-    const lists = [
-      { _id: "1", title: "List 1", archived: true },
-      { _id: "2", title: "List 2", archived: false }
-    ];
-
     // We export the Archive component before it gets passed into connect()
     // This way, we can call instance() on the component without a Provider getting in the way
-    const wrapped2 = shallow(
-      <UnconnectedArchive cards={cards} lists={lists} />
-    );
+    const wrapped2 = shallow(<UnconnectedArchive {...mockProps} />);
 
     expect(wrapped2.instance().archivedCardsArray().length).toEqual(1);
     expect(wrapped2.instance().archivedListsArray().length).toEqual(1);

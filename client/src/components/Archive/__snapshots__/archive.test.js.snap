@@ -1,3 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders Archive component 1`] = `ShallowWrapper {}`;
+exports[`renders Archive component 1`] = `
+"<div>
+  <div className=\\"archive-toggle\\">
+    <button className=\\"archive-toggle__button archive-toggle__button--active\\" onClick={[Function]}>
+      Lists
+    </button>
+    <button className=\\"archive-toggle__button archive-toggle__button--inactive\\" onClick={[Function]}>
+      Cards
+    </button>
+  </div>
+  <div className=\\"archive__list\\">
+    <Connect(ArchiveItem) itemId=\\"1\\" itemTitle=\\"List 1\\" itemType=\\"list\\" />
+  </div>
+</div>"
+`;
