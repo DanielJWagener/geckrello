@@ -2,21 +2,21 @@ import React, { Component } from "react";
 
 import BoardTitle from "../BoardTitle/board-title.component";
 import MenuToggler from "../MenuToggler/menu-toggler.component";
-import Sidebar from "../BoardMenu/board-menu.component";
+import BoardMenu from "../BoardMenu/board-menu.component";
 import BoardMenuPortal from "../BoardMenuPortal/board-menu-portal.component";
 
 import "./board-header.styles.scss";
 
-class BoardHeader extends Component {
+export class BoardHeader extends Component {
   state = {
-    sidebarHidden: true
+    menuHidden: true
   };
 
-  toggleSidebar = () => {
-    if (this.state.sidebarHidden) {
-      this.setState({ sidebarHidden: false });
+  toggleMenu = () => {
+    if (this.state.menuHidden) {
+      this.setState({ menuHidden: false });
     } else {
-      this.setState({ sidebarHidden: true });
+      this.setState({ menuHidden: true });
     }
   };
 
@@ -25,13 +25,13 @@ class BoardHeader extends Component {
       <div className="board-header">
         <BoardTitle board={this.props.board} />
         <MenuToggler
-          toggleSidebar={this.toggleSidebar}
-          sidebarHidden={this.state.sidebarHidden}
+          toggleMenu={this.toggleMenu}
+          menuHidden={this.state.menuHidden}
         />
         <BoardMenuPortal>
-          <Sidebar
-            hidden={this.state.sidebarHidden}
-            toggleSidebar={this.toggleSidebar}
+          <BoardMenu
+            menuHidden={this.state.menuHidden}
+            toggleMenu={this.toggleMenu}
           />
         </BoardMenuPortal>
       </div>

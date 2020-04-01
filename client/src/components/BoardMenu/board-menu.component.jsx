@@ -31,10 +31,10 @@ class BoardMenu extends React.Component {
       <div className="sidebar__wrapper">
         <div
           className={`sidebar sidebar--${
-            this.props.hidden ? "hidden" : "shown"
+            this.props.menuHidden ? "hidden" : "shown"
           }`}
         >
-          <BoardMenuContent toggleSidebar={this.props.toggleSidebar} />
+          <BoardMenuContent toggleMenu={this.props.toggleMenu} />
         </div>
       </div>
     );

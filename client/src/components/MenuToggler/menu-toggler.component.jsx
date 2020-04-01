@@ -16,12 +16,12 @@ const MenuToggler = props => {
   return (
     <div>
       <h1
-        onClick={props.toggleSidebar}
+        onClick={props.toggleMenu}
         onMouseOver={onMouseOverHandler}
         onMouseOut={onMouseOutHandler}
         className="toggler"
       >
-        {props.sidebarHidden ? "Show Menu" : "Hide Menu"}
+        {props.menuHidden ? "Show Menu" : "Hide Menu"}
       </h1>
     </div>
   );

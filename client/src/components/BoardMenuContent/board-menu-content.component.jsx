@@ -18,7 +18,7 @@ class BoardMenu extends React.Component {
     return (
       <div className="sidebar-menu">
         <h2 className="sidebar-menu__heading">Menu</h2>
-        <div className="sidebar-menu__close" onClick={this.props.toggleSidebar}>
+        <div className="sidebar-menu__close" onClick={this.props.toggleMenu}>
           &times;
         </div>
         <hr />
