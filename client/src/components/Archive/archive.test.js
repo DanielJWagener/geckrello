@@ -35,24 +35,21 @@ describe("Archive functionality", () => {
     const activeInitial = wrapped.find(activeButton).text();
     const inactiveInitial = wrapped.find(inactiveButton).text();
 
+    // Both the inactive and active buttons should work. First the active:
     wrapped.find(activeButton).simulate("click");
-
     expect(wrapped.find(activeButton).text()).toEqual(inactiveInitial);
-
     wrapped.find(activeButton).simulate("click");
-
     expect(wrapped.find(activeButton).text()).toEqual(activeInitial);
 
+    // Now the inactive:
     wrapped.find(inactiveButton).simulate("click");
-
     expect(wrapped.find(activeButton).text()).toEqual(inactiveInitial);
-
     wrapped.find(inactiveButton).simulate("click");
-
     expect(wrapped.find(activeButton).text()).toEqual(activeInitial);
   });
 
   it("displays only archived cards and lists", () => {
+    // Each array: one archived, one not. Component should only display the archived ones.
     const cards = [
       { _id: "1", title: "Card 1", archived: true },
       { _id: "2", title: "Card 2", archived: false }
@@ -61,6 +58,9 @@ describe("Archive functionality", () => {
       { _id: "1", title: "List 1", archived: true },
       { _id: "2", title: "List 2", archived: false }
     ];
+
+    // We export the Archive component before it gets passed into connect()
+    // This way, we can call instance() on the component without a Provider getting in the way
     const wrapped2 = shallow(
       <UnconnectedArchive cards={cards} lists={lists} />
     );

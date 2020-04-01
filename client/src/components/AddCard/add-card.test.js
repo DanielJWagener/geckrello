@@ -13,6 +13,7 @@ it("renders AddCard component", () => {
   ).toMatchSnapshot();
 });
 
+// Prompt mode tests
 describe("AddCard prompt mode rendering", () => {
   let wrapped;
   beforeEach(() => {
