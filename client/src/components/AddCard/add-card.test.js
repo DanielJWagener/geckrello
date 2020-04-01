@@ -52,12 +52,15 @@ describe("AddCard prompt mode functionality", () => {
   });
 
   it("has a button that toggles mode", () => {
+    // Toggle mode
     wrapped.find(".add-card__prompt").simulate("click");
 
+    // Now, in input mode:
     expect(wrapped.find("form").length).toEqual(1);
   });
 });
 
+// Input mode tests
 describe("AddCard input mode rendering", () => {
   let wrapped;
   beforeEach(() => {
@@ -66,6 +69,8 @@ describe("AddCard input mode rendering", () => {
         <AddCard />
       </Root>
     );
+
+    // Toggle mode
     wrapped.find(".add-card__prompt").simulate("click");
   });
 
@@ -95,6 +100,7 @@ describe("AddCard input mode functionality", () => {
     );
     inputText = "New Card";
 
+    // Toggle mode, then input some text
     wrapped.find(".add-card__prompt").simulate("click");
     wrapped.find("input[type='text']").simulate("change", {
       target: { value: inputText }
@@ -113,14 +119,19 @@ describe("AddCard input mode functionality", () => {
   it("clears the input field on submit", () => {
     wrapped.find("form").simulate("submit");
     wrapped.update();
+
+    // Component automatically toggles back to prompt mode.
+    // Toggle back to input:
     wrapped.find(".add-card__prompt").simulate("click");
 
     expect(wrapped.find("input[type='text']").prop("value")).toEqual("");
   });
 
   it("has a button that toggles mode", () => {
+    // Toggle mode:
     wrapped.find("button").simulate("click");
 
+    // Now, in prompt mode:
     expect(wrapped.find("form").length).toEqual(0);
   });
 });
