@@ -5,7 +5,7 @@ import ArchiveItem from "../ArchiveItem/archive-item.component";
 
 import "./archive.styles.scss";
 
-class Archive extends React.Component {
+export class Archive extends React.Component {
   state = { mode: "lists" };
 
   toggleMode = () => {
