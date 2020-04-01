@@ -77,7 +77,7 @@ class AddBoard extends React.Component {
                 <input
                   type="text"
                   className="form form__input form__input--validation"
-                  value={this.state.listTitle}
+                  value={this.state.boardTitle}
                   onChange={this.handleChange}
                   style={{ borderBottomColor: this.state.borderColor }}
                   placeholder="New board title..."
@@ -91,7 +91,7 @@ class AddBoard extends React.Component {
                   value="Add Board"
                 />
                 <button className="form__cancel" onClick={this.toggleMode}>
-                  Cancell
+                  Cancel
                 </button>
               </div>
             </form>
