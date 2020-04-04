@@ -1,24 +1,22 @@
 import { shallow, mount } from "enzyme";
 import React from "react";
 import Archive from "./archive.component";
-import { Archive as UnconnectedArchive } from "./archive.component";
+import { Archive as ArchivePure } from "./archive.component";
 import Root from "../../Root";
 
 const mockProps = {
   cards: [
     { _id: "1", title: "Card 1", archived: true },
-    { _id: "2", title: "Card 2", archived: false }
+    { _id: "2", title: "Card 2", archived: false },
   ],
   lists: [
     { _id: "1", title: "List 1", archived: true },
-    { _id: "2", title: "List 2", archived: false }
-  ]
+    { _id: "2", title: "List 2", archived: false },
+  ],
 };
 
 it("renders Archive component", () => {
-  expect(
-    shallow(<UnconnectedArchive {...mockProps} />).debug()
-  ).toMatchSnapshot();
+  expect(shallow(<ArchivePure {...mockProps} />).debug()).toMatchSnapshot();
 });
 
 describe("Archive functionality", () => {
@@ -58,7 +56,7 @@ describe("Archive functionality", () => {
   it("displays only archived cards and lists", () => {
     // We export the Archive component before it gets passed into connect()
     // This way, we can call instance() on the component without a Provider getting in the way
-    const wrapped2 = shallow(<UnconnectedArchive {...mockProps} />);
+    const wrapped2 = shallow(<ArchivePure {...mockProps} />);
 
     expect(wrapped2.instance().archivedCardsArray().length).toEqual(1);
     expect(wrapped2.instance().archivedListsArray().length).toEqual(1);
