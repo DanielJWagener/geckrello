@@ -6,7 +6,7 @@ import setDefaultColors from "../../utilities/setDefaultColors";
 
 import "./landing.styles.scss";
 
-class Landing extends React.Component {
+export class Landing extends React.Component {
   componentDidMount() {
     document.title = `Geckrello, a Trello Clone`;
     setDefaultColors();

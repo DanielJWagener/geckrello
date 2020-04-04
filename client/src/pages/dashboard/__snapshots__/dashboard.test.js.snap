@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders Dashboard component 1`] = `
+"<div className=\\"dashboard\\">
+  <h1>
+    Welcome!
+  </h1>
+  <div className=\\"dashboard__boards-container\\">
+    <Connect(AddBoard) />
+  </div>
+</div>"
+`;

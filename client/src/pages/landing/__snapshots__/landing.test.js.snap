@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders Landing component 1`] = `
+"<div className=\\"landing\\">
+  <div className=\\"hero\\">
+    <h1 className=\\"hero__text\\">
+      <span className=\\"hero__text--first\\">
+        Your Life.
+      </span>
+       
+      <span className=\\"hero__text--second\\">
+        Organized.
+      </span>
+    </h1>
+    <Link to=\\"/dashboard\\" className=\\"hero__cta\\">
+      Go to Dashboard
+    </Link>
+  </div>
+</div>"
+`;

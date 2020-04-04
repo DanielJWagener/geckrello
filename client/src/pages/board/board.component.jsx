@@ -12,7 +12,7 @@ import updateBackgroundColor from "../../utilities/updateBackgroundColor";
 
 import "./board.styles.scss";
 
-class Board extends React.Component {
+export class Board extends React.Component {
   componentDidMount() {
     this.props.fetchBoardData(this.props.match.params.id);
   }
@@ -34,8 +34,8 @@ class Board extends React.Component {
   // Iterate over every list in state, return the non-archived ones, and make and array of List components out of them
   listsArray = () =>
     this.props.lists
-      .filter(list => !list.archived)
-      .map(list => (
+      .filter((list) => !list.archived)
+      .map((list) => (
         <List
           key={list._id}
           listTitle={list.title}
@@ -72,5 +72,5 @@ const mapStateToProps = ({ board, lists, cards }) => {
 
 export default connect(mapStateToProps, {
   unloadBoard,
-  fetchBoardData
+  fetchBoardData,
 })(Board);

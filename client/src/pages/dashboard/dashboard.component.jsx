@@ -8,7 +8,7 @@ import setDefaultColors from "../../utilities/setDefaultColors";
 
 import "./dashboard.styles.scss";
 
-class Dashboard extends React.Component {
+export class Dashboard extends React.Component {
   componentDidMount() {
     this.props.fetchUser();
 
