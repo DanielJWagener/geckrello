@@ -1,18 +1,5 @@
 @import "../../sass/abstracts/_variables.scss";
 
-// #sidebar-root {
-//   position: fixed;
-//   top: 9rem;
-//   right: calc(-1 * #{$sidebar-width});
-//   height: calc(var(--vh, 1vh) * 100 - 9rem);
-//   width: $sidebar-width;
-//   z-index: 2;
-
-//   @media only screen and (max-width: 400px) {
-//     width: 100vw;
-//   }
-// }
-
 .portal-inner {
   height: 100%;
 }
@@ -105,5 +92,19 @@
         }
       }
     }
+  }
+}
+
+.boardmenu__item {
+  font-size: 2rem;
+  padding: 2rem 1rem 2rem 1rem;
+  width: 100%;
+  text-align: left;
+  border: none;
+  border-radius: 3px;
+  background-color: $component-background;
+  cursor: pointer;
+  &:hover {
+    background-color: $component-background-dark;
   }
 }

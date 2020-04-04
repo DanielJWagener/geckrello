@@ -2,7 +2,7 @@
 
 exports[`renders BoardMenu component 1`] = `
 "<div className=\\"sidebar__wrapper\\">
-  <div className=\\"sidebar sidebar--shown\\">
+  <div className=\\"sidebar sidebar--hidden\\">
     <BoardMenu toggleMenu={[undefined]} />
   </div>
 </div>"

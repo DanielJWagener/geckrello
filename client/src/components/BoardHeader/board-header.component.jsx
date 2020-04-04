@@ -3,13 +3,13 @@ import React, { Component } from "react";
 import BoardTitle from "../BoardTitle/board-title.component";
 import MenuToggler from "../MenuToggler/menu-toggler.component";
 import BoardMenu from "../BoardMenu/board-menu.component";
-import BoardMenuPortal from "../BoardMenuPortal/board-menu-portal.component";
+import BoardMenuPortal from "./board-menu-portal.component";
 
 import "./board-header.styles.scss";
 
 export class BoardHeader extends Component {
   state = {
-    menuHidden: true
+    menuHidden: true,
   };
 
   toggleMenu = () => {
