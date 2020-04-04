@@ -4,11 +4,5 @@ import BoardLink from "./board-link.component";
 import Root from "../../Root";
 
 it("renders BoardLink component", () => {
-  expect(
-    shallow(
-      <Root>
-        <BoardLink />
-      </Root>
-    )
-  ).toMatchSnapshot();
+  expect(shallow(<BoardLink background="blue" />).debug()).toMatchSnapshot();
 });

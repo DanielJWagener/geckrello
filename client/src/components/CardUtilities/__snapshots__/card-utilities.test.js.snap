@@ -1,3 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders CardUtilties component 1`] = `ShallowWrapper {}`;
+exports[`renders CardUtilties component 1`] = `
+"<div className=\\"card-utilities\\">
+  <button className=\\"card-utilities__button\\" onClick={[Function]}>
+    Move
+    <br />
+    Card
+  </button>
+  <button className=\\"card-utilities__button\\" onClick={[Function]}>
+    Copy
+    <br />
+    Card
+  </button>
+  <button className=\\"card-utilities__button\\" onClick={[Function]}>
+    Archive
+    <br />
+    Card
+  </button>
+</div>"
+`;

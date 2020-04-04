@@ -1,16 +1,11 @@
 import { shallow, mount } from "enzyme";
 import React from "react";
 import AddBoard from "./add-board.component";
+import { AddBoard as AddBoardPure } from "./add-board.component";
 import Root from "../../Root";
 
 it("renders AddBoard component", () => {
-  expect(
-    shallow(
-      <Root>
-        <AddBoard />
-      </Root>
-    )
-  ).toMatchSnapshot();
+  expect(shallow(<AddBoardPure />).debug()).toMatchSnapshot();
 });
 
 // Prompt mode tests

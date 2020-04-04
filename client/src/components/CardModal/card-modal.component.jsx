@@ -8,7 +8,7 @@ import { withRouter } from "react-router-dom";
 import "./card-modal.styles.scss";
 import "./modal-form.styles.scss";
 
-function CardModal(props) {
+export function CardModal(props) {
   return ReactDOM.createPortal(
     <div
       onClick={() => props.history.goBack()}

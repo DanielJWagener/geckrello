@@ -1,3 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders ChangeBackground component 1`] = `ShallowWrapper {}`;
+exports[`renders ChangeBackground component 1`] = `
+"<div className=\\"colors\\">
+  <Connect(ChangeBackgroundOption) color=\\"red\\" />
+  <Connect(ChangeBackgroundOption) color=\\"orange\\" />
+  <Connect(ChangeBackgroundOption) color=\\"green\\" />
+  <Connect(ChangeBackgroundOption) color=\\"blue\\" />
+  <Connect(ChangeBackgroundOption) color=\\"purple\\" />
+</div>"
+`;

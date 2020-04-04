@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 import "./navbar.styles.scss";
 
-class NavBar extends Component {
+export class Navbar extends Component {
   renderAuth() {
     switch (this.props.auth) {
       case null:
@@ -52,4 +52,4 @@ function mapStateToProps({ auth }) {
   return { auth };
 }
 
-export default connect(mapStateToProps)(NavBar);
+export default connect(mapStateToProps)(Navbar);

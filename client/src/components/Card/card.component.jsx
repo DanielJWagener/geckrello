@@ -6,7 +6,7 @@ import { moveCard } from "../../actions";
 
 import "./card.styles.scss";
 
-function Card(props) {
+export function Card(props) {
   // Drag source hook
   const [{ isDragging }, drag] = useDrag({
     item: { type: ItemTypes.CARD },

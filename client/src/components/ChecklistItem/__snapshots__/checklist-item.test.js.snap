@@ -1,3 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders ChecklistItem component 1`] = `ShallowWrapper {}`;
+exports[`renders ChecklistItem component 1`] = `
+"<div className=\\"item\\">
+  <div className=\\"item__checkbox item__checkbox--unchecked\\" onClick={[Function: checkOrUncheck]} />
+  <div className=\\"item__title\\" />
+  <div className=\\"item__delete\\" onClick={[Function: deleteItem]}>
+    ×
+  </div>
+</div>"
+`;

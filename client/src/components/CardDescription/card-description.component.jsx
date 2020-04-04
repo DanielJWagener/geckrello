@@ -7,7 +7,7 @@ import { updateCardDescription } from "../../actions";
 
 import "./card-description.styles.scss";
 
-class CardDescription extends React.Component {
+export class CardDescription extends React.Component {
   state = {
     descriptionInput: "",
     mode: "prompt"

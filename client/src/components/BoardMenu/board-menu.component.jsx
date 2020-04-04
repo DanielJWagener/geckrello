@@ -19,11 +19,11 @@ class BoardMenu extends React.Component {
   componentDidMount() {
     this.setVh();
     window.addEventListener("resize", this.setVh);
-    sidebarRoot.appendChild(this.el);
+    sidebarRoot && sidebarRoot.appendChild(this.el);
   }
 
   componentWillUnmout() {
-    sidebarRoot.removeChild(this.el);
+    sidebarRoot && sidebarRoot.removeChild(this.el);
   }
 
   render() {

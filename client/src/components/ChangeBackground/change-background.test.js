@@ -4,11 +4,5 @@ import ChangeBackground from "./change-background.component";
 import Root from "../../Root";
 
 it("renders ChangeBackground component", () => {
-  expect(
-    shallow(
-      <Root>
-        <ChangeBackground />
-      </Root>
-    )
-  ).toMatchSnapshot();
+  expect(shallow(<ChangeBackground />).debug()).toMatchSnapshot();
 });

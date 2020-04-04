@@ -5,7 +5,7 @@ import { updateBoard } from "../../actions";
 
 import "./board-title.styles.scss";
 
-class BoardTitle extends Component {
+export class BoardTitle extends Component {
   state = {
     inputText: "",
     titleText: ""
@@ -97,7 +97,7 @@ class BoardTitle extends Component {
   setInputSize = () => {
     const input = document.querySelector("input");
 
-    input.style.width = `${this.state.inputText.length * 10 + 30}px`;
+    if (input) input.style.width = `${this.state.inputText.length * 10 + 30}px`;
   };
 
   // Changes page title dynamically

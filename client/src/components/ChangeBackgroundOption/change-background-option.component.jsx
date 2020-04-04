@@ -5,7 +5,7 @@ import { updateBoard } from "../../actions";
 import colorThemes from "../../utilities/colorThemes";
 import updateBackgroundColor from "../../utilities/updateBackgroundColor";
 
-const ColorPalette = props => {
+export const ChangeBackgroundOption = props => {
   const theme = colorThemes[props.color];
 
   const updateBoardBackgroundColor = () => {
@@ -34,4 +34,6 @@ const mapStateToProps = ({ board }) => {
   return { board };
 };
 
-export default connect(mapStateToProps, { updateBoard })(ColorPalette);
+export default connect(mapStateToProps, { updateBoard })(
+  ChangeBackgroundOption
+);

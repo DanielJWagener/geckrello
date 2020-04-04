@@ -5,7 +5,7 @@ import { withRouter } from "react-router-dom";
 
 import "./card-utilities.styles.scss";
 
-class CardUtilities extends React.Component {
+export class CardUtilities extends React.Component {
   state = { panel: "", value: this.props.listHome };
 
   openMoveCardPanel = () => {

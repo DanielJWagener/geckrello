@@ -4,11 +4,5 @@ import BoardMenuItem from "./board-menu-item.component";
 import Root from "../../Root";
 
 it("renders BoardMenuItem component", () => {
-  expect(
-    shallow(
-      <Root>
-        <BoardMenuItem />
-      </Root>
-    )
-  ).toMatchSnapshot();
+  expect(shallow(<BoardMenuItem />).debug()).toMatchSnapshot();
 });

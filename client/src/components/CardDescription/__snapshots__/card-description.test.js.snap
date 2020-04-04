@@ -1,3 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders CardDescription component 1`] = `ShallowWrapper {}`;
+exports[`renders CardDescription component 1`] = `
+"<div className=\\"description\\">
+  <div className=\\"widget-heading\\">
+    <FontAwesomeIcon icon={{...}} className=\\"widget-heading__icon\\" border={false} mask={{...}} fixedWidth={false} inverse={false} flip={{...}} listItem={false} pull={{...}} pulse={false} rotation={{...}} size={{...}} spin={false} symbol={false} title=\\"\\" transform={{...}} swapOpacity={false} />
+    <h3 className=\\"widget-heading__text\\">
+      Description
+    </h3>
+  </div>
+  <button className=\\"description__prompt\\" onClick={[Function]}>
+    Add a description...
+  </button>
+</div>"
+`;

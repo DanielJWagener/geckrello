@@ -1,3 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders AddCard component 1`] = `ShallowWrapper {}`;
+exports[`renders AddCard component 1`] = `
+"<div className=\\"add-card add-card__prompt\\" style={{...}} onMouseOver={[Function]} onTouchStart={[Function]} onMouseLeave={[Function]} onTouchMove={[Function]} onClick={[Function]}>
+  <span className=\\"add-card__prompt--plus\\">
+    +
+  </span>
+  <span className=\\"add-card__prompt--label\\">
+    Add new card
+  </span>
+</div>"
+`;

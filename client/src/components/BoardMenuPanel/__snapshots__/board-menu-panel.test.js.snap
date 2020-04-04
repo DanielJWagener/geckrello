@@ -1,3 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders BoardMenuPanel component 1`] = `ShallowWrapper {}`;
+exports[`renders BoardMenuPanel component 1`] = `
+"<div className=\\"boardmenu__panel boardmenu__panel--hidden\\">
+  <h2 className=\\"boardmenu__heading\\" />
+  <div className=\\"boardmenu__panel--close\\" onClick={[Function: onClick]}>
+    ×
+  </div>
+</div>"
+`;

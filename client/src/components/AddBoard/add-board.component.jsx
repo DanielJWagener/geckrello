@@ -4,16 +4,12 @@ import { addBoard } from "../../actions";
 
 import "./add-board.styles.scss";
 
-class AddBoard extends React.Component {
+export class AddBoard extends React.Component {
   state = {
     mode: "prompt",
     boardTitle: "",
-    borderColor: "#555",
-    spans: 0
+    borderColor: "#555"
   };
-
-  // Inialize element height on grid. Its grid height is based on CSS grid spans, so we fetch that value from the DOM and set the number of spans accordingly
-  addBoardRef = React.createRef();
 
   toggleMode = () => {
     if (this.state.mode === "prompt") {
@@ -57,7 +53,7 @@ class AddBoard extends React.Component {
   render() {
     if (this.state.mode === "prompt") {
       return (
-        <div ref={this.addBoardRef} className="addBoard addBoard__prompt">
+        <div className="addBoard addBoard__prompt">
           <button onClick={this.toggleMode} className="addBoard__prompt-button">
             <span className="addBoard__prompt-plus">+</span>
             <span className="addBoard__prompt-label"> Add new board</span>

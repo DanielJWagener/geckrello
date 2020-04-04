@@ -1,3 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders AddBoard component 1`] = `ShallowWrapper {}`;
+exports[`renders AddBoard component 1`] = `
+"<div className=\\"addBoard addBoard__prompt\\">
+  <button onClick={[Function]} className=\\"addBoard__prompt-button\\">
+    <span className=\\"addBoard__prompt-plus\\">
+      +
+    </span>
+    <span className=\\"addBoard__prompt-label\\">
+       Add new board
+    </span>
+  </button>
+</div>"
+`;

@@ -1,3 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders BoardHeader component 1`] = `ShallowWrapper {}`;
+exports[`renders BoardHeader component 1`] = `
+"<div className=\\"board-header\\">
+  <Connect(BoardTitle) board={[undefined]} />
+  <MenuToggler toggleMenu={[Function]} menuHidden={true} />
+  <BoardMenuPortal>
+    <BoardMenu menuHidden={true} toggleMenu={[Function]} />
+  </BoardMenuPortal>
+</div>"
+`;

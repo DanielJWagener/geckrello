@@ -1,3 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders Checklist component 1`] = `ShallowWrapper {}`;
+exports[`renders Checklist component 1`] = `
+"<div className=\\"checklist\\">
+  <div className=\\"widget-heading\\">
+    <FontAwesomeIcon className=\\"widget-heading__icon\\" icon={{...}} border={false} mask={{...}} fixedWidth={false} inverse={false} flip={{...}} listItem={false} pull={{...}} pulse={false} rotation={{...}} size={{...}} spin={false} symbol={false} title=\\"\\" transform={{...}} swapOpacity={false} />
+    <h3 className=\\"widget-heading__text\\">
+      Checklist
+    </h3>
+    <button onClick={[Function]} className=\\"widget-heading__button\\">
+      Add Item
+    </button>
+  </div>
+  <div className=\\"checklist__items\\" />
+</div>"
+`;

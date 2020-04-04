@@ -9,7 +9,7 @@ import ChecklistItem from "../ChecklistItem/checklist-item.component";
 import "./checklist.styles.scss";
 import "../CardModal/widget.styles.scss";
 
-class Checklist extends React.Component {
+export class Checklist extends React.Component {
   state = {
     mode: "prompt",
     newItemInput: "",

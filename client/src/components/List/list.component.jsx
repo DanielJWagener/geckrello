@@ -8,7 +8,7 @@ import ListDropTarget from "./list-drop-target";
 
 import "./list.styles.scss";
 
-const List = props => {
+export const List = props => {
   // Event handler for when user clicks the remove button
   const archiveList = () => {
     props.archiveList(props.listId);

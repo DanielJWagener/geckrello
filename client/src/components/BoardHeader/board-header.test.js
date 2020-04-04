@@ -3,7 +3,7 @@ import React from "react";
 import BoardHeader from "./board-header.component";
 
 it("renders BoardHeader component", () => {
-  expect(shallow(<BoardHeader />)).toMatchSnapshot();
+  expect(shallow(<BoardHeader />).debug()).toMatchSnapshot();
 });
 
 it("renders with the board menu hidden", () => {

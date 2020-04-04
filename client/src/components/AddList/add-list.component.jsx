@@ -4,28 +4,12 @@ import { addList } from "../../actions";
 
 import "./add-list.styles.scss";
 
-class AddList extends React.Component {
+export class AddList extends React.Component {
   state = {
     mode: "prompt",
     listTitle: "",
-    borderColor: "#555",
-    spans: 0
+    borderColor: "#555"
   };
-
-  // Inialize element height on grid. Its grid height is based on CSS grid spans, so we fetch that value from the DOM and set the number of spans accordingly
-  addListRef = React.createRef();
-
-  setSpans = () => {
-    const height = this.addListRef.current.clientHeight;
-
-    const spans = Math.floor(height / 10);
-
-    this.setState({ spans: spans });
-  };
-
-  componentDidMount() {
-    this.setSpans();
-  }
 
   // Mode toggle. This component has two modes: "prompt" and "input." The "prompt" mode is the initial mode, basically a button with a label like "add new list." When the user clicks that button, the mode changes to "input," and the user can input and submit a new list and title.
   toggleMode = () => {
@@ -70,7 +54,7 @@ class AddList extends React.Component {
   render() {
     if (this.state.mode === "prompt") {
       return (
-        <div ref={this.addListRef} className="addList addList__prompt">
+        <div className="addList addList__prompt">
           <button onClick={this.toggleMode} className="addList__prompt-button">
             <span className="addList__prompt-plus">+</span>
             <span className="addList__prompt-label"> Add new list</span>
@@ -81,7 +65,6 @@ class AddList extends React.Component {
       return (
         <div
           className="addList addList__input"
-          ref={this.addListRef}
           style={{ gridRowEnd: `span ${this.state.spans}` }}
         >
           <div className="addList__form">

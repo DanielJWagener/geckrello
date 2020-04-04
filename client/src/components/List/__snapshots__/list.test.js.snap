@@ -1,3 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders List component 1`] = `ShallowWrapper {}`;
+exports[`renders List component 1`] = `
+"<ListDropTarget listId={[undefined]}>
+  <div className=\\"list\\">
+    <div className=\\"list__remove\\" onClick={[Function: archiveList]}>
+      ×
+    </div>
+    <h2 className=\\"list__heading\\" />
+    <div className=\\"list__cards\\" />
+    <Connect(AddCard) listHome={[undefined]} />
+  </div>
+  <div className=\\"card-modals\\" />
+</ListDropTarget>"
+`;

@@ -5,7 +5,7 @@ import {
   deleteChecklistItem
 } from "../../actions";
 
-function ChecklistItem(props) {
+export function ChecklistItem(props) {
   function checkOrUncheck() {
     props.checkOrUncheckChecklistItem(
       props.cardId,
