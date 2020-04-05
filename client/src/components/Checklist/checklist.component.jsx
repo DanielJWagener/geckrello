@@ -7,13 +7,13 @@ import { addChecklistItem } from "../../actions";
 import ChecklistItem from "../ChecklistItem/checklist-item.component";
 
 import "./checklist.styles.scss";
-import "../CardModal/widget.styles.scss";
+import "./widget.styles.scss";
 
 export class Checklist extends React.Component {
   state = {
     mode: "prompt",
     newItemInput: "",
-    deleteCount: 0
+    deleteCount: 0,
   };
 
   toggleMode = () => {
@@ -24,7 +24,7 @@ export class Checklist extends React.Component {
     }
   };
 
-  onFormSubmit = e => {
+  onFormSubmit = (e) => {
     e.preventDefault();
 
     if (!this.state.newItemInput) {
@@ -42,12 +42,12 @@ export class Checklist extends React.Component {
     this.setState({ newItemInput: "" });
   };
 
-  handleChange = e => {
+  handleChange = (e) => {
     this.setState({ newItemInput: e.target.value });
   };
 
   checklistItemsArray = () =>
-    this.props.card.checklist.map(item => (
+    this.props.card.checklist.map((item) => (
       <ChecklistItem
         key={item._id}
         itemLabel={item.label}
@@ -102,7 +102,7 @@ export class Checklist extends React.Component {
 
 const mapStateToProps = (state, ownProps) => {
   const { cardId } = ownProps;
-  const card = state.cards.filter(card => card._id === cardId)[0];
+  const card = state.cards.filter((card) => card._id === cardId)[0];
   return { card, cards: state.cards };
 };
 
