@@ -23,7 +23,6 @@ const CardUtiltitesPanel = ({
         value={listTarget}
         onChange={handleChange}
         className="card-utilities__panel--select"
-        // id="copySelect"
       >
         {listOptions()}
       </select>

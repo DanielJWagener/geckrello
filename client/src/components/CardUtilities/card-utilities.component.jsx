@@ -28,18 +28,18 @@ export class CardUtilities extends React.Component {
     this.props.history.goBack();
   };
 
-  handleChange = (e) => {
+  handleChange = e => {
     this.setState({ listTarget: e.target.value });
   };
 
-  onMoveSubmit = (e) => {
+  onMoveSubmit = e => {
     e.preventDefault();
     this.props.moveCard(this.props.cardId, this.state.listTarget);
     this.setState({ panel: "", value: this.props.listHome });
     this.props.history.goBack();
   };
 
-  onCopySubmit = (e) => {
+  onCopySubmit = e => {
     e.preventDefault();
 
     this.props.copyCard(this.props.cardId, this.state.listTarget);
@@ -50,15 +50,15 @@ export class CardUtilities extends React.Component {
 
   listOptionsArray = () =>
     this.props.lists
-      .filter((list) => !list.archived)
-      .map((list) => (
+      .filter(list => !list.archived)
+      .map(list => (
         <option key={list._id} value={list._id}>
           {list.title}
         </option>
       ));
 
   render() {
-    const renderPanel = (panelState) => {
+    const renderPanel = panelState => {
       switch (panelState) {
         case "move":
           return (
@@ -96,7 +96,7 @@ export class CardUtilities extends React.Component {
         { label: "Archive Card", onClick: this.archiveCard },
       ];
 
-      return buttons.map((button) => (
+      return buttons.map(button => (
         <button
           key={button.label}
           className="card-utilities__button"
@@ -120,7 +120,7 @@ export class CardUtilities extends React.Component {
 
 const mapStateToProps = (state, ownProps) => {
   const { lists, cards } = state;
-  const listHome = cards.filter((card) => card._id === ownProps.cardId)[0]
+  const listHome = cards.filter(card => card._id === ownProps.cardId)[0]
     .listHome;
   return { lists, cards, listHome };
 };
