@@ -2,7 +2,7 @@ import React from "react";
 
 import Archive from "../Archive/archive.component";
 import ChangeBackground from "../ChangeBackground/change-background.component";
-import BoardMenuPanel from "../BoardMenuPanel/board-menu-panel.component";
+import BoardMenuPanel from "./board-menu-panel.component";
 import BoardMenuItem from "./board-menu-item.component";
 
 import "./board-menu.styles.scss";
@@ -10,7 +10,7 @@ import "./board-menu.styles.scss";
 class BoardMenu extends React.Component {
   state = { panel: "none" };
 
-  togglePanel = (panel) => {
+  togglePanel = panel => {
     this.setState({ panel });
   };
 

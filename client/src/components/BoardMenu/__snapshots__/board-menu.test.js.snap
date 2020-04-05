@@ -27,3 +27,12 @@ exports[`renders BoardMenuContent component 1`] = `
 `;
 
 exports[`renders BoardMenuItem component 1`] = `"<button className=\\"boardmenu__item\\" onClick={[Function: onClick]} />"`;
+
+exports[`renders BoardMenuPanel component 1`] = `
+"<div className=\\"boardmenu__panel boardmenu__panel--hidden\\">
+  <h2 className=\\"boardmenu__heading\\" />
+  <div className=\\"boardmenu__panel--close\\" onClick={[Function: onClick]}>
+    ×
+  </div>
+</div>"
+`;
