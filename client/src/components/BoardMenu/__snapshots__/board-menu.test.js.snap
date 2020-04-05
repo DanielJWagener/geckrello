@@ -1,29 +1,31 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders BoardMenuContent component 1`] = `
-"<div className=\\"sidebar-menu\\">
-  <h2 className=\\"sidebar-menu__heading\\">
-    Menu
-  </h2>
-  <div className=\\"sidebar-menu__close\\" onClick={[undefined]}>
-    ×
+exports[`renders BoardMenu component 1`] = `
+"<BoardMenuWrapper toggleMenu={[undefined]} menuHidden={[undefined]}>
+  <div className=\\"sidebar-menu\\">
+    <h2 className=\\"sidebar-menu__heading\\">
+      Menu
+    </h2>
+    <div className=\\"sidebar-menu__close\\" onClick={[undefined]}>
+      ×
+    </div>
+    <hr />
+    <BoardMenuItem toggleTarget=\\"Archive\\" togglePanel={[Function]}>
+      Show Archive
+    </BoardMenuItem>
+    <BoardMenuItem toggleTarget=\\"ChangeBackground\\" togglePanel={[Function]}>
+      Change Background
+    </BoardMenuItem>
+    <BoardMenuPanel visible={false} togglePanel={[Function]} heading=\\"Archive\\">
+      <Connect(Archive) />
+    </BoardMenuPanel>
+    <BoardMenuPanel visible={false} togglePanel={[Function]} heading=\\"Change Background\\">
+      <ChangeBackground />
+    </BoardMenuPanel>
+    <BoardMenuPanel visible={false} togglePanel={[Function]} heading=\\"Board Description\\" />
+    <BoardMenuPanel visible={false} togglePanel={[Function]} heading=\\"Friends\\" />
   </div>
-  <hr />
-  <BoardMenuItem toggleTarget=\\"Archive\\" togglePanel={[Function]}>
-    Show Archive
-  </BoardMenuItem>
-  <BoardMenuItem toggleTarget=\\"ChangeBackground\\" togglePanel={[Function]}>
-    Change Background
-  </BoardMenuItem>
-  <BoardMenuPanel visible={false} togglePanel={[Function]} heading=\\"Archive\\">
-    <Connect(Archive) />
-  </BoardMenuPanel>
-  <BoardMenuPanel visible={false} togglePanel={[Function]} heading=\\"Change Background\\">
-    <ChangeBackground />
-  </BoardMenuPanel>
-  <BoardMenuPanel visible={false} togglePanel={[Function]} heading=\\"Board Description\\" />
-  <BoardMenuPanel visible={false} togglePanel={[Function]} heading=\\"Friends\\" />
-</div>"
+</BoardMenuWrapper>"
 `;
 
 exports[`renders BoardMenuItem component 1`] = `"<button className=\\"boardmenu__item\\" onClick={[Function: onClick]} />"`;

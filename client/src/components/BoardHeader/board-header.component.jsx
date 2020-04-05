@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import BoardTitle from "../BoardTitle/board-title.component";
 import MenuToggler from "../MenuToggler/menu-toggler.component";
-import BoardMenuWrapper from "../BoardMenuWrapper/board-menu-wrapper.component";
+import BoardMenu from "../BoardMenu/board-menu.component";
 
 import "./board-header.styles.scss";
 
@@ -28,7 +28,7 @@ export class BoardHeader extends Component {
           menuHidden={this.state.menuHidden}
         />
 
-        <BoardMenuWrapper
+        <BoardMenu
           menuHidden={this.state.menuHidden}
           toggleMenu={this.toggleMenu}
         />

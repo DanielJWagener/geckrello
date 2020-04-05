@@ -1,21 +1,8 @@
 @import "../../sass/abstracts/_variables.scss";
 
-// #sidebar-root {
-//   position: fixed;
-//   top: 9rem;
-//   right: calc(-1 * #{$sidebar-width});
-//   height: calc(var(--vh, 1vh) * 100 - 9rem);
-//   width: $sidebar-width;
-//   z-index: 2;
-
-//   @media only screen and (max-width: 400px) {
-//     width: 100vw;
-//   }
+// .portal-inner {
+//   height: 100%;
 // }
-
-.portal-inner {
-  height: 100%;
-}
 
 .sidebar {
   position: absolute;
