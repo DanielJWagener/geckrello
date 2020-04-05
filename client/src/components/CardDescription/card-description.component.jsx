@@ -10,8 +10,12 @@ import "./card-description.styles.scss";
 export class CardDescription extends React.Component {
   state = {
     descriptionInput: "",
-    mode: "prompt"
+    mode: "prompt",
   };
+
+  componentDidMount() {
+    this.setState({ descriptionInput: this.props.card.description });
+  }
 
   toggleMode = () => {
     if (this.state.mode === "prompt") {
@@ -21,13 +25,8 @@ export class CardDescription extends React.Component {
     }
   };
 
-  onFormSubmit = e => {
+  onFormSubmit = (e) => {
     e.preventDefault();
-    /*
-    if (!this.state.descriptionInput) {
-      return false;
-    }
-    */
 
     this.props.updateCardDescription(
       this.props.cardId,
@@ -36,84 +35,65 @@ export class CardDescription extends React.Component {
     this.setState({ mode: "prompt" });
   };
 
-  handleChange = e => {
+  handleChange = (e) => {
     this.setState({ descriptionInput: e.target.value });
   };
 
   render() {
-    const descriptionPromptAdd = (
-      <>
-        <div className="widget-heading">
-          <FontAwesomeIcon
-            icon={faAlignLeft}
-            className="widget-heading__icon"
-          />
-          <h3 className="widget-heading__text">Description</h3>
-        </div>
-        <button className="description__prompt" onClick={this.toggleMode}>
-          Add a description...
-        </button>
-      </>
+    const descriptionExists =
+      this.props.card.description && this.props.card.description !== "\n";
+
+    const descriptionPromptDisplay = descriptionExists ? (
+      <div className="description__display">{this.props.card.description}</div>
+    ) : (
+      <button className="description__prompt" onClick={this.toggleMode}>
+        Add a description...
+      </button>
     );
 
-    const descriptionPromptEdit = (
-      <>
-        <div className="widget-heading">
-          <FontAwesomeIcon
-            icon={faAlignLeft}
-            className="widget-heading__icon"
-          />
-          <h3 className="widget-heading__text">Description</h3>
-          <button onClick={this.toggleMode} className="widget-heading__button">
-            Edit
+    const descriptionInputForm = (
+      <form onSubmit={this.onFormSubmit} className="modal-form">
+        <div className="modal-form__group">
+          <textarea
+            name=""
+            id=""
+            cols="30"
+            rows="5"
+            className="modal-form__textarea"
+            placeholder="Add a description..."
+            onChange={this.handleChange}
+            value={this.state.descriptionInput}
+          ></textarea>
+        </div>
+        <div className="modal-form__group">
+          <input type="submit" className="modal-form__submit" value="Save" />
+          <button className="modal-form__cancel" onClick={this.toggleMode}>
+            Cancel
           </button>
         </div>
-
-        <div className="description__display">
-          {this.props.card.description}
-        </div>
-      </>
-    );
-    const descriptionPrompt =
-      !this.props.card.description || this.props.card.description === "\n"
-        ? descriptionPromptAdd
-        : descriptionPromptEdit;
-
-    const descriptionInput = (
-      <>
-        <div className="widget-heading">
-          <FontAwesomeIcon
-            icon={faAlignLeft}
-            className="widget-heading__icon"
-          />
-          <h3 className="widget-heading__text">Description</h3>
-        </div>
-        <form onSubmit={this.onFormSubmit} className="modal-form">
-          <div className="modal-form__group">
-            <textarea
-              name=""
-              id=""
-              cols="30"
-              rows="5"
-              className="modal-form__textarea"
-              placeholder="Add a description..."
-              onChange={this.handleChange}
-              value={this.state.descriptionInput}
-            ></textarea>
-          </div>
-          <div className="modal-form__group">
-            <input type="submit" className="modal-form__submit" value="Save" />
-            <button className="modal-form__cancel" onClick={this.toggleMode}>
-              Cancel
-            </button>
-          </div>
-        </form>
-      </>
+      </form>
     );
 
     return (
       <div className="description">
-        {this.state.mode === "prompt" ? descriptionPrompt : descriptionInput}
+        <div className="widget-heading">
+          <FontAwesomeIcon
+            icon={faAlignLeft}
+            className="widget-heading__icon"
+          />
+          <h3 className="widget-heading__text">Description</h3>
+          {descriptionExists && this.state.mode === "prompt" ? (
+            <button
+              onClick={this.toggleMode}
+              className="widget-heading__button"
+            >
+              Edit
+            </button>
+          ) : null}
+        </div>
+        {this.state.mode === "prompt"
+          ? descriptionPromptDisplay
+          : descriptionInputForm}
       </div>
     );
   }
@@ -122,7 +102,7 @@ export class CardDescription extends React.Component {
 const mapStateToProps = (state, ownProps) => {
   const { cardId } = ownProps;
   const allCards = state.cards;
-  const card = state.cards.filter(card => card._id === cardId)[0];
+  const card = state.cards.filter((card) => card._id === cardId)[0];
   return { card, allCards };
 };
 
