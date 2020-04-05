@@ -1,9 +1,11 @@
 import React from "react";
-import ChangeBackgroundOption from "../ChangeBackgroundOption/change-background-option.component";
+
+import colorThemes from "../../utilities/colorThemes";
+import ChangeBackgroundOption from "../ChangeBackground/change-background-option.component";
 
 import "./change-background.styles.scss";
 
-const colors = ["red", "orange", "green", "blue", "purple"];
+const colors = Object.keys(colorThemes);
 
 const colorPalette = () =>
   colors.map(color => <ChangeBackgroundOption key={color} color={color} />);

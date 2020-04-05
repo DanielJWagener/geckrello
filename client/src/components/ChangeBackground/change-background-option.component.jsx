@@ -16,14 +16,9 @@ export const ChangeBackgroundOption = props => {
 
   return (
     <div
-      className="color-palette"
+      className="colors__option"
       style={{
-        borderRadius: "10px",
-        height: "7.5rem",
-        width: "14rem",
         backgroundColor: theme.base,
-        margin: "1.5rem",
-        cursor: "pointer"
       }}
       onClick={updateBoardBackgroundColor}
     ></div>

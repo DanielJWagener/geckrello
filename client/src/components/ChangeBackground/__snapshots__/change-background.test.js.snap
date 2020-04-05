@@ -2,10 +2,12 @@
 
 exports[`renders ChangeBackground component 1`] = `
 "<div className=\\"colors\\">
-  <Connect(ChangeBackgroundOption) color=\\"red\\" />
-  <Connect(ChangeBackgroundOption) color=\\"orange\\" />
+  <Connect(ChangeBackgroundOption) color=\\"purple\\" />
   <Connect(ChangeBackgroundOption) color=\\"green\\" />
   <Connect(ChangeBackgroundOption) color=\\"blue\\" />
-  <Connect(ChangeBackgroundOption) color=\\"purple\\" />
+  <Connect(ChangeBackgroundOption) color=\\"red\\" />
+  <Connect(ChangeBackgroundOption) color=\\"orange\\" />
 </div>"
 `;
+
+exports[`renders ChangeBackgroundOption component 1`] = `"<div className=\\"colors__option\\" style={{...}} onClick={[Function: updateBoardBackgroundColor]} />"`;
