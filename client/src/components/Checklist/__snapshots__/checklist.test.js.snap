@@ -14,3 +14,13 @@ exports[`renders Checklist component 1`] = `
   <div className=\\"checklist__items\\" />
 </div>"
 `;
+
+exports[`renders ChecklistItem component 1`] = `
+"<div className=\\"item\\">
+  <div className=\\"item__checkbox item__checkbox--unchecked\\" onClick={[Function: checkOrUncheck]} />
+  <div className=\\"item__title\\" />
+  <div className=\\"item__delete\\" onClick={[Function: deleteItem]}>
+    ×
+  </div>
+</div>"
+`;
