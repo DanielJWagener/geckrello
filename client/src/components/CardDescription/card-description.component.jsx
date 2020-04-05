@@ -40,7 +40,7 @@ export class CardDescription extends React.Component {
   };
 
   descriptionExists = () =>
-    this.props.card.description && this.props.card.description !== "\n";
+    this.state.descriptionInput && this.state.descriptionInput !== "\n";
 
   renderDescription = () =>
     this.descriptionExists() ? (
