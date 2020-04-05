@@ -1,12 +1,14 @@
 import React from "react";
 import { connect } from "react-redux";
-import { archiveCard, moveCard, copyCard } from "../../actions";
 import { withRouter } from "react-router-dom";
+
+import { archiveCard, moveCard, copyCard } from "../../actions";
+import CardUtiltitesPanel from "./card-utilties-panel.component";
 
 import "./card-utilities.styles.scss";
 
 export class CardUtilities extends React.Component {
-  state = { panel: "", value: this.props.listHome };
+  state = { panel: "", listTarget: this.props.listHome };
 
   openMoveCardPanel = () => {
     this.setState({ panel: "move" });
@@ -26,21 +28,21 @@ export class CardUtilities extends React.Component {
     this.props.history.goBack();
   };
 
-  handleChange = e => {
-    this.setState({ value: e.target.value });
+  handleChange = (e) => {
+    this.setState({ listTarget: e.target.value });
   };
 
-  onMoveSubmit = e => {
+  onMoveSubmit = (e) => {
     e.preventDefault();
-    this.props.moveCard(this.props.cardId, this.state.value);
+    this.props.moveCard(this.props.cardId, this.state.listTarget);
     this.setState({ panel: "", value: this.props.listHome });
     this.props.history.goBack();
   };
 
-  onCopySubmit = e => {
+  onCopySubmit = (e) => {
     e.preventDefault();
 
-    this.props.copyCard(this.props.cardId, this.state.value);
+    this.props.copyCard(this.props.cardId, this.state.listTarget);
 
     this.setState({ panel: "", value: this.props.listHome });
     this.props.history.goBack();
@@ -48,163 +50,77 @@ export class CardUtilities extends React.Component {
 
   listOptionsArray = () =>
     this.props.lists
-      .filter(list => !list.archived)
-      .map(list => (
+      .filter((list) => !list.archived)
+      .map((list) => (
         <option key={list._id} value={list._id}>
           {list.title}
         </option>
       ));
 
   render() {
-    if (!this.state.panel) {
-      return (
-        <div className="card-utilities">
-          <button
-            className="card-utilities__button"
-            onClick={this.openMoveCardPanel}
-          >
-            Move
-            <br />
-            Card
-          </button>
-          <button
-            className="card-utilities__button"
-            onClick={this.openCopyCardPanel}
-          >
-            Copy
-            <br />
-            Card
-          </button>
-          <button className="card-utilities__button" onClick={this.archiveCard}>
-            Archive
-            <br />
-            Card
-          </button>
-        </div>
-      );
-    } else if (this.state.panel === "move") {
-      return (
-        <div className="card-utilities">
-          <button
-            className="card-utilities__button"
-            onClick={this.openMoveCardPanel}
-          >
-            Move
-            <br />
-            Card
-          </button>
-          <button
-            className="card-utilities__button"
-            onClick={this.openCopyCardPanel}
-          >
-            Copy
-            <br />
-            Card
-          </button>
-          <button className="card-utilities__button" onClick={this.archiveCard}>
-            Archive
-            <br />
-            Card
-          </button>
+    const renderPanel = (panelState) => {
+      switch (panelState) {
+        case "move":
+          return (
+            <CardUtiltitesPanel
+              heading="Move Card"
+              closePanel={this.closePanel}
+              listTarget={this.state.listTarget}
+              handleSubmit={this.onMoveSubmit}
+              handleChange={this.handleChange}
+              listOptions={this.listOptionsArray}
+              submitValue="Move"
+            />
+          );
+        case "copy":
+          return (
+            <CardUtiltitesPanel
+              heading="Copy Card"
+              closePanel={this.closePanel}
+              listTarget={this.state.listTarget}
+              handleSubmit={this.onCopySubmit}
+              handleChange={this.handleChange}
+              listOptions={this.listOptionsArray}
+              submitValue="Copy"
+            />
+          );
+        default:
+          return null;
+      }
+    };
 
-          <div className="card-utilities__panel">
-            <h4 className="card-utilities__panel--heading">Move Card</h4>
-            <div
-              className="card-utilities__panel--close"
-              onClick={this.closePanel}
-            >
-              &times;
-            </div>
-            <form onSubmit={this.onMoveSubmit}>
-              <label
-                className="card-utilities__panel--label"
-                htmlFor="moveSelect"
-              >
-                Choose destination list:{" "}
-              </label>
-              <select
-                value={this.state.value}
-                onChange={this.handleChange}
-                className="card-utilities__panel--select"
-                id="moveSelect"
-              >
-                {this.listOptionsArray()}
-              </select>
+    const renderButtons = () => {
+      const buttons = [
+        { label: "Move Card", onClick: this.openMoveCardPanel },
+        { label: "Copy Card", onClick: this.openCopyCardPanel },
+        { label: "Archive Card", onClick: this.archiveCard },
+      ];
 
-              <input
-                type="submit"
-                value="Move"
-                className="card-utilities__panel--submit"
-              />
-            </form>
-          </div>
-        </div>
-      );
-    } else if (this.state.panel === "copy") {
-      return (
-        <div className="card-utilities">
-          <button
-            className="card-utilities__button"
-            onClick={this.openMoveCardPanel}
-          >
-            Move
-            <br />
-            Card
-          </button>
-          <button
-            className="card-utilities__button"
-            onClick={this.openCopyCardPanel}
-          >
-            Copy
-            <br />
-            Card
-          </button>
-          <button className="card-utilities__button" onClick={this.archiveCard}>
-            Archive
-            <br />
-            Card
-          </button>
+      return buttons.map((button) => (
+        <button
+          key={button.label}
+          className="card-utilities__button"
+          onClick={button.onClick}
+        >
+          {button.label.split(" ")[0]}
+          <br />
+          {button.label.split(" ")[1]}
+        </button>
+      ));
+    };
 
-          <div className="card-utilities__panel">
-            <h4 className="card-utilities__panel--heading">Copy Card</h4>
-            <div
-              className="card-utilities__panel--close"
-              onClick={this.closePanel}
-            >
-              &times;
-            </div>
-            <form onSubmit={this.onCopySubmit}>
-              <label
-                className="card-utilities__panel--label"
-                htmlFor="copySelect"
-              >
-                Choose destination list:{" "}
-              </label>
-              <select
-                value={this.state.value}
-                onChange={this.handleChange}
-                className="card-utilities__panel--select"
-                id="copySelect"
-              >
-                {this.listOptionsArray()}
-              </select>
-
-              <input
-                type="submit"
-                value="Copy"
-                className="card-utilities__panel--submit"
-              />
-            </form>
-          </div>
-        </div>
-      );
-    }
+    return (
+      <div className="card-utilities">
+        {renderButtons()}
+        {renderPanel(this.state.panel)}
+      </div>
+    );
   }
 }
 
 const mapStateToProps = (state, ownProps) => {
   const { lists, cards } = state;
-  const listHome = cards.filter(card => card._id === ownProps.cardId)[0]
+  const listHome = cards.filter((card) => card._id === ownProps.cardId)[0]
     .listHome;
   return { lists, cards, listHome };
 };
