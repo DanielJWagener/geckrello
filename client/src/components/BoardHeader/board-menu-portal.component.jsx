@@ -20,7 +20,7 @@ class BoardMenuPortal extends React.Component {
     sidebarRoot.appendChild(this.el);
   }
 
-  componentWillUnmout() {
+  componentWillUnmount() {
     sidebarRoot.removeChild(this.el);
   }
 

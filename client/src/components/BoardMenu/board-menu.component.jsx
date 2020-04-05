@@ -22,7 +22,7 @@ class BoardMenu extends React.Component {
     sidebarRoot && sidebarRoot.appendChild(this.el);
   }
 
-  componentWillUnmout() {
+  componentWillUnmount() {
     sidebarRoot && sidebarRoot.removeChild(this.el);
   }
 
