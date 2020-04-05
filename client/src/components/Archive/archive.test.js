@@ -58,7 +58,7 @@ describe("Archive functionality", () => {
     // This way, we can call instance() on the component without a Provider getting in the way
     const wrapped2 = shallow(<ArchivePure {...mockProps} />);
 
-    expect(wrapped2.instance().archivedCardsArray().length).toEqual(1);
-    expect(wrapped2.instance().archivedListsArray().length).toEqual(1);
+    expect(wrapped2.instance().archivedItemsArray("cards").length).toEqual(1);
+    expect(wrapped2.instance().archivedItemsArray("lists").length).toEqual(1);
   });
 });

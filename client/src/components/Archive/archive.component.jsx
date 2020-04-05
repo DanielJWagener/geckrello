@@ -16,27 +16,15 @@ export class Archive extends React.Component {
     }
   };
 
-  archivedCardsArray = () =>
-    this.props.cards
-      .filter(card => card.archived)
-      .map(card => (
+  archivedItemsArray = (items) =>
+    this.props[items]
+      .filter((item) => item.archived)
+      .map((item) => (
         <ArchiveItem
-          key={card._id}
-          itemId={card._id}
-          itemTitle={card.title}
-          itemType="card"
-        />
-      ));
-
-  archivedListsArray = () =>
-    this.props.lists
-      .filter(list => list.archived)
-      .map(list => (
-        <ArchiveItem
-          key={list._id}
-          itemId={list._id}
-          itemTitle={list.title}
-          itemType="list"
+          key={item._id}
+          itemId={item._id}
+          itemTitle={item.title}
+          itemType={items.substring(0, items.length - 1)}
         />
       ));
 
@@ -62,16 +50,14 @@ export class Archive extends React.Component {
           </button>
         </div>
         <div className="archive__list">
-          {this.state.mode === "lists"
-            ? this.archivedListsArray()
-            : this.archivedCardsArray()}
+          {this.archivedItemsArray(this.state.mode)}
         </div>
       </div>
     );
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return { lists: state.lists, cards: state.cards };
 };
 
