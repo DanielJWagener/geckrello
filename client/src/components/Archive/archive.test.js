@@ -3,6 +3,7 @@ import React from "react";
 import Archive from "./archive.component";
 import { Archive as ArchivePure } from "./archive.component";
 import Root from "../../Root";
+import { ArchiveItem as ArchiveItemPure } from "./archive-item.component";
 
 const mockProps = {
   cards: [
@@ -17,6 +18,10 @@ const mockProps = {
 
 it("renders Archive component", () => {
   expect(shallow(<ArchivePure {...mockProps} />).debug()).toMatchSnapshot();
+});
+
+it("renders ArchiveItem component", () => {
+  expect(shallow(<ArchiveItemPure />).debug()).toMatchSnapshot();
 });
 
 describe("Archive functionality", () => {

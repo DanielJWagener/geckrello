@@ -15,3 +15,12 @@ exports[`renders Archive component 1`] = `
   </div>
 </div>"
 `;
+
+exports[`renders ArchiveItem component 1`] = `
+"<div className=\\"archive__item\\">
+  <div className=\\"archive__item--title\\" />
+  <button className=\\"archive__item--restore\\" onClick={[Function: restore]}>
+    Restore
+  </button>
+</div>"
+`;

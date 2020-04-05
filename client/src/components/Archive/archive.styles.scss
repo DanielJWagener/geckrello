@@ -32,4 +32,31 @@
   &__list {
     margin-top: 2rem;
   }
+
+  &__item {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-center;
+    margin-bottom: 2rem;
+
+    &--title {
+      font-size: 2rem;
+      padding: 1em 4rem 1rem 4rem;
+      text-align: center;
+      background-color: #ddd;
+      border-radius: 5px;
+      width: 50%;
+    }
+
+    &--restore {
+      font-size: 2rem;
+      padding: 0.5rem 1rem 0.5rem 1rem;
+      text-align: center;
+      background-color: blue;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 25%;
+    }
+  }
 }

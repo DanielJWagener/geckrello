@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import ArchiveItem from "../ArchiveItem/archive-item.component";
+import ArchiveItem from "./archive-item.component";
 
 import "./archive.styles.scss";
 
@@ -16,10 +16,10 @@ export class Archive extends React.Component {
     }
   };
 
-  archivedItemsArray = (items) =>
+  archivedItemsArray = items =>
     this.props[items]
-      .filter((item) => item.archived)
-      .map((item) => (
+      .filter(item => item.archived)
+      .map(item => (
         <ArchiveItem
           key={item._id}
           itemId={item._id}
@@ -57,7 +57,7 @@ export class Archive extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return { lists: state.lists, cards: state.cards };
 };
 

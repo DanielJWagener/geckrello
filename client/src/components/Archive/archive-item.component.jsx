@@ -2,8 +2,6 @@ import React from "react";
 import { connect } from "react-redux";
 import { restoreList, restoreCard } from "../../actions";
 
-import "./archive-item.styles.scss";
-
 export const ArchiveItem = props => {
   const restore = () => {
     if (props.itemType === "list") {
