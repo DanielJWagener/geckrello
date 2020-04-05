@@ -2,8 +2,7 @@ import React, { Component } from "react";
 
 import BoardTitle from "../BoardTitle/board-title.component";
 import MenuToggler from "../MenuToggler/menu-toggler.component";
-import BoardMenu from "../BoardMenu/board-menu.component";
-import BoardMenuPortal from "./board-menu-portal.component";
+import BoardMenuWrapper from "../BoardMenuWrapper/board-menu-wrapper.component";
 
 import "./board-header.styles.scss";
 
@@ -28,12 +27,11 @@ export class BoardHeader extends Component {
           toggleMenu={this.toggleMenu}
           menuHidden={this.state.menuHidden}
         />
-        <BoardMenuPortal>
-          <BoardMenu
-            menuHidden={this.state.menuHidden}
-            toggleMenu={this.toggleMenu}
-          />
-        </BoardMenuPortal>
+
+        <BoardMenuWrapper
+          menuHidden={this.state.menuHidden}
+          toggleMenu={this.toggleMenu}
+        />
       </div>
     );
   }

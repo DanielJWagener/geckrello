@@ -4,8 +4,6 @@ exports[`renders BoardHeader component 1`] = `
 "<div className=\\"board-header\\">
   <Connect(BoardTitle) board={[undefined]} />
   <MenuToggler toggleMenu={[Function]} menuHidden={true} />
-  <BoardMenuPortal>
-    <BoardMenu menuHidden={true} toggleMenu={[Function]} />
-  </BoardMenuPortal>
+  <BoardMenuWrapper menuHidden={true} toggleMenu={[Function]} />
 </div>"
 `;

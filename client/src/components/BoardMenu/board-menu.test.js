@@ -1,14 +1,24 @@
 import { shallow } from "enzyme";
 import React from "react";
-import BoardMenu from "./board-menu.component";
+import BoardMenuContent from "./board-menu.component";
+import BoardMenuItem from "./board-menu-item.component";
 import Root from "../../Root";
 
-it("renders BoardMenu component", () => {
-  expect(shallow(<BoardMenu menuHidden />).debug()).toMatchSnapshot();
+it("renders BoardMenuContent component", () => {
+  expect(shallow(<BoardMenuContent />).debug()).toMatchSnapshot();
 });
 
-it("is hidden on mount", () => {
-  const wrapper = shallow(<BoardMenu menuHidden />);
+it("renders BoardMenuItem component", () => {
+  expect(shallow(<BoardMenuItem />).debug()).toMatchSnapshot();
+});
 
-  expect(wrapper.find(".sidebar--hidden").length).toEqual(1);
+it("shows two menu items: 'Show Archive' and 'Change Background", () => {
+  const wrapped = shallow(<BoardMenuContent />);
+  const labels = wrapped
+    .find(BoardMenuItem)
+    .map((menuItem) => menuItem.render()["0"].children[0].data);
+
+  expect(labels.length).toEqual(2);
+  expect(labels).toContain("Show Archive");
+  expect(labels).toContain("Change Background");
 });

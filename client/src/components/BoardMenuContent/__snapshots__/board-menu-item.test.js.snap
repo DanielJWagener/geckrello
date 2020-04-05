@@ -1,3 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`renders BoardMenuItem component 1`] = `"<button className=\\"boardmenu__item\\" onClick={[Function: onClick]} />"`;
