@@ -39,11 +39,11 @@ export class CardDescription extends React.Component {
     this.setState({ descriptionInput: e.target.value });
   };
 
-  render() {
-    const descriptionExists =
-      this.props.card.description && this.props.card.description !== "\n";
+  descriptionExists = () =>
+    this.props.card.description && this.props.card.description !== "\n";
 
-    const descriptionPromptDisplay = descriptionExists ? (
+  renderDescription = () =>
+    this.descriptionExists() ? (
       <div className="description__display">{this.props.card.description}</div>
     ) : (
       <button className="description__prompt" onClick={this.toggleMode}>
@@ -51,6 +51,14 @@ export class CardDescription extends React.Component {
       </button>
     );
 
+  renderEditButton = () =>
+    this.descriptionExists() && this.state.mode === "prompt" ? (
+      <button onClick={this.toggleMode} className="widget-heading__button">
+        Edit
+      </button>
+    ) : null;
+
+  render() {
     const descriptionInputForm = (
       <form onSubmit={this.onFormSubmit} className="modal-form">
         <div className="modal-form__group">
@@ -82,17 +90,10 @@ export class CardDescription extends React.Component {
             className="widget-heading__icon"
           />
           <h3 className="widget-heading__text">Description</h3>
-          {descriptionExists && this.state.mode === "prompt" ? (
-            <button
-              onClick={this.toggleMode}
-              className="widget-heading__button"
-            >
-              Edit
-            </button>
-          ) : null}
+          {this.renderEditButton()}
         </div>
         {this.state.mode === "prompt"
-          ? descriptionPromptDisplay
+          ? this.renderDescription()
           : descriptionInputForm}
       </div>
     );
