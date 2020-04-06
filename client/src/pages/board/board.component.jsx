@@ -14,12 +14,13 @@ import "./board.styles.scss";
 
 export class Board extends React.Component {
   componentDidMount() {
+    this.props.board &&
+      updateBackgroundColor(colorThemes[this.props.board.background]);
+
     this.props.fetchBoardData(this.props.match.params.id);
   }
 
   componentDidUpdate() {
-    let root = document.documentElement;
-
     if (this.props.board) {
       const theme = colorThemes[this.props.board.background];
 

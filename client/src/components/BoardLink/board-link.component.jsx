@@ -1,5 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+
+import { changeBackgroundForBoardPending } from "../../redux/boards/boards.actions";
 
 import colorThemes from "../../utilities/colorThemes";
 
@@ -13,10 +16,11 @@ const BoardLink = props => {
       className="board-link"
       to={`/board/${props.boardId}`}
       style={{ backgroundColor }}
+      onClick={() => props.changeBackgroundForBoardPending(props.background)}
     >
       <div className="board-link__link">{props.title}</div>
     </Link>
   );
 };
 
-export default BoardLink;
+export default connect(null, { changeBackgroundForBoardPending })(BoardLink);

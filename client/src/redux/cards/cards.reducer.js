@@ -1,10 +1,14 @@
 import actionTypes from "../types";
 
-export default (state = [], action) => {
+const INITIAL_STATE = [];
+
+export default (state = INITIAL_STATE, action) => {
   let currentCards = [...state];
   switch (action.type) {
     case actionTypes.FETCH_BOARD_DATA:
       return action.payload.cards;
+    case actionTypes.UNLOAD_BOARD:
+      return INITIAL_STATE;
     case actionTypes.ADD_CARD:
       // Return current state with new card appended
       return [...state, action.payload];

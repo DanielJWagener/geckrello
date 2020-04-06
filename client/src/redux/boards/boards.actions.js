@@ -20,11 +20,19 @@ export const fetchBoardData = boardId => async dispatch => {
   const payload = {
     board: board.data.data,
     lists: lists.data.data,
-    cards: cards.data.data,
+    cards: cards.data.data
   };
 
   dispatch({ type: actionTypes.FETCH_BOARD_DATA, payload });
 };
+
+export const changeBackgroundForBoardPending = color => ({
+  type: actionTypes.PENDING_BOARD_BACKGROUND,
+  payload: {
+    isPending: true,
+    background: color
+  }
+});
 
 export const addBoard = title => async dispatch => {
   // POST new board
