@@ -1,6 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import BoardMenu from "./board-menu.component";
 
 import "./board-menu-wrapper.styles.scss";
 
@@ -23,7 +22,6 @@ class BoardMenuWrapper extends React.Component {
             this.props.menuHidden ? "hidden" : "shown"
           }`}
         >
-          {/* <BoardMenu toggleMenu={this.props.toggleMenu} /> */}
           {this.props.children}
         </div>
       </div>,
