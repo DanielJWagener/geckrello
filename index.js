@@ -14,7 +14,8 @@ const cardRouter = require("./routes/cardRoutes");
 
 mongoose.connect(keys.mongoURI, {
   useUnifiedTopology: true,
-  useNewUrlParser: true
+  useNewUrlParser: true,
+  useFindAndModify: false
 });
 
 const app = express();
