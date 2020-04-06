@@ -2,7 +2,11 @@ import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 
-import { archiveCard, moveCard, copyCard } from "../../actions";
+import {
+  archiveCard,
+  moveCard,
+  copyCard
+} from "../../redux/cards/cards.actions";
 import CardUtiltitesPanel from "./card-utilties-panel.component";
 
 import "./card-utilities.styles.scss";
@@ -93,7 +97,7 @@ export class CardUtilities extends React.Component {
       const buttons = [
         { label: "Move Card", onClick: this.openMoveCardPanel },
         { label: "Copy Card", onClick: this.openCopyCardPanel },
-        { label: "Archive Card", onClick: this.archiveCard },
+        { label: "Archive Card", onClick: this.archiveCard }
       ];
 
       return buttons.map(button => (

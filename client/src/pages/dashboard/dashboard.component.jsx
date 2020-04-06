@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 import AddBoard from "../../components/AddBoard/add-board.component";
 import BoardLink from "../../components/BoardLink/board-link.component";
-import { fetchUser } from "../../actions";
+import { fetchUser } from "../../redux/auth/auth.actions";
 import setDefaultColors from "../../utilities/setDefaultColors";
 
 import "./dashboard.styles.scss";

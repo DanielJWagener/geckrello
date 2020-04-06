@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { addCard } from "../../actions";
+import { addCard } from "../../redux/cards/cards.actions";
 
 import "./add-card.styles.scss";
 

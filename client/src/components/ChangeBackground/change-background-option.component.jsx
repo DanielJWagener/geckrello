@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { updateBoard } from "../../actions";
+import { updateBoard } from "../../redux/boards/boards.actions";
 import colorThemes from "../../utilities/colorThemes";
 import updateBackgroundColor from "../../utilities/updateBackgroundColor";
 
@@ -18,7 +18,7 @@ export const ChangeBackgroundOption = props => {
     <div
       className="colors__option"
       style={{
-        backgroundColor: theme.base,
+        backgroundColor: theme.base
       }}
       onClick={updateBoardBackgroundColor}
     ></div>

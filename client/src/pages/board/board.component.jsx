@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import AddList from "../../components/AddList/add-list.component";
 import List from "../../components/List/list.component";
 import BoardHeader from "../../components/BoardHeader/board-header.component";
-import { unloadBoard, fetchBoardData } from "../../actions";
+import { unloadBoard, fetchBoardData } from "../../redux/boards/boards.actions";
 import colorThemes from "../../utilities/colorThemes";
 import updateBackgroundColor from "../../utilities/updateBackgroundColor";
 
@@ -34,8 +34,8 @@ export class Board extends React.Component {
   // Iterate over every list in state, return the non-archived ones, and make and array of List components out of them
   listsArray = () =>
     this.props.lists
-      .filter((list) => !list.archived)
-      .map((list) => (
+      .filter(list => !list.archived)
+      .map(list => (
         <List
           key={list._id}
           listTitle={list.title}
@@ -72,5 +72,5 @@ const mapStateToProps = ({ board, lists, cards }) => {
 
 export default connect(mapStateToProps, {
   unloadBoard,
-  fetchBoardData,
+  fetchBoardData
 })(Board);

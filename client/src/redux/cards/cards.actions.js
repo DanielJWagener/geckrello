@@ -161,7 +161,7 @@ export const deleteChecklistItem = (
   const { checklist } = updatedCard.data.data;
 
   dispatch({
-    type: UPDATE_CHECKLIST,
+    type: actionTypes.UPDATE_CHECKLIST,
     payload: {
       cardId,
       checklist

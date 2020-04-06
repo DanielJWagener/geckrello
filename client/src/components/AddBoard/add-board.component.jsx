@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { addBoard } from "../../actions";
+import { addBoard } from "../../redux/boards/boards.actions";
 
 import "./add-board.styles.scss";
 

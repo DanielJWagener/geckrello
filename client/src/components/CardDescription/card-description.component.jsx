@@ -3,14 +3,14 @@ import { connect } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAlignLeft } from "@fortawesome/free-solid-svg-icons";
 
-import { updateCardDescription } from "../../actions";
+import { updateCardDescription } from "../../redux/cards/cards.actions";
 
 import "./card-description.styles.scss";
 
 export class CardDescription extends React.Component {
   state = {
     descriptionInput: "",
-    mode: "prompt",
+    mode: "prompt"
   };
 
   componentDidMount() {
@@ -25,7 +25,7 @@ export class CardDescription extends React.Component {
     }
   };
 
-  onFormSubmit = (e) => {
+  onFormSubmit = e => {
     e.preventDefault();
 
     this.props.updateCardDescription(
@@ -35,7 +35,7 @@ export class CardDescription extends React.Component {
     this.setState({ mode: "prompt" });
   };
 
-  handleChange = (e) => {
+  handleChange = e => {
     this.setState({ descriptionInput: e.target.value });
   };
 
@@ -103,7 +103,7 @@ export class CardDescription extends React.Component {
 const mapStateToProps = (state, ownProps) => {
   const { cardId } = ownProps;
   const allCards = state.cards;
-  const card = state.cards.filter((card) => card._id === cardId)[0];
+  const card = state.cards.filter(card => card._id === cardId)[0];
   return { card, allCards };
 };
 

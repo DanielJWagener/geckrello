@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
-import { addChecklistItem } from "../../actions";
+import { addChecklistItem } from "../../redux/cards/cards.actions";
 
 import ChecklistItem from "./checklist-item.component";
 
@@ -13,7 +13,7 @@ export class Checklist extends React.Component {
   state = {
     mode: "prompt",
     newItemInput: "",
-    deleteCount: 0,
+    deleteCount: 0
   };
 
   toggleMode = () => {

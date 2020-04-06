@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import { updateBoard } from "../../actions";
+import { updateBoard } from "../../redux/boards/boards.actions";
 
 import "./board-title.styles.scss";
 

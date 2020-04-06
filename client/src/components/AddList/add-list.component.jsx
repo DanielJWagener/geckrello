@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { addList } from "../../actions";
+import { addList } from "../../redux/lists/lists.actions";
 
 import "./add-list.styles.scss";
 

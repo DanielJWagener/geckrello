@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import {
   checkOrUncheckChecklistItem,
   deleteChecklistItem
-} from "../../actions";
+} from "../../redux/cards/cards.actions";
 
 export function ChecklistItem(props) {
   function checkOrUncheck() {

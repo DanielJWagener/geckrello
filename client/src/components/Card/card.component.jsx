@@ -2,7 +2,7 @@ import React from "react";
 import { ItemTypes } from "../Constants";
 import { useDrag } from "react-dnd";
 import { connect } from "react-redux";
-import { moveCard } from "../../actions";
+import { moveCard } from "../../redux/cards/cards.actions";
 
 import "./card.styles.scss";
 

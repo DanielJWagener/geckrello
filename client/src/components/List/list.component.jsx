@@ -3,7 +3,7 @@ import Card from "../Card/card.component";
 import CardModal from "../CardModal/card-modal.component";
 import React from "react";
 import { connect } from "react-redux";
-import { archiveList } from "../../actions";
+import { archiveList } from "../../redux/lists/lists.actions";
 import ListDropTarget from "./list-drop-target";
 
 import "./list.styles.scss";
