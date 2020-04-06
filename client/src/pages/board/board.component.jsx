@@ -9,6 +9,7 @@ import BoardHeader from "../../components/BoardHeader/board-header.component";
 import { unloadBoard, fetchBoardData } from "../../redux/boards/boards.actions";
 import colorThemes from "../../utilities/colorThemes";
 import updateBackgroundColor from "../../utilities/updateBackgroundColor";
+import Spinner from "../../components/Spinner/spinner.component";
 
 import "./board.styles.scss";
 
@@ -47,7 +48,7 @@ export class Board extends React.Component {
       ));
 
   render() {
-    if (this.props.board) {
+    if (this.props.board && !this.props.board.isPending) {
       return (
         <>
           <DndProvider backend={HTML5Backend}>
@@ -62,7 +63,7 @@ export class Board extends React.Component {
         </>
       );
     } else {
-      return <h1>Loading...</h1>;
+      return <Spinner />;
     }
   }
 }

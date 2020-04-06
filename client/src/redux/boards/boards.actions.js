@@ -16,6 +16,8 @@ export const fetchBoardData = boardId => async dispatch => {
 
   const [board, lists, cards] = await Promise.all(boardDataPromises);
 
+  board.data.data.isPending = false;
+
   // Send board data to reducers
   const payload = {
     board: board.data.data,
