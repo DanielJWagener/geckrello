@@ -15,8 +15,9 @@
 
     &::-webkit-scrollbar {
       width: 20px;
+      height: 10px;
       margin: 0 1rem 3rem 1rem;
-      padding: 0 1rem;
+      padding: 0 2rem;
 
       &:vertical {
         display: none;
