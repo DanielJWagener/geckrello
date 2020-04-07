@@ -6,14 +6,14 @@ import { moveCard } from "../../redux/cards/cards.actions";
 
 import "./card.styles.scss";
 
-export function Card(props) {
+export function Card({ moveCard, cardId, cardTitle }) {
   // Drag source hook
   const [{ isDragging }, drag] = useDrag({
     item: { type: ItemTypes.CARD },
     end: (item, monitor) => {
       const dropResult = monitor.getDropResult();
       if (item && dropResult) {
-        props.moveCard(props.cardId, dropResult.listId);
+        moveCard(cardId, dropResult.listId);
       }
     },
     collect: monitor => ({
@@ -21,7 +21,7 @@ export function Card(props) {
     })
   });
 
-  const popupHref = `#${props.cardId}`;
+  const popupHref = `#${cardId}`;
 
   return (
     <div className="card">
@@ -35,14 +35,10 @@ export function Card(props) {
           cursor: "move"
         }}
       >
-        {props.cardTitle}
+        {cardTitle}
       </a>
     </div>
   );
 }
 
-const mapStateToProps = state => {
-  return { cards: state.cards };
-};
-
-export default connect(mapStateToProps, { moveCard })(Card);
+export default connect(null, { moveCard })(Card);
