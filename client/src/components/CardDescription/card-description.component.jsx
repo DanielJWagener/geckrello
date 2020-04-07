@@ -4,10 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAlignLeft } from "@fortawesome/free-solid-svg-icons";
 
 import { updateCardDescription } from "../../redux/cards/cards.actions";
-import {
-  selectCardById,
-  selectCardDescription
-} from "../../redux/cards/cards.selectors";
+import { selectCardDescription } from "../../redux/cards/cards.selectors";
 
 import "./card-description.styles.scss";
 
