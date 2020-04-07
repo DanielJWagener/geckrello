@@ -49,7 +49,7 @@ export const addBoard = title => async dispatch => {
 
 // Unload board data from Redux when user navigates back to dashboard, etc.
 export const unloadBoard = () => {
-  return { type: actionTypes.UNLOAD_BOARD, payload: null };
+  return { type: actionTypes.UNLOAD_BOARD };
 };
 
 export const updateBoard = (id, data) => async dispatch => {
