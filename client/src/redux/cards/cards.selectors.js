@@ -12,3 +12,6 @@ export const selectCardDescription = cardId =>
 
 export const selectListHomebyCardId = cardId =>
   createSelector([selectCardById(cardId)], card => card.listHome);
+
+export const selectChecklistByCardId = cardId =>
+  createSelector([selectCardById(cardId)], card => card.checklist);

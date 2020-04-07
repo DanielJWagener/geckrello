@@ -2,7 +2,9 @@ import React from "react";
 import { connect } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
+
 import { addChecklistItem } from "../../redux/cards/cards.actions";
+import { selectChecklistByCardId } from "../../redux/cards/cards.selectors";
 
 import ChecklistItem from "./checklist-item.component";
 
@@ -47,11 +49,12 @@ export class Checklist extends React.Component {
   };
 
   checklistItemsArray = () =>
-    this.props.card.checklist.map(item => (
+    this.props.checklist.map(item => (
       <ChecklistItem
         key={item._id}
         itemLabel={item.label}
         checklistItemId={item._id}
+        checked={item.checked}
         cardId={this.props.cardId}
       />
     ));
@@ -100,10 +103,8 @@ export class Checklist extends React.Component {
   }
 }
 
-const mapStateToProps = (state, ownProps) => {
-  const { cardId } = ownProps;
-  const card = state.cards.filter(card => card._id === cardId)[0];
-  return { card, cards: state.cards };
-};
+const mapStateToProps = (state, ownProps) => ({
+  checklist: selectChecklistByCardId(ownProps.cardId)(state)
+});
 
 export default connect(mapStateToProps, { addChecklistItem })(Checklist);
