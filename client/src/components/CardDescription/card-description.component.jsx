@@ -4,6 +4,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAlignLeft } from "@fortawesome/free-solid-svg-icons";
 
 import { updateCardDescription } from "../../redux/cards/cards.actions";
+import {
+  selectCardById,
+  selectCardDescription
+} from "../../redux/cards/cards.selectors";
 
 import "./card-description.styles.scss";
 
@@ -100,12 +104,10 @@ export class CardDescription extends React.Component {
   }
 }
 
-const mapStateToProps = (state, ownProps) => {
-  const { cardId } = ownProps;
-  const allCards = state.cards;
-  const card = state.cards.filter(card => card._id === cardId)[0];
-  return { card, allCards };
-};
+const mapStateToProps = (state, ownProps) => ({
+  card: selectCardById(ownProps.cardId)(state),
+  description: selectCardDescription(ownProps.cardId)(state)
+});
 
 export default connect(mapStateToProps, { updateCardDescription })(
   CardDescription
