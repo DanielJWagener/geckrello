@@ -8,6 +8,7 @@ import {
   copyCard
 } from "../../redux/cards/cards.actions";
 import CardUtiltitesPanel from "./card-utilties-panel.component";
+import { selectListHomebyCardId } from "../../redux/cards/cards.selectors";
 
 import "./card-utilities.styles.scss";
 
@@ -122,12 +123,10 @@ export class CardUtilities extends React.Component {
   }
 }
 
-const mapStateToProps = (state, ownProps) => {
-  const { lists, cards } = state;
-  const listHome = cards.filter(card => card._id === ownProps.cardId)[0]
-    .listHome;
-  return { lists, cards, listHome };
-};
+const mapStateToProps = (state, ownProps) => ({
+  lists: state.lists,
+  listHome: selectListHomebyCardId(ownProps.cardId)(state)
+});
 
 export default withRouter(
   connect(mapStateToProps, { archiveCard, moveCard, copyCard })(CardUtilities)
