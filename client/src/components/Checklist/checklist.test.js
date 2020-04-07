@@ -10,7 +10,5 @@ it("renders ChecklistItem component", () => {
 });
 
 it("renders Checklist component", () => {
-  expect(
-    shallow(<ChecklistPure card={{ checklist: [] }} />).debug()
-  ).toMatchSnapshot();
+  expect(shallow(<ChecklistPure checklist={[]} />).debug()).toMatchSnapshot();
 });

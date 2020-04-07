@@ -8,7 +8,7 @@ import colorThemes from "../../utilities/colorThemes";
 
 import "./board-link.styles.scss";
 
-const BoardLink = props => {
+export const BoardLink = props => {
   const backgroundColor = colorThemes[props.background].dark;
 
   return (
