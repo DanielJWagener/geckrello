@@ -18,7 +18,7 @@ export class CardDescription extends React.Component {
   };
 
   componentDidMount() {
-    this.setState({ descriptionInput: this.props.card.description });
+    this.setState({ descriptionInput: this.props.description });
   }
 
   toggleMode = () => {
@@ -48,7 +48,7 @@ export class CardDescription extends React.Component {
 
   renderDescription = () =>
     this.descriptionExists() ? (
-      <div className="description__display">{this.props.card.description}</div>
+      <div className="description__display">{this.props.description}</div>
     ) : (
       <button className="description__prompt" onClick={this.toggleMode}>
         Add a description...
@@ -105,7 +105,6 @@ export class CardDescription extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-  card: selectCardById(ownProps.cardId)(state),
   description: selectCardDescription(ownProps.cardId)(state)
 });
 
