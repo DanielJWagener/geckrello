@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 
 import ArchiveItem from "./archive-item.component";
 
+import { selectCardsAsArray } from "../../redux/cards/cards.selectors";
+
 import "./archive.styles.scss";
 
 export class Archive extends React.Component {
@@ -58,7 +60,7 @@ export class Archive extends React.Component {
 }
 
 const mapStateToProps = state => {
-  return { lists: state.lists, cards: state.cards };
+  return { lists: state.lists, cards: selectCardsAsArray(state) };
 };
 
 export default connect(mapStateToProps)(Archive);

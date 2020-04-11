@@ -1,19 +1,46 @@
 import axios from "axios";
+import _ from "lodash";
+
 import actionTypes from "../types";
+import { normalizeCards } from "./cards.utils";
 
 export const addCard = (title, listHome, boardHome) => async dispatch => {
-  // Make POST request
-  const newCard = await axios.post(`/api/v1/cards`, {
+  const tempId = _.uniqueId("zzzzz");
+
+  const newCard = {
+    _id: "",
+    tempId,
     title,
     listHome,
-    boardHome
-  });
+    boardHome,
+    description: "",
+    checklist: [],
+    archived: false
+  };
 
   // Send new card to reducers
   dispatch({
     type: actionTypes.ADD_CARD,
-    payload: newCard.data.data
+    payload: newCard
   });
+
+  try {
+    const cardFromDatabase = await axios.post(`/api/v1/cards`, {
+      title,
+      listHome,
+      boardHome
+    });
+
+    dispatch({
+      type: actionTypes.ADD_CARD_SUCCESS,
+      payload: { newId: cardFromDatabase.data.data._id, tempId }
+    });
+  } catch (error) {
+    dispatch({
+      type: actionTypes.ADD_CARD_FAILURE,
+      error
+    });
+  }
 };
 
 export const moveCard = (cardId, newListHome) => async dispatch => {

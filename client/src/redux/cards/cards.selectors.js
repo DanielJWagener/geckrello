@@ -2,10 +2,21 @@ import { createSelector } from "reselect";
 
 const selectCards = state => state.cards;
 
-export const selectCardById = cardId =>
-  createSelector([selectCards], cards =>
-    cards.find(card => card._id === cardId)
+export const selectCardsAsArray = createSelector([selectCards], cards =>
+  Object.values(cards)
+);
+
+export const selectArchivedCards = createSelector([selectCardsAsArray], cards =>
+  cards.filter(card => card.archived)
+);
+
+export const selectCardsByListHome = listId =>
+  createSelector([selectCardsAsArray], cards =>
+    cards.filter(card => card.listHome === listId && !card.archived)
   );
+
+export const selectCardById = cardId =>
+  createSelector([selectCards], cards => cards[cardId]);
 
 export const selectCardDescription = cardId =>
   createSelector([selectCardById(cardId)], card => card.description);

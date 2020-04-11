@@ -1,10 +1,13 @@
+import React from "react";
+import { connect } from "react-redux";
+
 import AddCard from "../AddCard/add-card.component";
 import Card from "../Card/card.component";
 import CardModal from "../CardModal/card-modal.component";
-import React from "react";
-import { connect } from "react-redux";
-import { archiveList } from "../../redux/lists/lists.actions";
 import ListDropTarget from "./list-drop-target";
+
+import { archiveList } from "../../redux/lists/lists.actions";
+import { selectCardsByListHome } from "../../redux/cards/cards.selectors";
 
 import "./list.styles.scss";
 
@@ -28,14 +31,17 @@ export const List = props => {
 
   //Make array of CardPopup components from props
   const cardModalsArray = () =>
-    props.cards.map(card => (
-      <CardModal
-        key={card._id}
-        cardId={card._id}
-        cardTitle={card.title}
-        inList={props.listTitle}
-      />
-    ));
+    props.cards.map(card => {
+      const cardId = card._id || card.tempId;
+      return (
+        <CardModal
+          key={cardId}
+          cardId={cardId}
+          cardTitle={card.title}
+          inList={props.listTitle}
+        />
+      );
+    });
 
   return (
     <ListDropTarget listId={props.listId}>
@@ -55,10 +61,7 @@ export const List = props => {
 const mapStateToProps = (state, ownProps) => {
   //Iterate over every card in state, return only the non-archived ones with a listHome corresponding to this list
   const { listId } = ownProps;
-  const cards = state.cards.filter(
-    card => card.listHome === listId && !card.archived
-  );
 
-  return { cards };
+  return { cards: selectCardsByListHome(listId)(state) };
 };
 export default connect(mapStateToProps, { archiveList })(List);

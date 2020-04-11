@@ -3,7 +3,7 @@ import actionTypes from "../types";
 import cardsReducer from "./cards.reducer";
 
 describe("cards reducer", () => {
-  const initialState = [];
+  const initialState = {};
   it("should return initial state", () => {
     expect(cardsReducer(undefined, {})).toEqual(initialState);
   });
@@ -28,12 +28,59 @@ describe("cards reducer", () => {
   });
 
   it("should handle ADD_CARD", () => {
-    expect(
-      cardsReducer(["Card 1"], {
-        type: actionTypes.ADD_CARD,
-        payload: "Card 2"
-      })
-    ).toEqual(["Card 1", "Card 2"]);
+    const action = {
+      type: actionTypes.ADD_CARD,
+      payload: { tempId: "2", title: "Card 2" }
+    };
+
+    const newState = cardsReducer(
+      {
+        1: {
+          tempId: "1",
+          title: "Card 1"
+        }
+      },
+      action
+    );
+
+    expect(newState).toEqual({
+      1: {
+        tempId: "1",
+        title: "Card 1"
+      },
+      2: {
+        tempId: "2",
+        title: "Card 2"
+      }
+    });
+  });
+
+  it("should handle ADD_CARD_SUCCESS", () => {
+    const action = {
+      type: actionTypes.ADD_CARD_SUCCESS,
+      payload: {
+        newId: "12345",
+        tempId: "1"
+      }
+    };
+
+    const newState = cardsReducer(
+      {
+        1: {
+          tempId: "1",
+          title: "Card 1"
+        }
+      },
+      action
+    );
+
+    expect(newState).toEqual({
+      12345: {
+        tempId: "1",
+        _id: "12345",
+        title: "Card 1"
+      }
+    });
   });
 
   it("should handle MOVE_CARD", () => {

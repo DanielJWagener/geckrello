@@ -1,17 +1,26 @@
+import _ from "lodash";
+
 import actionTypes from "../types";
 
-const INITIAL_STATE = [];
+const INITIAL_STATE = {};
 
 export default (state = INITIAL_STATE, action) => {
-  let currentCards = [...state];
+  let currentCards = { ...state };
   switch (action.type) {
     case actionTypes.FETCH_BOARD_DATA:
       return action.payload.cards;
     case actionTypes.UNLOAD_BOARD:
       return INITIAL_STATE;
     case actionTypes.ADD_CARD:
-      // Return current state with new card appended
-      return [...state, action.payload];
+      currentCards[action.payload.tempId] = action.payload;
+      return currentCards;
+    case actionTypes.ADD_CARD_SUCCESS: {
+      currentCards[action.payload.newId] = {
+        ...currentCards[action.payload.tempId]
+      };
+      currentCards[action.payload.newId]._id = action.payload.newId;
+      return _.omit(currentCards, action.payload.tempId);
+    }
     case actionTypes.MOVE_CARD:
       // Locate coresponding card in store
       currentCards.forEach(card => {
