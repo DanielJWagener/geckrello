@@ -3,12 +3,13 @@ import React, { Component } from "react";
 import BoardTitle from "../BoardTitle/board-title.component";
 import MenuToggler from "../MenuToggler/menu-toggler.component";
 import BoardMenu from "../BoardMenu/board-menu.component";
+import AutoSave from "../AutoSave/auto-save.component";
 
 import "./board-header.styles.scss";
 
 export class BoardHeader extends Component {
   state = {
-    menuHidden: true,
+    menuHidden: true
   };
 
   toggleMenu = () => {
@@ -22,7 +23,11 @@ export class BoardHeader extends Component {
   render() {
     return (
       <div className="board-header">
-        <BoardTitle board={this.props.board} />
+        <div className="board-header--left">
+          <BoardTitle board={this.props.board} />
+          <AutoSave />
+        </div>
+
         <MenuToggler
           toggleMenu={this.toggleMenu}
           menuHidden={this.state.menuHidden}
