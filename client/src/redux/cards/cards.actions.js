@@ -2,7 +2,6 @@ import axios from "axios";
 import _ from "lodash";
 
 import actionTypes from "../types";
-import { normalizeCards } from "./cards.utils";
 
 export const addCard = (title, listHome, boardHome) => async dispatch => {
   const tempId = _.uniqueId("zzzzz");
@@ -100,14 +99,24 @@ export const copyCard = (sourceCardId, newListHome) => async dispatch => {
 };
 
 export const archiveCard = cardId => async dispatch => {
-  // Make PATCH request
-  await axios.patch(`/api/v1/cards/${cardId}`, { archived: true });
-
   // Send card ID to reducers
   dispatch({
     type: actionTypes.ARCHIVE_CARD,
     payload: cardId
   });
+
+  // Make PATCH request
+  try {
+    await axios.patch(`/api/v1/cards/${cardId}`, { archived: true });
+    dispatch({
+      type: actionTypes.ARCHIVE_CARD_SUCCESS
+    });
+  } catch (error) {
+    dispatch({
+      type: actionTypes.ARCHIVE_CARD_FAILURE,
+      payload: error.message
+    });
+  }
 };
 
 export const restoreCard = cardId => async dispatch => {

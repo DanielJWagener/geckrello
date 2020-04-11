@@ -12,9 +12,11 @@ export default (state = INITIAL_STATE, action) => {
     case actionTypes.UNLOAD_BOARD:
       return INITIAL_STATE;
     case actionTypes.ADD_CARD:
+      // Create new key with tempId
       currentCards[action.payload.tempId] = action.payload;
       return currentCards;
     case actionTypes.ADD_CARD_SUCCESS: {
+      // Update target card's id key, then populate its _id field with id from database
       currentCards[action.payload.newId] = {
         ...currentCards[action.payload.tempId]
       };
@@ -22,16 +24,10 @@ export default (state = INITIAL_STATE, action) => {
       return _.omit(currentCards, action.payload.tempId);
     }
     case actionTypes.MOVE_CARD:
-      // Locate coresponding card in store
       currentCards[action.payload.cardId].listHome = action.payload.newListHome;
       return currentCards;
     case actionTypes.ARCHIVE_CARD:
-      // Find card in store, update archived property
-      currentCards.forEach(card => {
-        if (card._id === action.payload) {
-          card.archived = true;
-        }
-      });
+      currentCards[action.payload].archived = true;
       return currentCards;
     case actionTypes.RESTORE_CARD:
       // Find card in store, update archived property
