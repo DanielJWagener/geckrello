@@ -23,12 +23,7 @@ export default (state = INITIAL_STATE, action) => {
     }
     case actionTypes.MOVE_CARD:
       // Locate coresponding card in store
-      currentCards.forEach(card => {
-        if (card._id === action.payload.cardId) {
-          // Update listHome
-          card.listHome = action.payload.newListHome;
-        }
-      });
+      currentCards[action.payload.cardId].listHome = action.payload.newListHome;
       return currentCards;
     case actionTypes.ARCHIVE_CARD:
       // Find card in store, update archived property

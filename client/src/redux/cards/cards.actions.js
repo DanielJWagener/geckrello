@@ -24,6 +24,7 @@ export const addCard = (title, listHome, boardHome) => async dispatch => {
     payload: newCard
   });
 
+  // Persist new card in database
   try {
     const cardFromDatabase = await axios.post(`/api/v1/cards`, {
       title,
@@ -44,9 +45,6 @@ export const addCard = (title, listHome, boardHome) => async dispatch => {
 };
 
 export const moveCard = (cardId, newListHome) => async dispatch => {
-  // Make PATCH request
-  await axios.patch(`/api/v1/cards/${cardId}`, { listHome: newListHome });
-
   // Send arguments to reducers
   dispatch({
     type: actionTypes.MOVE_CARD,
@@ -55,6 +53,18 @@ export const moveCard = (cardId, newListHome) => async dispatch => {
       newListHome
     }
   });
+
+  // Make PATCH request
+  try {
+    await axios.patch(`/api/v1/cards/${cardId}`, { listHome: newListHome });
+    dispatch({
+      type: actionTypes.MOVE_CARD_SUCCESS
+    });
+  } catch (error) {
+    dispatch({
+      type: actionTypes.MOVE_CARD_FAILURE
+    });
+  }
 };
 
 export const copyCard = (sourceCardId, newListHome) => async dispatch => {

@@ -84,24 +84,26 @@ describe("cards reducer", () => {
   });
 
   it("should handle MOVE_CARD", () => {
-    expect(
-      cardsReducer(
-        [
-          { _id: "1", title: "Card 1", listHome: "List 1" },
-          { _id: "2", title: "Card 2", listHome: "List 1" }
-        ],
-        {
-          type: actionTypes.MOVE_CARD,
-          payload: {
-            cardId: "1",
-            newListHome: "List 2"
-          }
-        }
-      )
-    ).toEqual([
-      { _id: "1", title: "Card 1", listHome: "List 2" },
-      { _id: "2", title: "Card 2", listHome: "List 1" }
-    ]);
+    const action = {
+      type: actionTypes.MOVE_CARD,
+      payload: {
+        cardId: "1",
+        newListHome: "List 2"
+      }
+    };
+
+    const newState = cardsReducer(
+      {
+        1: { _id: "1", title: "Card 1", listHome: "List 1" },
+        2: { _id: "2", title: "Card 2", listHome: "List 1" }
+      },
+      action
+    );
+
+    expect(newState).toEqual({
+      1: { _id: "1", title: "Card 1", listHome: "List 2" },
+      2: { _id: "2", title: "Card 2", listHome: "List 1" }
+    });
   });
 
   it("should handle ARCHIVE_CARD", () => {
