@@ -1,5 +1,12 @@
 import axios from "axios";
-import actionTypes from "../types";
+
+import {
+  FETCH_BOARD_DATA,
+  PENDING_BOARD_BACKGROUND,
+  UNLOAD_BOARD,
+  UPDATE_BOARD,
+  FETCH_USER
+} from "../types";
 import { normalizeCards } from "../cards/cards.utils";
 
 export const fetchBoardData = boardId => async dispatch => {
@@ -28,11 +35,11 @@ export const fetchBoardData = boardId => async dispatch => {
     cards: cardsObj
   };
 
-  dispatch({ type: actionTypes.FETCH_BOARD_DATA, payload });
+  dispatch({ type: FETCH_BOARD_DATA, payload });
 };
 
 export const changeBackgroundForBoardPending = color => ({
-  type: actionTypes.PENDING_BOARD_BACKGROUND,
+  type: PENDING_BOARD_BACKGROUND,
   payload: {
     isPending: true,
     background: color
@@ -47,12 +54,12 @@ export const addBoard = title => async dispatch => {
   const user = await axios.get("/api/v1/users/current_user");
 
   // Send user to reducers
-  dispatch({ type: actionTypes.FETCH_USER, payload: user.data });
+  dispatch({ type: FETCH_USER, payload: user.data });
 };
 
 // Unload board data from Redux when user navigates back to dashboard, etc.
 export const unloadBoard = () => {
-  return { type: actionTypes.UNLOAD_BOARD };
+  return { type: UNLOAD_BOARD };
 };
 
 export const updateBoard = (id, data) => async dispatch => {
@@ -60,5 +67,5 @@ export const updateBoard = (id, data) => async dispatch => {
   const board = await axios.patch(`/api/v1/boards/${id}`, data);
 
   // Send data to reducers
-  dispatch({ type: actionTypes.UPDATE_BOARD, payload: board.data.data });
+  dispatch({ type: UPDATE_BOARD, payload: board.data.data });
 };

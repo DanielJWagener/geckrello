@@ -1,21 +1,36 @@
 import _ from "lodash";
 
-import actionTypes from "../types";
+import {
+  FETCH_BOARD_DATA,
+  UNLOAD_BOARD,
+  ADD_CARD,
+  ADD_CARD_SUCCESS,
+  ADD_CARD_FAILURE,
+  MOVE_CARD,
+  MOVE_CARD_SUCCESS,
+  MOVE_CARD_FAILURE,
+  ARCHIVE_CARD,
+  ARCHIVE_CARD_SUCCESS,
+  ARCHIVE_CARD_FAILURE,
+  RESTORE_CARD,
+  UPDATE_CARD_DESCRIPTION,
+  UPDATE_CHECKLIST
+} from "../types";
 
 const INITIAL_STATE = {};
 
 export default (state = INITIAL_STATE, action) => {
   let currentCards = { ...state };
   switch (action.type) {
-    case actionTypes.FETCH_BOARD_DATA:
+    case FETCH_BOARD_DATA:
       return action.payload.cards;
-    case actionTypes.UNLOAD_BOARD:
+    case UNLOAD_BOARD:
       return INITIAL_STATE;
-    case actionTypes.ADD_CARD:
+    case ADD_CARD:
       // Create new key with tempId
       currentCards[action.payload.tempId] = action.payload;
       return currentCards;
-    case actionTypes.ADD_CARD_SUCCESS: {
+    case ADD_CARD_SUCCESS: {
       // Update target card's id key, then populate its _id field with id from database
       currentCards[action.payload.newId] = {
         ...currentCards[action.payload.tempId]
@@ -23,13 +38,13 @@ export default (state = INITIAL_STATE, action) => {
       currentCards[action.payload.newId]._id = action.payload.newId;
       return _.omit(currentCards, action.payload.tempId);
     }
-    case actionTypes.MOVE_CARD:
+    case MOVE_CARD:
       currentCards[action.payload.cardId].listHome = action.payload.newListHome;
       return currentCards;
-    case actionTypes.ARCHIVE_CARD:
+    case ARCHIVE_CARD:
       currentCards[action.payload].archived = true;
       return currentCards;
-    case actionTypes.RESTORE_CARD:
+    case RESTORE_CARD:
       // Find card in store, update archived property
       currentCards.forEach(card => {
         if (card._id === action.payload) {
@@ -37,7 +52,7 @@ export default (state = INITIAL_STATE, action) => {
         }
       });
       return currentCards;
-    case actionTypes.UPDATE_CARD_DESCRIPTION:
+    case UPDATE_CARD_DESCRIPTION:
       // Locate coresponding card in store
       currentCards.forEach(card => {
         if (card._id === action.payload.cardId) {
@@ -46,7 +61,7 @@ export default (state = INITIAL_STATE, action) => {
         }
       });
       return currentCards;
-    case actionTypes.UPDATE_CHECKLIST:
+    case UPDATE_CHECKLIST:
       // Locate corresponding card in store
       currentCards.forEach(card => {
         if (card._id === action.payload.cardId) {

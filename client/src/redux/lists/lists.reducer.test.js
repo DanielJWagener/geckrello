@@ -1,4 +1,10 @@
-import actionTypes from "../types";
+import {
+  FETCH_BOARD_DATA,
+  UNLOAD_BOARD,
+  ADD_LIST,
+  ARCHIVE_LIST,
+  RESTORE_LIST
+} from "../types";
 import listsReducer from "./lists.reducer";
 
 describe("lists reducer", () => {
@@ -9,7 +15,7 @@ describe("lists reducer", () => {
   it("should handle FETCH_BOARD_DATA", () => {
     expect(
       listsReducer([], {
-        type: actionTypes.FETCH_BOARD_DATA,
+        type: FETCH_BOARD_DATA,
         payload: {
           board: { title: "Board 1" },
           cards: ["Card 1", "Card 2"],
@@ -20,15 +26,15 @@ describe("lists reducer", () => {
   });
 
   it("should handle UNLOAD_BOARD", () => {
-    expect(
-      listsReducer(["List 1", "List 2"], { type: actionTypes.UNLOAD_BOARD })
-    ).toEqual([]);
+    expect(listsReducer(["List 1", "List 2"], { type: UNLOAD_BOARD })).toEqual(
+      []
+    );
   });
 
   it("should handle ADD_LIST", () => {
     expect(
       listsReducer(["List 1", "List 2"], {
-        type: actionTypes.ADD_LIST,
+        type: ADD_LIST,
         payload: "List 3"
       })
     ).toEqual(["List 1", "List 2", "List 3"]);
@@ -42,7 +48,7 @@ describe("lists reducer", () => {
           { _id: "2", title: "List 2", archived: false }
         ],
         {
-          type: actionTypes.ARCHIVE_LIST,
+          type: ARCHIVE_LIST,
           payload: "1"
         }
       )
@@ -60,7 +66,7 @@ describe("lists reducer", () => {
           { _id: "2", title: "List 2", archived: false }
         ],
         {
-          type: actionTypes.RESTORE_LIST,
+          type: RESTORE_LIST,
           payload: "1"
         }
       )

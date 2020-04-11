@@ -1,7 +1,20 @@
 import axios from "axios";
 import _ from "lodash";
 
-import actionTypes from "../types";
+import {
+  ADD_CARD,
+  ADD_CARD_SUCCESS,
+  ADD_CARD_FAILURE,
+  MOVE_CARD,
+  MOVE_CARD_SUCCESS,
+  MOVE_CARD_FAILURE,
+  ARCHIVE_CARD,
+  ARCHIVE_CARD_SUCCESS,
+  ARCHIVE_CARD_FAILURE,
+  RESTORE_CARD,
+  UPDATE_CARD_DESCRIPTION,
+  UPDATE_CHECKLIST
+} from "../types";
 
 export const addCard = (title, listHome, boardHome) => async dispatch => {
   const tempId = _.uniqueId("zzzzz");
@@ -19,7 +32,7 @@ export const addCard = (title, listHome, boardHome) => async dispatch => {
 
   // Send new card to reducers
   dispatch({
-    type: actionTypes.ADD_CARD,
+    type: ADD_CARD,
     payload: newCard
   });
 
@@ -32,12 +45,12 @@ export const addCard = (title, listHome, boardHome) => async dispatch => {
     });
 
     dispatch({
-      type: actionTypes.ADD_CARD_SUCCESS,
+      type: ADD_CARD_SUCCESS,
       payload: { newId: cardFromDatabase.data.data._id, tempId }
     });
   } catch (error) {
     dispatch({
-      type: actionTypes.ADD_CARD_FAILURE,
+      type: ADD_CARD_FAILURE,
       error
     });
   }
@@ -46,7 +59,7 @@ export const addCard = (title, listHome, boardHome) => async dispatch => {
 export const moveCard = (cardId, newListHome) => async dispatch => {
   // Send arguments to reducers
   dispatch({
-    type: actionTypes.MOVE_CARD,
+    type: MOVE_CARD,
     payload: {
       cardId,
       newListHome
@@ -57,11 +70,11 @@ export const moveCard = (cardId, newListHome) => async dispatch => {
   try {
     await axios.patch(`/api/v1/cards/${cardId}`, { listHome: newListHome });
     dispatch({
-      type: actionTypes.MOVE_CARD_SUCCESS
+      type: MOVE_CARD_SUCCESS
     });
   } catch (error) {
     dispatch({
-      type: actionTypes.MOVE_CARD_FAILURE
+      type: MOVE_CARD_FAILURE
     });
   }
 };
@@ -93,7 +106,7 @@ export const copyCard = (sourceCardId, newListHome) => async dispatch => {
 
   // Send new card to reducers
   dispatch({
-    type: actionTypes.ADD_CARD,
+    type: ADD_CARD,
     payload: newCard.data.data
   });
 };
@@ -101,7 +114,7 @@ export const copyCard = (sourceCardId, newListHome) => async dispatch => {
 export const archiveCard = cardId => async dispatch => {
   // Send card ID to reducers
   dispatch({
-    type: actionTypes.ARCHIVE_CARD,
+    type: ARCHIVE_CARD,
     payload: cardId
   });
 
@@ -109,11 +122,11 @@ export const archiveCard = cardId => async dispatch => {
   try {
     await axios.patch(`/api/v1/cards/${cardId}`, { archived: true });
     dispatch({
-      type: actionTypes.ARCHIVE_CARD_SUCCESS
+      type: ARCHIVE_CARD_SUCCESS
     });
   } catch (error) {
     dispatch({
-      type: actionTypes.ARCHIVE_CARD_FAILURE,
+      type: ARCHIVE_CARD_FAILURE,
       payload: error.message
     });
   }
@@ -127,7 +140,7 @@ export const restoreCard = cardId => async dispatch => {
 
   // Send card ID to reducers
   dispatch({
-    type: actionTypes.RESTORE_CARD,
+    type: RESTORE_CARD,
     payload: cardId
   });
 };
@@ -143,7 +156,7 @@ export const updateCardDescription = (
 
   // Send arguments to reducers
   dispatch({
-    type: actionTypes.UPDATE_CARD_DESCRIPTION,
+    type: UPDATE_CARD_DESCRIPTION,
     payload: {
       cardId,
       descriptionInput
@@ -161,7 +174,7 @@ export const addChecklistItem = (cardId, label) => async dispatch => {
   const { checklist } = updatedCard.data.data;
 
   dispatch({
-    type: actionTypes.UPDATE_CHECKLIST,
+    type: UPDATE_CHECKLIST,
     payload: {
       cardId,
       checklist
@@ -186,7 +199,7 @@ export const checkOrUncheckChecklistItem = (
 
   // Send updated checklist to reducers
   dispatch({
-    type: actionTypes.UPDATE_CHECKLIST,
+    type: UPDATE_CHECKLIST,
     payload: {
       cardId,
       checklist
@@ -207,7 +220,7 @@ export const deleteChecklistItem = (
   const { checklist } = updatedCard.data.data;
 
   dispatch({
-    type: actionTypes.UPDATE_CHECKLIST,
+    type: UPDATE_CHECKLIST,
     payload: {
       cardId,
       checklist

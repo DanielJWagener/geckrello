@@ -1,5 +1,5 @@
 import axios from "axios";
-import actionTypes from "../types";
+import { ADD_LIST, ARCHIVE_LIST, RESTORE_LIST } from "../types";
 
 export const addList = (title, boardId) => async dispatch => {
   // POST new list data
@@ -10,7 +10,7 @@ export const addList = (title, boardId) => async dispatch => {
 
   // Send data to reducers
   dispatch({
-    type: actionTypes.ADD_LIST,
+    type: ADD_LIST,
     payload: newList.data.data
   });
 };
@@ -21,7 +21,7 @@ export const archiveList = listId => async dispatch => {
 
   // Send list ID to redcuers
   dispatch({
-    type: actionTypes.ARCHIVE_LIST,
+    type: ARCHIVE_LIST,
     payload: listId
   });
 };
@@ -34,7 +34,7 @@ export const restoreList = listId => async dispatch => {
 
   // Send list ID to reducers
   dispatch({
-    type: actionTypes.RESTORE_LIST,
+    type: RESTORE_LIST,
     payload: listId
   });
 };

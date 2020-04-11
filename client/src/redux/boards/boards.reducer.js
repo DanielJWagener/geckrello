@@ -1,14 +1,19 @@
-import actionTypes from "../types";
+import {
+  FETCH_BOARD_DATA,
+  PENDING_BOARD_BACKGROUND,
+  UNLOAD_BOARD,
+  UPDATE_BOARD
+} from "../types";
 
 export default (state = null, action) => {
   switch (action.type) {
-    case actionTypes.FETCH_BOARD_DATA:
+    case FETCH_BOARD_DATA:
       return action.payload.board;
-    case actionTypes.PENDING_BOARD_BACKGROUND:
+    case PENDING_BOARD_BACKGROUND:
       return action.payload;
-    case actionTypes.UNLOAD_BOARD:
+    case UNLOAD_BOARD:
       return null;
-    case actionTypes.UPDATE_BOARD:
+    case UPDATE_BOARD:
       return action.payload;
     default:
       return state;

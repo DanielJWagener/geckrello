@@ -1,4 +1,14 @@
-import actionTypes from "../types";
+import {
+  FETCH_BOARD_DATA,
+  UNLOAD_BOARD,
+  ADD_CARD,
+  ADD_CARD_SUCCESS,
+  ARCHIVE_CARD,
+  UPDATE_CHECKLIST,
+  MOVE_CARD,
+  UPDATE_CARD_DESCRIPTION,
+  RESTORE_CARD
+} from "../types";
 
 import cardsReducer from "./cards.reducer";
 
@@ -11,7 +21,7 @@ describe("cards reducer", () => {
   it("should handle FETCH_BOARD_DATA", () => {
     expect(
       cardsReducer(initialState, {
-        type: actionTypes.FETCH_BOARD_DATA,
+        type: FETCH_BOARD_DATA,
         payload: {
           board: { title: "Board 1" },
           cards: ["Card 1", "Card 2"],
@@ -22,14 +32,14 @@ describe("cards reducer", () => {
   });
 
   it("should handle UNLOAD_BOARD", () => {
-    expect(
-      cardsReducer(["so many cards"], { type: actionTypes.UNLOAD_BOARD })
-    ).toEqual(initialState);
+    expect(cardsReducer(["so many cards"], { type: UNLOAD_BOARD })).toEqual(
+      initialState
+    );
   });
 
   it("should handle ADD_CARD", () => {
     const action = {
-      type: actionTypes.ADD_CARD,
+      type: ADD_CARD,
       payload: { tempId: "2", title: "Card 2" }
     };
 
@@ -57,7 +67,7 @@ describe("cards reducer", () => {
 
   it("should handle ADD_CARD_SUCCESS", () => {
     const action = {
-      type: actionTypes.ADD_CARD_SUCCESS,
+      type: ADD_CARD_SUCCESS,
       payload: {
         newId: "12345",
         tempId: "1"
@@ -85,7 +95,7 @@ describe("cards reducer", () => {
 
   it("should handle MOVE_CARD", () => {
     const action = {
-      type: actionTypes.MOVE_CARD,
+      type: MOVE_CARD,
       payload: {
         cardId: "1",
         newListHome: "List 2"
@@ -108,7 +118,7 @@ describe("cards reducer", () => {
 
   it("should handle ARCHIVE_CARD", () => {
     const action = {
-      type: actionTypes.ARCHIVE_CARD,
+      type: ARCHIVE_CARD,
       payload: "1"
     };
 
@@ -133,7 +143,7 @@ describe("cards reducer", () => {
           { _id: "2", title: "Card 2", archived: false }
         ],
         {
-          type: actionTypes.RESTORE_CARD,
+          type: RESTORE_CARD,
           payload: "1"
         }
       )
@@ -151,7 +161,7 @@ describe("cards reducer", () => {
           { _id: "2", title: "Card 2", description: "" }
         ],
         {
-          type: actionTypes.UPDATE_CARD_DESCRIPTION,
+          type: UPDATE_CARD_DESCRIPTION,
           payload: {
             cardId: "1",
             descriptionInput: "new description"
@@ -172,7 +182,7 @@ describe("cards reducer", () => {
           { _id: "2", title: "Card 2", checklist: [] }
         ],
         {
-          type: actionTypes.UPDATE_CHECKLIST,
+          type: UPDATE_CHECKLIST,
           payload: {
             cardId: "1",
             checklist: ["new checklist"]
