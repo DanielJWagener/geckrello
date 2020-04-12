@@ -45,12 +45,7 @@ export default (state = INITIAL_STATE, action) => {
       currentCards[action.payload].archived = true;
       return currentCards;
     case RESTORE_CARD:
-      // Find card in store, update archived property
-      currentCards.forEach(card => {
-        if (card._id === action.payload) {
-          card.archived = false;
-        }
-      });
+      currentCards[action.payload].archived = false;
       return currentCards;
     case UPDATE_CARD_DESCRIPTION:
       // Locate coresponding card in store

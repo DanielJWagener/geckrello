@@ -129,6 +129,7 @@ describe("cards reducer", () => {
       },
       action
     );
+
     expect(newState).toEqual({
       1: { _id: "1", title: "Card 1", archived: true },
       2: { _id: "2", title: "Card 2", archived: false }
@@ -136,21 +137,23 @@ describe("cards reducer", () => {
   });
 
   it("should handle RESTORE_CARD", () => {
-    expect(
-      cardsReducer(
-        [
-          { _id: "1", title: "Card 1", archived: true },
-          { _id: "2", title: "Card 2", archived: false }
-        ],
-        {
-          type: RESTORE_CARD,
-          payload: "1"
-        }
-      )
-    ).toEqual([
-      { _id: "1", title: "Card 1", archived: false },
-      { _id: "2", title: "Card 2", archived: false }
-    ]);
+    const action = {
+      type: RESTORE_CARD,
+      payload: "1"
+    };
+
+    const newState = cardsReducer(
+      {
+        1: { _id: "1", title: "Card 1", archived: true },
+        2: { _id: "2", title: "Card 2", archived: true }
+      },
+      action
+    );
+
+    expect(newState).toEqual({
+      1: { _id: "1", title: "Card 1", archived: false },
+      2: { _id: "2", title: "Card 2", archived: true }
+    });
   });
 
   it("should handle UPDATE_CARD_DESCRIPTION", () => {

@@ -7,7 +7,10 @@ import {
   MOVE_CARD_FAILURE,
   ARCHIVE_CARD,
   ARCHIVE_CARD_SUCCESS,
-  ARCHIVE_CARD_FAILURE
+  ARCHIVE_CARD_FAILURE,
+  RESTORE_CARD,
+  RESTORE_CARD_SUCCESS,
+  RESTORE_CARD_FAILURE
 } from "../types";
 
 const INITIAL_STATE = { changes: null };
@@ -17,14 +20,17 @@ export default (state = INITIAL_STATE, action) => {
     case ADD_CARD:
     case MOVE_CARD:
     case ARCHIVE_CARD:
+    case RESTORE_CARD:
       return { changes: "Saving..." };
     case ADD_CARD_SUCCESS:
     case MOVE_CARD_SUCCESS:
     case ARCHIVE_CARD_SUCCESS:
+    case RESTORE_CARD_SUCCESS:
       return { changes: "Saved!" };
     case ADD_CARD_FAILURE:
     case MOVE_CARD_FAILURE:
     case ARCHIVE_CARD_FAILURE:
+    case RESTORE_CARD_FAILURE:
       return { error: action.payload || "Error: Could not update card" };
     default:
       return state;

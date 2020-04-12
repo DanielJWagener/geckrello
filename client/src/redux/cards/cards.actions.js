@@ -12,6 +12,8 @@ import {
   ARCHIVE_CARD_SUCCESS,
   ARCHIVE_CARD_FAILURE,
   RESTORE_CARD,
+  RESTORE_CARD_SUCCESS,
+  RESTORE_CARD_FAILURE,
   UPDATE_CARD_DESCRIPTION,
   UPDATE_CHECKLIST
 } from "../types";
@@ -133,16 +135,28 @@ export const archiveCard = cardId => async dispatch => {
 };
 
 export const restoreCard = cardId => async dispatch => {
-  // Make PATCH request
-  await axios.patch(`/api/v1/cards/${cardId}`, {
-    archived: false
-  });
-
   // Send card ID to reducers
   dispatch({
     type: RESTORE_CARD,
     payload: cardId
   });
+
+  // Make PATCH request
+  await axios.patch(`/api/v1/cards/${cardId}`, {
+    archived: false
+  });
+
+  try {
+    await axios.patch(`/api/v1/cards/${cardId}`, { archived: true });
+    dispatch({
+      type: RESTORE_CARD_SUCCESS
+    });
+  } catch (error) {
+    dispatch({
+      type: RESTORE_CARD_FAILURE,
+      payload: error.message
+    });
+  }
 };
 
 export const updateCardDescription = (
