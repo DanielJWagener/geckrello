@@ -49,7 +49,7 @@ export class Checklist extends React.Component {
   };
 
   checklistItemsArray = () =>
-    this.props.checklist.map(item => (
+    Object.values(this.props.checklist).map(item => (
       <ChecklistItem
         key={item._id}
         itemLabel={item.label}

@@ -90,8 +90,11 @@ export const copyCard = (sourceCardId, newListHome) => async (
 ) => {
   const tempId = _.uniqueId("zzzzz");
 
+  const state = getState();
+  console.log(state);
+
   // Make temporary checklist item IDs for each checklist item in the source card
-  const sourceCardChecklist = getState().cards.sourceCardId.checklist;
+  const sourceCardChecklist = getState().cards[sourceCardId].checklist;
   let checklistTempIds = new Array(Object.keys(sourceCardChecklist).length);
   checklistTempIds.fill(_.uniqueId("yyyy"));
 
@@ -128,12 +131,6 @@ export const copyCard = (sourceCardId, newListHome) => async (
     boardHome,
     listHome,
     checklist
-  });
-
-  // Send new card to reducers
-  dispatch({
-    type: ADD_CARD,
-    payload: newCard.data.data
   });
 };
 
