@@ -15,6 +15,8 @@ import {
   RESTORE_CARD_SUCCESS,
   RESTORE_CARD_FAILURE,
   UPDATE_CARD_DESCRIPTION,
+  UPDATE_CARD_DESCRIPTION_SUCCESS,
+  UPDATE_CARD_DESCRIPTION_FAILURE,
   UPDATE_CHECKLIST
 } from "../types";
 
@@ -163,11 +165,6 @@ export const updateCardDescription = (
   cardId,
   descriptionInput
 ) => async dispatch => {
-  // Make PATCH request
-  await axios.patch(`/api/v1/cards/${cardId}`, {
-    description: descriptionInput
-  });
-
   // Send arguments to reducers
   dispatch({
     type: UPDATE_CARD_DESCRIPTION,
@@ -176,6 +173,22 @@ export const updateCardDescription = (
       descriptionInput
     }
   });
+
+  // Make PATCH request
+  try {
+    await axios.patch(`/api/v1/cards/${cardId}`, {
+      description: descriptionInput
+    });
+
+    dispatch({
+      type: UPDATE_CARD_DESCRIPTION_SUCCESS
+    });
+  } catch (error) {
+    dispatch({
+      type: UPDATE_CARD_DESCRIPTION_FAILURE,
+      payload: error.message
+    });
+  }
 };
 
 export const addChecklistItem = (cardId, label) => async dispatch => {

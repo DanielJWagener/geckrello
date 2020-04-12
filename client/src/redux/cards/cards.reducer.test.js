@@ -157,24 +157,26 @@ describe("cards reducer", () => {
   });
 
   it("should handle UPDATE_CARD_DESCRIPTION", () => {
-    expect(
-      cardsReducer(
-        [
-          { _id: "1", title: "Card 1", description: "" },
-          { _id: "2", title: "Card 2", description: "" }
-        ],
-        {
-          type: UPDATE_CARD_DESCRIPTION,
-          payload: {
-            cardId: "1",
-            descriptionInput: "new description"
-          }
-        }
-      )
-    ).toEqual([
-      { _id: "1", title: "Card 1", description: "new description" },
-      { _id: "2", title: "Card 2", description: "" }
-    ]);
+    const action = {
+      type: UPDATE_CARD_DESCRIPTION,
+      payload: {
+        cardId: "1",
+        descriptionInput: "new description"
+      }
+    };
+
+    const newState = cardsReducer(
+      {
+        1: { _id: "1", title: "Card 1", description: "" },
+        2: { _id: "2", title: "Card 2", description: "" }
+      },
+      action
+    );
+
+    expect(newState).toEqual({
+      1: { _id: "1", title: "Card 1", description: "new description" },
+      2: { _id: "2", title: "Card 2", description: "" }
+    });
   });
 
   it("should handle UPDATE_CHECKLIST", () => {

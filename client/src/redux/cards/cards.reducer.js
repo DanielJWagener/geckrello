@@ -48,13 +48,8 @@ export default (state = INITIAL_STATE, action) => {
       currentCards[action.payload].archived = false;
       return currentCards;
     case UPDATE_CARD_DESCRIPTION:
-      // Locate coresponding card in store
-      currentCards.forEach(card => {
-        if (card._id === action.payload.cardId) {
-          // Update description
-          card.description = action.payload.descriptionInput;
-        }
-      });
+      currentCards[action.payload.cardId].description =
+        action.payload.descriptionInput;
       return currentCards;
     case UPDATE_CHECKLIST:
       // Locate corresponding card in store
