@@ -5,12 +5,13 @@ import {
   ADD_CARD,
   ADD_CARD_SUCCESS,
   ADD_CARD_FAILURE,
-  MOVE_CARD,
-  MOVE_CARD_SUCCESS,
-  MOVE_CARD_FAILURE,
   ARCHIVE_CARD,
   ARCHIVE_CARD_SUCCESS,
   ARCHIVE_CARD_FAILURE,
+  COPY_CARD,
+  MOVE_CARD,
+  MOVE_CARD_SUCCESS,
+  MOVE_CARD_FAILURE,
   RESTORE_CARD,
   RESTORE_CARD_SUCCESS,
   RESTORE_CARD_FAILURE,
@@ -83,7 +84,28 @@ export const moveCard = (cardId, newListHome) => async dispatch => {
   }
 };
 
-export const copyCard = (sourceCardId, newListHome) => async dispatch => {
+export const copyCard = (sourceCardId, newListHome) => async (
+  dispatch,
+  getState
+) => {
+  const tempId = _.uniqueId("zzzzz");
+
+  // Make temporary checklist item IDs for each checklist item in the source card
+  const sourceCardChecklist = getState().cards.sourceCardId.checklist;
+  let checklistTempIds = new Array(Object.keys(sourceCardChecklist).length);
+  checklistTempIds.fill(_.uniqueId("yyyy"));
+
+  // Send arguments to reducer
+  dispatch({
+    type: COPY_CARD,
+    payload: {
+      tempId,
+      sourceCardId,
+      newListHome,
+      checklistTempIds
+    }
+  });
+
   // GET card to be copied (source card)
   let card = (await axios.get(`/api/v1/cards/${sourceCardId}`)).data.data;
 

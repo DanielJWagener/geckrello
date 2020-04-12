@@ -14,7 +14,8 @@ import {
   ARCHIVE_CARD_FAILURE,
   RESTORE_CARD,
   UPDATE_CARD_DESCRIPTION,
-  UPDATE_CHECKLIST
+  UPDATE_CHECKLIST,
+  COPY_CARD
 } from "../types";
 
 const INITIAL_STATE = {};
@@ -40,6 +41,34 @@ export default (state = INITIAL_STATE, action) => {
     }
     case MOVE_CARD:
       currentCards[action.payload.cardId].listHome = action.payload.newListHome;
+      return currentCards;
+    case COPY_CARD:
+      // Copy checklist, add tempIds for each item
+      let sourceCardChecklist = {
+        ...currentCards[action.payload.sourceCardId].checklist
+      };
+      let checklistCopyArray = Object.values(sourceCardChecklist);
+      let copiedChecklist = {};
+      checklistCopyArray
+        .map((item, index) => {
+          let copyOfItem = { ...item };
+          copyOfItem._id = "";
+          copyOfItem.tempId = action.payload.checklistTempIds[index];
+          return copyOfItem;
+        })
+        .forEach((item, index) => {
+          copiedChecklist[action.payload.checklistTempIds[index]] = item;
+        });
+
+      // Copy all card information into new key of tempId, remove _id, add tempId, and copied checklist
+      currentCards[action.payload.tempId] = {
+        ...currentCards[action.payload.sourceCardId],
+        listHome: action.payload.newListHome,
+        tempId: action.payload.tempId,
+        _id: "",
+        checklist: copiedChecklist
+      };
+
       return currentCards;
     case ARCHIVE_CARD:
       currentCards[action.payload].archived = true;

@@ -1,6 +1,7 @@
 export const ADD_LIST = "ADD_LIST";
 export const ARCHIVE_LIST = "ARCHIVE_LIST";
 export const RESTORE_LIST = "RESTORE_LIST";
+export const COPY_CARD = "COPY_CARD";
 export const ADD_CARD = "ADD_CARD";
 export const ADD_CARD_SUCCESS = "ADD_CARD_SUCCESS";
 export const ADD_CARD_FAILURE = "ADD_CARD_FAILURE";

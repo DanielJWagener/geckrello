@@ -7,7 +7,8 @@ import {
   UPDATE_CHECKLIST,
   MOVE_CARD,
   UPDATE_CARD_DESCRIPTION,
-  RESTORE_CARD
+  RESTORE_CARD,
+  COPY_CARD
 } from "../types";
 
 import cardsReducer from "./cards.reducer";
@@ -113,6 +114,55 @@ describe("cards reducer", () => {
     expect(newState).toEqual({
       1: { _id: "1", title: "Card 1", listHome: "List 2" },
       2: { _id: "2", title: "Card 2", listHome: "List 1" }
+    });
+  });
+
+  it("should handle COPY_CARD", () => {
+    const action = {
+      type: COPY_CARD,
+      payload: {
+        sourceCardId: "1",
+        tempId: "zzz",
+        newListHome: "20",
+        checklistTempIds: ["yy1", "yy2"]
+      }
+    };
+
+    const newState = cardsReducer(
+      {
+        1: {
+          _id: "1",
+          title: "Card 1",
+          listHome: "10",
+          checklist: {
+            1: { _id: "1", label: "Item 1" },
+            2: { _id: "2", label: "Item 2" }
+          }
+        }
+      },
+      action
+    );
+
+    expect(newState).toEqual({
+      1: {
+        _id: "1",
+        title: "Card 1",
+        listHome: "10",
+        checklist: {
+          1: { _id: "1", label: "Item 1" },
+          2: { _id: "2", label: "Item 2" }
+        }
+      },
+      zzz: {
+        _id: "",
+        tempId: "zzz",
+        title: "Card 1",
+        listHome: "20",
+        checklist: {
+          yy1: { _id: "", tempId: "yy1", label: "Item 1" },
+          yy2: { _id: "", tempId: "yy2", label: "Item 2" }
+        }
+      }
     });
   });
 
