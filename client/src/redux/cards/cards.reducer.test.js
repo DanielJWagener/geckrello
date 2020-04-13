@@ -9,7 +9,9 @@ import {
   UPDATE_CARD_DESCRIPTION,
   RESTORE_CARD,
   COPY_CARD,
-  COPY_CARD_SUCCESS
+  COPY_CARD_SUCCESS,
+  ADD_CHECKLIST_ITEM,
+  ADD_CHECKLIST_ITEM_SUCCESS
 } from "../types";
 
 import cardsReducer from "./cards.reducer";
@@ -288,6 +290,104 @@ describe("cards reducer", () => {
     expect(newState).toEqual({
       1: { _id: "1", title: "Card 1", description: "new description" },
       2: { _id: "2", title: "Card 2", description: "" }
+    });
+  });
+
+  it("should handle ADD_CHECKLIST_ITEM", () => {
+    const action = {
+      type: ADD_CHECKLIST_ITEM,
+      payload: {
+        tempId: "yy1",
+        cardId: "1",
+        label: "New item"
+      }
+    };
+
+    const newState = cardsReducer(
+      {
+        1: {
+          title: "Some card",
+          checklist: {
+            1: {
+              _id: "1",
+              label: "Item"
+            }
+          }
+        }
+      },
+      action
+    );
+
+    expect(newState).toEqual({
+      1: {
+        title: "Some card",
+        checklist: {
+          1: {
+            _id: "1",
+            label: "Item"
+          },
+          yy1: {
+            _id: "",
+            tempId: "yy1",
+            label: "New item"
+          }
+        }
+      }
+    });
+  });
+
+  it("should handle ADD_CHECKLIST_ITEM_SUCCESS", () => {
+    const action = {
+      type: ADD_CHECKLIST_ITEM_SUCCESS,
+      payload: {
+        checklist: {
+          1: {
+            _id: "1",
+            label: "Item"
+          },
+          2: {
+            _id: "2",
+            label: "New item"
+          }
+        },
+        cardId: "1"
+      }
+    };
+
+    const newState = cardsReducer(
+      {
+        1: {
+          title: "Some card",
+          checklist: {
+            1: {
+              _id: "1",
+              label: "Item"
+            },
+            yy1: {
+              _id: "",
+              tempId: "yy1",
+              label: "New item"
+            }
+          }
+        }
+      },
+      action
+    );
+
+    expect(newState).toEqual({
+      1: {
+        title: "Some card",
+        checklist: {
+          1: {
+            _id: "1",
+            label: "Item"
+          },
+          2: {
+            _id: "2",
+            label: "New item"
+          }
+        }
+      }
     });
   });
 

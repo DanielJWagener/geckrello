@@ -16,7 +16,9 @@ import {
   UPDATE_CARD_DESCRIPTION,
   UPDATE_CHECKLIST,
   COPY_CARD,
-  COPY_CARD_SUCCESS
+  COPY_CARD_SUCCESS,
+  ADD_CHECKLIST_ITEM,
+  ADD_CHECKLIST_ITEM_SUCCESS
 } from "../types";
 
 const INITIAL_STATE = {};
@@ -87,6 +89,16 @@ export default (state = INITIAL_STATE, action) => {
     case UPDATE_CARD_DESCRIPTION:
       currentCards[action.payload.cardId].description =
         action.payload.descriptionInput;
+      return currentCards;
+    case ADD_CHECKLIST_ITEM:
+      currentCards[action.payload.cardId].checklist[action.payload.tempId] = {
+        _id: "",
+        tempId: action.payload.tempId,
+        label: action.payload.label
+      };
+      return currentCards;
+    case ADD_CHECKLIST_ITEM_SUCCESS:
+      currentCards[action.payload.cardId].checklist = action.payload.checklist;
       return currentCards;
     case UPDATE_CHECKLIST:
       // Locate corresponding card in store

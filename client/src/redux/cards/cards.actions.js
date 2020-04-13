@@ -7,6 +7,9 @@ import {
   ADD_CARD,
   ADD_CARD_SUCCESS,
   ADD_CARD_FAILURE,
+  ADD_CHECKLIST_ITEM,
+  ADD_CHECKLIST_ITEM_SUCCESS,
+  ADD_CHECKLIST_ITEM_FAILURE,
   ARCHIVE_CARD,
   ARCHIVE_CARD_SUCCESS,
   ARCHIVE_CARD_FAILURE,
@@ -185,13 +188,8 @@ export const restoreCard = cardId => async dispatch => {
     payload: cardId
   });
 
-  // Make PATCH request
-  await axios.patch(`/api/v1/cards/${cardId}`, {
-    archived: false
-  });
-
   try {
-    await axios.patch(`/api/v1/cards/${cardId}`, { archived: true });
+    await axios.patch(`/api/v1/cards/${cardId}`, { archived: false });
     dispatch({
       type: RESTORE_CARD_SUCCESS
     });
@@ -234,21 +232,41 @@ export const updateCardDescription = (
 };
 
 export const addChecklistItem = (cardId, label) => async dispatch => {
-  // Push new checklist item to card
-  const updatedCard = await axios.patch(`/api/v1/cards/${cardId}`, {
-    $push: { checklist: { label } }
-  });
-
-  // Send new checklist to reducers
-  const { checklist } = updatedCard.data.data;
+  // STEP 1: Pure Redux
+  const tempId = _.uniqueId("yyyy");
 
   dispatch({
-    type: UPDATE_CHECKLIST,
+    type: ADD_CHECKLIST_ITEM,
     payload: {
       cardId,
-      checklist
+      label,
+      tempId
     }
   });
+
+  // STEP 2: MongoDB
+  try {
+    // Push new checklist item to card
+    const updatedCard = await axios.patch(`/api/v1/cards/${cardId}`, {
+      $push: { checklist: { label } }
+    });
+
+    // Send new checklist from DB to reducers
+    const checklistFromDB = updatedCard.data.data.checklist;
+
+    dispatch({
+      type: ADD_CHECKLIST_ITEM_SUCCESS,
+      payload: {
+        cardId,
+        checklist: normalizeChecklist(checklistFromDB)
+      }
+    });
+  } catch (error) {
+    dispatch({
+      type: ADD_CHECKLIST_ITEM_FAILURE,
+      payload: error.message
+    });
+  }
 };
 
 export const checkOrUncheckChecklistItem = (
