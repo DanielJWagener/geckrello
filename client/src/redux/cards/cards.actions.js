@@ -19,6 +19,9 @@ import {
   COPY_CARD,
   COPY_CARD_SUCCESS,
   COPY_CARD_FAILURE,
+  DELETE_CHECKLIST_ITEM,
+  DELETE_CHECKLIST_ITEM_SUCCESS,
+  DELETE_CHECKLIST_ITEM_FAILURE,
   MOVE_CARD,
   MOVE_CARD_SUCCESS,
   MOVE_CARD_FAILURE,
@@ -310,7 +313,7 @@ export const checkOrUncheckChecklistItem = (
   } catch (error) {
     dispatch({
       type: CHECK_OR_UNCHECK_FAILURE,
-      error: error.message
+      payload: error.message
     });
   }
 };
@@ -319,19 +322,35 @@ export const deleteChecklistItem = (
   cardId,
   checklistItemId
 ) => async dispatch => {
-  // Make DELETE request (internally a findByIdAndUpdate method on the Card model)
-  const updatedCard = await axios.delete(
-    `/api/v1/cards/${cardId}/checklist/${checklistItemId}`
-  );
-
-  // Send updated checklist to reducers
-  const { checklist } = updatedCard.data.data;
-
+  // STEP 1: Pure Redux
   dispatch({
-    type: UPDATE_CHECKLIST,
+    type: DELETE_CHECKLIST_ITEM,
     payload: {
       cardId,
-      checklist
+      checklistItemId
     }
   });
+  // STEP 2: MongoDB
+  try {
+    // Make DELETE request (internally a findByIdAndUpdate method on the Card model)
+    const updatedCard = await axios.delete(
+      `/api/v1/cards/${cardId}/checklist/${checklistItemId}`
+    );
+
+    // Send updated checklist to reducers
+    const checklistFromDB = updatedCard.data.data.checklist;
+
+    dispatch({
+      type: DELETE_CHECKLIST_ITEM_SUCCESS,
+      payload: {
+        cardId,
+        checklist: normalizeChecklist(checklistFromDB)
+      }
+    });
+  } catch (error) {
+    dispatch({
+      type: DELETE_CHECKLIST_ITEM_FAILURE,
+      payload: error.message
+    });
+  }
 };

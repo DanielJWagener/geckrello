@@ -20,7 +20,9 @@ import {
   ADD_CHECKLIST_ITEM,
   ADD_CHECKLIST_ITEM_SUCCESS,
   CHECK_OR_UNCHECK,
-  CHECK_OR_UNCHECK_SUCCESS
+  CHECK_OR_UNCHECK_SUCCESS,
+  DELETE_CHECKLIST_ITEM,
+  DELETE_CHECKLIST_ITEM_SUCCESS
 } from "../types";
 
 const INITIAL_STATE = {};
@@ -104,8 +106,14 @@ export default (state = INITIAL_STATE, action) => {
         action.payload.checklistItemId
       ].checked = action.payload.checked;
       return currentCards;
+    case DELETE_CHECKLIST_ITEM:
+      currentCards[action.payload.cardId].checklist[
+        action.payload.checklistItemId
+      ] = undefined;
+      return currentCards;
     case ADD_CHECKLIST_ITEM_SUCCESS:
     case CHECK_OR_UNCHECK_SUCCESS:
+    case DELETE_CHECKLIST_ITEM_SUCCESS:
       currentCards[action.payload.cardId].checklist = action.payload.checklist;
       return currentCards;
     default:

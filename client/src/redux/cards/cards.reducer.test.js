@@ -12,7 +12,8 @@ import {
   COPY_CARD_SUCCESS,
   ADD_CHECKLIST_ITEM,
   ADD_CHECKLIST_ITEM_SUCCESS,
-  CHECK_OR_UNCHECK
+  CHECK_OR_UNCHECK,
+  DELETE_CHECKLIST_ITEM
 } from "../types";
 
 import cardsReducer from "./cards.reducer";
@@ -436,6 +437,50 @@ describe("cards reducer", () => {
             _id: "2",
             label: "New item",
             checked: true
+          }
+        }
+      }
+    });
+  });
+
+  it("should handle DELETE_CHECKLIST_ITEM", () => {
+    const action = {
+      type: DELETE_CHECKLIST_ITEM,
+      payload: {
+        cardId: "1",
+        checklistItemId: "2"
+      }
+    };
+
+    const newState = cardsReducer(
+      {
+        1: {
+          title: "Some card",
+          checklist: {
+            1: {
+              _id: "1",
+              label: "Item",
+              checked: false
+            },
+            2: {
+              _id: "2",
+              label: "New item",
+              checked: true
+            }
+          }
+        }
+      },
+      action
+    );
+
+    expect(newState).toEqual({
+      1: {
+        title: "Some card",
+        checklist: {
+          1: {
+            _id: "1",
+            label: "Item",
+            checked: false
           }
         }
       }
