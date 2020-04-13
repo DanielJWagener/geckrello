@@ -13,6 +13,9 @@ import {
   ARCHIVE_CARD,
   ARCHIVE_CARD_SUCCESS,
   ARCHIVE_CARD_FAILURE,
+  CHECK_OR_UNCHECK,
+  CHECK_OR_UNCHECK_SUCCESS,
+  CHECK_OR_UNCHECK_FAILURE,
   COPY_CARD,
   COPY_CARD_SUCCESS,
   COPY_CARD_FAILURE,
@@ -272,26 +275,44 @@ export const addChecklistItem = (cardId, label) => async dispatch => {
 export const checkOrUncheckChecklistItem = (
   cardId,
   checklistItemId,
-  checked
+  checkedStatus
 ) => async dispatch => {
-  // Set checked field to false if currently true, and vice-versa
-  const updateBody = { $set: { "checklist.$.checked": !checked } };
-
-  // Update card and get updated checklist from it
-  const updatedCard = await axios.patch(
-    `/api/v1/cards/${cardId}/checklist/${checklistItemId}`,
-    updateBody
-  );
-  const { checklist } = updatedCard.data.data;
-
-  // Send updated checklist to reducers
+  // STEP 1: Pure Redux
   dispatch({
-    type: UPDATE_CHECKLIST,
+    type: CHECK_OR_UNCHECK,
     payload: {
       cardId,
-      checklist
+      checklistItemId,
+      checked: !checkedStatus
     }
   });
+
+  // STEP 2: MongoDB
+  try {
+    // Set checked field to false if currently true, and vice-versa
+    const updateBody = { $set: { "checklist.$.checked": !checkedStatus } };
+
+    // Update card and get updated checklist from it
+    const updatedCard = await axios.patch(
+      `/api/v1/cards/${cardId}/checklist/${checklistItemId}`,
+      updateBody
+    );
+    const checklistFromDB = updatedCard.data.data.checklist;
+
+    // Send updated checklist to reducers
+    dispatch({
+      type: CHECK_OR_UNCHECK_SUCCESS,
+      payload: {
+        cardId,
+        checklist: normalizeChecklist(checklistFromDB)
+      }
+    });
+  } catch (error) {
+    dispatch({
+      type: CHECK_OR_UNCHECK_FAILURE,
+      error: error.message
+    });
+  }
 };
 
 export const deleteChecklistItem = (

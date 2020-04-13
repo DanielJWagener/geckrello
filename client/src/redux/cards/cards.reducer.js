@@ -18,7 +18,9 @@ import {
   COPY_CARD,
   COPY_CARD_SUCCESS,
   ADD_CHECKLIST_ITEM,
-  ADD_CHECKLIST_ITEM_SUCCESS
+  ADD_CHECKLIST_ITEM_SUCCESS,
+  CHECK_OR_UNCHECK,
+  CHECK_OR_UNCHECK_SUCCESS
 } from "../types";
 
 const INITIAL_STATE = {};
@@ -97,17 +99,14 @@ export default (state = INITIAL_STATE, action) => {
         label: action.payload.label
       };
       return currentCards;
-    case ADD_CHECKLIST_ITEM_SUCCESS:
-      currentCards[action.payload.cardId].checklist = action.payload.checklist;
+    case CHECK_OR_UNCHECK:
+      currentCards[action.payload.cardId].checklist[
+        action.payload.checklistItemId
+      ].checked = action.payload.checked;
       return currentCards;
-    case UPDATE_CHECKLIST:
-      // Locate corresponding card in store
-      currentCards.forEach(card => {
-        if (card._id === action.payload.cardId) {
-          // Set checklist in state equal to checklist retrieved from database after update
-          card.checklist = action.payload.checklist;
-        }
-      });
+    case ADD_CHECKLIST_ITEM_SUCCESS:
+    case CHECK_OR_UNCHECK_SUCCESS:
+      currentCards[action.payload.cardId].checklist = action.payload.checklist;
       return currentCards;
     default:
       return state;

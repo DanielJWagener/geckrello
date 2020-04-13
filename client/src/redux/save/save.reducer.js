@@ -19,7 +19,10 @@ import {
   UPDATE_CARD_DESCRIPTION_FAILURE,
   ADD_CHECKLIST_ITEM,
   ADD_CHECKLIST_ITEM_FAILURE,
-  ADD_CHECKLIST_ITEM_SUCCESS
+  ADD_CHECKLIST_ITEM_SUCCESS,
+  CHECK_OR_UNCHECK,
+  CHECK_OR_UNCHECK_SUCCESS,
+  CHECK_OR_UNCHECK_FAILURE
 } from "../types";
 
 const INITIAL_STATE = { changes: null };
@@ -33,6 +36,7 @@ export default (state = INITIAL_STATE, action) => {
     case UPDATE_CARD_DESCRIPTION:
     case COPY_CARD:
     case ADD_CHECKLIST_ITEM:
+    case CHECK_OR_UNCHECK:
       return { changes: "Saving..." };
     case ADD_CARD_SUCCESS:
     case MOVE_CARD_SUCCESS:
@@ -41,6 +45,7 @@ export default (state = INITIAL_STATE, action) => {
     case UPDATE_CARD_DESCRIPTION_SUCCESS:
     case COPY_CARD_SUCCESS:
     case ADD_CHECKLIST_ITEM_SUCCESS:
+    case CHECK_OR_UNCHECK_SUCCESS:
       return { changes: "Saved!" };
     case ADD_CARD_FAILURE:
     case MOVE_CARD_FAILURE:
@@ -49,6 +54,7 @@ export default (state = INITIAL_STATE, action) => {
     case UPDATE_CARD_DESCRIPTION_FAILURE:
     case COPY_CARD_FAILURE:
     case ADD_CHECKLIST_ITEM_FAILURE:
+    case CHECK_OR_UNCHECK_FAILURE:
       return { error: action.payload || "Error: Could not update card" };
     default:
       return state;
