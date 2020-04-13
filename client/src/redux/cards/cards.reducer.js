@@ -15,7 +15,8 @@ import {
   RESTORE_CARD,
   UPDATE_CARD_DESCRIPTION,
   UPDATE_CHECKLIST,
-  COPY_CARD
+  COPY_CARD,
+  COPY_CARD_SUCCESS
 } from "../types";
 
 const INITIAL_STATE = {};
@@ -70,6 +71,13 @@ export default (state = INITIAL_STATE, action) => {
       };
 
       return currentCards;
+    case COPY_CARD_SUCCESS:
+      currentCards[action.payload.idFromDB] = {
+        ...currentCards[action.payload.tempId],
+        _id: action.payload.idFromDB,
+        checklist: action.payload.checklistFromDB
+      };
+      return _.omit(currentCards, action.payload.tempId);
     case ARCHIVE_CARD:
       currentCards[action.payload].archived = true;
       return currentCards;

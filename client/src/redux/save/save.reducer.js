@@ -2,6 +2,9 @@ import {
   ADD_CARD,
   ADD_CARD_SUCCESS,
   ADD_CARD_FAILURE,
+  COPY_CARD,
+  COPY_CARD_SUCCESS,
+  COPY_CARD_FAILURE,
   MOVE_CARD,
   MOVE_CARD_SUCCESS,
   MOVE_CARD_FAILURE,
@@ -25,18 +28,21 @@ export default (state = INITIAL_STATE, action) => {
     case ARCHIVE_CARD:
     case RESTORE_CARD:
     case UPDATE_CARD_DESCRIPTION:
+    case COPY_CARD:
       return { changes: "Saving..." };
     case ADD_CARD_SUCCESS:
     case MOVE_CARD_SUCCESS:
     case ARCHIVE_CARD_SUCCESS:
     case RESTORE_CARD_SUCCESS:
     case UPDATE_CARD_DESCRIPTION_SUCCESS:
+    case COPY_CARD_SUCCESS:
       return { changes: "Saved!" };
     case ADD_CARD_FAILURE:
     case MOVE_CARD_FAILURE:
     case ARCHIVE_CARD_FAILURE:
     case RESTORE_CARD_FAILURE:
     case UPDATE_CARD_DESCRIPTION_FAILURE:
+    case COPY_CARD_FAILURE:
       return { error: action.payload || "Error: Could not update card" };
     default:
       return state;

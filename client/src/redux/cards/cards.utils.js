@@ -10,3 +10,10 @@ export const normalizeCards = cardsArray => {
   cardsArray.forEach(card => (outputObj[card._id] = card));
   return outputObj;
 };
+
+export const normalizeChecklist = checklistArray => {
+  let outputObj = {};
+
+  checklistArray.forEach(item => (outputObj[item._id] = item));
+  return outputObj;
+};

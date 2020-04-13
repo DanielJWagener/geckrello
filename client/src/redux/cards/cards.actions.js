@@ -1,6 +1,8 @@
 import axios from "axios";
 import _ from "lodash";
 
+import { normalizeChecklist } from "./cards.utils";
+
 import {
   ADD_CARD,
   ADD_CARD_SUCCESS,
@@ -9,6 +11,8 @@ import {
   ARCHIVE_CARD_SUCCESS,
   ARCHIVE_CARD_FAILURE,
   COPY_CARD,
+  COPY_CARD_SUCCESS,
+  COPY_CARD_FAILURE,
   MOVE_CARD,
   MOVE_CARD_SUCCESS,
   MOVE_CARD_FAILURE,
@@ -88,15 +92,13 @@ export const copyCard = (sourceCardId, newListHome) => async (
   dispatch,
   getState
 ) => {
+  // STEP 1: Pure Redux
   const tempId = _.uniqueId("zzzzz");
-
-  const state = getState();
-  console.log(state);
 
   // Make temporary checklist item IDs for each checklist item in the source card
   const sourceCardChecklist = getState().cards[sourceCardId].checklist;
   let checklistTempIds = new Array(Object.keys(sourceCardChecklist).length);
-  checklistTempIds.fill(_.uniqueId("yyyy"));
+  checklistTempIds = checklistTempIds.fill("").map(el => _.uniqueId("yyyy"));
 
   // Send arguments to reducer
   dispatch({
@@ -109,29 +111,50 @@ export const copyCard = (sourceCardId, newListHome) => async (
     }
   });
 
-  // GET card to be copied (source card)
-  let card = (await axios.get(`/api/v1/cards/${sourceCardId}`)).data.data;
+  // STEP 2: MongoDB
+  try {
+    // GET card to be copied (source card)
+    let card = (await axios.get(`/api/v1/cards/${sourceCardId}`)).data.data;
 
-  // Change the list home of that card
-  card.listHome = newListHome;
+    // Change the list home of that card
+    card.listHome = newListHome;
 
-  // Destructure fields for POST request (all but original document ID)
-  let { description, archived, title, boardHome, listHome, checklist } = card;
+    // Destructure fields for POST request (all but original document ID)
+    let { description, archived, title, boardHome, listHome, checklist } = card;
 
-  // If the source card has a checklist, copy all values into new array so Mongo can create new IDs
-  if (checklist) {
-    checklist = checklist.map(({ checked, label }) => ({ checked, label }));
+    // If the source card has a checklist, copy all values into new array so Mongo can create new IDs
+    if (checklist) {
+      checklist = checklist.map(({ checked, label }) => ({ checked, label }));
+    }
+
+    // Create card in database
+    let newCard = await axios.post(`/api/v1/cards`, {
+      description,
+      archived,
+      title,
+      boardHome,
+      listHome,
+      checklist
+    });
+
+    // Get the relevant information (Not destructing! We'd pollute the namespace otherwise)
+    let checklistFromDB = normalizeChecklist(newCard.data.data.checklist);
+    const idFromDB = newCard.data.data._id;
+
+    dispatch({
+      type: COPY_CARD_SUCCESS,
+      payload: {
+        checklistFromDB,
+        idFromDB,
+        tempId
+      }
+    });
+  } catch (error) {
+    dispatch({
+      type: COPY_CARD_FAILURE,
+      payload: error.message
+    });
   }
-
-  // Create card in database
-  let newCard = await axios.post(`/api/v1/cards`, {
-    description,
-    archived,
-    title,
-    boardHome,
-    listHome,
-    checklist
-  });
 };
 
 export const archiveCard = cardId => async dispatch => {
