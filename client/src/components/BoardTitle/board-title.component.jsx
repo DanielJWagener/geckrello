@@ -11,6 +11,8 @@ export class BoardTitle extends Component {
     titleText: ""
   };
 
+  boardTitleInput = React.createRef();
+
   // Initially sets size of input and page title
   componentDidMount() {
     this.setInputSize(this.state.titleText.length);
@@ -39,8 +41,8 @@ export class BoardTitle extends Component {
   // When user input hears Enter or Escape, calls checkEmptyInput
   keyDownHandler = event => {
     const newTitle = event.target.value;
-
     if (event.key === "Enter" || event.key === "Escape") {
+      this.boardTitleInput.current.blur();
       this.checkEmptyInput(newTitle);
     }
   };
@@ -113,10 +115,12 @@ export class BoardTitle extends Component {
           value={this.state.inputText}
           onChange={this.inputHandler}
           onKeyDown={this.keyDownHandler}
+          tabIndex="0"
           onBlur={this.onBlurHandler}
           onFocus={this.onFocusHandler}
           onMouseOver={this.onMouseOverHandler}
           onMouseOut={this.onMouseOutHandler}
+          ref={this.boardTitleInput}
         ></input>
       </div>
     );

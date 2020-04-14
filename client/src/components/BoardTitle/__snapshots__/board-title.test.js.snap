@@ -2,6 +2,6 @@
 
 exports[`renders BoardTitle component 1`] = `
 "<div>
-  <input className=\\"board-title__input\\" value=\\"title\\" onChange={[Function]} onKeyDown={[Function]} onBlur={[Function]} onFocus={[Function]} onMouseOver={[Function]} onMouseOut={[Function]} />
+  <input className=\\"board-title__input\\" value=\\"title\\" onChange={[Function]} onKeyDown={[Function]} tabIndex=\\"0\\" onBlur={[Function]} onFocus={[Function]} onMouseOver={[Function]} onMouseOut={[Function]} />
 </div>"
 `;
