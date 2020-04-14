@@ -66,8 +66,9 @@ export default (state = INITIAL_STATE, action) => {
     case ADD_CHECKLIST_ITEM_FAILURE:
     case CHECK_OR_UNCHECK_FAILURE:
     case DELETE_CHECKLIST_ITEM_FAILURE:
-    case ADD_LIST_FAILURE:
       return { error: action.payload || "Error: Could not update card" };
+    case ADD_LIST_FAILURE:
+      return { error: action.payload || "Error: Could not update list" };
     default:
       return state;
   }
