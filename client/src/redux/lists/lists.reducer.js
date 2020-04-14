@@ -30,18 +30,10 @@ export default (state = INITIAL_STATE, action) => {
       currentLists[action.payload.newId]._id = action.payload.newId;
       return _.omit(currentLists, action.payload.tempId);
     case ARCHIVE_LIST:
-      currentLists.forEach(list => {
-        if (list._id === action.payload) {
-          list.archived = true;
-        }
-      });
+      currentLists[action.payload].archived = true;
       return currentLists;
     case RESTORE_LIST:
-      currentLists.forEach(list => {
-        if (list._id === action.payload) {
-          list.archived = false;
-        }
-      });
+      currentLists[action.payload].archived = false;
       return currentLists;
     default:
       return state;

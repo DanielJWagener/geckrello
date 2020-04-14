@@ -119,38 +119,42 @@ describe("lists reducer", () => {
   });
 
   it("should handle ARCHIVE_LIST", () => {
-    expect(
-      listsReducer(
-        [
-          { _id: "1", title: "List 1", archived: false },
-          { _id: "2", title: "List 2", archived: false }
-        ],
-        {
-          type: ARCHIVE_LIST,
-          payload: "1"
-        }
-      )
-    ).toEqual([
-      { _id: "1", title: "List 1", archived: true },
-      { _id: "2", title: "List 2", archived: false }
-    ]);
+    const action = {
+      type: ARCHIVE_LIST,
+      payload: "1"
+    };
+
+    const newState = listsReducer(
+      {
+        1: { _id: "1", title: "List 1", archived: false },
+        2: { _id: "2", title: "List 2", archived: false }
+      },
+      action
+    );
+
+    expect(newState).toEqual({
+      1: { _id: "1", title: "List 1", archived: true },
+      2: { _id: "2", title: "List 2", archived: false }
+    });
   });
 
   it("should handle RESTORE_LIST", () => {
-    expect(
-      listsReducer(
-        [
-          { _id: "1", title: "List 1", archived: true },
-          { _id: "2", title: "List 2", archived: false }
-        ],
-        {
-          type: RESTORE_LIST,
-          payload: "1"
-        }
-      )
-    ).toEqual([
-      { _id: "1", title: "List 1", archived: false },
-      { _id: "2", title: "List 2", archived: false }
-    ]);
+    const action = {
+      type: RESTORE_LIST,
+      payload: "1"
+    };
+
+    const newState = listsReducer(
+      {
+        1: { _id: "1", title: "List 1", archived: true },
+        2: { _id: "2", title: "List 2", archived: false }
+      },
+      action
+    );
+
+    expect(newState).toEqual({
+      1: { _id: "1", title: "List 1", archived: false },
+      2: { _id: "2", title: "List 2", archived: false }
+    });
   });
 });

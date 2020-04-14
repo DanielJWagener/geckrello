@@ -6,8 +6,11 @@ import {
   ADD_LIST_SUCCESS,
   ADD_LIST_FAILURE,
   ARCHIVE_LIST,
+  ARCHIVE_LIST_SUCCESS,
+  ARCHIVE_LIST_FAILURE,
   RESTORE_LIST,
-  ADD_CARD_FAILURE
+  RESTORE_LIST_SUCCESS,
+  RESTORE_LIST_FAILURE
 } from "../types";
 
 export const addList = (title, boardId) => async dispatch => {
@@ -52,25 +55,52 @@ export const addList = (title, boardId) => async dispatch => {
 };
 
 export const archiveList = listId => async dispatch => {
-  // PATCH new list data
-  await axios.patch(`/api/v1/lists/${listId}`, { archived: true });
-
-  // Send list ID to redcuers
+  // STEP 1: Pure redux
   dispatch({
     type: ARCHIVE_LIST,
     payload: listId
   });
+
+  // STEP 2: MongoDB
+  try {
+    // PATCH new list data
+    await axios.patch(`/api/v1/lists/${listId}`, { archived: true });
+
+    // Send list ID to redcuers
+    dispatch({
+      type: ARCHIVE_LIST_SUCCESS
+    });
+  } catch (error) {
+    dispatch({
+      type: ARCHIVE_LIST_FAILURE,
+      payload: error.message
+    });
+  }
 };
 
 export const restoreList = listId => async dispatch => {
-  // PATCH new list data
-  await axios.patch(`/api/v1/lists/${listId}`, {
-    archived: false
-  });
-
-  // Send list ID to reducers
+  // STEP 1: Pure redux
   dispatch({
     type: RESTORE_LIST,
     payload: listId
   });
+
+  // STEP 2: MongoDB
+  try {
+    // PATCH new list data
+    await axios.patch(`/api/v1/lists/${listId}`, {
+      archived: false
+    });
+
+    // Send list ID to reducers
+    dispatch({
+      type: RESTORE_LIST_SUCCESS,
+      payload: listId
+    });
+  } catch (error) {
+    dispatch({
+      type: RESTORE_LIST_FAILURE,
+      payload: error.message
+    });
+  }
 };
