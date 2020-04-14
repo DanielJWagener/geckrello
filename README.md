@@ -12,7 +12,6 @@ This a MERN stack application that aims to clone Trello, a to-do list applicatio
 - Express.js
 - Redux
 - Sass / CSS
-- Javascript
 - Google OAuth and Passport
 - REST conventions and Postman testing
 - Jest / Enzyme
