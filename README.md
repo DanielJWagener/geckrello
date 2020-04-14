@@ -6,14 +6,15 @@ This a MERN stack application that aims to clone Trello, a to-do list applicatio
 
 ## Resources / Technologies Used
 
-- React
+- React / Javascript
 - MongoDB
 - Node.js
 - Express.js
 - Redux
 - Sass / CSS
 - Javascript
-- Google OAuth
+- Google OAuth and Passport
+- REST conventions and Postman testing
 - Jest / Enzyme
 - Landing page image credit: David Scharzenberg @ [Pixabay](https://pixabay.com/photos/business-computer-mobile-smartphone-2846221/)
 
