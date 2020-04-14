@@ -5,6 +5,8 @@ import {
   PENDING_BOARD_BACKGROUND,
   UNLOAD_BOARD,
   UPDATE_BOARD,
+  UPDATE_BOARD_SUCCESS,
+  UPDATE_BOARD_FAILURE,
   FETCH_USER
 } from "../types";
 import { normalizeCards } from "../cards/cards.utils";
@@ -65,9 +67,15 @@ export const unloadBoard = () => {
 };
 
 export const updateBoard = (id, data) => async dispatch => {
-  // Send PATCH request
-  const board = await axios.patch(`/api/v1/boards/${id}`, data);
+  dispatch({ type: UPDATE_BOARD });
 
-  // Send data to reducers
-  dispatch({ type: UPDATE_BOARD, payload: board.data.data });
+  try {
+    // Send PATCH request
+    const board = await axios.patch(`/api/v1/boards/${id}`, data);
+
+    // Send data to reducers
+    dispatch({ type: UPDATE_BOARD_SUCCESS, payload: board.data.data });
+  } catch (error) {
+    dispatch({ type: UPDATE_BOARD_FAILURE, payload: error.message });
+  }
 };

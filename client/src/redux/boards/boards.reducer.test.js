@@ -2,7 +2,7 @@ import {
   FETCH_BOARD_DATA,
   PENDING_BOARD_BACKGROUND,
   UNLOAD_BOARD,
-  UPDATE_BOARD
+  UPDATE_BOARD_SUCCESS
 } from "../types";
 import boardsReducer from "./boards.reducer";
 
@@ -45,11 +45,11 @@ describe("boards reducer", () => {
     );
   });
 
-  it("should handle UPDATE_BOARD", () => {
+  it("should handle UPDATE_BOARD_SUCCESS", () => {
     expect(
       boardsReducer(
         { title: "Board 1" },
-        { type: UPDATE_BOARD, payload: { title: "Board One" } }
+        { type: UPDATE_BOARD_SUCCESS, payload: { title: "Board One" } }
       )
     ).toEqual({ title: "Board One" });
   });
