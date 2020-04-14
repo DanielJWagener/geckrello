@@ -45,7 +45,7 @@ export const addList = (title, boardId) => async dispatch => {
     });
   } catch (error) {
     dispatch({
-      type: ADD_CARD_FAILURE,
+      type: ADD_LIST_FAILURE,
       payload: error.message
     });
   }
