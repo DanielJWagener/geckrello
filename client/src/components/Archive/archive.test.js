@@ -8,12 +8,12 @@ import { ArchiveItem as ArchiveItemPure } from "./archive-item.component";
 const mockProps = {
   cards: [
     { _id: "1", title: "Card 1", archived: true },
-    { _id: "2", title: "Card 2", archived: false },
+    { _id: "2", title: "Card 2", archived: false }
   ],
   lists: [
     { _id: "1", title: "List 1", archived: true },
-    { _id: "2", title: "List 2", archived: false },
-  ],
+    { _id: "2", title: "List 2", archived: false }
+  ]
 };
 
 it("renders Archive component", () => {
@@ -56,14 +56,5 @@ describe("Archive functionality", () => {
     expect(wrapped.find(activeButton).text()).toEqual(inactiveInitial);
     wrapped.find(inactiveButton).simulate("click");
     expect(wrapped.find(activeButton).text()).toEqual(activeInitial);
-  });
-
-  it("displays only archived cards and lists", () => {
-    // We export the Archive component before it gets passed into connect()
-    // This way, we can call instance() on the component without a Provider getting in the way
-    const wrapped2 = shallow(<ArchivePure {...mockProps} />);
-
-    expect(wrapped2.instance().archivedItemsArray("cards").length).toEqual(1);
-    expect(wrapped2.instance().archivedItemsArray("lists").length).toEqual(1);
   });
 });

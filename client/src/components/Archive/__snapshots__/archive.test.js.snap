@@ -12,6 +12,7 @@ exports[`renders Archive component 1`] = `
   </div>
   <div className=\\"archive__list\\">
     <Connect(ArchiveItem) itemId=\\"1\\" itemTitle=\\"List 1\\" itemType=\\"list\\" />
+    <Connect(ArchiveItem) itemId=\\"2\\" itemTitle=\\"List 2\\" itemType=\\"list\\" />
   </div>
 </div>"
 `;
