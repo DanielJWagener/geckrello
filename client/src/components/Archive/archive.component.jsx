@@ -3,7 +3,8 @@ import { connect } from "react-redux";
 
 import ArchiveItem from "./archive-item.component";
 
-import { selectCardsAsArray } from "../../redux/cards/cards.selectors";
+import { selectArchivedCards } from "../../redux/cards/cards.selectors";
+import { selectArchivedLists } from "../../redux/lists/lists.selectors";
 
 import "./archive.styles.scss";
 
@@ -19,16 +20,14 @@ export class Archive extends React.Component {
   };
 
   archivedItemsArray = items =>
-    this.props[items]
-      .filter(item => item.archived)
-      .map(item => (
-        <ArchiveItem
-          key={item._id}
-          itemId={item._id}
-          itemTitle={item.title}
-          itemType={items.substring(0, items.length - 1)}
-        />
-      ));
+    this.props[items].map(item => (
+      <ArchiveItem
+        key={item._id}
+        itemId={item._id}
+        itemTitle={item.title}
+        itemType={items.substring(0, items.length - 1)}
+      />
+    ));
 
   render() {
     return (
@@ -60,7 +59,10 @@ export class Archive extends React.Component {
 }
 
 const mapStateToProps = state => {
-  return { lists: state.lists, cards: selectCardsAsArray(state) };
+  return {
+    lists: selectArchivedLists(state),
+    cards: selectArchivedCards(state)
+  };
 };
 
 export default connect(mapStateToProps)(Archive);

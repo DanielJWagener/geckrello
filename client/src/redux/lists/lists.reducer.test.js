@@ -9,7 +9,7 @@ import listsReducer from "./lists.reducer";
 
 describe("lists reducer", () => {
   it("should return initial state", () => {
-    expect(listsReducer(undefined, {})).toEqual([]);
+    expect(listsReducer(undefined, {})).toEqual({});
   });
 
   it("should handle FETCH_BOARD_DATA", () => {
@@ -27,7 +27,7 @@ describe("lists reducer", () => {
 
   it("should handle UNLOAD_BOARD", () => {
     expect(listsReducer(["List 1", "List 2"], { type: UNLOAD_BOARD })).toEqual(
-      []
+      {}
     );
   });
 

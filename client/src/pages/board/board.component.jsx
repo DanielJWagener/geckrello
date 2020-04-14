@@ -10,6 +10,7 @@ import { unloadBoard, fetchBoardData } from "../../redux/boards/boards.actions";
 import colorThemes from "../../utilities/colorThemes";
 import updateBackgroundColor from "../../utilities/updateBackgroundColor";
 import Spinner from "../../components/Spinner/spinner.component";
+import { selectUnarchivedLists } from "../../redux/lists/lists.selectors";
 
 import "./board.styles.scss";
 
@@ -33,19 +34,17 @@ export class Board extends React.Component {
     this.props.unloadBoard();
   }
 
-  // Iterate over every list in state, return the non-archived ones, and make and array of List components out of them
+  // Iterate over every list in state, return the non-archived ones, and make an array of List components out of them
   listsArray = () =>
-    this.props.lists
-      .filter(list => !list.archived)
-      .map(list => (
-        <List
-          key={list._id}
-          listTitle={list.title}
-          listId={list._id}
-          cards={[]}
-          archived={list.archived}
-        />
-      ));
+    this.props.lists.map(list => (
+      <List
+        key={list._id}
+        listTitle={list.title}
+        listId={list._id}
+        cards={[]}
+        archived={list.archived}
+      />
+    ));
 
   render() {
     if (this.props.board && !this.props.board.isPending) {
@@ -68,8 +67,11 @@ export class Board extends React.Component {
   }
 }
 
-const mapStateToProps = ({ board, lists, cards }) => {
-  return { board, lists, cards };
+const mapStateToProps = state => {
+  return {
+    board: state.board,
+    lists: selectUnarchivedLists(state)
+  };
 };
 
 export default connect(mapStateToProps, {

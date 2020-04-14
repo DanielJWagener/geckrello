@@ -27,20 +27,12 @@ export class AddCard extends React.Component {
     this.setState({ backgroundColor: this.backgroundColor.default });
   };
 
-  // Set initial background color, get height for this.promptHeight
-  addCardPromptRef = React.createRef();
-  addCardInputRef = React.createRef();
-
-  promptHeight = 0;
-  inputHeight = 96; // TODO: don't hardcode this value
-
   componentDidMount() {
     this.setState({
       backgroundColor: this.backgroundColor.default
     });
   }
 
-  // Mode and height toggle
   toggleMode = () => {
     if (this.state.mode === "prompt") {
       this.setState({ mode: "input" });
@@ -95,7 +87,6 @@ export class AddCard extends React.Component {
           onMouseLeave={this.resetBackground}
           onTouchMove={this.resetBackground}
           onClick={this.toggleMode}
-          ref={this.addCardPromptRef}
         >
           <span className="add-card__prompt--plus">+</span>
           <span className="add-card__prompt--label">Add new card</span>
@@ -106,7 +97,6 @@ export class AddCard extends React.Component {
         <div
           className="add-card add-card__form"
           style={{ backgroundColor: this.backgroundColor.default }}
-          ref={this.addCardInputRef}
         >
           <form onSubmit={this.onFormSubmit} className="form">
             <div className="form__group">
@@ -133,9 +123,9 @@ export class AddCard extends React.Component {
   }
 }
 
-const mapStateToProps = ({ cards, board }) => {
+const mapStateToProps = ({ board }) => {
   const boardHome = board ? board._id : "";
-  return { boardHome, cards };
+  return { boardHome };
 };
 
 export default connect(mapStateToProps, { addCard })(AddCard);

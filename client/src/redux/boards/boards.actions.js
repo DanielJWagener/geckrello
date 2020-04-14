@@ -8,6 +8,7 @@ import {
   FETCH_USER
 } from "../types";
 import { normalizeCards } from "../cards/cards.utils";
+import { normalizeLists } from "../lists/lists.utils";
 
 export const fetchBoardData = boardId => async dispatch => {
   // Endpoints to GET a board, its lists, and its cards
@@ -27,11 +28,12 @@ export const fetchBoardData = boardId => async dispatch => {
   board.data.data.isPending = false;
 
   const cardsObj = normalizeCards(cards.data.data);
+  const listsObj = normalizeLists(lists.data.data);
 
   // Send board data to reducers
   const payload = {
     board: board.data.data,
-    lists: lists.data.data,
+    lists: listsObj,
     cards: cardsObj
   };
 

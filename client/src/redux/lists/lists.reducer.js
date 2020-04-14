@@ -6,10 +6,10 @@ import {
   RESTORE_LIST
 } from "../types";
 
-const INITIAL_STATE = [];
+const INITIAL_STATE = {};
 
 export default (state = INITIAL_STATE, action) => {
-  let currentLists = [...state];
+  let currentLists = { ...state };
   switch (action.type) {
     case FETCH_BOARD_DATA:
       return action.payload.lists;

@@ -98,8 +98,4 @@ export class AddList extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
-  return { lists: state.lists };
-};
-
-export default connect(mapStateToProps, { addList })(AddList);
+export default connect(null, { addList })(AddList);
