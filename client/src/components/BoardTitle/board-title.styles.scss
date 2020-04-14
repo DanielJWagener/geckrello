@@ -2,7 +2,7 @@
 
 .board-title {
   &__input {
-    margin-left: 10px;
+    margin-left: 1rem;
     padding: 5px 0;
     grid-area: title;
     background-color: var(--color-primary);
@@ -20,6 +20,10 @@
 
     &--hover {
       background-color: var(--color-primary-hoverLight);
+    }
+
+    @media only screen and (max-width: 23.75em) {
+      margin-left: 0.5rem;
     }
   }
 }

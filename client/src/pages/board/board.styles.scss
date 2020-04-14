@@ -2,11 +2,14 @@
 
 .board {
   height: calc(var(--vh, 1vh) * 100 - var(--navbar-height));
+  display: flex;
+  flex-flow: column;
 
   &__lists-container {
-    height: calc(
-      var(--vh, 1vh) * 100 - var(--navbar-height) - #{$board-header-height} - 1rem
-    );
+    // height: calc(
+    //   var(--vh, 1vh) * 100 - var(--navbar-height) - #{$board-header-height} - 1rem
+    // );
+    flex-grow: 1;
     padding: 1rem 0;
     margin: 0 0.5rem;
 
@@ -14,8 +17,7 @@
     overflow-x: auto;
 
     &::-webkit-scrollbar {
-      width: 20px;
-      height: 10px;
+      height: 1rem;
       margin: 0 1rem 3rem 1rem;
       padding: 0 2rem;
 

@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
 import setDefaultColors from "../../utilities/setDefaultColors";
+import Spinner from "../../components/Spinner/spinner.component";
 
 import "./landing.styles.scss";
 
@@ -15,7 +16,11 @@ export class Landing extends React.Component {
   renderCTA() {
     switch (this.props.auth) {
       case null:
-        return <div className="hero__cta-invisible">placeholder</div>;
+        return (
+          <div className="hero__cta-invisible">
+            <Spinner />
+          </div>
+        );
       case false:
         return (
           <a href="/auth/google" className="hero__cta">

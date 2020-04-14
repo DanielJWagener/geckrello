@@ -15,7 +15,7 @@
     left: calc(-1 * #{$sidebar-width});
   }
 
-  height: calc(var(--vh, 1vh) * 100 - 9rem);
+  height: calc(var(--vh, 1vh) * 100 - 9.5rem);
   background-color: $component-background;
   border-left: 2px solid white;
   border-radius: 8px 0 0 8px;

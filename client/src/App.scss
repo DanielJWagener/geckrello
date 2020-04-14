@@ -49,11 +49,15 @@ body {
 
 #sidebar-root {
   position: fixed;
-  top: 9rem;
+  top: 9.5rem;
   right: calc(-1 * #{$sidebar-width});
   height: calc(var(--vh, 1vh) * 100 - 8rem);
   width: $sidebar-width;
   z-index: 2;
+
+  @media only screen and (max-width: 23.75em) {
+    top: 12em;
+  }
 
   @media only screen and (max-width: 25em) {
     width: 100vw;

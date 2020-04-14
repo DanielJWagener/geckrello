@@ -6,10 +6,11 @@
   position: relative;
   padding: 0.5rem 0;
   background-color: var(--color-primary);
-  height: $board-header-height;
+  min-height: $board-header-height;
 
   &--left {
     display: flex;
     align-items: center;
+    margin-right: 1rem;
   }
 }

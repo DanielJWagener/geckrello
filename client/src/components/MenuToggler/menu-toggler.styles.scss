@@ -6,8 +6,9 @@
   border-radius: 5px;
 
   padding: 3px 0.5rem;
-  margin-right: 3rem;
+  margin-right: 1rem;
   border: 2px solid var(--color-primary-light);
+  text-align: center;
 
   h1 {
     font-weight: 100;
@@ -16,5 +17,9 @@
   &--hover {
     background-color: var(--color-primary-hoverLight);
     border: 2px solid var(--color-primary-hoverLight);
+  }
+
+  @media only screen and (max-width: 23.75em) {
+    margin-right: 0.5rem;
   }
 }

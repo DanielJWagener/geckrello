@@ -9,7 +9,7 @@ const AutoSave = ({ save }) => {
       case undefined:
         return save.error;
       case null:
-        return "No changes detected";
+        return "";
       default:
         return save.changes;
     }
