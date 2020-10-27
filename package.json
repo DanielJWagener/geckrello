@@ -4,11 +4,11 @@
   "main": "index.js",
   "repository": "https://github.com/DanielJWagener/geckrello",
   "engines": {
-    "node": "^13.8.0",
-    "yarn": "1.22.4"
+    "node": "^14.5.0",
+    "yarn": "1.22.5"
   },
   "scripts": {
-    "start": "node index.js",
+    "start": "node --trace-warnings index.js",
     "server": "nodemon index.js",
     "client": "yarn --cwd client start",
     "dev": "NODE_ENV=development concurrently \"yarn run server\" \"yarn run client\"",

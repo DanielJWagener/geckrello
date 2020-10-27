@@ -1,10 +1,10 @@
-import React from "react";
-import { ItemTypes } from "../Constants";
-import { useDrag } from "react-dnd";
-import { connect } from "react-redux";
-import { moveCard } from "../../redux/cards/cards.actions";
+import React from 'react';
+import { ItemTypes } from '../Constants';
+import { useDrag } from 'react-dnd';
+import { connect } from 'react-redux';
+import { moveCard } from '../../redux/cards/cards.actions';
 
-import "./card.styles.scss";
+import './card.styles.scss';
 
 export function Card({ moveCard, cardId, cardTitle }) {
   // Drag source hook
@@ -24,15 +24,15 @@ export function Card({ moveCard, cardId, cardTitle }) {
   const popupHref = `#${cardId}`;
 
   return (
-    <div className="card">
+    <div className='card'>
       <a
         href={popupHref}
         ref={drag}
-        className="card__preview"
+        className='card__preview'
         style={{
           opacity: isDragging ? 0.5 : 1,
           zIndex: isDragging ? 3 : 3,
-          cursor: "move"
+          cursor: 'move'
         }}
       >
         {cardTitle}

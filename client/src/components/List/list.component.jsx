@@ -1,15 +1,15 @@
-import React from "react";
-import { connect } from "react-redux";
+import React from 'react';
+import { connect } from 'react-redux';
 
-import AddCard from "../AddCard/add-card.component";
-import Card from "../Card/card.component";
-import CardModal from "../CardModal/card-modal.component";
-import ListDropTarget from "./list-drop-target";
+import AddCard from '../AddCard/add-card.component';
+import Card from '../Card/card.component';
+import CardModal from '../CardModal/card-modal.component';
+import ListDropTarget from './list-drop-target';
 
-import { archiveList } from "../../redux/lists/lists.actions";
-import { selectCardsByListHome } from "../../redux/cards/cards.selectors";
+import { archiveList } from '../../redux/lists/lists.actions';
+import { selectCardsByListHome } from '../../redux/cards/cards.selectors';
 
-import "./list.styles.scss";
+import './list.styles.scss';
 
 export const List = props => {
   // Event handler for when user clicks the remove button
@@ -45,15 +45,15 @@ export const List = props => {
 
   return (
     <ListDropTarget listId={props.listId}>
-      <div className="list">
-        <div className="list__remove" onClick={archiveList}>
+      <div className='list'>
+        <div className='list__remove' onClick={archiveList}>
           &times;
         </div>
-        <h2 className="list__heading">{props.listTitle}</h2>
-        <div className="list__cards">{cardsArray()}</div>
+        <h2 className='list__heading'>{props.listTitle}</h2>
+        <div className='list__cards'>{cardsArray()}</div>
         <AddCard listHome={props.listId} />
       </div>
-      <div className="card-modals">{cardModalsArray()}</div>
+      <div className='card-modals'>{cardModalsArray()}</div>
     </ListDropTarget>
   );
 };
@@ -64,4 +64,5 @@ const mapStateToProps = (state, ownProps) => {
 
   return { cards: selectCardsByListHome(listId)(state) };
 };
+
 export default connect(mapStateToProps, { archiveList })(List);
