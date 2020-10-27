@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const listSchema = new Schema({
@@ -7,9 +7,15 @@ const listSchema = new Schema({
   archived: {
     type: Boolean,
     default: false
-  }
+  },
+  cards: [
+    {
+      type: mongoose.Schema.ObjectId,
+      ref: 'cards'
+    }
+  ]
 });
 
-const List = mongoose.model("lists", listSchema);
+const List = mongoose.model('lists', listSchema);
 
 module.exports = List;
