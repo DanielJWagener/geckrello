@@ -1,13 +1,15 @@
 .board-link {
   background-color: #444;
-  padding: 1rem 2rem;
+  padding: 2rem 2rem;
   border-radius: 0.5rem;
   text-align: center;
-  margin-bottom: 1rem;
+  margin: 0.5rem 0;
   font-size: 2rem;
   overflow-x: hidden;
   text-decoration: none;
   cursor: pointer;
+  justify-self: stretch;
+  width: 33%;
 
   &__link {
     color: white;
@@ -21,5 +23,13 @@
 
   &:hover > .board-link__link {
     color: #ddd;
+  }
+
+  @media only screen and (max-width: 46.5em) {
+    width: 49%;
+  }
+
+  @media only screen and (max-width: 30.75em) {
+    width: 100%;
   }
 }

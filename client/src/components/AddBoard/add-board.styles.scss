@@ -1,10 +1,11 @@
-@import "../../sass/abstracts/_variables.scss";
+@import '../../sass/abstracts/_variables.scss';
 
 .addBoard {
   border-radius: 0.5rem;
   margin-bottom: 1rem;
   height: 100px;
   z-index: 1;
+  width: 33%;
 
   &__prompt {
     background-color: rgba(0, 0, 0, 0.6);
@@ -40,6 +41,13 @@
   }
 
   &__form {
+    width: 100%;
+  }
+
+  @media only screen and (max-width: 46.5em) {
+    width: 49%;
+  }
+  @media only screen and (max-width: 30.75em) {
     width: 100%;
   }
 }

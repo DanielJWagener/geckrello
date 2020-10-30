@@ -1,17 +1,35 @@
 .dashboard {
   background-color: #eeeeee;
   height: calc(var(--vh, 1vh) * 100 - var(--navbar-height));
-  padding: 1rem;
+  padding: 2rem;
+
+  &__container {
+    max-width: 1040px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  &__welcome-message {
+    margin-bottom: 1rem;
+  }
+
+  &__header {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
 
   &__boards-container {
     display: flex;
-    flex-direction: column;
-    width: 50%;
-    max-width: 40rem;
-    margin: 2rem 0;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: stretch;
+  }
 
-    @media only screen and (max-width: 30.3125em) {
-      width: 100%;
+  @media only screen and (max-width: 30.75em) {
+    padding: 2rem 1rem;
+    &__boards-container {
+      flex-direction: column;
     }
   }
 }

@@ -1,12 +1,12 @@
-import React from "react";
-import { connect } from "react-redux";
+import React from 'react';
+import { connect } from 'react-redux';
 
-import AddBoard from "../../components/AddBoard/add-board.component";
-import BoardLink from "../../components/BoardLink/board-link.component";
-import { fetchUser } from "../../redux/auth/auth.actions";
-import setDefaultColors from "../../utilities/setDefaultColors";
+import AddBoard from '../../components/AddBoard/add-board.component';
+import BoardLink from '../../components/BoardLink/board-link.component';
+import { fetchUser } from '../../redux/auth/auth.actions';
+import setDefaultColors from '../../utilities/setDefaultColors';
 
-import "./dashboard.styles.scss";
+import './dashboard.styles.scss';
 
 export class Dashboard extends React.Component {
   componentDidMount() {
@@ -25,13 +25,15 @@ export class Dashboard extends React.Component {
       default:
         const welcomeMessage = this.props.auth.givenName
           ? `Welcome, ${this.props.auth.givenName}!`
-          : "Welcome!";
+          : 'Welcome!';
 
         return (
           <>
-            <h1>{welcomeMessage}</h1>
-            <div className="dashboard__boards-container">
-              <AddBoard />
+            <h1 className='dashboard__welcome-message'>{welcomeMessage}</h1>
+
+            <h2 className='dashboard__header'>Your Boards</h2>
+            <AddBoard />
+            <div className='dashboard__boards-container'>
               {this.renderBoards()}
             </div>
           </>
@@ -47,7 +49,11 @@ export class Dashboard extends React.Component {
 
   render() {
     return (
-      <div className="dashboard">{this.renderContent(this.props.auth)}</div>
+      <div className='dashboard'>
+        <div className='dashboard__container'>
+          {this.renderContent(this.props.auth)}
+        </div>
+      </div>
     );
   }
 }
