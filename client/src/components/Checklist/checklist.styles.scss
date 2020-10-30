@@ -5,6 +5,8 @@
   &__items {
     .item {
       display: flex;
+      align-items: center;
+
       &__checkbox {
         //display: inline-block;
         height: 1.8rem;
