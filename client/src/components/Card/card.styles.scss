@@ -1,4 +1,4 @@
-@import "../../sass/abstracts/_variables.scss";
+@import '../../sass/abstracts/_variables.scss';
 
 .card {
   &:not(:last-child) {
@@ -13,6 +13,7 @@
 
   &__preview {
     display: block;
+    position: relative;
     background-color: #fff;
     border-radius: 0.5rem;
     font-size: 2rem;
@@ -21,5 +22,28 @@
     color: $default-font-color;
     text-decoration: none;
     border-bottom: 1px solid $default-font-color;
+
+    &:hover > .card__modal-link {
+      display: block;
+      cursor: pointer;
+    }
+  }
+
+  &__modal-link {
+    display: none;
+    color: #444;
+    text-decoration: none;
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+
+    &:active {
+      color: #444;
+    }
+
+    &:visited {
+      color: #444;
+    }
   }
 }

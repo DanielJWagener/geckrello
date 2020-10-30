@@ -1,4 +1,7 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
+
 import { ItemTypes } from '../Constants';
 import { useDrag } from 'react-dnd';
 import { connect } from 'react-redux';
@@ -25,8 +28,7 @@ export function Card({ moveCard, cardId, cardTitle }) {
 
   return (
     <div className='card'>
-      <a
-        href={popupHref}
+      <div
         ref={drag}
         className='card__preview'
         style={{
@@ -35,8 +37,11 @@ export function Card({ moveCard, cardId, cardTitle }) {
           cursor: 'move'
         }}
       >
-        {cardTitle}
-      </a>
+        <p className='card__title'>{cardTitle}</p>
+        <a href={popupHref} className='card__modal-link'>
+          <FontAwesomeIcon icon={faBars} />
+        </a>
+      </div>
     </div>
   );
 }
